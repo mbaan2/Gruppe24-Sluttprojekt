@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -15,6 +18,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1ZTnDQJWKcZoVJ0A1I8ILOb9po9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,6 +28,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -56,6 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584871831235</updated>
       <workItem from="1584871834013" duration="1244000" />
+      <workItem from="1584873143951" duration="253000" />
     </task>
     <servers />
   </component>
@@ -63,6 +70,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="722" y="71" key="#Notifications" timestamp="1584873334624">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="722" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1584873334624" />
+    <state x="826" y="167" key="FileChooserDialogImpl" timestamp="1584873390205">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584873390205" />
     <state width="724" height="208" key="GridCell.Tab.0.bottom" timestamp="1584872484520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -79,5 +94,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="724" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584872484520" />
+    <state x="555" y="55" key="SettingsEditor" timestamp="1584873396906">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="555" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584873396906" />
   </component>
 </project>
