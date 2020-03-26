@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/05-quinary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +93,7 @@
       <workItem from="1584871834013" duration="1244000" />
       <workItem from="1584873143951" duration="253000" />
       <workItem from="1585218459690" duration="635000" />
-      <workItem from="1585220584022" duration="4234000" />
+      <workItem from="1585220584022" duration="5979000" />
     </task>
     <task id="LOCAL-00001" summary="Added controllers 3-5, each directing to the next controller.">
       <created>1585219025324</created>
@@ -114,10 +117,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="722" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1584873334624" />
-    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1585237271922">
+    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1585238013341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585237271922" />
+    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585238013341" />
     <state x="155" y="8" key="CommitChangelistDialog2" timestamp="1585219024290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -126,22 +129,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584873390205" />
-    <state width="925" height="207" key="GridCell.Tab.0.bottom" timestamp="1585237308926">
+    <state width="925" height="207" key="GridCell.Tab.0.bottom" timestamp="1585239010959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="925" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585237308926" />
-    <state width="925" height="207" key="GridCell.Tab.0.center" timestamp="1585237308926">
+    <state width="925" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585239010959" />
+    <state width="925" height="207" key="GridCell.Tab.0.center" timestamp="1585239010958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="925" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585237308926" />
-    <state width="925" height="207" key="GridCell.Tab.0.left" timestamp="1585237308926">
+    <state width="925" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585239010958" />
+    <state width="925" height="207" key="GridCell.Tab.0.left" timestamp="1585239010958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="925" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585237308926" />
-    <state width="925" height="207" key="GridCell.Tab.0.right" timestamp="1585237308926">
+    <state width="925" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585239010958" />
+    <state width="925" height="207" key="GridCell.Tab.0.right" timestamp="1585239010959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="925" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585237308926" />
+    <state width="925" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585239010959" />
     <state x="555" y="55" key="SettingsEditor" timestamp="1584873396906">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
