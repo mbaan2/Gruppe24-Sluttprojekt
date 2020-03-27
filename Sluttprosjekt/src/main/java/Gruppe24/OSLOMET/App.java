@@ -1,5 +1,8 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
