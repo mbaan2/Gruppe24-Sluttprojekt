@@ -1,21 +1,20 @@
 package Gruppe24.OSLOMET.FileHandling;
 
-import Gruppe24.OSLOMET.OptionBtn;
-import javafx.scene.control.RadioButton;
+import Gruppe24.OSLOMET.Car.CarpartOption;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.List;
 
 public class FileSaverSuperuser implements FileSaver{
     @Override
-    public void save(ArrayList<OptionBtn> optionBtnList, Path filepath) throws IOException{
-        Path path = Paths.get("optionBtns.jobj");
-        try(OutputStream os = Files.newOutputStream(filepath);
+    public void save(List<CarpartOption> carpartOptionList, String carpartOptionListName) throws IOException{
+        Path path = Paths.get(carpartOptionListName +".jobj");
+        try(OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os)){
-            out.writeObject(optionBtnList);
+            out.writeObject(carpartOptionList);
         }
     }
 }

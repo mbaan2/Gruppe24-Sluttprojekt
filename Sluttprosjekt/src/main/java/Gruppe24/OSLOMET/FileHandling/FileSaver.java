@@ -1,12 +1,10 @@
 package Gruppe24.OSLOMET.FileHandling;
 
-import Gruppe24.OSLOMET.OptionBtn;
-import javafx.scene.control.RadioButton;
+import Gruppe24.OSLOMET.Car.CarpartOption;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface FileSaver{
-    void save(ArrayList<OptionBtn> optionBtnList, Path filepath) throws IOException;
+    void save(List<CarpartOption> carpartOptionList, String carpartOptionListName) throws IOException;
 }
