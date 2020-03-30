@@ -35,7 +35,7 @@ public class Login implements Initializable {
 
     @FXML
     void loginBtn(ActionEvent event) throws IOException {
-        if(usernameTxt.getText().equals("admin") && passwordTxt.equals("admin")) {
+        if(usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
             Path path = Paths.get("C:\\Users\\oyvin\\IdeaProjects\\SluttprosjektDemo\\standard\\user.txt");
