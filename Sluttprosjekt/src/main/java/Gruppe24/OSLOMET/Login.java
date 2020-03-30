@@ -38,7 +38,7 @@ public class Login implements Initializable {
         if(usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
-            Path path = Paths.get("C:\\Users\\oyvin\\IdeaProjects\\SluttprosjektDemo\\standard\\user.txt");
+            Path path = Paths.get(".\\user.txt");
 
             Long count = Files.lines(path).count();
 
@@ -76,6 +76,6 @@ public class Login implements Initializable {
 
     @FXML
     private void login() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("01-primary");
     }
 }
