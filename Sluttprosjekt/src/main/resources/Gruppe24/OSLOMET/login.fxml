@@ -12,9 +12,9 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Login">
    <children>
       <ImageView fitHeight="78.0" fitWidth="168.0" layoutX="242.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
+         <!--<image>
             <Image url="@../../../../../../../OneDrive/Bilder/cars.jpg" />
-         </image>
+         </image> -->
       </ImageView>
       <Label layoutX="244.0" layoutY="97.0" prefHeight="26.0" prefWidth="114.0" text="Cars R Us">
          <font>
