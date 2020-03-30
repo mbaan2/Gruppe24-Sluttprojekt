@@ -1,7 +1,8 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,8 +47,8 @@ public class TertiaryController implements Initializable {
         String color = cbxColor.getValue();
 
         if(color.equals("red")){
-            Carparts red = new Carparts("Colorof this car is red", 3000);
-            CarBuild.add(red);
+            Car red = new Carparts("Color of this car is red", 3000);
+            BuildingNewCar.addStatic(red);
             System.out.println("color is red");
         }
 

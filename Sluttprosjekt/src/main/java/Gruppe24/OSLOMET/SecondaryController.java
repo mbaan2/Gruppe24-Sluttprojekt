@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ public class SecondaryController implements Initializable {
     final ToggleGroup group = new ToggleGroup();
     List<RadioButton> buttonList = new ArrayList<>();
 
-    public void createButtons(CarBuild carbuild){
+    public void createButtons(Car carbuild){
         //System.out.println(carbuild.size());
 
         for(int i = 0; i< carbuild.size(); i++){
@@ -44,10 +44,9 @@ public class SecondaryController implements Initializable {
         hboxx.getChildren().clear();
         hboxx.getChildren().addAll(buttonList);
         buttonList.get(0).setSelected(true);
-
     }
 
-    CarBuild wheels = new CarBuild("wheels");
+    Car wheels = new CarCategory("wheels");
 
 
     public void setWheels(){
@@ -69,7 +68,6 @@ public class SecondaryController implements Initializable {
        /* Carparts largeWheels = new Carparts("Large Wheels", 5000);
         BuildingNewCar.add(largeWheels);
         System.out.println("added");
-        \
         */
     }
 
@@ -77,7 +75,6 @@ public class SecondaryController implements Initializable {
     void btnMediumWheels(ActionEvent event) {
         /*Carparts mediumWheels = new Carparts("Medium Wheels", 2500);
         BuildingNewCar.add(mediumWheels);
-
          */
     }
 
@@ -85,7 +82,6 @@ public class SecondaryController implements Initializable {
     void btnSmallWheels(ActionEvent event) {
         /*Carparts smallWheels = new Carparts("Small Wheels", 0);
         BuildingNewCar.add(smallWheels);
-
          */
     }
 
@@ -99,19 +95,10 @@ public class SecondaryController implements Initializable {
             if(buttonList.get(i).isSelected()){
                 for(int j = 0; j < wheels.size(); j++)
                 if(buttonList.get(i).getText().equals(wheels.getNameIndex(j))){
-                    BuildingNewCar.add(wheels.getElement(j));
-                    System.out.println(wheels.getElement(j).getName() + " is added");
-                    System.out.println(BuildingNewCar.getNameIndex(0));
-                    System.out.println(BuildingNewCar.getCostPart(0));
+                    BuildingNewCar.addStatic(wheels.getElement(j));
                 }
-
-
-                }
-
-            }
-
-
-
+             }
+        }
 
         App.setRoot("03-tertiary");
     }

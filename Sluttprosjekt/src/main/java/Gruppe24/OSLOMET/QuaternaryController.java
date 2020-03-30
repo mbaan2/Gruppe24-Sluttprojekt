@@ -1,7 +1,8 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -22,30 +23,29 @@ public class QuaternaryController{
     @FXML
     private CheckBox cbxpolicesiren;
 
-
     @FXML
     private void switchToQuinary() throws IOException {
         if(cbxGps.isSelected()){
-            Carparts gps = new Carparts("GPS", 2000);
-            CarBuild.add(gps);
+            Car gps = new Carparts("GPS", 2000);
+            BuildingNewCar.addStatic(gps);
             System.out.println("Added gps");
         }
 
         if(cbxSoundsystem.isSelected()){
             Carparts soundsystem = new Carparts("Soundsystem", 10000);
-            CarBuild.add(soundsystem);
+            BuildingNewCar.addStatic(soundsystem);
             System.out.println("Added soundsystem");
         }
 
         if(cbxSpoiler.isSelected()){
             Carparts spoiler = new Carparts("Spoiler", 2000);
-            CarBuild.add(spoiler);
+            BuildingNewCar.addStatic(spoiler);
             System.out.println("Added spoiler");
         }
 
         if(cbxpolicesiren.isSelected()){
             Carparts policesiren = new Carparts("Police siren", 9999);
-            CarBuild.add(policesiren);
+            BuildingNewCar.addStatic(policesiren);
             System.out.println("Added a police siren");
         }
 

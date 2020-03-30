@@ -1,7 +1,7 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +36,27 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+
+
+
+        Car smallWheels = new Carparts("Small Wheels", 1000);
+        Car mediumWheels = new Carparts("Small Wheels", 1000);
+        Car largeWheels = new Carparts("Small Wheels", 1000);
+
+        Car wheels = new CarCategory("Wheels");
+        wheels.add(smallWheels);
+        wheels.add(mediumWheels);
+        wheels.add(largeWheels);
+
+        Car colorRed = new Carparts("Red", 2000);
+        Car colorGreen = new Carparts("Green", 3000);
+
+        Car color = new CarCategory("Color");
+        color.add(colorRed);
+        color.add(colorGreen);
+
+
+
     }
 
 }

@@ -7,7 +7,7 @@ public class BuildingNewCar implements Car{
 
     static List<Car> buidlingANewCar = new ArrayList<>();
 
-    public static void add(Car part){
+    public static void addStatic(Car part){
         buidlingANewCar.add(part);
     }
 
@@ -36,8 +36,13 @@ public class BuildingNewCar implements Car{
         return size;
     }
 
-    public static String getNameIndex(int index){
+    public String getNameIndex(int index){
         return buidlingANewCar.get(index).getName();
+    }
+
+    @Override
+    public Car getElement(int index) {
+        return null;
     }
 
     public static int getCostPart(int index){
@@ -57,5 +62,9 @@ public class BuildingNewCar implements Car{
             totalcost += carparts.getCost();
         }
         return totalcost;
+    }
+
+    public void add(Car part){
+
     }
 }

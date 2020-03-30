@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.CarBuild;
+import Gruppe24.OSLOMET.Car.BuildingNewCar;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -55,8 +56,8 @@ public class QuinaryController implements Initializable {
 
     @FXML
     void btnBuildCar(ActionEvent event) {
-        String ut = CarBuild.buildCar();
-        int totalCost = CarBuild.totalCost();
+        String ut = BuildingNewCar.buildCar();
+        int totalCost = BuildingNewCar.totalCost();
         lblCarComponents.setText(ut + "\n" + "TotalCost of this car is: " +totalCost);
     }
 
