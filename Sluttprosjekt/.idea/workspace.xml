@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="Added user login">
+    <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,7 @@
       <workItem from="1585218459690" duration="635000" />
       <workItem from="1585220584022" duration="6587000" />
       <workItem from="1585306979490" duration="3199000" />
-      <workItem from="1585582247469" duration="531000" />
+      <workItem from="1585582247469" duration="1099000" />
     </task>
     <task id="LOCAL-00001" summary="Added controllers 3-5, each directing to the next controller.">
       <created>1585219025324</created>
@@ -128,7 +127,19 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1585581986247</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Small error in adminadmin">
+      <created>1585582852750</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1585582852750</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Commented out the picture that had an url to my own pc only">
+      <created>1585582939991</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1585582939991</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +149,9 @@
     <MESSAGE value="Added controllers 3-5, each directing to the next controller." />
     <MESSAGE value="Superuser saver and importer.&#10;New OptionBtn class, allowing for assignment of type (so that every button can be saved in a same file and parsed into the correct controller according to its type number)." />
     <MESSAGE value="Added user login to the project!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user login to the project!" />
+    <MESSAGE value="Small error in adminadmin" />
+    <MESSAGE value="Commented out the picture that had an url to my own pc only" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented out the picture that had an url to my own pc only" />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="71" key="#Notifications" timestamp="1584873334624">
@@ -157,10 +170,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585581304633" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1585582851893">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1585582939363">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585582851893" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585582939363" />
     <state x="826" y="167" key="FileChooserDialogImpl" timestamp="1584873390205">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -189,14 +202,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584873396906" />
-    <state x="351" y="146" key="Vcs.Push.Dialog.v2" timestamp="1585582856022">
+    <state x="351" y="146" key="Vcs.Push.Dialog.v2" timestamp="1585582942096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585582856022" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585581900098">
+    <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585582942096" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585582954532">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585581900098" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585582954532" />
     <state x="462" y="144" width="618" height="536" key="find.popup" timestamp="1585577635086">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
