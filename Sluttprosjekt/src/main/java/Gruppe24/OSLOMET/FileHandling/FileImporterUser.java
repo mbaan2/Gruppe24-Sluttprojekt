@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET.FileHandling;
+/*package Gruppe24.OSLOMET.FileHandling;
 
 import Gruppe24.OSLOMET.Car.CarpartOption;
 
@@ -24,4 +24,4 @@ public class FileImporterUser implements FileImporter{
             }
         }
     }
-}
+}*/

@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarpartOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/CarpartOptionToRadioButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporterSuperuser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporterSuperuser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileImporterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaverSuperuser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaverSuperuser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaverUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileHandling/FileSaverUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/OptionBtn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SecondaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileHandling/FileImporterUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileHandling/FileSaverUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileHandling/FileSaverUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SecondaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SecondaryController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +153,14 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1585584828594</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created new class that allows serialisation of buttons.&#10;Added base code for all saver and importer classes. User classes contain questions that will define how I will proceed with the code.&#10;Implements button importing to controller 2 as a trial. STILL NOT WORKING: &quot;invalid controller&quot; error with which I need help.">
+      <created>1585604559019</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585604559019</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +173,8 @@
     <MESSAGE value="Small error in adminadmin" />
     <MESSAGE value="Commented out the picture that had an url to my own pc only" />
     <MESSAGE value="Added userfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added userfile" />
+    <MESSAGE value="Created new class that allows serialisation of buttons.&#10;Added base code for all saver and importer classes. User classes contain questions that will define how I will proceed with the code.&#10;Implements button importing to controller 2 as a trial. STILL NOT WORKING: &quot;invalid controller&quot; error with which I need help." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created new class that allows serialisation of buttons.&#10;Added base code for all saver and importer classes. User classes contain questions that will define how I will proceed with the code.&#10;Implements button importing to controller 2 as a trial. STILL NOT WORKING: &quot;invalid controller&quot; error with which I need help." />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="71" key="#Notifications" timestamp="1584873334624">
@@ -203,22 +201,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584873390205" />
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1585602951691">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1585605194011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585602951691" />
-    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1585602951691">
+    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585605194011" />
+    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1585605194011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585602951691" />
-    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1585602951691">
+    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585605194011" />
+    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1585605194011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585602951691" />
-    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1585602951691">
+    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585605194011" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1585605194011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585602951691" />
+    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585605194011" />
     <state x="481" y="128" key="MultipleFileMergeDialog" timestamp="1585563884076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
