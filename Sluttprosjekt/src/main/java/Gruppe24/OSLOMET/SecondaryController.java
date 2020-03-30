@@ -51,6 +51,7 @@ public class SecondaryController implements Initializable {
 
 
     public void setWheels(){
+        //Has to come from a file -> must be compatible with Excel
         Car wheelsBig = new Carparts("Big wheels", 5000);
         Car wheelsSmall = new Carparts("Small wheels", 0);
         Car wheelsMedium = new Carparts("Mediuem wheels", 2500);
