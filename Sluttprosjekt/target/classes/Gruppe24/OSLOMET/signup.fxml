@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SignUp">
+   <children>
+      <PasswordField fx:id="signupPassword" layoutX="211.0" layoutY="173.0" prefHeight="26.0" prefWidth="177.0" promptText="Enter password" />
+      <TextField fx:id="signupUsername" layoutX="210.0" layoutY="132.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter username" />
+      <CheckBox fx:id="checkMale" layoutX="211.0" layoutY="268.0" mnemonicParsing="false" text="Male" />
+      <CheckBox fx:id="checkFemale" layoutX="275.0" layoutY="268.0" mnemonicParsing="false" text="Female" />
+      <CheckBox fx:id="checkOther" layoutX="339.0" layoutY="268.0" mnemonicParsing="false" text="Other" />
+      <Button layoutX="250.0" layoutY="329.0" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="110.0" text="Signup" />
+      <TextField fx:id="signupLocation" layoutX="210.0" layoutY="212.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter location" />
+      <Label layoutX="244.0" layoutY="63.0" prefHeight="18.0" prefWidth="110.0" text="Signup for Cars R Us" />
+      <Button layoutX="502.0" layoutY="31.0" mnemonicParsing="false" onAction="#loginBtn2" text="Login" />
+   </children>
+</AnchorPane>
