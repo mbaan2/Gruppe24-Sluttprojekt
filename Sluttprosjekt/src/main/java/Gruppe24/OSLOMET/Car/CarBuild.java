@@ -38,6 +38,7 @@ public class CarBuild implements Car{
         return carBuild;
     }
 
+    //this is probably causing the problem in controller 2:
     public static int totalCost(){
         int totalcost = 0;
         for(Car carparts : newCar){
