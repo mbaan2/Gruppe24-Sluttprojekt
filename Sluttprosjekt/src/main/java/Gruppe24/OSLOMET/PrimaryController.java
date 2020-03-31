@@ -40,4 +40,9 @@ public class PrimaryController implements Initializable {
     private void switchToSecondary() throws IOException {
         App.setRoot("02-secondary");
     }
+
+    @FXML
+    void logoutBtn() throws IOException {
+        App.setRoot("login");
+    }
 }

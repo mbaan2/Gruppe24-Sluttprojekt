@@ -36,7 +36,7 @@ public class Login implements Initializable {
     @FXML
     void loginBtn(ActionEvent event) throws IOException {
         App.setRoot("01-primary");
-/*
+
         if(usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
@@ -65,7 +65,7 @@ public class Login implements Initializable {
             }
         }
 
- */
+
     }
 
     @FXML
