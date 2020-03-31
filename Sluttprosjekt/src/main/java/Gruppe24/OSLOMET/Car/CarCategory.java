@@ -1,9 +1,10 @@
 package Gruppe24.OSLOMET.Car;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarCategory implements Car{
+public class CarCategory implements Car, Serializable {
     String name;
     static List<Car> newCar = new ArrayList<>();
 

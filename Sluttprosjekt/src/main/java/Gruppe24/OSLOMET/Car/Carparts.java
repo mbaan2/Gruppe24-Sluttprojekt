@@ -1,6 +1,8 @@
 package Gruppe24.OSLOMET.Car;
 
-public class Carparts implements Car{
+import java.io.Serializable;
+
+public class Carparts implements Car, Serializable {
     String name;
     int cost;
 

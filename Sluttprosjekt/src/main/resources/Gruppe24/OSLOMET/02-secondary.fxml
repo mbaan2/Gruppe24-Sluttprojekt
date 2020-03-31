@@ -10,9 +10,6 @@
     <children>
         <Label prefHeight="18.0" prefWidth="154.0" text="Add Wheels to The Car" />
       <HBox fx:id="hboxx" prefHeight="100.0" prefWidth="200.0" />
-      <Button mnemonicParsing="false" onAction="#btnSmallWheels" text="Small Wheels" />
-      <Button mnemonicParsing="false" onAction="#btnMediumWheels" text="Medium Wheels" />
-      <Button mnemonicParsing="false" onAction="#btnLargeWheels" text="Large Wheels" />
         <Button fx:id="secondaryButton" onAction="#switchToTertiary" text="Next page" />
     </children>
     <padding>
