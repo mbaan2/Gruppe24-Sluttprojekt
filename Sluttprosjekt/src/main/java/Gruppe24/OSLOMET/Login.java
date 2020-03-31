@@ -42,7 +42,7 @@ public class Login implements Initializable {
         } else {
             Path path = Paths.get(".\\user.txt");
 
-            Long count = Files.lines(path).count();
+            long count = Files.lines(path).count();
 
             for(int i = 0; i < count; i++) {
                 String line = Files.readAllLines(path).get(i);
