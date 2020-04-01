@@ -14,8 +14,8 @@
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Start building a car!" textFill="WHITE" />
-      <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #17252a;" text="Logout" textFill="WHITE" />
+      <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Start building a car!" textFill="#def2f1" />
+      <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #17252a;" text="Logout" textFill="#def2f1" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

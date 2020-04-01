@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="361.0" prefWidth="513.0" spacing="20.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SecondaryController">
+<VBox alignment="CENTER" prefHeight="361.0" prefWidth="513.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SecondaryController">
     <children>
-        <Label prefHeight="45.0" prefWidth="312.0" text="Add Wheels To The Car" textFill="#ff5a09">
+        <Label prefHeight="45.0" prefWidth="330.0" text="Add Wheels To The Car" textFill="#def2f1">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="30.0" />
          </font></Label>
       <HBox fx:id="hboxx" prefHeight="100.0" prefWidth="200.0" />
-        <Button fx:id="secondaryButton" onAction="#switchToTertiary" style="-fx-background-color: #ff5a09;" text="Next page" />
+        <Button fx:id="secondaryButton" onAction="#switchToTertiary" style="-fx-background-color: #17252a;" text="Next page" textFill="#def2f1" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
