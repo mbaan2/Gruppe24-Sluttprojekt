@@ -4,51 +4,92 @@ import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class QuaternaryController{
+public class QuaternaryController implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        openFile();
+    }
 
     @FXML
-    private CheckBox cbxGps;
+    private HBox hboxAddOnes;
 
-    @FXML
-    private CheckBox cbxSoundsystem;
+    List<Car> addOneOptions = new ArrayList<>();
+    List<CheckBox> addOneButtons = new ArrayList<>();
 
-    @FXML
-    private CheckBox cbxSpoiler;
+    public void createButtons(List<Car> addone){
+        for(int i = 0; i< addone.size(); i++){
+            String str = "";
+            str = addone.get(i).getName();
+            CheckBox newAddOne = new CheckBox(str);
+            addOneButtons.add(newAddOne);
+        }
+        hboxAddOnes.getChildren().clear();
+        hboxAddOnes.getChildren().addAll(addOneButtons);
+        addOneButtons.get(0).setSelected(true);
+    }
 
-    @FXML
-    private CheckBox cbxpolicesiren;
+    public void setWheels(){
+        //ONLY USED FIRST TIME TO SET THE VALUES IN THE DOCUMENT
+        Car addOneGPS = new Carparts("GPS", 5000);
+        Car spoiler = new Carparts("Spoiler", 4000);
+        Car subwoofer = new Carparts("Subwoofer", 7500);
+
+        addOneOptions.add(addOneGPS);
+        addOneOptions.add(spoiler);
+        addOneOptions.add(subwoofer);
+
+        createButtons(addOneOptions);
+    }
+
+    public void createFile(){
+        //ONLY USED FIRST TIME TO CREATE THE FILE
+        Path filsti = Paths.get("AddOnes.jobj");
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, addOneOptions);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void openFile(){
+        Path path = Paths.get("AddOnes.jobj");
+        addOneOptions = FileOpenerJobj.openFile(path);
+        createButtons(addOneOptions);
+    }
 
     @FXML
     private void switchToQuinary() throws IOException {
-        if(cbxGps.isSelected()){
-            Car gps = new Carparts("GPS", 2000);
-            BuildingNewCar.addStatic(gps);
-            System.out.println("Added gps");
-        }
-
-        if(cbxSoundsystem.isSelected()){
-            Carparts soundsystem = new Carparts("Soundsystem", 10000);
-            BuildingNewCar.addStatic(soundsystem);
-            System.out.println("Added soundsystem");
-        }
-
-        if(cbxSpoiler.isSelected()){
-            Carparts spoiler = new Carparts("Spoiler", 2000);
-            BuildingNewCar.addStatic(spoiler);
-            System.out.println("Added spoiler");
-        }
-
-        if(cbxpolicesiren.isSelected()){
-            Carparts policesiren = new Carparts("Police siren", 9999);
-            BuildingNewCar.addStatic(policesiren);
-            System.out.println("Added a police siren");
+        for(int i = 0; i<addOneOptions.size();i++){
+            if(addOneButtons.get(i).isSelected()){
+                for(int j = 0; j<addOneOptions.size(); j++){
+                    if(addOneButtons.get(i).getText().equals(addOneOptions.get(j).getName())){
+                        BuildingNewCar.addStatic(addOneOptions.get(j));
+                        System.out.println(addOneOptions.get(j).getName());
+                    }
+                }
+            }
         }
 
         App.setRoot("05-quinary");
     }
+
 }

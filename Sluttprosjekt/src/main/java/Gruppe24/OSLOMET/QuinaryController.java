@@ -27,6 +27,7 @@ public class QuinaryController implements Initializable {
 
     List<RadioButton> buttonList = new ArrayList<>();
     public void createRadioButton(){
+        /*
         String sortCar = "";
         sortCar = "Police car";
         RadioButton policeCar = new RadioButton(sortCar);
@@ -43,6 +44,8 @@ public class QuinaryController implements Initializable {
         hboxxRadioButtons.getChildren().clear();
         hboxxRadioButtons.getChildren().addAll(buttonList);
         buttonList.get(0).setSelected(true);
+        
+         */
     }
 
     @FXML
