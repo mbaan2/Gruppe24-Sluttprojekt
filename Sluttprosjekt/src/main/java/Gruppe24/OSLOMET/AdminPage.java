@@ -47,7 +47,7 @@ public class AdminPage implements Initializable {
         choiceboxStrings.removeAll();
         String wheelsCHB = "Wheels";
         String colorCHB = "Color";
-        String addOnesCHB = "Add ones";
+        String addOnesCHB = "Addons";
         choiceboxStrings.addAll(wheelsCHB, colorCHB, addOnesCHB);
         chbCategory.getItems().addAll(choiceboxStrings);
     }
@@ -68,7 +68,7 @@ public class AdminPage implements Initializable {
             Path path = Paths.get("color.jobj");
             carCategory = FileOpenerJobj.openFile(path);
             createButtons(carCategory);
-        } else if(chbCategory.getValue().equals("Add ones")){
+        } else if(chbCategory.getValue().equals("Addons")){
             Path path = Paths.get("AddOnes.jobj");
             carCategory = FileOpenerJobj.openFile(path);
             createButtons(carCategory);
@@ -125,7 +125,7 @@ public class AdminPage implements Initializable {
                 ex.printStackTrace();
             }
             LoadCategory();
-        } else if(chbCategory.getValue().equals("Add ones")){
+        } else if(chbCategory.getValue().equals("Addons")){
             Path filsti = Paths.get("AddOnes.jobj");
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
@@ -163,7 +163,7 @@ public class AdminPage implements Initializable {
                 ex.printStackTrace();
             }
             LoadCategory();
-        } else if (chbCategory.getValue().equals("Add ones")) {
+        } else if (chbCategory.getValue().equals("Addons")) {
             Path filsti = Paths.get("AddOnes.jobj");
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);

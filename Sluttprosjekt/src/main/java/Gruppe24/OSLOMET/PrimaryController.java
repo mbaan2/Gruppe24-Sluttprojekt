@@ -30,11 +30,9 @@ public class PrimaryController implements Initializable {
         hboxx.getChildren().addAll(buttonList);
     }
 
-
     @FXML
     private HBox hboxx;
     /*Based on: https://stackoverflow.com/questions/44949774/javafx-how-to-add-elements-eg-buttons-dynamically-created-from-items-stored-in*/
-
 
     @FXML
     private void switchToSecondary() throws IOException {
