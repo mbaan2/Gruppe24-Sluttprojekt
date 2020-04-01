@@ -2,3 +2,4 @@ oyvind0402;oyvind1991;Oslo;Male
 marthe15;hallo2;Oslo;Female
 Aaa;aaa;Aaa;Other
 Hei;Paa;Oslo;Male
+123;123;Oslo;Male

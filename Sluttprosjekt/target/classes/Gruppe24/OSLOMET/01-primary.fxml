@@ -15,6 +15,7 @@
             <Font size="30.0" />
          </font></Label>
       <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: #ff5a09;" text="Start building a car!" />
+      <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #ff5a09;" text="Logout" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
