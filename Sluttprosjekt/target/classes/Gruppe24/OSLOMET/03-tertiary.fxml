@@ -5,12 +5,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="307.0" prefWidth="408.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.TertiaryController">
+<VBox alignment="CENTER" prefHeight="307.0" prefWidth="408.0" spacing="20.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.TertiaryController">
     <children>
-        <Label text="Color" />
+        <Label text="Color" textFill="#ff5a09">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
       <HBox fx:id="hboxColor" prefHeight="121.0" prefWidth="368.0" />
-        <Button fx:id="tertiaryButton" onAction="#switchToQuaternary" text="Switch to Quaternary View" />
+        <Button fx:id="tertiaryButton" onAction="#switchToQuaternary" style="-fx-background-color: #ff5a09;" text="Next page" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

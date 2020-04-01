@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -28,21 +26,38 @@ public class SignUp implements Initializable {
     private TextField signupUsername;
 
     @FXML
-    private CheckBox checkMale;
+    private RadioButton checkMale;
 
     @FXML
-    private CheckBox checkFemale;
+    private RadioButton checkFemale;
 
     @FXML
-    private CheckBox checkOther;
+    private RadioButton checkOther;
 
     @FXML
     private TextField signupLocation;
+
+    @FXML
+    private Label usernameError;
+
+    @FXML
+    private Label passwordError;
+
+    @FXML
+    private Label locationError;
+
+    @FXML
+    private Label genderError;
+
 
     public ObservableList<User> userList = FXCollections.observableArrayList();
 
     @FXML
     void signUp(ActionEvent event) {
+        passwordError.setText("");
+        usernameError.setText("");
+        locationError.setText("");
+
         String username = signupUsername.getText();
         String password = signupPassword.getText();
         String location = signupLocation.getText();
@@ -61,17 +76,16 @@ public class SignUp implements Initializable {
             userList.add(new User(username, password, location, gender));
         } else {
             if(username.isEmpty()) {
-                System.out.println("You didnt enter anything.");
+                usernameError.setText("Enter a username!");
             }
             if(password.isEmpty()) {
-                // Error labels in these I guess
-                System.out.println("You didnt enter anything.");
+                passwordError.setText("Enter a password!");
             }
             if(location.isEmpty()) {
-                System.out.println("You didnt enter anything.");
+                locationError.setText("Enter a location!");
             }
             if(gender.isEmpty()) {
-                System.out.println("You didnt choose any gender.");
+                genderError.setText("Choose a gender!");
             }
         }
         String str = FormatUser.formatUsers(userList);
@@ -82,12 +96,14 @@ public class SignUp implements Initializable {
         fc.setInitialFileName("user");
         fc.setInitialDirectory(new File(currentDir));
 
-        File selectedFile = fc.showOpenDialog(null);
+        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty()) {
+            File selectedFile = fc.showOpenDialog(null);
 
-        try {
-            WriteUser.writeString(selectedFile, str);
-        } catch (Exception e) {
-            System.err.println("Failed to read file");
+            try {
+                WriteUser.writeString(selectedFile, str);
+            } catch (Exception e) {
+                System.err.println("Failed to read file");
+            }
         }
     }
 

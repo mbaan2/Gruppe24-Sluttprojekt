@@ -4,29 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Login">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Login">
    <children>
-      <ImageView fitHeight="78.0" fitWidth="168.0" layoutX="242.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <!--<image>
-            <Image url="@../../../../../../../OneDrive/Bilder/cars.jpg" />
-         </image> -->
-      </ImageView>
-      <Label layoutX="244.0" layoutY="97.0" prefHeight="26.0" prefWidth="114.0" text="Cars R Us">
+      <Label layoutX="241.0" layoutY="99.0" prefHeight="39.0" prefWidth="118.0" text="Cars R Us">
          <font>
-            <Font size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Label>
       <TextField fx:id="usernameTxt" layoutX="194.0" layoutY="161.0" prefHeight="26.0" prefWidth="210.0" promptText="Username" />
       <PasswordField fx:id="passwordTxt" layoutX="195.0" layoutY="208.0" prefHeight="26.0" prefWidth="210.0" promptText="Password" />
-      <Button layoutX="313.0" layoutY="257.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="26.0" prefWidth="90.0" text="Login" />
-      <Button layoutX="213.0" layoutY="332.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="18.0" prefWidth="171.0" style="-fx-background-color: white; -fx-border-color: white;" text="Forgot your password?" underline="true" />
-      <Button layoutX="508.0" layoutY="28.0" mnemonicParsing="false" onAction="#signUp" text="Signup" />
-      <Label fx:id="usernameError" layoutX="424.0" layoutY="166.0" prefHeight="18.0" prefWidth="117.0" />
-      <Label fx:id="passwordError" layoutX="424.0" layoutY="212.0" prefHeight="18.0" prefWidth="118.0" />
+      <Button layoutX="313.0" layoutY="257.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #ff5a09;" text="Login" />
+      <Button layoutX="213.0" layoutY="332.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="18.0" prefWidth="171.0" style="-fx-background-color: grey;" text="Forgot your password?" textFill="#ff5a09" underline="true" />
+      <Button layoutX="508.0" layoutY="28.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: #ff5a09;" text="Signup" />
+      <Label fx:id="usernameError" layoutX="424.0" layoutY="166.0" prefHeight="18.0" prefWidth="117.0" textFill="#ff5a09" />
+      <Label fx:id="passwordError" layoutX="424.0" layoutY="212.0" prefHeight="18.0" prefWidth="118.0" textFill="#ff5a09" />
    </children>
 </AnchorPane>

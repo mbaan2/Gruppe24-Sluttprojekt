@@ -8,7 +8,7 @@ public class WriteUser {
 
     public static void writeString(File selectedFile, String str) throws IOException {
         try {
-            FileWriter fw = new FileWriter(selectedFile);
+            FileWriter fw = new FileWriter(selectedFile, true);
 
             fw.write(str);
             fw.close();

@@ -54,4 +54,9 @@ public class UserRegister {
             }
         }
     }
+
+    @FXML
+    void loginBtn() throws IOException {
+        App.setRoot("login");
+    }
 }

@@ -5,12 +5,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="361.0" prefWidth="513.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SecondaryController">
+<VBox alignment="CENTER" prefHeight="361.0" prefWidth="513.0" spacing="20.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SecondaryController">
     <children>
-        <Label prefHeight="18.0" prefWidth="154.0" text="Add Wheels to The Car" />
+        <Label prefHeight="45.0" prefWidth="312.0" text="Add Wheels To The Car" textFill="#ff5a09">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
       <HBox fx:id="hboxx" prefHeight="100.0" prefWidth="200.0" />
-        <Button fx:id="secondaryButton" onAction="#switchToTertiary" text="Next page" />
+        <Button fx:id="secondaryButton" onAction="#switchToTertiary" style="-fx-background-color: #ff5a09;" text="Next page" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

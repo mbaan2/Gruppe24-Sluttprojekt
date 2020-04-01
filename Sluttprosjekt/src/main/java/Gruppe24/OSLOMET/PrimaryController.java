@@ -24,7 +24,7 @@ public class PrimaryController implements Initializable {
         buttonList.add(new Button(fuel));
         fuel = "Diesel";
         buttonList.add(new Button(fuel));
-        fuel = "Electrid";
+        fuel = "Electric";
         buttonList.add(new Button(fuel));
         hboxx.getChildren().clear();
         hboxx.getChildren().addAll(buttonList);
