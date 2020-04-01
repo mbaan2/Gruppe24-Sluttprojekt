@@ -44,7 +44,7 @@ public class QuinaryController implements Initializable {
         hboxxRadioButtons.getChildren().clear();
         hboxxRadioButtons.getChildren().addAll(buttonList);
         buttonList.get(0).setSelected(true);
-        
+
          */
     }
 
