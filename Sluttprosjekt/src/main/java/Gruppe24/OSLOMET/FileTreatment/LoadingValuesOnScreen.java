@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET.LoadingValuesOnScreen;
+package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
 import javafx.scene.Node;

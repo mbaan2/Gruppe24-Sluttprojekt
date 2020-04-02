@@ -1,7 +1,6 @@
-package Gruppe24.OSLOMET.FileHandling;
+package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.Carparts;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

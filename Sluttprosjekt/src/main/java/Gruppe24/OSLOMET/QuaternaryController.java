@@ -2,11 +2,10 @@ package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
-import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
-import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;

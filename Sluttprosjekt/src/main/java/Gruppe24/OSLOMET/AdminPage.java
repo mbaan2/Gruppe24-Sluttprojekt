@@ -2,19 +2,17 @@ package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
-import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
-import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
