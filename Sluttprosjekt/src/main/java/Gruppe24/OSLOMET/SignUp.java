@@ -74,6 +74,23 @@ public class SignUp implements Initializable {
         }
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty()) {
             userList.add(new User(username, password, location, gender));
+
+            String str = FormatUser.formatUsers(userList);
+
+            FileChooser fc = new FileChooser();
+            String currentDir = Paths.get(".").toAbsolutePath().normalize().toString();
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files", ".txt"));
+            fc.setInitialFileName("user");
+            fc.setInitialDirectory(new File(currentDir));
+
+
+            File selectedFile = fc.showOpenDialog(null);
+
+            try {
+                WriteUser.writeString(selectedFile, str);
+            } catch (Exception e) {
+                System.err.println("Failed to read file");
+            }
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
@@ -86,23 +103,6 @@ public class SignUp implements Initializable {
             }
             if(gender.isEmpty()) {
                 genderError.setText("Choose a gender!");
-            }
-        }
-        String str = FormatUser.formatUsers(userList);
-
-        FileChooser fc = new FileChooser();
-        String currentDir = Paths.get(".").toAbsolutePath().normalize().toString();
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files", ".txt"));
-        fc.setInitialFileName("user");
-        fc.setInitialDirectory(new File(currentDir));
-
-        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty()) {
-            File selectedFile = fc.showOpenDialog(null);
-
-            try {
-                WriteUser.writeString(selectedFile, str);
-            } catch (Exception e) {
-                System.err.println("Failed to read file");
             }
         }
     }

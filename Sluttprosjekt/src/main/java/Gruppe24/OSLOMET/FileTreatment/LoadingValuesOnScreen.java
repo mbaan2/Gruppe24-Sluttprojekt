@@ -18,7 +18,7 @@ public class LoadingValuesOnScreen {
             RadioButton newButton = new RadioButton(str);
             newButton.setToggleGroup(toggleGroup);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 20px; -fx-min-width: 175px;");
+            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 100px;");
         }
         return buttonList;
     }
@@ -30,7 +30,7 @@ public class LoadingValuesOnScreen {
             str = valuesList.get(i).getName();
             CheckBox newButton = new CheckBox(str);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 20px; -fx-min-width: 175px;");
+            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 100px;");
         }
         return buttonList;
     }

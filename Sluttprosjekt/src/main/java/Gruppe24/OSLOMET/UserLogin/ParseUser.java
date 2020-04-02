@@ -10,10 +10,7 @@ public class ParseUser {
                 String location = newUser.getLocation();
                 String gender = newUser.getGender();
 
-                userData[0] = username;
-                userData[1] = password;
-                userData[2] = location;
-                userData[3] = gender;
+                return new User(username, password, location, gender);
             }
             return newUser;
     }

@@ -61,7 +61,7 @@ public class QuinaryController implements Initializable {
     void btnBuildCar(ActionEvent event) {
         String ut = BuildingNewCar.buildCar();
         int totalCost = BuildingNewCar.totalCost();
-        lblCarComponents.setText(ut + "\n" + "TotalCost of this car is: " +totalCost);
+        lblCarComponents.setText(ut + "\n" + "Totalcost of this car is: " +totalCost);
     }
 
     @FXML
