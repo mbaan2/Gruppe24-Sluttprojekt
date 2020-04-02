@@ -4,15 +4,18 @@ import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
+import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +34,7 @@ public class AdminPage implements Initializable {
     }
 
     @FXML
-    private HBox hboxSelectedChoiceBox;
+    private VBox vboxSelectedChoiceBox;
 
     @FXML
     private ChoiceBox<String> chbCategory;
@@ -62,30 +65,28 @@ public class AdminPage implements Initializable {
         if(chbCategory.getValue().equals("Wheels")){
             Path path = Paths.get("wheels.jobj");
             carCategory = FileOpenerJobj.openFile(path);
-            createButtons(carCategory);
+            createButtons();
         } else if(chbCategory.getValue().equals("Color")){
             Path path = Paths.get("color.jobj");
             carCategory = FileOpenerJobj.openFile(path);
-            createButtons(carCategory);
+            createButtons();
         } else if(chbCategory.getValue().equals("Addons")){
             Path path = Paths.get("AddOnes.jobj");
             carCategory = FileOpenerJobj.openFile(path);
-            createButtons(carCategory);
+            createButtons();
         }
     }
 
     List<CheckBox> selectedCategoryButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> selectedCategory){
+    public void createButtons(){
         selectedCategoryButtons.clear();
-        for(int i = 0; i< selectedCategory.size(); i++){
-            String str = "";
-            str = selectedCategory.get(i).getName();
-            CheckBox newCategoryElement = new CheckBox(str);
-            selectedCategoryButtons.add(newCategoryElement);
-        }
-        hboxSelectedChoiceBox.getChildren().clear();
-        hboxSelectedChoiceBox.getChildren().addAll(selectedCategoryButtons);
+        selectedCategoryButtons = LoadingValuesOnScreen.creatingList(selectedCategoryButtons, carCategory);
+
+        vboxSelectedChoiceBox.getChildren().clear();
+        vboxSelectedChoiceBox = LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
+
+
     }
 
 
