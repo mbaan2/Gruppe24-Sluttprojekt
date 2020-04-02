@@ -40,36 +40,11 @@ public class SecondaryController implements Initializable {
         wheelButtons.get(0).setSelected(true);
     }
 
-    public void setWheels(){
-        //ONLY USED FIRST TIME TO SET THE VALUES IN THE DOCUMENT
-        Car wheelsBig = new Carparts("Big wheels", 5000);
-        Car wheelsSmall = new Carparts("Small wheels", 0);
-        Car wheelsMedium = new Carparts("Medium wheels", 2500);
-
-        wheelOptions.add(wheelsBig);
-        wheelOptions.add(wheelsMedium);
-        wheelOptions.add(wheelsSmall);
-
-        createButtons();
-    }
-
-    public void createFile(){
-        //ONLY USED FIRST TIME TO CREATE THE FILE
-        Path filsti = Paths.get("wheels.jobj");
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     public void openFile(){
         Path path = Paths.get("wheels.jobj");
         wheelOptions = FileOpenerJobj.openFile(path);
         createButtons();
     }
-
 
     @FXML
     private void switchToTertiary() throws IOException {
@@ -84,5 +59,34 @@ public class SecondaryController implements Initializable {
         }
 
         App.setRoot("03-tertiary");
+    }
+
+
+
+
+
+
+
+
+    //ONLY USED FOR CREATING THE .JOBJ FILE
+    public void setWheels(){
+        Car wheelsBig = new Carparts("Big wheels", 5000);
+        Car wheelsSmall = new Carparts("Small wheels", 0);
+        Car wheelsMedium = new Carparts("Medium wheels", 2500);
+
+        wheelOptions.add(wheelsBig);
+        wheelOptions.add(wheelsMedium);
+        wheelOptions.add(wheelsSmall);
+
+        createButtons();
+    }
+
+    public void createFile(){
+        Path filsti = Paths.get("wheels.jobj");
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

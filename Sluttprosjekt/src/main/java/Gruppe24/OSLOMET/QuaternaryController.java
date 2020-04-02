@@ -10,9 +10,6 @@ import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -42,30 +39,6 @@ public class QuaternaryController implements Initializable {
         //addOneButtons.get(0).setSelected(true);
     }
 
-    public void setWheels(){
-        //ONLY USED FIRST TIME TO SET THE VALUES IN THE DOCUMENT
-        Car addOneGPS = new Carparts("GPS", 5000);
-        Car spoiler = new Carparts("Spoiler", 4000);
-        Car subwoofer = new Carparts("Subwoofer", 7500);
-
-        addOneOptions.add(addOneGPS);
-        addOneOptions.add(spoiler);
-        addOneOptions.add(subwoofer);
-
-        createButtons(addOneOptions);
-    }
-
-    public void createFile(){
-        //ONLY USED FIRST TIME TO CREATE THE FILE
-        Path filsti = Paths.get("AddOnes.jobj");
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, addOneOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     public void openFile(){
         Path path = Paths.get("AddOnes.jobj");
         addOneOptions = FileOpenerJobj.openFile(path);
@@ -86,6 +59,36 @@ public class QuaternaryController implements Initializable {
         }
 
         App.setRoot("05-quinary");
+    }
+
+
+
+
+
+
+
+
+    //ONLY USED FOR CREATING THE .JOBJ FILE
+    public void setWheels(){
+        Car addOneGPS = new Carparts("GPS", 5000);
+        Car spoiler = new Carparts("Spoiler", 4000);
+        Car subwoofer = new Carparts("Subwoofer", 7500);
+
+        addOneOptions.add(addOneGPS);
+        addOneOptions.add(spoiler);
+        addOneOptions.add(subwoofer);
+
+        createButtons(addOneOptions);
+    }
+
+    public void createFile(){
+        Path filsti = Paths.get("AddOnes.jobj");
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, addOneOptions);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
 }
