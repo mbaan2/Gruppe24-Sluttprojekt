@@ -11,12 +11,14 @@ import java.util.ResourceBundle;
 import Gruppe24.OSLOMET.Car.*;
 import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
+import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class SecondaryController implements Initializable {
 
@@ -26,23 +28,15 @@ public class SecondaryController implements Initializable {
     }
 
     @FXML
-    private HBox hboxx;
+    private VBox vboxWheels;
 
     final ToggleGroup wheelGroup = new ToggleGroup();
     List<Car> wheelOptions = new ArrayList<>();
     List<RadioButton> wheelButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> wheels){
-        for(int i = 0; i< wheels.size(); i++){
-            String str = "";
-            str = wheels.get(i).getName();
-            RadioButton newWheels = new RadioButton(str);
-            newWheels.setToggleGroup(wheelGroup);
-            wheelButtons.add(newWheels);
-            newWheels.setStyle("-fx-padding: 20px");
-        }
-        hboxx.getChildren().clear();
-        hboxx.getChildren().addAll(wheelButtons);
+    public void createButtons(){
+        wheelButtons = LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
+        vboxWheels = LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
         wheelButtons.get(0).setSelected(true);
     }
 
@@ -56,7 +50,7 @@ public class SecondaryController implements Initializable {
         wheelOptions.add(wheelsMedium);
         wheelOptions.add(wheelsSmall);
 
-        createButtons(wheelOptions);
+        createButtons();
     }
 
     public void createFile(){
@@ -73,7 +67,7 @@ public class SecondaryController implements Initializable {
     public void openFile(){
         Path path = Paths.get("wheels.jobj");
         wheelOptions = FileOpenerJobj.openFile(path);
-        createButtons(wheelOptions);
+        createButtons();
     }
 
 

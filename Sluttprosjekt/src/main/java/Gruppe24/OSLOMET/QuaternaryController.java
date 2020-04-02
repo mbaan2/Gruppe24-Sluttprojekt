@@ -6,12 +6,14 @@ import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
+import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,21 +31,15 @@ public class QuaternaryController implements Initializable {
     }
 
     @FXML
-    private HBox hboxAddOnes;
+    private VBox vboxAddOnes;
 
     List<Car> addOneOptions = new ArrayList<>();
     List<CheckBox> addOneButtons = new ArrayList<>();
 
     public void createButtons(List<Car> addone){
-        for(int i = 0; i< addone.size(); i++){
-            String str = "";
-            str = addone.get(i).getName();
-            CheckBox newAddOne = new CheckBox(str);
-            addOneButtons.add(newAddOne);
-        }
-        hboxAddOnes.getChildren().clear();
-        hboxAddOnes.getChildren().addAll(addOneButtons);
-        addOneButtons.get(0).setSelected(true);
+        addOneButtons = LoadingValuesOnScreen.creatingList(addOneButtons, addOneOptions);
+        vboxAddOnes = LoadingValuesOnScreen.returnVbox(addOneButtons, vboxAddOnes);
+        //addOneButtons.get(0).setSelected(true);
     }
 
     public void setWheels(){

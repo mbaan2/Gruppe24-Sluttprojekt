@@ -6,6 +6,7 @@ import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileHandling.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileHandling.FileSaverJobj;
+import Gruppe24.OSLOMET.LoadingValuesOnScreen.LoadingValuesOnScreen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,37 +44,8 @@ public class TertiaryController implements Initializable {
     List<RadioButton> colorButtons = new ArrayList<>();
 
     public void createButtons(List<Car> color){
-
-        int antall = color.size();
-        int numberOfRows = (int) Math.ceil(antall/3);
-        int rows = 0;
-        int numberOfButtons = 0;
-        int numberOfButtonPerLine = 3;
-
-
-        //WE COULD USE THIS TO CHANGE THE COLOR OF THE TEXT https://www.tutorialspoint.com/javafx/javafx_text.htm
-        for(int i = 0; i< color.size(); i++){
-            String str = "";
-            str = color.get(i).getName();
-            RadioButton newColors = new RadioButton(str);
-            newColors.setToggleGroup(colorGroup);
-            colorButtons.add(newColors);
-            newColors.setStyle("-fx-padding: 20px; -fx-min-width: 175px;");
-        }
-
-        while (rows <= numberOfRows){
-            HBox newHBox = new HBox();
-            newHBox.setStyle("-fx-min-height: 30px; -fx-max-height: 30px");
-            for(int i = 0; i< (numberOfButtonPerLine); i++){
-                if(numberOfButtons < colorButtons.size()) {
-                    newHBox.getChildren().add(colorButtons.get(numberOfButtons));
-                    numberOfButtons++;
-                }
-            }
-            vboxColor.getChildren().add(newHBox);
-            rows++;
-        }
-
+        colorButtons = LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
+        vboxColor = LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
         colorButtons.get(0).setSelected(true);
     }
 
@@ -125,7 +97,6 @@ public class TertiaryController implements Initializable {
                 }
             }
         }
-
 
         App.setRoot("04-quaternary");
     }
