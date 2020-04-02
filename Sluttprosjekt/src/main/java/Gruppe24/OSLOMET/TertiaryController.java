@@ -15,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class TertiaryController implements Initializable {
     }
 
     @FXML
-    private HBox hboxColor;
+    private VBox vboxColor;
 
     @FXML
     private Button tertiaryButton;
@@ -42,15 +43,37 @@ public class TertiaryController implements Initializable {
     List<RadioButton> colorButtons = new ArrayList<>();
 
     public void createButtons(List<Car> color){
+
+        int antall = color.size();
+        int numberOfRows = (int) Math.ceil(antall/3);
+        int rows = 0;
+        int numberOfButtons = 0;
+        int numberOfButtonPerLine = 3;
+
+
+        //WE COULD USE THIS TO CHANGE THE COLOR OF THE TEXT https://www.tutorialspoint.com/javafx/javafx_text.htm
         for(int i = 0; i< color.size(); i++){
             String str = "";
             str = color.get(i).getName();
             RadioButton newColors = new RadioButton(str);
             newColors.setToggleGroup(colorGroup);
             colorButtons.add(newColors);
+            newColors.setStyle("-fx-padding: 20px; -fx-min-width: 175px;");
         }
-        hboxColor.getChildren().clear();
-        hboxColor.getChildren().addAll(colorButtons);
+
+        while (rows <= numberOfRows){
+            HBox newHBox = new HBox();
+            newHBox.setStyle("-fx-min-height: 30px; -fx-max-height: 30px");
+            for(int i = 0; i< (numberOfButtonPerLine); i++){
+                if(numberOfButtons < colorButtons.size()) {
+                    newHBox.getChildren().add(colorButtons.get(numberOfButtons));
+                    numberOfButtons++;
+                }
+            }
+            vboxColor.getChildren().add(newHBox);
+            rows++;
+        }
+
         colorButtons.get(0).setSelected(true);
     }
 

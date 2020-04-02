@@ -39,6 +39,7 @@ public class SecondaryController implements Initializable {
             RadioButton newWheels = new RadioButton(str);
             newWheels.setToggleGroup(wheelGroup);
             wheelButtons.add(newWheels);
+            newWheels.setStyle("-fx-padding: 20px");
         }
         hboxx.getChildren().clear();
         hboxx.getChildren().addAll(wheelButtons);

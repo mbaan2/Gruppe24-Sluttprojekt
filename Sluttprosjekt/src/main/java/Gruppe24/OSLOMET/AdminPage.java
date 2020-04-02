@@ -55,7 +55,6 @@ public class AdminPage implements Initializable {
     @FXML
     void btnLoadCategory(ActionEvent event) {
         carCategory.clear();
-        String chbValue =  chbCategory.getValue();
         LoadCategory();
     }
 
@@ -87,24 +86,23 @@ public class AdminPage implements Initializable {
         }
         hboxSelectedChoiceBox.getChildren().clear();
         hboxSelectedChoiceBox.getChildren().addAll(selectedCategoryButtons);
-        selectedCategoryButtons.get(0).setSelected(true);
     }
+
 
     @FXML
     void btnRemove(ActionEvent event) {
-        List<Car> removeElements = carCategory;
-
+        //HAVE TO ADD THAT YOU CANNOT MAKE DUPLICATE VALUES!
         for(int i = 0; i < selectedCategoryButtons.size(); i++){
             if(selectedCategoryButtons.get(i).isSelected()){
                 for(int j =0; j<carCategory.size(); j++){
                     if (selectedCategoryButtons.get(i).getText().equals(carCategory.get(j).getName())){
                         System.out.println(selectedCategoryButtons.get(i).getText() + " is removed");
-                        removeElements.remove(j);
+                        carCategory.remove(j);
                     }
                 }
             }
         }
-        carCategory = removeElements;
+
         SaveChanges();
     }
 
