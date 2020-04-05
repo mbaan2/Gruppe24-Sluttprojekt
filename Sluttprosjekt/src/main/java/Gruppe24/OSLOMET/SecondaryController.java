@@ -35,7 +35,17 @@ public class SecondaryController implements Initializable {
     public void createButtons(){
         wheelButtons = LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
         vboxWheels = LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
-        wheelButtons.get(0).setSelected(true);
+
+        //BuildingNewCar.set(1, wheelOptions.get(2));
+        if(BuildingNewCar.getNameIndexStatic(1).equals("Empty")) {
+            wheelButtons.get(0).setSelected(true);
+        } else{
+            for(int i=0; i <wheelOptions.size();i++){
+                if(BuildingNewCar.getNameIndexStatic(1).equals(wheelOptions.get(i).getName())){
+                    wheelButtons.get(i).setSelected(true);
+                }
+            }
+        }
     }
 
     public void openFile(){
