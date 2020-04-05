@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -46,16 +47,17 @@ public class QuaternaryController implements Initializable {
 
     @FXML
     private void switchToQuinary() throws IOException {
+        Car addones = new CarCategory("addones");
         for(int i = 0; i<addOneOptions.size();i++){
             if(addOneButtons.get(i).isSelected()){
                 for(int j = 0; j<addOneOptions.size(); j++){
                     if(addOneButtons.get(i).getText().equals(addOneOptions.get(j).getName())){
-                        BuildingNewCar.addStatic(addOneOptions.get(j));
-                        System.out.println(addOneOptions.get(j).getName());
+                        addones.add(addOneOptions.get(j));
                     }
                 }
             }
         }
+        BuildingNewCar.set(3, addones);
 
         App.setRoot("05-quinary");
     }

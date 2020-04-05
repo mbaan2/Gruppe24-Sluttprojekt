@@ -5,39 +5,42 @@ import java.util.List;
 
 public class BuildingNewCar implements Car{
 
-    static List<Car> buidlingANewCar = new ArrayList<>();
+    static Car[] buidlingANewCar = new Car[4];
 
-    public static void addStatic(Car part){
-        buidlingANewCar.add(part);
-    }
 
     public static String buildCar(){
         String carBuild = "This car contains: \n";
-        for(int i = 0; i < buidlingANewCar.size(); i++){
-            carBuild += buidlingANewCar.get(i).getName();
-            carBuild += "\n";
+        //carBuild += "Fuel: " + buidlingANewCar[0].getName();
+        carBuild += "Wheels: " + buidlingANewCar[1].getName() + buidlingANewCar[1].getCost() + "\n";
+        carBuild += "Color: " + buidlingANewCar[2].getName() + buidlingANewCar[2].getCost() + "\n";
+        for(int i = 0; i<buidlingANewCar[3].size(); i++) {
+            carBuild += "Add one: " + buidlingANewCar[3].getElement(i).getName() + buidlingANewCar[3].getElement(i).getCost() + "\n";
         }
+
         return carBuild;
     }
 
     public static int totalCost(){
         int totalcost = 0;
-        for(Car carparts : buidlingANewCar){
-            totalcost += carparts.getCost();
+        //totalcost += buidlingANewCar[0].getCost();
+        totalcost += buidlingANewCar[1].getCost();
+        totalcost += buidlingANewCar[2].getCost();
+        for(int i = 0; i<buidlingANewCar[3].size(); i++) {
+            totalcost += buidlingANewCar[3].getElement(i).getCost();
         }
         return totalcost;
     }
 
     public int size(){
         int size =0;
-        for(int i = 0 ; i < buidlingANewCar.size(); i++){
+        for(int i = 0 ; i < buidlingANewCar.length; i++){
             size++;
         }
         return size;
     }
 
     public String getNameIndex(int index){
-        return buidlingANewCar.get(index).getName();
+        return buidlingANewCar[index].getName();
     }
 
     @Override
@@ -46,7 +49,7 @@ public class BuildingNewCar implements Car{
     }
 
     public static int getCostPart(int index){
-        return buidlingANewCar.get(index).getCost();
+        return buidlingANewCar[index].getCost();
     }
 
 
@@ -67,4 +70,9 @@ public class BuildingNewCar implements Car{
     public void add(Car part){
 
     }
+
+    public static void set(int index, Car carparts){
+        buidlingANewCar[index] = carparts;
+    }
+
 }

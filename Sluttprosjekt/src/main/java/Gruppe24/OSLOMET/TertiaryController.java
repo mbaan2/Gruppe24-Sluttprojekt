@@ -52,7 +52,7 @@ public class TertiaryController implements Initializable {
             if(colorButtons.get(i).isSelected()){
                 for(int j = 0; j<colorOptions.size(); j++){
                     if(colorButtons.get(i).getText().equals(colorOptions.get(j).getName())){
-                        BuildingNewCar.addStatic(colorOptions.get(j));
+                        BuildingNewCar.set(2, colorOptions.get(j));
                         System.out.println(colorOptions.get(j).getName());
                     }
                 }

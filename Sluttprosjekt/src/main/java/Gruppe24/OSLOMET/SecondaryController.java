@@ -50,7 +50,7 @@ public class SecondaryController implements Initializable {
             if(wheelButtons.get(i).isSelected()){
                 for(int j = 0; j<wheelOptions.size(); j++){
                     if(wheelButtons.get(i).getText().equals(wheelOptions.get(j).getName())){
-                        BuildingNewCar.addStatic(wheelOptions.get(j));
+                        BuildingNewCar.set(1, wheelOptions.get(j));
                     }
                 }
             }
