@@ -3,13 +3,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="334.0" prefWidth="511.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.QuinaryController">
     <children>
-      <HBox fx:id="hboxxRadioButtons" prefHeight="94.0" prefWidth="265.0" />
+      <HBox fx:id="hboxxRadioButtons" prefHeight="62.0" prefWidth="471.0" />
         <Label fx:id="lblCarComponents" textFill="#17252a" />
+      <AnchorPane prefHeight="6.0" prefWidth="471.0">
+         <children>
+            <Button fx:id="btnSaveCar" layoutX="192.0" mnemonicParsing="false" onAction="#btnSaveCar" style="-fx-background-color: #17252a;" text="Save your car" textFill="#def2f1" visible="false" />
+            <Button fx:id="btnNameCar" layoutX="438.0" mnemonicParsing="false" onAction="#btnNameCar" style="-fx-background-color: #17252a;" text="OK" textFill="#def2f1" visible="false" />
+            <TextField fx:id="lblCarName" layoutX="286.0" prefHeight="25.0" prefWidth="151.0" promptText="Set car name" visible="false" />
+         </children>
+      </AnchorPane>
       <Button mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
         <Button fx:id="quinaryButton" onAction="#switchToPrimary" style="-fx-background-color: #17252a;" text="Switch to Primary View" textFill="#def2f1" />
     </children>

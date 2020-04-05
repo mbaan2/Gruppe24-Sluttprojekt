@@ -69,7 +69,7 @@ public class AdminPage implements Initializable {
             carCategory = FileOpenerJobj.openFile(path);
             createButtons();
         } else if(chbCategory.getValue().equals("Addons")){
-            Path path = Paths.get("AddOnes.jobj");
+            Path path = Paths.get("AddOns.jobj");
             carCategory = FileOpenerJobj.openFile(path);
             createButtons();
         }
@@ -123,7 +123,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if(chbCategory.getValue().equals("Addons")){
-            Path filsti = Paths.get("AddOnes.jobj");
+            Path filsti = Paths.get("AddOns.jobj");
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -161,7 +161,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if (chbCategory.getValue().equals("Addons")) {
-            Path filsti = Paths.get("AddOnes.jobj");
+            Path filsti = Paths.get("AddOns.jobj");
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {

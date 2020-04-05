@@ -9,11 +9,12 @@
 
 <VBox alignment="CENTER" prefHeight="434.0" prefWidth="716.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.PrimaryController">
    <children>
-      <HBox fx:id="hboxx" prefHeight="285.0" prefWidth="676.0" />
-      <Label text="Primary View" textFill="#def2f1">
+      <Label text="Choose the type of fuel" textFill="#def2f1">
          <font>
             <Font size="30.0" />
-         </font></Label>
+         </font>
+      </Label>
+      <HBox fx:id="hboxx" prefHeight="202.0" prefWidth="676.0" />
       <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Start building a car!" textFill="#def2f1" />
       <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #17252a;" text="Logout" textFill="#def2f1" />
    </children>

@@ -7,6 +7,9 @@ public class BuildingNewCar implements Car{
 
     static Car[] buidlingANewCar = new Car[4];
 
+    public static Car[] getBuiltCar(){
+        return buidlingANewCar;
+    }
 
     public static String buildCar(){
         String carBuild = "This car contains: \n";
@@ -14,7 +17,7 @@ public class BuildingNewCar implements Car{
         carBuild += "Wheels: " + buidlingANewCar[1].getName() + buidlingANewCar[1].getCost() + "\n";
         carBuild += "Color: " + buidlingANewCar[2].getName() + buidlingANewCar[2].getCost() + "\n";
         for(int i = 0; i<buidlingANewCar[3].size(); i++) {
-            carBuild += "Add one: " + buidlingANewCar[3].getElement(i).getName() + buidlingANewCar[3].getElement(i).getCost() + "\n";
+            carBuild += "Add on: " + buidlingANewCar[3].getElement(i).getName() + buidlingANewCar[3].getElement(i).getCost() + "\n";
         }
 
         return carBuild;

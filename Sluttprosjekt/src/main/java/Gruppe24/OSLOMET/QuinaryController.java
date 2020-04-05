@@ -2,13 +2,12 @@ package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.BuildingNewCar;
 import Gruppe24.OSLOMET.Car.CarCategory;
+import Gruppe24.OSLOMET.Car.CarObj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -49,6 +48,15 @@ public class QuinaryController implements Initializable {
     }
 
     @FXML
+    private Button btnSaveCar;
+
+    @FXML
+    private Button btnNameCar;
+
+    @FXML
+    private TextField lblCarName;
+
+    @FXML
     private HBox hboxxRadioButtons;
 
     @FXML
@@ -58,14 +66,37 @@ public class QuinaryController implements Initializable {
     private Button quinaryButton;
 
     @FXML
+    void btnSaveCar(ActionEvent event) {
+        lblCarName.setVisible(true);
+        btnNameCar.setVisible(true);
+        btnSaveCar.setDisable(true);
+    }
+
+    @FXML
     void btnBuildCar(ActionEvent event) {
         String ut = BuildingNewCar.buildCar();
         int totalCost = BuildingNewCar.totalCost();
         lblCarComponents.setText(ut + "\n" + "Totalcost of this car is: " +totalCost);
+        btnSaveCar.setVisible(true);
     }
 
     @FXML
+    void btnNameCar(ActionEvent event) {
+        CarObj car = new CarObj(lblCarName.getText(), BuildingNewCar.totalCost(), CarObj.fetchCarParts());
+        FileSaverTxt fs = new FileSaverTxt();
+        try{
+            fs.saveTxtFile(car);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        btnSaveCar.setDisable(false);
+    }
+
+
+    @FXML
     private void switchToPrimary() throws IOException {
+        lblCarName.setVisible(false);
+        btnNameCar.setVisible(false);
         App.setRoot("01-primary");
     }
 }

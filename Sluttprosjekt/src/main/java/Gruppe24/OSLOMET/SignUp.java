@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.FileTreatment.FileChooserTxt;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
@@ -77,14 +78,7 @@ public class SignUp implements Initializable {
 
             String str = FormatUser.formatUsers(userList);
 
-            FileChooser fc = new FileChooser();
-            String currentDir = Paths.get(".").toAbsolutePath().normalize().toString();
-            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files", ".txt"));
-            fc.setInitialFileName("user");
-            fc.setInitialDirectory(new File(currentDir));
-
-
-            File selectedFile = fc.showOpenDialog(null);
+            File selectedFile = FileChooserTxt.fileChooserTxt("user.txt");
 
             try {
                 WriteUser.writeString(selectedFile, str);

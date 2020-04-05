@@ -40,8 +40,8 @@ public class App extends Application {
 
 
         Car smallWheels = new Carparts("Small Wheels", 1000);
-        Car mediumWheels = new Carparts("Small Wheels", 1000);
-        Car largeWheels = new Carparts("Small Wheels", 1000);
+        Car mediumWheels = new Carparts("Medium Wheels", 1000);
+        Car largeWheels = new Carparts("Big Wheels", 1000);
 
         Car wheels = new CarCategory("Wheels");
         wheels.add(smallWheels);

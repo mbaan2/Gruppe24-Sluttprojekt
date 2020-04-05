@@ -28,36 +28,36 @@ public class QuaternaryController implements Initializable {
     }
 
     @FXML
-    private VBox vboxAddOnes;
+    private VBox vboxAddOns;
 
-    List<Car> addOneOptions = new ArrayList<>();
-    List<CheckBox> addOneButtons = new ArrayList<>();
+    List<Car> addOnOptions = new ArrayList<>();
+    List<CheckBox> addOnButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> addone){
-        addOneButtons = LoadingValuesOnScreen.creatingList(addOneButtons, addOneOptions);
-        vboxAddOnes = LoadingValuesOnScreen.returnVbox(addOneButtons, vboxAddOnes);
+    public void createButtons(List<Car> addon){
+        addOnButtons = LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
+        vboxAddOns = LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
         //addOneButtons.get(0).setSelected(true);
     }
 
     public void openFile(){
-        Path path = Paths.get("AddOnes.jobj");
-        addOneOptions = FileOpenerJobj.openFile(path);
-        createButtons(addOneOptions);
+        Path path = Paths.get("AddOns.jobj");
+        addOnOptions = FileOpenerJobj.openFile(path);
+        createButtons(addOnOptions);
     }
 
     @FXML
     private void switchToQuinary() throws IOException {
-        Car addones = new CarCategory("addones");
-        for(int i = 0; i<addOneOptions.size();i++){
-            if(addOneButtons.get(i).isSelected()){
-                for(int j = 0; j<addOneOptions.size(); j++){
-                    if(addOneButtons.get(i).getText().equals(addOneOptions.get(j).getName())){
-                        addones.add(addOneOptions.get(j));
+        Car addons = new CarCategory("addons");
+        for(int i = 0; i< addOnOptions.size(); i++){
+            if(addOnButtons.get(i).isSelected()){
+                for(int j = 0; j< addOnOptions.size(); j++){
+                    if(addOnButtons.get(i).getText().equals(addOnOptions.get(j).getName())){
+                        addons.add(addOnOptions.get(j));
                     }
                 }
             }
         }
-        BuildingNewCar.set(3, addones);
+        BuildingNewCar.set(3, addons);
 
         App.setRoot("05-quinary");
     }
@@ -75,17 +75,17 @@ public class QuaternaryController implements Initializable {
         Car spoiler = new Carparts("Spoiler", 4000);
         Car subwoofer = new Carparts("Subwoofer", 7500);
 
-        addOneOptions.add(addOneGPS);
-        addOneOptions.add(spoiler);
-        addOneOptions.add(subwoofer);
+        addOnOptions.add(addOneGPS);
+        addOnOptions.add(spoiler);
+        addOnOptions.add(subwoofer);
 
-        createButtons(addOneOptions);
+        createButtons(addOnOptions);
     }
 
     public void createFile(){
-        Path filsti = Paths.get("AddOnes.jobj");
+        Path filsti = Paths.get("AddOns.jobj");
         try {
-            FileSaverJobj.SaveCarCategory(filsti, addOneOptions);
+            FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
