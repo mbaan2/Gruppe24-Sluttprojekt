@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerTxt;
+import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -43,5 +46,10 @@ public class PrimaryController implements Initializable {
     @FXML
     void logoutBtn() throws IOException {
         App.setRoot("login");
+    }
+
+    @FXML
+    void btnLoadCars(ActionEvent event) throws IOException{
+        App.setRoot("loadedCars");
     }
 }

@@ -11,12 +11,18 @@
    <children>
       <Label text="Choose the type of fuel" textFill="#def2f1">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <HBox fx:id="hboxx" prefHeight="202.0" prefWidth="676.0" />
+      <HBox fx:id="hboxx" prefHeight="88.0" prefWidth="676.0" />
       <Button fx:id="primaryButton" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Start building a car!" textFill="#def2f1" />
-      <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #17252a;" text="Logout" textFill="#def2f1" />
+      <Label text="Or load your existing cars" textFill="#def2f1">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button onAction="#btnLoadCars" style="-fx-background-color: #17252a;" text="Load" textFill="#def2f1" />
+      <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

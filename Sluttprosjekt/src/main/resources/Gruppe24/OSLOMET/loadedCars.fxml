@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.LoadedCars">
+   <children>
+      <TableView prefHeight="400.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="56.80001676082611" text="Car ID" />
+          <TableColumn prefWidth="73.20001983642578" text="Total Price" />
+            <TableColumn prefWidth="55.5999755859375" text="Fuel" />
+            <TableColumn prefWidth="52.79998779296875" text="Price" />
+            <TableColumn prefWidth="64.800048828125" text="Wheels" />
+            <TableColumn prefWidth="58.0" text="Price" />
+            <TableColumn prefWidth="52.0" text="Colour" />
+            <TableColumn prefWidth="56.0" text="Price" />
+            <TableColumn prefWidth="60.799896240234375" text="Add-on" />
+            <TableColumn prefWidth="70.0001220703125" text="Price" />
+            <TableColumn prefWidth="75.0" text="Add-on" />
+            <TableColumn prefWidth="75.0" text="Price" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.BuildingNewCar;
+import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.CarObj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
@@ -82,7 +83,7 @@ public class QuinaryController implements Initializable {
 
     @FXML
     void btnNameCar(ActionEvent event) {
-        CarObj car = new CarObj(lblCarName.getText(), BuildingNewCar.totalCost(), CarObj.fetchCarParts());
+        CarObj car = new CarObj(lblCarName.getText(), BuildingNewCar.totalCost(), CarObj.arrayListToArray(CarObj.fetchCarParts()));
         FileSaverTxt fs = new FileSaverTxt();
         try{
             fs.saveTxtFile(car);
@@ -97,6 +98,7 @@ public class QuinaryController implements Initializable {
     private void switchToPrimary() throws IOException {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
+        //need to add something to clean add-ons. How???
         App.setRoot("01-primary");
     }
 }

@@ -39,7 +39,7 @@ public class CarObj{
         this.carparts = carparts;
     }
 
-    public static Carparts[] fetchCarParts(){
+    public static ArrayList<Carparts> fetchCarParts(){
         Car[] carItems = BuildingNewCar.getBuiltCar();
         ArrayList<Carparts> partsArrayList = new ArrayList<>();
         //Carparts fuel = new Carparts(carItems[0].getName(), carItems[0].getCost());
@@ -56,7 +56,10 @@ public class CarObj{
             Carparts x = new Carparts(name, cost);
             partsArrayList.add(x);
         }
+        return partsArrayList;
+    }
 
+    public static Carparts[] arrayListToArray(ArrayList<Carparts> partsArrayList){
         Carparts[] carpartsArray = new Carparts[partsArrayList.size()];
         for (int i = 0; i<carpartsArray.length; i++){
             carpartsArray[i]=partsArrayList.get(i);
@@ -64,6 +67,8 @@ public class CarObj{
 
         return carpartsArray;
     }
+
+
 
     public String saveableData(String carName){
         String str = carName + "\t" + getTotalCost() + "\t\t";
