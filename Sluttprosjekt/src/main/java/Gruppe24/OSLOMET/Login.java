@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.UserLogin.OpenUserJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -43,37 +45,30 @@ public class Login implements Initializable {
         if(usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
-            Path path = Paths.get(".\\user.txt");
-            long count = Files.lines(path).count();
+            Path path = Paths.get(".\\users.jobj");
 
-            for(int i = 0; i < count; i++) {
-                String line = Files.readAllLines(path).get(i);
+            HashMap<String, String> userList = OpenUserJobj.userList(path);
 
-                if(!line.trim().equals("")) {
-                    String[] user = line.split(";");
-                    String username = user[0];
-                    String password = user[1];
+            if(userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
+                login();
+            }
 
-                    if(username.trim().equals(usernameTxt.getText()) && !usernameTxt.getText().isEmpty()) {
-                        if(password.trim().equals(passwordTxt.getText()) && !passwordTxt.getText().isEmpty()) {
-                            login();
-                        }
-                    }
-
-                    if(usernameTxt.getText().isEmpty()) {
+            if(usernameTxt.getText().isEmpty()) {
                         usernameError.setText("Enter a username");
-                    }
-                    if(passwordTxt.getText().isEmpty()) {
+            }
+            if(!userList.containsKey(usernameTxt.getText())) {
+                        usernameError.setText("Wrong username");
+            if(passwordTxt.getText().isEmpty()) {
                         passwordError.setText("Enter a password");
-                    } else if(!password.trim().equals(passwordTxt.getText())) {
+            } else if(!userList.containsValue(passwordTxt.getText())) {
                         passwordError.setText("Wrong password");
-                    }
                 }
             }
         }
-
-
     }
+
+
+
 
     @FXML
     void signUp() throws IOException {
@@ -85,7 +80,7 @@ public class Login implements Initializable {
 
     }
 
-    @FXML
+
     private void login() throws IOException {
         App.setRoot("01-primary");
     }

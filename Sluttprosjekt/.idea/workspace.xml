@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="" />
+    <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/OpenUserJobj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/WriteUserJobj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/FormatUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/FormatUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/ParseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/ParseUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserLogin/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/FormatUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/FormatUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/ParseUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/ParseUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserLogin/User.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,17 +72,17 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Gruppe24.OSLOMET" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ana\Google Drive\OsloMet\DATA1600 - Programutvikling\Projects\Oppgaver\Final Project\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Gruppe24.OSLOMET" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ana\Google Drive\OsloMet\DATA1600 - Programutvikling\Projects\Oppgaver\Final Project\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,6 +227,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="500" y="168" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585578903494" />
+    <state x="1040" y="503" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586177625164">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1040" y="503" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586177625164" />
     <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1586124189208">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -222,48 +242,49 @@
     <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1586099564603" />
     <state x="1128" y="590" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585851657423" />
     <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585670150401" />
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585581304633">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="943" y="505" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586171271592">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585581304633" />
+    <state x="943" y="505" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586171271592" />
     <state x="115" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586123647172">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="115" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586123647172" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1586122080581">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1586180402267">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586122080581" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585771250196" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180402267" />
     <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585695329710" />
     <state x="826" y="167" key="FileChooserDialogImpl" timestamp="1585731581353">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585731581353" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585671172266" />
-    <state width="1493" height="276" key="GridCell.Tab.0.bottom" timestamp="1586157942064">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="2517" height="405" key="GridCell.Tab.0.bottom" timestamp="1586180208601">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="276" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586157942064" />
-    <state width="2517" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
+    <state width="2517" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180208601" />
     <state width="2517" height="405" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="276" key="GridCell.Tab.0.center" timestamp="1586157942063">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="2517" height="405" key="GridCell.Tab.0.center" timestamp="1586180208600">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="276" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586157942063" />
-    <state width="2517" height="405" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
+    <state width="2517" height="405" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180208600" />
     <state width="2517" height="405" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="276" key="GridCell.Tab.0.left" timestamp="1586157942063">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="2517" height="405" key="GridCell.Tab.0.left" timestamp="1586180208600">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="276" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586157942063" />
-    <state width="2517" height="405" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798514" />
+    <state width="2517" height="405" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180208600" />
     <state width="2517" height="405" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="276" key="GridCell.Tab.0.right" timestamp="1586157942063">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="2517" height="405" key="GridCell.Tab.0.right" timestamp="1586180208600">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="276" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586157942063" />
-    <state width="2517" height="405" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
+    <state width="2517" height="405" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180208600" />
     <state width="2517" height="405" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
     <state width="1340" height="324" key="GridCell.Tab.1.bottom" timestamp="1585673975823">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -305,11 +326,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="448" y="154" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585652844332" />
-    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585851630105">
+    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586180405531">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585599901013" />
-    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585851630105" />
+    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586180405531" />
+    <state x="-1871" y="38" width="1936" height="954" maximized="true" key="dock-window-1" timestamp="1586177409684">
+      <screen x="-1920" y="53" width="1920" height="1040" />
+    </state>
+    <state x="-1871" y="38" width="1936" height="954" maximized="true" key="dock-window-1/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586177409684" />
     <state x="462" y="144" width="618" height="536" key="find.popup" timestamp="1585577635086">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,9 +1,11 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.FileTreatment.FileChooserTxt;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
+import Gruppe24.OSLOMET.UserLogin.WriteUserJobj;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +17,10 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class SignUp implements Initializable {
@@ -52,9 +57,10 @@ public class SignUp implements Initializable {
 
 
     public ObservableList<User> userList = FXCollections.observableArrayList();
+    public HashMap<String, String> userBase = new HashMap<>();
 
     @FXML
-    void signUp(ActionEvent event) {
+    void signUp(ActionEvent event) throws IOException {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
@@ -74,17 +80,10 @@ public class SignUp implements Initializable {
             gender = "Other";
         }
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty()) {
-            userList.add(new User(username, password, location, gender));
+            userBase.put(username, password);
+            Path filsti = Paths.get("users.jobj");
 
-            String str = FormatUser.formatUsers(userList);
-
-            File selectedFile = FileChooserTxt.fileChooserTxt("user.txt");
-
-            try {
-                WriteUser.writeString(selectedFile, str);
-            } catch (Exception e) {
-                System.err.println("Failed to read file");
-            }
+            WriteUserJobj.SaveUser(filsti, userBase);
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
