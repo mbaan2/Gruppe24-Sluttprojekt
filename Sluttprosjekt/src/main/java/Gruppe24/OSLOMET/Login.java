@@ -8,14 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Login implements Initializable {
 
@@ -42,11 +39,10 @@ public class Login implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
 
-        if(usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
+        if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
             Path path = Paths.get(".\\users.jobj");
-
             HashMap<String, String> userList = OpenUserJobj.userList(path);
 
             if(userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
@@ -57,13 +53,13 @@ public class Login implements Initializable {
                         usernameError.setText("Enter a username");
             }
             if(!userList.containsKey(usernameTxt.getText())) {
-                        usernameError.setText("Wrong username");
+                usernameError.setText("Wrong username");
+            }
             if(passwordTxt.getText().isEmpty()) {
                         passwordError.setText("Enter a password");
             } else if(!userList.containsValue(passwordTxt.getText())) {
                         passwordError.setText("Wrong password");
                 }
-            }
         }
     }
 

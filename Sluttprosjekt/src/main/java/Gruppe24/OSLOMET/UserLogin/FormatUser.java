@@ -6,7 +6,7 @@ public class FormatUser {
     public static String DELIMITER = ";";
 
     public static String formatUser(User user) {
-        return user.getUsername() + DELIMITER + user.getPassword();
+        return user.getUsername() + DELIMITER + user.getPassword() + DELIMITER + user.getLocation() + DELIMITER + user.getGender() + DELIMITER + user.getSecretquestion();
     }
 
     public static String formatUsers(List<User> userList) {

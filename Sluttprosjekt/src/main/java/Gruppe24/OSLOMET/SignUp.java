@@ -1,7 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.FileTreatment.FileChooserTxt;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
@@ -12,14 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -44,6 +39,9 @@ public class SignUp implements Initializable {
     private TextField signupLocation;
 
     @FXML
+    private TextField answerTxt;
+
+    @FXML
     private Label usernameError;
 
     @FXML
@@ -53,9 +51,15 @@ public class SignUp implements Initializable {
     private Label locationError;
 
     @FXML
+    private Label answerError;
+
+    @FXML
     private Label genderError;
 
+    @FXML
+    private ChoiceBox<String> choiceBox;
 
+    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
     public ObservableList<User> userList = FXCollections.observableArrayList();
     public HashMap<String, String> userBase = new HashMap<>();
 
@@ -64,11 +68,15 @@ public class SignUp implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
+        answerError.setText("");
+        genderError.setText("");
+
 
         String username = signupUsername.getText();
         String password = signupPassword.getText();
         String location = signupLocation.getText();
         String gender = "";
+        String answer = answerTxt.getText();
 
         if(checkFemale.isSelected()) {
             gender = "Female";
@@ -79,11 +87,26 @@ public class SignUp implements Initializable {
         if(checkOther.isSelected()) {
             gender = "Other";
         }
-        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty()) {
-            userBase.put(username, password);
-            Path filsti = Paths.get("users.jobj");
 
+        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
+            User newUser = new User(username, password, location, gender, answer);
+
+            //Writing the hashmap to a jobj file for login
+            userBase.put(newUser.getUsername(), newUser.getPassword());
+            Path filsti = Paths.get("users.jobj");
             WriteUserJobj.SaveUser(filsti, userBase);
+
+            //Writing the list to a txt file for the userregister
+            userList.add(newUser);
+            String str = FormatUser.formatUsers(userList);
+            Path path = Paths.get("user.txt");
+            File selectedFile = new File(String.valueOf(path));
+
+            try {
+                WriteUser.writeString(selectedFile, str);
+            } catch (Exception e) {
+                System.err.println("Failed to write file");
+            }
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
@@ -94,10 +117,25 @@ public class SignUp implements Initializable {
             if(location.isEmpty()) {
                 locationError.setText("Enter a location!");
             }
+            if(answer.isEmpty()) {
+                answerError.setText("Enter an answer!");
+            }
             if(gender.isEmpty()) {
                 genderError.setText("Choose a gender!");
             }
         }
+    }
+
+    private void addChkBoxItems() {
+        checkBoxList.removeAll();
+        String checkBoxQuestion = "Select a question!";
+        String checkBoxQType = "Name of first pet?";
+        String checkBoxQType2 = "Mothers maiden name?";
+        String checkBoxQType3 = "Whos your daddy?";
+
+        checkBoxList.addAll(checkBoxQuestion, checkBoxQType, checkBoxQType2, checkBoxQType3);
+        choiceBox.getItems().addAll(checkBoxList);
+        choiceBox.setValue(checkBoxQuestion);
     }
 
     @FXML
@@ -107,6 +145,6 @@ public class SignUp implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        addChkBoxItems();
     }
 }

@@ -10,7 +10,7 @@
    <children>
       <TextField fx:id="usernameTxt" layoutX="14.0" layoutY="130.0" promptText="Username" />
       <Label layoutX="395.0" layoutY="204.0" prefHeight="17.0" prefWidth="57.0" />
-      <Button layoutX="14.0" layoutY="166.0" mnemonicParsing="false" onAction="#retrievePwBtn" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #17252a;" text="Retrieve pw" textFill="#def2f1" />
+      <Button layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#retrievePwBtn" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #17252a;" text="Retrieve pw" textFill="#def2f1" />
       <Label layoutX="167.0" layoutY="37.0" prefHeight="45.0" prefWidth="266.0" text="Password retrieval" textFill="#def2f1">
          <font>
             <Font name="System Bold" size="30.0" />
@@ -38,5 +38,7 @@
       <Label fx:id="genderLbl" layoutX="478.0" layoutY="142.0" prefHeight="17.0" prefWidth="63.0" />
       <Label layoutX="14.0" layoutY="106.0" prefHeight="17.0" prefWidth="92.0" text="Enter username:" />
       <Button layoutX="515.0" layoutY="352.0" mnemonicParsing="false" onAction="#loginBtn" style="-fx-background-color: #17252a;" text="Login" textFill="#def2f1" />
+      <Label layoutX="14.0" layoutY="166.0" prefHeight="17.0" prefWidth="172.0" text="Enter answer to secret question:" />
+      <TextField fx:id="answerTxt" layoutX="14.0" layoutY="188.0" promptText="Answer" />
    </children>
 </AnchorPane>

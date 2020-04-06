@@ -10,12 +10,14 @@ public class WriteUserJobj {
 
     public static void SaveUser(Path path, HashMap<String, String> userList) throws IOException {
         try {
-            FileOutputStream os = new FileOutputStream(String.valueOf(path), true);
+            FileOutputStream os = new FileOutputStream(String.valueOf(path));
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(userList);
+            oos.flush();
+            oos.close();
+            os.close();
         } catch (IOException e) {
             throw new IOException(e.getMessage());
         }
     }
 }
-

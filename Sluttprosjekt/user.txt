@@ -1,8 +1,2 @@
-oyvind0402;oyvind1991;Oslo;Male
-marthe15;hallo2;Oslo;Female
-Aaa;aaa;Aaa;Other
-Hei;Paa;Oslo;Male
-123;123;Oslo;Male
-1234;1234;Oslo;Male
-111;111;Oslo;Male
-123123;123123;Oslo;Other
+123;123;Oslo;Male;123
+Aaa;aaa;aaa;Other;aaa
