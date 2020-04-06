@@ -11,6 +11,10 @@ public class BuildingNewCar implements Car{
         return buidlingANewCar;
     }
 
+    public static void setBuiltCar(Car[] car){
+        buidlingANewCar = car;
+    }
+
     public static String buildCar(){
         String carBuild = "This car contains: \n";
         //carBuild += "Fuel: " + buidlingANewCar[0].getName();

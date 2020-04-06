@@ -1,0 +1,1 @@
+mycar	21505		mystery fuel	0	Big wheels	5000	yellow	5	GPS	5000	Spoiler	4000	Subwoofer	7500	

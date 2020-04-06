@@ -1,9 +1,8 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.BuildingNewCar;
-import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarCategory;
-import Gruppe24.OSLOMET.Car.CarObj;
+import Gruppe24.OSLOMET.Car.*;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,8 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -71,6 +72,16 @@ public class QuinaryController implements Initializable {
         lblCarName.setVisible(true);
         btnNameCar.setVisible(true);
         btnSaveCar.setDisable(true);
+
+        Path filsti = Paths.get("cars.jobj");
+        try {
+            FileSaverJobj.SaveCarCategoryArray(filsti, BuildingNewCar.getBuiltCar());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Path path = Paths.get("cars.jobj");
+        BuildingNewCar.setBuiltCar(FileOpenerJobj.openFileArray(path));
+        lblCarComponents.setText(BuildingNewCar.getNameIndexStatic(1));
     }
 
     @FXML

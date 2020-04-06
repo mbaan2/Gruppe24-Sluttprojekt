@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/FileOpenerTxt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/ParseCar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/LoadedCars.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/loadedCars.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarObj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/BuildingNewCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/BuildingNewCar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/FileSaverJobj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/FileSaverJobj.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/01-primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/BuildingNewCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/BuildingNewCar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileSaverJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileSaverJobj.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -254,28 +251,28 @@
     </state>
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585731581353" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585671172266" />
-    <state width="1493" height="205" key="GridCell.Tab.0.bottom" timestamp="1586127435730">
+    <state width="1493" height="276" key="GridCell.Tab.0.bottom" timestamp="1586157482541">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586127435730" />
+    <state width="1493" height="276" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586157482541" />
     <state width="2517" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
     <state width="2517" height="405" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="205" key="GridCell.Tab.0.center" timestamp="1586127435730">
+    <state width="1493" height="276" key="GridCell.Tab.0.center" timestamp="1586157482540">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586127435730" />
+    <state width="1493" height="276" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586157482540" />
     <state width="2517" height="405" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
     <state width="2517" height="405" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="205" key="GridCell.Tab.0.left" timestamp="1586127435730">
+    <state width="1493" height="276" key="GridCell.Tab.0.left" timestamp="1586157482540">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586127435730" />
+    <state width="1493" height="276" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586157482540" />
     <state width="2517" height="405" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798514" />
     <state width="2517" height="405" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
-    <state width="1493" height="205" key="GridCell.Tab.0.right" timestamp="1586127435730">
+    <state width="1493" height="276" key="GridCell.Tab.0.right" timestamp="1586157482540">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586127435730" />
+    <state width="1493" height="276" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586157482540" />
     <state width="2517" height="405" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585852798515" />
     <state width="2517" height="405" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585692720166" />
     <state width="1340" height="324" key="GridCell.Tab.1.bottom" timestamp="1585673975823">

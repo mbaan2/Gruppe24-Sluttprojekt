@@ -23,4 +23,18 @@ public class FileOpenerJobj {
         }
         return carParts;
     }
+
+    public static Car[] openFileArray(Path path) {
+        //Path path = Paths.get("filterliste.jobj");
+        Car[] car = new Car[5];
+
+        try (   InputStream in = Files.newInputStream(path);
+                ObjectInputStream oin = new ObjectInputStream(in))
+        {
+            car = (Car[]) oin.readObject();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return car;
+    }
 }
