@@ -1,9 +1,14 @@
 package Gruppe24.OSLOMET.Car;
 
+import kotlin.ranges.LongRange;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingNewCar implements Car{
+    String name;
+    // This will be a function ??? int totalCost;
+    Carparts[] carparts;
 
     static Car[] buidlingANewCar = new Car[4];
 
@@ -16,6 +21,7 @@ public class BuildingNewCar implements Car{
     }
 
     public static String buildCar(){
+
         String carBuild = "This car contains: \n";
         //carBuild += "Fuel: " + buidlingANewCar[0].getName();
         carBuild += "Wheels: " + buidlingANewCar[1].getName() + buidlingANewCar[1].getCost() + "\n";
@@ -90,6 +96,22 @@ public class BuildingNewCar implements Car{
 
     public static void set(int index, Car carparts){
         buidlingANewCar[index] = carparts;
+    }
+
+
+    public String saveableData(String carName){
+        String ut = carName +"\t" + totalCost() + "\t";
+
+        //NOT YET ACTIVE
+        //ut += buidlingANewCar[0].getName() +"\t"+ buidlingANewCar[0].getCost() + "\t";
+        ut += buidlingANewCar[1].getName() +"\t"+ buidlingANewCar[1].getCost() + "\t";
+        ut += buidlingANewCar[2].getName() +"\t"+ buidlingANewCar[2].getCost() + "\t";
+        for(int i = 0; i<buidlingANewCar[3].size(); i++) {
+            ut += buidlingANewCar[3].getElement(i).getName() + "\t" + buidlingANewCar[3].getElement(i).getCost() + "\t";
+        }
+        ut += "\n";
+
+        return ut;
     }
 
 }
