@@ -67,18 +67,4 @@ public class CarObj{
 
         return carpartsArray;
     }
-
-
-
-    public String saveableData(String carName){
-        String str = carName + "\t" + getTotalCost() + "\t\t";
-        Carparts[] array = getCarparts();
-
-        for (Carparts c : array){
-            str+= c.name + "\t" + c.cost + "\t";
-        }
-
-        str += "\n";
-        return str;
-    }
 }
