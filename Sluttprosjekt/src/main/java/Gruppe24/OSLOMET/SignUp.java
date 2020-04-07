@@ -93,7 +93,6 @@ public class SignUp implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
             User newUser = new User(username, password, location, gender, answer);
 
-            
             try (FileInputStream in = new FileInputStream("users.ser");
                  ObjectInputStream oin = new ObjectInputStream(in)) {
                 userBase = (HashMap) oin.readObject();

@@ -59,21 +59,11 @@ public class Login implements Initializable {
             }
             if(userList.containsKey(usernameTxt.getText())){
                 if(userList.get(usernameTxt.getText()).equals(passwordTxt.getText())){
-                    System.out.println(2);
                     login();
                 }
             }
 
             System.out.println(userList);
-            for(int i=0; i <userList.size(); i++){
-            }
-
-
-            /*if (userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
-                login();
-            }
-
-             */
 
             if (usernameTxt.getText().isEmpty()) {
                 usernameError.setText("Enter a username");
