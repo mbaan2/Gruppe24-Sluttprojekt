@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.UserLogin.OpenUserJobj;
+import Gruppe24.OSLOMET.UserLogin.WriteUserJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,22 +42,31 @@ public class Login implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
 
+        /*
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         } else {
-            Path path = Paths.get(".\\users.jobj");
-            userList = OpenUserJobj.userList(path);
-            System.out.println(userList);
 
-            Set set = userList.entrySet();
-            Iterator iterator = set.iterator();
-            while (iterator.hasNext()) {
-                Map.Entry mentry = (Map.Entry) iterator.next();
-                if (mentry.getKey().equals(usernameTxt.getText()) && mentry.getValue().equals(passwordTxt.getText())) {
+         */
+
+            try (FileInputStream in = new FileInputStream("users.ser");
+                 ObjectInputStream oin = new ObjectInputStream(in)) {
+                userList = (HashMap) oin.readObject();
+                in.close();
+                oin.close();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+            if(userList.containsKey(usernameTxt.getText())){
+                if(userList.get(usernameTxt.getText()).equals(passwordTxt.getText())){
+                    System.out.println(2);
                     login();
                 }
             }
-        }
+
+            System.out.println(userList);
+            for(int i=0; i <userList.size(); i++){
+            }
 
 
             /*if (userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {

@@ -11,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -91,9 +93,21 @@ public class SignUp implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
             User newUser = new User(username, password, location, gender, answer);
 
+            
+            try (FileInputStream in = new FileInputStream("users.ser");
+                 ObjectInputStream oin = new ObjectInputStream(in)) {
+                userBase = (HashMap) oin.readObject();
+                in.close();
+                oin.close();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+
+
+
             //Writing the hashmap to a jobj file for login
             userBase.put(newUser.getUsername(), newUser.getPassword());
-            Path filsti = Paths.get("users.jobj");
+            Path filsti = Paths.get("users.ser");
             WriteUserJobj.SaveUser(filsti, userBase);
 
             //Writing the list to a txt file for the userregister
