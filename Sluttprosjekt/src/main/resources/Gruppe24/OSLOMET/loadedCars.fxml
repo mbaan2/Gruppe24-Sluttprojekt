@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.LoadedCars">
    <children>
-      <TableView prefHeight="400.0" prefWidth="600.0">
+      <TableView fx:id="tableCars" layoutY="43.0" prefHeight="331.0" prefWidth="600.0" style="-fx-background-color: rgb(222,242,241, 0.5);">
         <columns>
-          <TableColumn prefWidth="56.80001676082611" text="Car ID" />
-          <TableColumn prefWidth="73.20001983642578" text="Total Price" />
-            <TableColumn prefWidth="55.5999755859375" text="Fuel" />
-            <TableColumn prefWidth="52.79998779296875" text="Price" />
-            <TableColumn prefWidth="64.800048828125" text="Wheels" />
-            <TableColumn prefWidth="58.0" text="Price" />
-            <TableColumn prefWidth="52.0" text="Colour" />
-            <TableColumn prefWidth="56.0" text="Price" />
-            <TableColumn prefWidth="60.799896240234375" text="Add-on" />
-            <TableColumn prefWidth="70.0001220703125" text="Price" />
-            <TableColumn prefWidth="75.0" text="Add-on" />
-            <TableColumn prefWidth="75.0" text="Price" />
+          <TableColumn prefWidth="56.80001676082611" style="-fx-background-color: #def2f1;" text="Car ID" />
+          <TableColumn prefWidth="73.20001983642578" style="-fx-background-color: #def2f1;" text="Total Price" />
+            <TableColumn prefWidth="55.5999755859375" style="-fx-background-color: #def2f1;" text="Fuel" />
+            <TableColumn prefWidth="52.79998779296875" style="-fx-background-color: #def2f1;" text="Price" />
+            <TableColumn prefWidth="64.800048828125" style="-fx-background-color: #def2f1;" text="Wheels" />
+            <TableColumn prefWidth="58.0" style="-fx-background-color: #def2f1;" text="Price" />
+            <TableColumn prefWidth="52.0" style="-fx-background-color: #def2f1;" text="Colour" />
+            <TableColumn prefWidth="56.0" style="-fx-background-color: #def2f1;" text="Price" />
+            <TableColumn prefWidth="60.799896240234375" style="-fx-background-color: #def2f1;" text="Add-on" />
+            <TableColumn prefWidth="70.0001220703125" style="-fx-background-color: #def2f1;" text="Price" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #def2f1;" text="Add-on" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #def2f1;" text="Price" />
         </columns>
       </TableView>
+      <Button layoutX="542.0" layoutY="374.0" mnemonicParsing="false" onAction="#btnLogOut" style="-fx-background-color: #17252a;" text="Log out" textFill="WHITE" />
+      <Button layoutY="374.0" mnemonicParsing="false" onAction="#btnBackToCarBuild" style="-fx-background-color: #17252a;" text="Build new car" textFill="WHITE" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="235.0" text="Your cars" textFill="#def2f1">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

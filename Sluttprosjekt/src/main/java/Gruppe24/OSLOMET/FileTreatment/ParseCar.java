@@ -1,13 +1,12 @@
-package Gruppe24.OSLOMET.FileTreatment;
+/*package Gruppe24.OSLOMET.FileTreatment;
 
-import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarObj;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.Car.NewCar;
 
 import java.util.ArrayList;
 
 public class ParseCar{
-    public static CarObj parseCar(String str){
+    public static NewCar parseCar(String str){
         String[] split = str.split("\t");
         String id = split[0];
         int totalPrice;
@@ -28,7 +27,7 @@ public class ParseCar{
             }
             i++;
         }
-        CarObj retrievedCar = new CarObj(id, totalPrice, CarObj.arrayListToArray(carparts));
+        NewCar retrievedCar = new NewCar(id, totalPrice, NewCar.arrayListToArray(carparts));
         return retrievedCar;
     }
-}
+}*/

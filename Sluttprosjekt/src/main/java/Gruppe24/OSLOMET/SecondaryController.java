@@ -37,11 +37,11 @@ public class SecondaryController implements Initializable {
         vboxWheels = LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
 
         //BuildingNewCar.set(1, wheelOptions.get(2));
-        if(BuildingNewCar.getNameIndexStatic(1).equals("Empty")) {
+        if(NewCar.getNameIndexStatic(1).equals("Empty")) {
             wheelButtons.get(0).setSelected(true);
         } else{
             for(int i=0; i <wheelOptions.size();i++){
-                if(BuildingNewCar.getNameIndexStatic(1).equals(wheelOptions.get(i).getName())){
+                if(NewCar.getNameIndexStatic(1).equals(wheelOptions.get(i).getName())){
                     wheelButtons.get(i).setSelected(true);
                 }
             }
@@ -60,7 +60,7 @@ public class SecondaryController implements Initializable {
             if(wheelButtons.get(i).isSelected()){
                 for(int j = 0; j<wheelOptions.size(); j++){
                     if(wheelButtons.get(i).getText().equals(wheelOptions.get(j).getName())){
-                        BuildingNewCar.set(1, wheelOptions.get(j));
+                        NewCar.set(1, wheelOptions.get(j));
                     }
                 }
             }

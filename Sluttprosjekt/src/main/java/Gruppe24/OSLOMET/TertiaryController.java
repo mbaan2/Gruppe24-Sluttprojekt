@@ -1,6 +1,6 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.BuildingNewCar;
+import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
@@ -52,7 +52,7 @@ public class TertiaryController implements Initializable {
             if(colorButtons.get(i).isSelected()){
                 for(int j = 0; j<colorOptions.size(); j++){
                     if(colorButtons.get(i).getText().equals(colorOptions.get(j).getName())){
-                        BuildingNewCar.set(2, colorOptions.get(j));
+                        NewCar.set(2, colorOptions.get(j));
                         System.out.println(colorOptions.get(j).getName());
                     }
                 }

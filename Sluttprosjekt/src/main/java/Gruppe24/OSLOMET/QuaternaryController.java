@@ -1,6 +1,6 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.BuildingNewCar;
+import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
@@ -57,7 +57,7 @@ public class QuaternaryController implements Initializable {
                 }
             }
         }
-        BuildingNewCar.set(3, addons);
+        NewCar.set(3, addons);
 
         App.setRoot("05-quinary");
     }
