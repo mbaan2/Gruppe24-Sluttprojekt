@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.UserLogin.OpenUserJobj;
 import Gruppe24.OSLOMET.UserLogin.WriteUserJobj;
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ public class Login implements Initializable {
     @FXML
     private Label passwordError;
 
-    HashMap<String, String> userList = null;
+    HashMap<String, String> userBase = null;
 
     @FXML
     void forgotPassword() throws IOException {
@@ -49,23 +50,17 @@ public class Login implements Initializable {
 
          */
 
-            try (FileInputStream in = new FileInputStream("users.ser");
-                 ObjectInputStream oin = new ObjectInputStream(in)) {
-                userList = (HashMap) oin.readObject();
-                in.close();
-                oin.close();
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-            }
-            if(userList.containsKey(usernameTxt.getText())){
-                if(userList.get(usernameTxt.getText()).equals(passwordTxt.getText())){
+        userBase = FileOpenerJobj.openFileHashMap();
+
+            if(userBase.containsKey(usernameTxt.getText())){
+                if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                     System.out.println(2);
                     login();
                 }
             }
 
-            System.out.println(userList);
-            for(int i=0; i <userList.size(); i++){
+            System.out.println(userBase);
+            for(int i=0; i <userBase.size(); i++){
             }
 
 
@@ -78,12 +73,12 @@ public class Login implements Initializable {
             if (usernameTxt.getText().isEmpty()) {
                 usernameError.setText("Enter a username");
             }
-            if (!userList.containsKey(usernameTxt.getText())) {
+            if (!userBase.containsKey(usernameTxt.getText())) {
                 usernameError.setText("Wrong username");
             }
             if (passwordTxt.getText().isEmpty()) {
                 passwordError.setText("Enter a password");
-            } else if (!userList.containsValue(passwordTxt.getText())) {
+            } else if (!userBase.containsValue(passwordTxt.getText())) {
                 passwordError.setText("Wrong password");
             }
         }
