@@ -94,17 +94,13 @@ public class SignUp implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
             User newUser = new User(username, password, location, gender, answer);
 
-
             userBase = FileOpenerJobj.openFileHashMap();
-
-
 
             //Writing the hashmap to a jobj file for login
             userBase.put(newUser.getUsername(), newUser.getPassword());
-            Path filsti = Paths.get("users.jobj");
-            WriteUserJobj.SaveUser(filsti, userBase);
+            WriteUserJobj.SaveUser(userBase);
 
-            //Writing the list to a txt file for the userregister
+            //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
             Path path = Paths.get("user.txt");

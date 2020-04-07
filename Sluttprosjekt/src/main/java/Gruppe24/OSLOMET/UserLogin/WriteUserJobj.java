@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class WriteUserJobj {
 
-    public static void SaveUser(Path path, HashMap<String, String> userList) throws IOException {
+    public static void SaveUser(HashMap<String, String> userList) throws IOException {
 
 
         try {

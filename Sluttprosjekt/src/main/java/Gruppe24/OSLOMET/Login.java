@@ -43,25 +43,19 @@ public class Login implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
 
-        /*
-        if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
-            App.setRoot("adminPage");
-        } else {
-
-         */
 
         userBase = FileOpenerJobj.openFileHashMap();
 
+        // Add admin into the userBase?
+        if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
+            App.setRoot("adminPage");
+        }
             if(userBase.containsKey(usernameTxt.getText())){
                 if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
-                    System.out.println(2);
                     login();
                 }
             }
 
-            System.out.println(userBase);
-            for(int i=0; i <userBase.size(); i++){
-            }
 
 
             /*if (userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
