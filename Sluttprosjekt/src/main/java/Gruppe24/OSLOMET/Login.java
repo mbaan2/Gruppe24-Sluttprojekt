@@ -28,6 +28,8 @@ public class Login implements Initializable {
     @FXML
     private Label passwordError;
 
+    HashMap<String, String> userList = null;
+
     @FXML
     void forgotPassword() throws IOException {
         App.setRoot("userRegister");
@@ -43,25 +45,41 @@ public class Login implements Initializable {
             App.setRoot("adminPage");
         } else {
             Path path = Paths.get(".\\users.jobj");
-            HashMap<String, String> userList = OpenUserJobj.userList(path);
+            userList = OpenUserJobj.userList(path);
+            System.out.println(userList);
 
-            if(userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
+            Set set = userList.entrySet();
+            Iterator iterator = set.iterator();
+            while (iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry) iterator.next();
+                if (mentry.getKey().equals(usernameTxt.getText()) && mentry.getValue().equals(passwordTxt.getText())) {
+                    login();
+                }
+            }
+        }
+
+
+            /*if (userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
                 login();
             }
 
-            if(usernameTxt.getText().isEmpty()) {
-                        usernameError.setText("Enter a username");
+             */
+
+            if (usernameTxt.getText().isEmpty()) {
+                usernameError.setText("Enter a username");
             }
-            if(!userList.containsKey(usernameTxt.getText())) {
+            if (!userList.containsKey(usernameTxt.getText())) {
                 usernameError.setText("Wrong username");
             }
-            if(passwordTxt.getText().isEmpty()) {
-                        passwordError.setText("Enter a password");
-            } else if(!userList.containsValue(passwordTxt.getText())) {
-                        passwordError.setText("Wrong password");
-                }
+            if (passwordTxt.getText().isEmpty()) {
+                passwordError.setText("Enter a password");
+            } else if (!userList.containsValue(passwordTxt.getText())) {
+                passwordError.setText("Wrong password");
+            }
         }
-    }
+
+
+
 
 
 

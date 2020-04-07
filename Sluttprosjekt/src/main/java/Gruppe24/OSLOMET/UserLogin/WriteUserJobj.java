@@ -10,7 +10,7 @@ public class WriteUserJobj {
 
     public static void SaveUser(Path path, HashMap<String, String> userList) throws IOException {
         try {
-            FileOutputStream os = new FileOutputStream(String.valueOf(path));
+            FileOutputStream os = new FileOutputStream(String.valueOf(path), true);
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(userList);
             oos.flush();
