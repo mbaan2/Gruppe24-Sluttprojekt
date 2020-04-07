@@ -96,6 +96,8 @@ public class SignUp implements Initializable {
 
             userBase = FileOpenerJobj.openFileHashMap();
 
+            //Function to check if username already exist?
+
             //Writing the hashmap to a jobj file for login
             userBase.put(newUser.getUsername(), newUser.getPassword());
             WriteUserJobj.SaveUser(userBase);
