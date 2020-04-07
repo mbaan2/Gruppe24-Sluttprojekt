@@ -1,6 +1,5 @@
-package Gruppe24.OSLOMET.FileTreatment;
+/*package Gruppe24.OSLOMET.FileTreatment;
 
-import Gruppe24.OSLOMET.Car.CarObj;
 import javafx.stage.FileChooser;
 
 import java.io.BufferedReader;
@@ -29,4 +28,4 @@ public class FileOpenerTxt{
             }
         }
     }
-}
+}*/

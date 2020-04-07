@@ -74,26 +74,26 @@ public class QuinaryController implements Initializable {
 
         Path filsti = Paths.get("cars.jobj");
         try {
-            FileSaverJobj.SaveCarCategoryArray(filsti, BuildingNewCar.getBuiltCar());
+            FileSaverJobj.SaveCarCategoryArray(filsti, NewCar.getCarInBuilding());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         Path path = Paths.get("cars.jobj");
-        BuildingNewCar.setBuiltCar(FileOpenerJobj.openFileArray(path));
-        lblCarComponents.setText(BuildingNewCar.getNameIndexStatic(1));
+        NewCar.setCarInBuilding(FileOpenerJobj.openFileArray(path));
+        lblCarComponents.setText(NewCar.getNameIndexStatic(1));
     }
 
     @FXML
     void btnBuildCar(ActionEvent event) {
-        String ut = BuildingNewCar.buildCar();
-        int totalCost = BuildingNewCar.totalCost();
+        String ut = NewCar.builtCarUserView();
+        int totalCost = NewCar.totalCost();
         lblCarComponents.setText(ut + "\n" + "Totalcost of this car is: " +totalCost);
         btnSaveCar.setVisible(true);
     }
 
     @FXML
     void btnNameCar(ActionEvent event) {
-        CarObj car = new CarObj(lblCarName.getText(), BuildingNewCar.totalCost(), CarObj.arrayListToArray(CarObj.fetchCarParts()));
+        NewCar car = new NewCar("user", lblCarName.getText(), NewCar.totalCost(), NewCar.getCarInBuilding());
         FileSaverTxt fs = new FileSaverTxt();
         try{
             fs.saveTxtFile(car);
