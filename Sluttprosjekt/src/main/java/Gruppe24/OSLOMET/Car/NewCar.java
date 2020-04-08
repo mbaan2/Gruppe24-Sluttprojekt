@@ -91,7 +91,7 @@ public class NewCar implements Car{
 
     public static int totalCost(){
         int totalcost = 0;
-        //totalcost += buidlingANewCar[0].getCost();
+        totalcost += buildingANewCar[0].getCost();
         totalcost += buildingANewCar[1].getCost();
         totalcost += buildingANewCar[2].getCost();
         for(int i = 0; i< buildingANewCar[3].size(); i++) {
@@ -111,7 +111,7 @@ public class NewCar implements Car{
 
     public static String builtCarUserView(){
         String carBuild = "This car contains: \n";
-        //carBuild += "Fuel: " + buidlingANewCar[0].getName();
+        carBuild += "Fuel: " + buildingANewCar[0].getName() + " (kr" + buildingANewCar[0].getCost() + ")\n";
         carBuild += "Wheels: " + buildingANewCar[1].getName() + " (kr" + buildingANewCar[1].getCost() + ")\n";
         carBuild += "Color: " + buildingANewCar[2].getName() + " (kr" + buildingANewCar[2].getCost() + ")\n";
         for(int i = 0; i< buildingANewCar[3].size(); i++) {
@@ -133,8 +133,7 @@ public class NewCar implements Car{
         NewCar car = createCarObject(carName);
         String ut = car.getUser() + "\t" + carName +"\t" + totalCost() + "\tFEATURES:";
 
-        //NOT YET ACTIVE
-        //ut += buidlingANewCar[0].getName() +"\t"+ buidlingANewCar[0].getCost() + "\t";
+        ut += buildingANewCar[0].getName() +"\t"+ buildingANewCar[0].getCost() + "\t";
         ut += buildingANewCar[1].getName() +"\t"+ buildingANewCar[1].getCost() + "\t";
         ut += buildingANewCar[2].getName() +"\t"+ buildingANewCar[2].getCost() + "\t";
         for(int i = 0; i< buildingANewCar[3].size(); i++) {
