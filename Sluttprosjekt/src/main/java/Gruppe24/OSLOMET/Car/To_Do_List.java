@@ -8,4 +8,6 @@
     10)     JUnit testing
     11)     Creating our own exceptions classes
     12)     No duplicate values in admin add buttons
+    13)     Function to check if username already exist
+
 */

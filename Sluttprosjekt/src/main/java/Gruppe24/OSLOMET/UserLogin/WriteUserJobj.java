@@ -6,11 +6,11 @@ import java.util.HashMap;
 
 public class WriteUserJobj {
 
-    public static void SaveUser(Path path, HashMap<String, String> userList) throws IOException {
+    public static void SaveUser(HashMap<String, String> userList) throws IOException {
 
 
         try {
-            FileOutputStream os = new FileOutputStream("users.ser");
+            FileOutputStream os = new FileOutputStream("users.jobj");
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(userList);
             oos.flush();

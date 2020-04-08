@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
@@ -93,23 +94,18 @@ public class SignUp implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
             User newUser = new User(username, password, location, gender, answer);
 
-            try (FileInputStream in = new FileInputStream("users.ser");
-                 ObjectInputStream oin = new ObjectInputStream(in)) {
-                userBase = (HashMap) oin.readObject();
-                in.close();
-                oin.close();
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
+            userBase = FileOpenerJobj.openFileHashMap();
+
+            if(!userBase.containsKey(newUser.getUsername())){
+                userBase.put(newUser.getUsername(), newUser.getPassword());
+                WriteUserJobj.SaveUser(userBase);
+                App.setRoot("login");
+            } else{
+                System.err.println("Username already exisit");
             }
 
 
-
-            //Writing the hashmap to a jobj file for login
-            userBase.put(newUser.getUsername(), newUser.getPassword());
-            Path filsti = Paths.get("users.ser");
-            WriteUserJobj.SaveUser(filsti, userBase);
-
-            //Writing the list to a txt file for the userregister
+            //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
             Path path = Paths.get("user.txt");
@@ -117,10 +113,12 @@ public class SignUp implements Initializable {
 
             try {
                 WriteUser.writeString(selectedFile, str);
-                App.setRoot("login");
+                //App.setRoot("login");
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
+
+
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
