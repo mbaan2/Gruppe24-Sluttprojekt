@@ -104,7 +104,7 @@ public class SignUp implements Initializable {
                 System.err.println("Username already exisit");
             }
 
-            /*
+
             //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
@@ -113,12 +113,12 @@ public class SignUp implements Initializable {
 
             try {
                 WriteUser.writeString(selectedFile, str);
-                App.setRoot("login");
+                //App.setRoot("login");
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
 
-             */
+
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");

@@ -18,6 +18,11 @@ import java.util.*;
 
 public class Login implements Initializable {
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
     @FXML
     private PasswordField passwordTxt;
 
@@ -39,60 +44,39 @@ public class Login implements Initializable {
 
     @FXML
     void loginBtn(ActionEvent event) throws IOException {
-
         passwordError.setText("");
         usernameError.setText("");
 
-
         userBase = FileOpenerJobj.openFileHashMap();
 
-        // Add admin into the userBase?
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             App.setRoot("adminPage");
         }
-            if(userBase.containsKey(usernameTxt.getText())){
-                if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
+
+        if(userBase.containsKey(usernameTxt.getText())){
+            if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                     login();
-                }
-            }
-
-
-
-            /*if (userList.containsKey(usernameTxt.getText()) && userList.containsValue(passwordTxt.getText())) {
-                login();
-            }
-
-             */
-
-            if (usernameTxt.getText().isEmpty()) {
-                usernameError.setText("Enter a username");
-            }
-            if (!userBase.containsKey(usernameTxt.getText())) {
-                usernameError.setText("Wrong username");
-            }
-            if (passwordTxt.getText().isEmpty()) {
-                passwordError.setText("Enter a password");
-            } else if (!userBase.containsValue(passwordTxt.getText())) {
-                passwordError.setText("Wrong password");
             }
         }
 
 
-
-
-
-
+        if (usernameTxt.getText().isEmpty()) {
+                usernameError.setText("Enter a username");
+        }
+        if (!userBase.containsKey(usernameTxt.getText())) {
+                usernameError.setText("Wrong username");
+        }
+        if (passwordTxt.getText().isEmpty()) {
+                passwordError.setText("Enter a password");
+        } else if (!userBase.containsValue(passwordTxt.getText())) {
+                passwordError.setText("Wrong password");
+            }
+    }
 
     @FXML
     void signUp() throws IOException {
         App.setRoot("signup");
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
 
     private void login() throws IOException {
         App.setRoot("01-primary");
