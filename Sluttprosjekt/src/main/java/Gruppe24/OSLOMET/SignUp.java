@@ -96,12 +96,15 @@ public class SignUp implements Initializable {
 
             userBase = FileOpenerJobj.openFileHashMap();
 
-            //Function to check if username already exist?
+            if(!userBase.containsKey(newUser.getUsername())){
+                userBase.put(newUser.getUsername(), newUser.getPassword());
+                WriteUserJobj.SaveUser(userBase);
+                App.setRoot("login");
+            } else{
+                System.err.println("Username already exisit");
+            }
 
-            //Writing the hashmap to a jobj file for login
-            userBase.put(newUser.getUsername(), newUser.getPassword());
-            WriteUserJobj.SaveUser(userBase);
-
+            /*
             //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
@@ -114,6 +117,8 @@ public class SignUp implements Initializable {
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
+
+             */
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");

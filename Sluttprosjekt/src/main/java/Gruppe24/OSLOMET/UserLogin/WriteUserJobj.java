@@ -11,8 +11,6 @@ public class WriteUserJobj {
 
         try {
             FileOutputStream os = new FileOutputStream("users.jobj");
-            // Seems to work when you stay in the file. When you go out and want to redo it. it wont add
-            // FileOutputStream os = new FileOutputStream(new File("users.jobj"), true);
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(userList);
             oos.flush();

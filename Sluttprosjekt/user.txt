@@ -25,3 +25,10 @@ abc;abc;oslo;Male;ads
 345;345;sadasd;Male;asdasd
 abc;abc;sdasd;Female;sads
 789;789;sdad;Male;adasd
+123;123;123;Male;123
+234;234;234;Male;234
+345;345;345;Male;345
+123;123;123;Male;123
+234;234;234;Other;234
+234;234;234;Male;234
+123;123;123;Other;123
