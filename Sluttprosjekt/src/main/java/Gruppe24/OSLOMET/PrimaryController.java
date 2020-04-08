@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.Car.NewCar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,38 +18,51 @@ import javafx.scene.layout.HBox;
 public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        createButtons();
-    }
-
-    List<Button> buttonList = new ArrayList<>();
-    public void createButtons(){
-        String fuel = "";
-        fuel = "Gasoline";
-        buttonList.add(new Button(fuel));
-        fuel = "Diesel";
-        buttonList.add(new Button(fuel));
-        fuel = "Electric";
-        buttonList.add(new Button(fuel));
-        hboxx.getChildren().clear();
-        hboxx.getChildren().addAll(buttonList);
+        txtGasCar.setText("Gasoline Car \n Cost: 20.000");
+        txtDieselCar.setText("Diesel Car \n Cost: 17.500");
+        txtElectricCar.setText("Electric Car \n Cost: 30.000");
     }
 
     @FXML
-    private HBox hboxx;
-    /*Based on: https://stackoverflow.com/questions/44949774/javafx-how-to-add-elements-eg-buttons-dynamically-created-from-items-stored-in*/
+    private Button txtGasCar;
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private Button txtDieselCar;
+
+    @FXML
+    private Button txtElectricCar;
+
+    @FXML
+    void btnDieselCar(ActionEvent event) throws IOException {
+        NewCar.set(0, new Carparts("Gasoline Car", 20_000));
+        System.out.println("Done");
         App.setRoot("02-secondary");
+
     }
 
     @FXML
-    void logoutBtn() throws IOException {
-        App.setRoot("login");
+    void btnElectricCar(ActionEvent event) throws IOException {
+        NewCar.set(0, new Carparts("Diesel Car", 17_500));
+        System.out.println("Done");
+        App.setRoot("02-secondary");
+
+    }
+
+    @FXML
+    void btnGasCar(ActionEvent event) throws IOException {
+        NewCar.set(0, new Carparts("Electric Car", 30_000));
+        System.out.println("Done");
+        App.setRoot("02-secondary");
+
     }
 
     @FXML
     void btnLoadCars(ActionEvent event) throws IOException{
         App.setRoot("loadedCars");
+    }
+
+    @FXML
+    void logoutBtn() throws IOException {
+        App.setRoot("login");
     }
 }
