@@ -11,7 +11,6 @@ import java.util.List;
 
 public class FileOpenerJobj {
     public static List<Car> openFile(Path path) {
-        //Path path = Paths.get("filterliste.jobj");
         List<Car> carParts = new ArrayList<>();
 
         try (   InputStream in = Files.newInputStream(path);
@@ -25,7 +24,6 @@ public class FileOpenerJobj {
     }
 
     public static Car[] openFileArray(Path path) {
-        //Path path = Paths.get("filterliste.jobj");
         Car[] car = new Car[5];
 
         try (   InputStream in = Files.newInputStream(path);

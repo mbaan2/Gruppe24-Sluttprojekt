@@ -33,10 +33,10 @@ public class SecondaryController implements Initializable {
     List<RadioButton> wheelButtons = new ArrayList<>();
 
     public void createButtons(){
-        wheelButtons = LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
-        vboxWheels = LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
+        LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
+        LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
 
-        //BuildingNewCar.set(1, wheelOptions.get(2));
+        //We have to check at the end if the index is still correct
         if(NewCar.getNameIndexStatic(1).equals("Empty")) {
             wheelButtons.get(0).setSelected(true);
         } else{

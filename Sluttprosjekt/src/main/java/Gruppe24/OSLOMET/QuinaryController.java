@@ -18,35 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class QuinaryController implements Initializable {
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        createRadioButton();
-    }
-
-    final ToggleGroup group = new ToggleGroup();
-
-    List<RadioButton> buttonList = new ArrayList<>();
-    public void createRadioButton(){
-        /*
-        String sortCar = "";
-        sortCar = "Police car";
-        RadioButton policeCar = new RadioButton(sortCar);
-        policeCar.setToggleGroup(group);
-        buttonList.add(policeCar);
-        sortCar = "Race car";
-        RadioButton raceCar = new RadioButton(sortCar);
-        raceCar.setToggleGroup(group);
-        buttonList.add(raceCar);
-        sortCar = "GrandMa car";
-        RadioButton grandMaCar = new RadioButton(sortCar);
-        grandMaCar.setToggleGroup(group);
-        buttonList.add(grandMaCar);
-        hboxxRadioButtons.getChildren().clear();
-        hboxxRadioButtons.getChildren().addAll(buttonList);
-        buttonList.get(0).setSelected(true);
-         */
-    }
+public class QuinaryController{
 
     @FXML
     private Button btnSaveCar;
@@ -58,13 +30,7 @@ public class QuinaryController implements Initializable {
     private TextField lblCarName;
 
     @FXML
-    private HBox hboxxRadioButtons;
-
-    @FXML
     private Label lblCarComponents;
-
-    @FXML
-    private Button quinaryButton;
 
     @FXML
     void btnSaveCar(ActionEvent event) {

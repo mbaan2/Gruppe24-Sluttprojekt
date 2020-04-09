@@ -35,9 +35,19 @@ public class TertiaryController implements Initializable {
     List<RadioButton> colorButtons = new ArrayList<>();
 
     public void createButtons(List<Car> color){
-        colorButtons = LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
-        vboxColor = LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
-        colorButtons.get(0).setSelected(true);
+        LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
+        LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
+
+        //We have to add to function to check for prelaoded data see secondaryController
+        if(NewCar.getNameIndexStatic(2).equals("Empty")) {
+            colorButtons.get(0).setSelected(true);
+        } else{
+            for(int i=0; i <colorOptions.size();i++){
+                if(NewCar.getNameIndexStatic(2).equals(colorOptions.get(i).getName())){
+                    colorButtons.get(i).setSelected(true);
+                }
+            }
+        }
     }
 
     public void openFile(){
