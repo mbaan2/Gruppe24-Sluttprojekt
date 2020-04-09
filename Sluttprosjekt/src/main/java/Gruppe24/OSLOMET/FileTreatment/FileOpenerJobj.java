@@ -2,9 +2,7 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -53,4 +51,22 @@ public class FileOpenerJobj {
         }
         return userBase;
     }
+
+
+    public static ArrayList<Car> openingCarArray(String path) throws IOException {
+        ArrayList<Car> carList = new ArrayList<>();
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+        boolean moreObjects = true;
+
+        while (moreObjects) {
+            try {
+                Car aCar = (Car) is.readObject();
+                carList.add(aCar);
+            } catch (Exception e){
+                moreObjects = false;
+            }
+        }
+        return carList;
+    }
+
 }

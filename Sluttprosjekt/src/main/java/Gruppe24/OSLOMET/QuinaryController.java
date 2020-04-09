@@ -80,7 +80,6 @@ public class QuinaryController implements Initializable {
         }
         Path path = Paths.get("cars.jobj");
         NewCar.setCarInBuilding(FileOpenerJobj.openFileArray(path));
-        lblCarComponents.setText(NewCar.getNameIndexStatic(1));
     }
 
     @FXML

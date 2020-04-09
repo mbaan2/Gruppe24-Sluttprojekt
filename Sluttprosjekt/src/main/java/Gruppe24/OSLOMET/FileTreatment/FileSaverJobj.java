@@ -5,6 +5,7 @@ import Gruppe24.OSLOMET.Car.Car;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileSaverJobj {
@@ -26,5 +27,35 @@ public class FileSaverJobj {
         } catch (IOException e) {
             throw new IOException(e.getMessage());
         }
+    }
+
+
+
+
+    public static void SavingCarArray(String path, ArrayList<Car> carList) throws IOException {
+        ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
+        os1.writeObject(carList.get(0));
+        os1.close();
+
+        for(int i = 1; i < carList.size(); i++){
+            ObjectOutputStream os2 = new ObjectOutputStream(new FileOutputStream(path, true)) {
+                protected void writeStreamHeader() throws IOException {
+                    reset();
+                }
+            };
+            os2.writeObject(carList.get(i));
+            //NOT SURE IF WE HAVE TO CLOSE IT SO THIS IS SOMETHING WE NEED TO TEST!
+            os2.close();
+        }
+    }
+
+    public static void addingOnlyOneCarObject (String path, Car carObject) throws IOException {
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path, true)) {
+            protected void writeStreamHeader() throws IOException {
+                reset();
+            }
+        };
+        os.writeObject(carObject);
+        os.close();
     }
 }
