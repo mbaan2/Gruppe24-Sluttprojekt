@@ -34,11 +34,10 @@ public class TertiaryController implements Initializable {
     List<Car> colorOptions = new ArrayList<>();
     List<RadioButton> colorButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> color){
+    public void createButtons(){
         LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
         LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
 
-        //We have to add to function to check for prelaoded data see secondaryController
         if(NewCar.getNameIndexStatic(2).equals("Empty")) {
             colorButtons.get(0).setSelected(true);
         } else{
@@ -53,7 +52,7 @@ public class TertiaryController implements Initializable {
     public void openFile(){
         Path path = Paths.get("color.jobj");
         colorOptions = FileOpenerJobj.openFile(path);
-        createButtons(colorOptions);
+        createButtons();
     }
 
     @FXML
@@ -86,7 +85,7 @@ public class TertiaryController implements Initializable {
         colorOptions.add(blue);
         colorOptions.add(yellow);
 
-        createButtons(colorOptions);
+        createButtons();
     }
 
     public void createFile(){
