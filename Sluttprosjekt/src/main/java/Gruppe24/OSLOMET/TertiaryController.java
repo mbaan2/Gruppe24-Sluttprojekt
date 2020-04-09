@@ -50,12 +50,7 @@ public class TertiaryController implements Initializable {
     private void switchToQuaternary() throws IOException {
         for(int i = 0; i<colorOptions.size();i++){
             if(colorButtons.get(i).isSelected()){
-                for(int j = 0; j<colorOptions.size(); j++){
-                    if(colorButtons.get(i).getText().equals(colorOptions.get(j).getName())){
-                        NewCar.set(2, colorOptions.get(j));
-                        System.out.println(colorOptions.get(j).getName());
-                    }
-                }
+               NewCar.set(2, colorOptions.get(i));
             }
         }
 

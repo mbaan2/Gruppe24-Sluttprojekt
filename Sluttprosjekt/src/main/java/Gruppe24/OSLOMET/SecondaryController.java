@@ -58,11 +58,7 @@ public class SecondaryController implements Initializable {
     private void switchToTertiary() throws IOException {
         for(int i = 0; i<wheelOptions.size();i++){
             if(wheelButtons.get(i).isSelected()){
-                for(int j = 0; j<wheelOptions.size(); j++){
-                    if(wheelButtons.get(i).getText().equals(wheelOptions.get(j).getName())){
-                        NewCar.set(1, wheelOptions.get(j));
-                    }
-                }
+                NewCar.set(1, wheelOptions.get(i));
             }
         }
 

@@ -14,11 +14,11 @@ public class LoadingValuesOnScreen {
 
         for(int i = 0; i< valuesList.size(); i++){
             String str = "";
-            str = valuesList.get(i).getName();
+            str = valuesList.get(i).getName() + " (" + valuesList.get(i).getCost() + "kr)";
             RadioButton newButton = new RadioButton(str);
             newButton.setToggleGroup(toggleGroup);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 100px;");
+            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 175px;");
         }
         return buttonList;
     }
@@ -27,10 +27,10 @@ public class LoadingValuesOnScreen {
 
         for(int i = 0; i< valuesList.size(); i++){
             String str = "";
-            str = valuesList.get(i).getName();
+            str = valuesList.get(i).getName() + " (" + valuesList.get(i).getCost() + "kr)";
             CheckBox newButton = new CheckBox(str);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 100px;");
+            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 175px;");
         }
         return buttonList;
     }

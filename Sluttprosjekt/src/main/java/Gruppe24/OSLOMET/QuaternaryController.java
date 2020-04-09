@@ -50,11 +50,7 @@ public class QuaternaryController implements Initializable {
         Car addons = new CarCategory("addons");
         for(int i = 0; i< addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
-                for(int j = 0; j< addOnOptions.size(); j++){
-                    if(addOnButtons.get(i).getText().equals(addOnOptions.get(j).getName())){
-                        addons.add(addOnOptions.get(j));
-                    }
-                }
+              addons.add(addOnOptions.get(i));
             }
         }
         NewCar.set(3, addons);
