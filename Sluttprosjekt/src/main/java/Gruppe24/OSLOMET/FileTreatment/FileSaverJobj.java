@@ -7,9 +7,11 @@ import javafx.collections.ObservableList;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileSaverJobj {
-    public static void SaveCarCategory(Path path, ObservableList<NewCar> c) throws IOException {
+    public static void SaveCarCategory(Path path, List<Car> c) throws IOException {
         try {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);
@@ -19,6 +21,7 @@ public class FileSaverJobj {
         }
     }
 
+    //Why do we have path here if it's not used? Are we going to change something here or should we just take the variable out?
     public static void SaveCarCategoryArray(Path path, Car[] c) throws IOException {
         try {
             OutputStream os = new FileOutputStream(new File("cars.jobj"), true);
