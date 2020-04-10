@@ -1,9 +1,13 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.BuiltCarsHistory.BuiltCarsSingleton;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.Car.NewCar;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,9 +58,6 @@ public class App extends Application {
         Car color = new CarCategory("Color");
         color.add(colorRed);
         color.add(colorGreen);
-
-
-
     }
 
 }

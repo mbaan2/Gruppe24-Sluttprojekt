@@ -18,9 +18,9 @@ import javafx.scene.layout.HBox;
 public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtGasCar.setText("Gasoline Car \n Cost: 20.000");
-        txtDieselCar.setText("Diesel Car \n Cost: 17.500");
-        txtElectricCar.setText("Electric Car \n Cost: 30.000");
+        txtGasCar.setText("Gasoline Car \n Cost: 20.000 kr");
+        txtDieselCar.setText("Diesel Car \n Cost: 17.500 kr");
+        txtElectricCar.setText("Electric Car \n Cost: 30.000 kr");
     }
 
     @FXML
@@ -35,23 +35,18 @@ public class PrimaryController implements Initializable {
     @FXML
     void btnDieselCar(ActionEvent event) throws IOException {
         NewCar.set(0, new Carparts("Gasoline Car", 20_000));
-        System.out.println("Done");
         App.setRoot("02-secondary");
-
     }
 
     @FXML
     void btnElectricCar(ActionEvent event) throws IOException {
         NewCar.set(0, new Carparts("Diesel Car", 17_500));
-        System.out.println("Done");
         App.setRoot("02-secondary");
-
     }
 
     @FXML
     void btnGasCar(ActionEvent event) throws IOException {
         NewCar.set(0, new Carparts("Electric Car", 30_000));
-        System.out.println("Done");
         App.setRoot("02-secondary");
 
     }

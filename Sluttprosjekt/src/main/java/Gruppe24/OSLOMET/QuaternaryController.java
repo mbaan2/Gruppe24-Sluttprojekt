@@ -34,10 +34,19 @@ public class QuaternaryController implements Initializable {
     List<CheckBox> addOnButtons = new ArrayList<>();
 
     public void createButtons(List<Car> addon){
-        addOnButtons = LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
-        vboxAddOns = LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
-        //addOneButtons.get(0).setSelected(true);
-    }
+        LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
+        LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
+
+        //We have to add to function to check for prelaoded data see secondaryController however nothing is selected in there is no predata
+
+            for(int i=0; i <addOnOptions.size();i++){
+                for(int j=0; j<NewCar.sizeAddone(); j++) {
+                    if (NewCar.getNameIndexAddoneStatic(j).equals(addOnOptions.get(i).getName())) {
+                        addOnButtons.get(i).setSelected(true);
+                    }
+                }
+            }
+        }
 
     public void openFile(){
         Path path = Paths.get("AddOns.jobj");
@@ -50,11 +59,7 @@ public class QuaternaryController implements Initializable {
         Car addons = new CarCategory("addons");
         for(int i = 0; i< addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
-                for(int j = 0; j< addOnOptions.size(); j++){
-                    if(addOnButtons.get(i).getText().equals(addOnOptions.get(j).getName())){
-                        addons.add(addOnOptions.get(j));
-                    }
-                }
+              addons.add(addOnOptions.get(i));
             }
         }
         NewCar.set(3, addons);

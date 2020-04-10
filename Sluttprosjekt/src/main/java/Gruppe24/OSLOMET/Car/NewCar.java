@@ -74,6 +74,23 @@ public class NewCar implements Car{
             return "Empty";
         }
     }
+    public static String getNameIndexAddoneStatic(int index){
+        try{
+            return buildingANewCar[3].getNameIndex(index);
+        } catch (NullPointerException e){
+            return "Empty";
+        }
+    }
+
+    public static int sizeAddone(){
+        int size = 0;
+        try{
+            size = buildingANewCar[3].size();
+        } catch (NullPointerException e){
+            size =0;
+        }
+        return size;
+    }
 
     @Override
     public Car getElement(int index) {
