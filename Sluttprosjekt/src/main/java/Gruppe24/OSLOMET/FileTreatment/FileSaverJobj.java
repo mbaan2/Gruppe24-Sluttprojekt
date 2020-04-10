@@ -1,15 +1,15 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.NewCar;
+import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FileSaverJobj {
-    public static void SaveCarCategory(Path path, List<Car> c) throws IOException {
+    public static void SaveCarCategory(Path path, ObservableList<NewCar> c) throws IOException {
         try {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);
@@ -32,7 +32,7 @@ public class FileSaverJobj {
 
 
 
-    public static void SavingCarArray(String path, ArrayList<Car> carList) throws IOException {
+    public static void SavingCarArray(String path, ObservableList<NewCar> carList) throws IOException {
         ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
         os1.writeObject(carList.get(0));
         os1.close();
@@ -49,7 +49,7 @@ public class FileSaverJobj {
         }
     }
 
-    public static void addingOnlyOneCarObject (String path, Car carObject) throws IOException {
+    public static void addingOnlyOneCarObject (String path, NewCar carObject) throws IOException {
         ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path, true)) {
             protected void writeStreamHeader() throws IOException {
                 reset();
