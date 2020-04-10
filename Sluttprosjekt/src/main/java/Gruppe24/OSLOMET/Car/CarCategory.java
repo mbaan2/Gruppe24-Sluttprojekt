@@ -39,15 +39,6 @@ public class CarCategory implements Car, Serializable {
         return carBuild;
     }
 
-    //this is probably causing the problem in controller 2:
-    public static int totalCost(){
-        int totalcost = 0;
-        for(Car carparts : newCar){
-            totalcost += carparts.getCost();
-        }
-        return totalcost;
-    }
-
     public int size(){
         int size =0;
         for(int i = 0 ; i < newCar.size(); i++){

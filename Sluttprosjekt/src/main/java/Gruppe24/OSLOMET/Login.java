@@ -1,27 +1,16 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.UserLogin.OpenUserJobj;
-import Gruppe24.OSLOMET.UserLogin.WriteUserJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
-public class Login implements Initializable {
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+public class Login{
 
     @FXML
     private PasswordField passwordTxt;
@@ -60,6 +49,7 @@ public class Login implements Initializable {
         }
 
 
+        //Feedback to the user
         if (usernameTxt.getText().isEmpty()) {
                 usernameError.setText("Enter a username");
         }
