@@ -4,7 +4,6 @@
     6)      Save button for user
     7)      History of built cars
     8)      Polish look
-    9)      Export to Excel
     10)     JUnit testing
     11)     Creating our own exceptions classes
     12)     No duplicate values in admin add buttons
