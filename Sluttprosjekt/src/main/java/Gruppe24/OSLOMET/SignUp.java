@@ -99,13 +99,15 @@ public class SignUp implements Initializable {
             if(!userBase.containsKey(newUser.getUsername())){
                 userBase.put(newUser.getUsername(), newUser.getPassword());
                 WriteUserJobj.SaveUser(userBase);
+
+                // When everything is done go back to login
                 App.setRoot("login");
             } else{
-                System.err.println("Username already exisit");
+                System.err.println("Username already exists");
             }
 
 
-            //Writing the list to a txt file for the user register
+            //Writing the list to a txt file to show the entire user profile to the user
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
             Path path = Paths.get("user.txt");
@@ -113,7 +115,6 @@ public class SignUp implements Initializable {
 
             try {
                 WriteUser.writeString(selectedFile, str);
-                //App.setRoot("login");
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }

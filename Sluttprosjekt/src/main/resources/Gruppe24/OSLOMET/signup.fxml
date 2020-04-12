@@ -29,7 +29,6 @@
       <Label fx:id="passwordError" layoutX="415.0" layoutY="137.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
       <Label fx:id="locationError" layoutX="405.0" layoutY="169.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
       <Label fx:id="answerError" layoutX="411.0" layoutY="233.0" prefHeight="17.0" prefWidth="110.0" />
-      <Label fx:id="genderError" layoutX="411.0" layoutY="266.0" prefHeight="17.0" prefWidth="110.0" />
       <Label fx:id="questionError" layoutX="415.0" layoutY="200.0" prefHeight="17.0" prefWidth="110.0" />
       <Label fx:id="genderError" layoutX="423.0" layoutY="266.0" prefHeight="17.0" prefWidth="110.0" />
    </children>

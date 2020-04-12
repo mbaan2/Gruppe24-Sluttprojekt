@@ -52,7 +52,7 @@ public class NewCar implements Car{
     }
 
     //Creates temporary car
-    static Car[] buildingANewCar = new Car[4];
+    static Car[] buildingANewCar = new Car[5];
 
     public static Car[] getCarInBuilding(){
         return buildingANewCar;
@@ -76,7 +76,7 @@ public class NewCar implements Car{
     }
     public static String getNameIndexAddoneStatic(int index){
         try{
-            return buildingANewCar[3].getNameIndex(index);
+            return buildingANewCar[4].getNameIndex(index);
         } catch (NullPointerException e){
             return "Empty";
         }
@@ -85,7 +85,7 @@ public class NewCar implements Car{
     public static int sizeAddone(){
         int size = 0;
         try{
-            size = buildingANewCar[3].size();
+            size = buildingANewCar[4].size();
         } catch (NullPointerException e){
             size =0;
         }
@@ -106,13 +106,17 @@ public class NewCar implements Car{
         buildingANewCar[index] = carparts;
     }
 
+    public static void setUsername(Car carUsername) {
+        buildingANewCar[0] = carUsername;
+    }
+
     public static int totalCost(){
         int totalcost = 0;
-        totalcost += buildingANewCar[0].getCost();
         totalcost += buildingANewCar[1].getCost();
         totalcost += buildingANewCar[2].getCost();
-        for(int i = 0; i< buildingANewCar[3].size(); i++) {
-            totalcost += buildingANewCar[3].getElement(i).getCost();
+        totalcost += buildingANewCar[3].getCost();
+        for(int i = 0; i< buildingANewCar[4].size(); i++) {
+            totalcost += buildingANewCar[4].getElement(i).getCost();
         }
         return totalcost;
     }
@@ -127,34 +131,36 @@ public class NewCar implements Car{
     }
 
     public static String builtCarUserView(){
-        String carBuild = "This car contains: \n";
-        carBuild += "Fuel: " + buildingANewCar[0].getName() + " (kr" + buildingANewCar[0].getCost() + ")\n";
-        carBuild += "Wheels: " + buildingANewCar[1].getName() + " (kr" + buildingANewCar[1].getCost() + ")\n";
-        carBuild += "Color: " + buildingANewCar[2].getName() + " (kr" + buildingANewCar[2].getCost() + ")\n";
-        for(int i = 0; i< buildingANewCar[3].size(); i++) {
-            carBuild += "Add on: " + buildingANewCar[3].getElement(i).getName() + " (kr" + buildingANewCar[3].getElement(i).getCost() + ")\n";
+        String carBuild = "This car belongs to: \n";
+        carBuild += "Username: " + buildingANewCar[0].getName() + "\n\n";
+        carBuild += "This car contains: " + "\n";
+        carBuild += "Fuel: " + buildingANewCar[1].getName() + " (kr" + buildingANewCar[1].getCost() + ")\n";
+        carBuild += "Wheels: " + buildingANewCar[2].getName() + " (kr" + buildingANewCar[2].getCost() + ")\n";
+        carBuild += "Color: " + buildingANewCar[3].getName() + " (kr" + buildingANewCar[3].getCost() + ")\n";
+        for(int i = 0; i< buildingANewCar[4].size(); i++) {
+            carBuild += "Add on: " + buildingANewCar[4].getElement(i).getName() + " (kr" + buildingANewCar[4].getElement(i).getCost() + ")\n";
         }
         return carBuild;
     }
 
-    public static NewCar createCarObject(String innCarName){
+    public static NewCar createCarObject(String innCarName, String innCarUsername){
         NewCar car = new NewCar("", null, 0, null);
-        car.setUser("user"); //EDIT TO FIT USER
+        car.setUser(innCarUsername);
         car.setName(innCarName);
         car.setCost(totalCost());
         car.setFeatures(buildingANewCar);
         return car;
     }
 
-    public String savableData(String carName){
-        NewCar car = createCarObject(carName);
+    public String savableData(String carName, String carUsername){
+        NewCar car = createCarObject(carName, carUsername);
         String ut = car.getUser() + "\t" + carName +"\t" + totalCost() + "\tFEATURES:";
 
-        ut += buildingANewCar[0].getName() +"\t"+ buildingANewCar[0].getCost() + "\t";
         ut += buildingANewCar[1].getName() +"\t"+ buildingANewCar[1].getCost() + "\t";
         ut += buildingANewCar[2].getName() +"\t"+ buildingANewCar[2].getCost() + "\t";
-        for(int i = 0; i< buildingANewCar[3].size(); i++) {
-            ut += buildingANewCar[3].getElement(i).getName() + "\t" + buildingANewCar[3].getElement(i).getCost() + "\t";
+        ut += buildingANewCar[3].getName() +"\t"+ buildingANewCar[3].getCost() + "\t";
+        for(int i = 0; i< buildingANewCar[4].size(); i++) {
+            ut += buildingANewCar[4].getElement(i).getName() + "\t" + buildingANewCar[4].getElement(i).getCost() + "\t";
         }
         ut += "\n";
 

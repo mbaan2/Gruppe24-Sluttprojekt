@@ -62,8 +62,7 @@ public class QuaternaryController implements Initializable {
               addons.add(addOnOptions.get(i));
             }
         }
-        NewCar.set(3, addons);
-
+        NewCar.set(4, addons);
         App.setRoot("05-quinary");
     }
 

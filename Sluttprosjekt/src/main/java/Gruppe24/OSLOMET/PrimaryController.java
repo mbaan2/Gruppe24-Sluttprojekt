@@ -34,19 +34,19 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnDieselCar(ActionEvent event) throws IOException {
-        NewCar.set(0, new Carparts("Gasoline Car", 20_000));
+        NewCar.set(1, new Carparts("Gasoline Car", 20_000));
         App.setRoot("02-secondary");
     }
 
     @FXML
     void btnElectricCar(ActionEvent event) throws IOException {
-        NewCar.set(0, new Carparts("Diesel Car", 17_500));
+        NewCar.set(1, new Carparts("Diesel Car", 17_500));
         App.setRoot("02-secondary");
     }
 
     @FXML
     void btnGasCar(ActionEvent event) throws IOException {
-        NewCar.set(0, new Carparts("Electric Car", 30_000));
+        NewCar.set(1, new Carparts("Electric Car", 30_000));
         App.setRoot("02-secondary");
 
     }

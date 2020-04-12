@@ -33,3 +33,5 @@ abc;abc;sdasd;Female;sads
 234;234;234;Male;234
 123;123;123;Other;123
 Aaa;aaa;Aaa;Other;Aaa
+oyvind91;oyvind1991;Oslo;Male;Oyvind
+Bruker;passord;Oslo;Male;Meg

@@ -3,7 +3,6 @@ package Gruppe24.OSLOMET.FileTreatment;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 
 public class FileChooserTxt{

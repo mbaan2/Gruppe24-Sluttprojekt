@@ -1,8 +1,12 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.CarUsername;
+import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -38,13 +42,15 @@ public class Login{
 
         userBase = FileOpenerJobj.openFileHashMap();
 
-        if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
+        if (usernameTxt.getText().equals("admins") && passwordTxt.getText().equals("admins")) {
             App.setRoot("adminPage");
         }
 
         if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
-                    login();
+                CarUsername carUsername = new CarUsername(usernameTxt.getText());
+                NewCar.setUsername(carUsername);
+                login();
             }
         }
 

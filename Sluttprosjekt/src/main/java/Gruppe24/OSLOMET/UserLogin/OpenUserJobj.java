@@ -8,7 +8,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+
 public class OpenUserJobj {
+    // Not used
+    /*
     public static HashMap<String, String> userListOpenJOBJ(Path path){
         HashMap<String, String> userBase = null;
 
@@ -33,4 +36,5 @@ public class OpenUserJobj {
 
         return userBase;
     }
+    */
 }

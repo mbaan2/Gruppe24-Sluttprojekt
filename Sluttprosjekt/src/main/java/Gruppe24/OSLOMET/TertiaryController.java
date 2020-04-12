@@ -38,11 +38,11 @@ public class TertiaryController implements Initializable {
         LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
         LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
 
-        if(NewCar.getNameIndexStatic(2).equals("Empty")) {
+        if(NewCar.getNameIndexStatic(3).equals("Empty")) {
             colorButtons.get(0).setSelected(true);
         } else{
             for(int i=0; i <colorOptions.size();i++){
-                if(NewCar.getNameIndexStatic(2).equals(colorOptions.get(i).getName())){
+                if(NewCar.getNameIndexStatic(3).equals(colorOptions.get(i).getName())){
                     colorButtons.get(i).setSelected(true);
                 }
             }
@@ -59,7 +59,7 @@ public class TertiaryController implements Initializable {
     private void switchToQuaternary() throws IOException {
         for(int i = 0; i<colorOptions.size();i++){
             if(colorButtons.get(i).isSelected()){
-               NewCar.set(2, colorOptions.get(i));
+               NewCar.set(3, colorOptions.get(i));
             }
         }
 
