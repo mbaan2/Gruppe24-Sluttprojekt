@@ -1,7 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.*;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import javafx.event.ActionEvent;
@@ -9,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class QuinaryController{
 
@@ -32,34 +28,33 @@ public class QuinaryController{
         btnNameCar.setVisible(true);
         btnSaveCar.setDisable(true);
 
-        Path filsti = Paths.get("cars.jobj");
+        String path= "cars.jobj";
         try {
-            FileSaverJobj.SaveCarCategoryArray(filsti, NewCar.getCarInBuilding());
+            FileSaverJobj.addingOnlyOneCarObject(path, App.car);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Path path = Paths.get("cars.jobj");
-        NewCar.setCarInBuilding(FileOpenerJobj.openFileArray(path));
     }
 
     @FXML
     void btnBuildCar(ActionEvent event) {
-        String ut = NewCar.builtCarUserView();
-        int totalCost = NewCar.totalCost();
-        lblCarComponents.setText(ut + "\n" + "Totalcost of this car is: " +totalCost);
+        String ut = App.car.toString();
+        int totalCost = App.car.getCost();
+        lblCarComponents.setText(ut + "Totalcost of this car is: " + totalCost + "kr");
         btnSaveCar.setVisible(true);
     }
 
     @FXML
     void btnNameCar(ActionEvent event) {
-        NewCar car = new NewCar("user", lblCarName.getText(), NewCar.totalCost(), NewCar.getCarInBuilding());
         FileSaverTxt fs = new FileSaverTxt();
         try{
-            fs.saveTxtFile(car);
+            fs.saveTxtFile(App.car);
         }catch (IOException e){
             e.printStackTrace();
         }
         btnSaveCar.setDisable(false);
+
+
     }
 
 

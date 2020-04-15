@@ -19,8 +19,13 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    public static NewCar car;
     private static Scene scene;
+
+
+    public static void startCarBuildingProcess(){
+        car = new NewCar();
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,6 +44,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        startCarBuildingProcess();
         launch();
     }
 

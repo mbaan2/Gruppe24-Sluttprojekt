@@ -13,7 +13,7 @@ public class FileSaverTxt{
 
             FileWriter fw = new FileWriter(selectedFile, true);
 
-            fw.write(car.savableData(car.getName(), car.getUser()));
+            fw.write(car.savableData());
             fw.close();
 
         } catch (Exception e) {

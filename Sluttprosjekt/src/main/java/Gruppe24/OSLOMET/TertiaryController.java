@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
@@ -38,12 +37,13 @@ public class TertiaryController implements Initializable {
         LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
         LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
 
-        if(NewCar.getNameIndexStatic(3).equals("Empty")) {
+        if(App.car.color == null) {
             colorButtons.get(0).setSelected(true);
         } else{
             for(int i=0; i <colorOptions.size();i++){
-                if(NewCar.getNameIndexStatic(3).equals(colorOptions.get(i).getName())){
+                if(App.car.getColor().getName().equals(colorOptions.get(i).getName())){
                     colorButtons.get(i).setSelected(true);
+                    break;
                 }
             }
         }
@@ -59,7 +59,7 @@ public class TertiaryController implements Initializable {
     private void switchToQuaternary() throws IOException {
         for(int i = 0; i<colorOptions.size();i++){
             if(colorButtons.get(i).isSelected()){
-               NewCar.set(3, colorOptions.get(i));
+                App.car.setColor(colorOptions.get(i));
             }
         }
 
@@ -72,7 +72,7 @@ public class TertiaryController implements Initializable {
 
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
-    public void setWheels(){
+    public void setColors(){
         Car red = new Carparts("Red", 5000);
         Car blue = new Carparts("Blue", 2500);
         Car yellow = new Carparts("Yellow", 2500);

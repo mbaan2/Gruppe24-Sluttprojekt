@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.NewCar;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -23,13 +24,13 @@ public class FileOpenerJobj {
         return carParts;
     }
 
-    public static Car[] openFileArray(Path path) {
-        Car[] car = new Car[5];
+    public static NewCar openFileArray(Path path) {
+        NewCar car = new NewCar();
 
         try (   InputStream in = Files.newInputStream(path);
                 ObjectInputStream oin = new ObjectInputStream(in))
         {
-            car = (Car[]) oin.readObject();
+            car = (NewCar) oin.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

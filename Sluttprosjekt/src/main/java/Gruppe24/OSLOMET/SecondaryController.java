@@ -36,13 +36,13 @@ public class SecondaryController implements Initializable {
         LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
         LoadingValuesOnScreen.returnVbox(wheelButtons, vboxWheels);
 
-        //We have to check at the end if the index is still correct
-        if(NewCar.getNameIndexStatic(2).equals("Empty")) {
+        if(App.car.wheels == null) {
             wheelButtons.get(0).setSelected(true);
         } else{
             for(int i=0; i <wheelOptions.size();i++){
-                if(NewCar.getNameIndexStatic(2).equals(wheelOptions.get(i).getName())){
+                if(App.car.getWheels().getName().equals(wheelOptions.get(i).getName())){
                     wheelButtons.get(i).setSelected(true);
+                    break;
                 }
             }
         }
@@ -58,7 +58,7 @@ public class SecondaryController implements Initializable {
     private void switchToTertiary() throws IOException {
         for(int i = 0; i<wheelOptions.size();i++){
             if(wheelButtons.get(i).isSelected()){
-                NewCar.set(2, wheelOptions.get(i));
+                App.car.setWheels(wheelOptions.get(i));
             }
         }
 

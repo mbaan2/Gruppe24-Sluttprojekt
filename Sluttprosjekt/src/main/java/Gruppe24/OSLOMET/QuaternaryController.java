@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
@@ -33,20 +32,21 @@ public class QuaternaryController implements Initializable {
     List<Car> addOnOptions = new ArrayList<>();
     List<CheckBox> addOnButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> addon){
+    public void createButtons(List<Car> addon) {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
 
         //We have to add to function to check for prelaoded data see secondaryController however nothing is selected in there is no predata
-
-            for(int i=0; i <addOnOptions.size();i++){
-                for(int j=0; j<NewCar.sizeAddone(); j++) {
-                    if (NewCar.getNameIndexAddoneStatic(j).equals(addOnOptions.get(i).getName())) {
+        if (App.car.addones != null) {
+            for (int i = 0; i < addOnOptions.size(); i++) {
+                for (int j = 0; j < App.car.getAddones().size(); j++) {
+                    if (App.car.getAddones().getElement(j).getName().equals(addOnOptions.get(i).getName())) {
                         addOnButtons.get(i).setSelected(true);
                     }
                 }
             }
         }
+    }
 
     public void openFile(){
         Path path = Paths.get("AddOns.jobj");
@@ -56,13 +56,14 @@ public class QuaternaryController implements Initializable {
 
     @FXML
     private void switchToQuinary() throws IOException {
-        Car addons = new CarCategory("addons");
+        CarCategory addons = new CarCategory("addons");
+        addons.clear();
         for(int i = 0; i< addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
               addons.add(addOnOptions.get(i));
             }
         }
-        NewCar.set(4, addons);
+        App.car.setAddones(addons);
         App.setRoot("05-quinary");
     }
 
@@ -74,7 +75,7 @@ public class QuaternaryController implements Initializable {
 
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
-    public void setWheels(){
+    public void setAddOns(){
         Car addOneGPS = new Carparts("GPS", 5000);
         Car spoiler = new Carparts("Spoiler", 4000);
         Car subwoofer = new Carparts("Subwoofer", 7500);

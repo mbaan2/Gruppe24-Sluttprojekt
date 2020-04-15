@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET.Car;
+/*package Gruppe24.OSLOMET.Car;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -21,23 +21,6 @@ public class CarUsername implements Car, Serializable {
         return 0;
     }
 
-    @Override
-    public void add(Car carpart) {
-
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public String getNameIndex(int index) {
-        return null;
-    }
-
-    @Override
-    public Car getElement(int index) {
-        return null;
-    }
 }
+
+ */

@@ -20,12 +20,11 @@ public class FileSaverJobj {
         }
     }
 
-    //Why do we have path here if it's not used? Are we going to change something here or should we just take the variable out?
-    public static void SaveCarCategoryArray(Path path, Car[] c) throws IOException {
+    public static void SaveCarCategoryArray(NewCar car) throws IOException {
         try {
             OutputStream os = new FileOutputStream(new File("cars.jobj"), true);
             ObjectOutputStream out = new ObjectOutputStream(os);
-            out.writeObject(c);
+            out.writeObject(car);
         } catch (IOException e) {
             throw new IOException(e.getMessage());
         }
@@ -59,5 +58,6 @@ public class FileSaverJobj {
         };
         os.writeObject(carObject);
         os.close();
+        System.out.println("Car is added.");
     }
 }

@@ -1,2 +1,3 @@
 user	Aaa	9005	FEATURES:Big wheels	5000	yellow	5	Spoiler	4000	
 user	My car 2	12505	FEATURES:Big wheels	5000	yellow	5	Subwoofer	7500	
+123	null	25000	FEATURES:Gasoline Car	20000	Big wheels	5000	Black	0	

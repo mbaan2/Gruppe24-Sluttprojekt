@@ -21,23 +21,4 @@ public class Carparts implements Car, Serializable {
         return cost;
     }
 
-    @Override
-    public void add(Car carpart) {
-
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public String getNameIndex(int index) {
-        return null;
-    }
-
-    @Override
-    public Car getElement(int index) {
-        return null;
-    }
 }

@@ -13,45 +13,6 @@ public class CarCategory implements Car, Serializable {
         this.name = name;
     }
 
-    public void add(Car part){
-        newCar.add(part);
-    }
-
-    public Car getElement(int index){
-        return newCar.get(index);
-    }
-
-
-    public static String getNamePart(int index){
-        return newCar.get(index).getName();
-    }
-
-    public static int getCostPart(int index){
-        return newCar.get(index).getCost();
-    }
-
-    public static String buildCar(){
-        String carBuild = "This car contains: \n";
-        for(int i = 0; i < newCar.size(); i++){
-            carBuild += newCar.get(i).getName();
-            carBuild += "\n";
-        }
-        return carBuild;
-    }
-
-    public int size(){
-        int size =0;
-        for(int i = 0 ; i < newCar.size(); i++){
-            size++;
-        }
-        return size;
-    }
-
-    public String getNameIndex(int index){
-        return newCar.get(index).getName();
-    }
-
-
     @Override
     public String getName() {
         return name;
@@ -64,5 +25,27 @@ public class CarCategory implements Car, Serializable {
             totalcost += carparts.getCost();
         }
         return totalcost;
+    }
+
+
+
+    public void add(Car part){
+        newCar.add(part);
+    }
+
+    public Car getElement(int index){
+        return newCar.get(index);
+    }
+
+    public int size(){
+        int size =0;
+        for(int i = 0 ; i < newCar.size(); i++){
+            size++;
+        }
+        return size;
+    }
+
+    public void clear(){
+        newCar.clear();
     }
 }
