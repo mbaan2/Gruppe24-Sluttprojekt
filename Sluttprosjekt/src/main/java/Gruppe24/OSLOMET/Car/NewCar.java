@@ -14,16 +14,14 @@ public class NewCar implements Serializable {
     public Car wheels;
     public Car color;
     public CarCategory addones;
-    
+
+    //GETTER AND SETTER METHODS
     public String getUser() {
         return user;
     }
-
     public void setUser(String user){
         this.user = user;
     }
-
-    //GETTER AND SETTER METHODS
     public String getName() {
         return name;
     }

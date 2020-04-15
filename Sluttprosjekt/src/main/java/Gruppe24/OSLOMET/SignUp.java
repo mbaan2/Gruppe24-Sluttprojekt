@@ -105,8 +105,6 @@ public class SignUp implements Initializable {
             } else{
                 System.err.println("Username already exists");
             }
-
-
             //Writing the list to a txt file to show the entire user profile to the user
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
@@ -118,8 +116,6 @@ public class SignUp implements Initializable {
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
-
-
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");

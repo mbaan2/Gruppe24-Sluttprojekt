@@ -43,7 +43,6 @@ public class Login {
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                 //CarUsername carUsername = new CarUsername(usernameTxt.getText());
-                System.out.println(usernameTxt.getText());
                 App.car.setUser(usernameTxt.getText());
                 login();
             }
