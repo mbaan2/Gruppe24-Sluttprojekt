@@ -17,7 +17,7 @@ public class NullaryController implements Initializable {
 
     @FXML
     void btnLoadCars(ActionEvent event) throws IOException{
-        App.setRoot("loadedCars");
+        App.setRoot("userView");
     }
 
     @FXML
