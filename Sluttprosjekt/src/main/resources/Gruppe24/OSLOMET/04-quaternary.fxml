@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="324.0" prefWidth="531.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.QuaternaryController">
+<VBox alignment="CENTER" prefHeight="434.0" prefWidth="716.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.QuaternaryController">
     <children>
       <Label text="Addons" textFill="#def2f1">
          <font>

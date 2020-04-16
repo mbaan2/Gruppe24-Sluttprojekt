@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
@@ -111,7 +112,7 @@ public class SignUp implements Initializable {
             //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
-            Path path = Paths.get("user.txt");
+            Path path = Paths.get(StandardPaths.usersTXTPath);
             File selectedFile = new File(String.valueOf(path));
 
             try {

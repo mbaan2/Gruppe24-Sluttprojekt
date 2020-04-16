@@ -1,9 +1,6 @@
 package Gruppe24.OSLOMET.Car;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.App;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
@@ -13,7 +10,7 @@ public class NewCar implements Serializable {
     public Carparts fuel;
     public Car wheels;
     public Car color;
-    public CarCategory addones;
+    public CarCategory addons;
 
     //GETTER AND SETTER METHODS
     public String getUser() {
@@ -45,8 +42,8 @@ public class NewCar implements Serializable {
     }
     public Car getColor() { return color; }
     public void setColor(Car color) { this.color = color; }
-    public CarCategory getAddones() { return addones; }
-    public void setAddones(CarCategory addones) { this.addones = addones; }
+    public CarCategory getAddons() { return addons; }
+    public void setAddons(CarCategory addons) { this.addons = addons; }
 
 
 
@@ -56,8 +53,8 @@ public class NewCar implements Serializable {
         totalcost += App.car.getFuel().getCost();
         totalcost += App.car.getWheels().getCost();
         totalcost += App.car.getColor().getCost();
-        for(int i = 0; i< App.car.getAddones().size(); i++) {
-            totalcost += App.car.getAddones().getElement(i).getCost();
+        for(int i = 0; i< App.car.getAddons().size(); i++) {
+            totalcost += App.car.getAddons().getElement(i).getCost();
         }
         return totalcost;
     }
@@ -67,8 +64,8 @@ public class NewCar implements Serializable {
         ut += App.car.getFuel().getName() +"\t"+ App.car.getFuel().getCost() + "\t";
         ut += App.car.getWheels().getName() +"\t"+ App.car.getWheels().getCost() + "\t";
         ut += App.car.getColor().getName() +"\t"+ App.car.getColor().getCost() + "\t";
-        for(int i = 0; i< App.car.getAddones().size(); i++) {
-            ut += App.car.getAddones().getElement(i).getName() + "\t" + App.car.getAddones().getElement(i).getCost() + "\t";
+        for(int i = 0; i< App.car.getAddons().size(); i++) {
+            ut += App.car.getAddons().getElement(i).getName() + "\t" + App.car.getAddons().getElement(i).getCost() + "\t";
         }
         ut += "\n";
 
@@ -78,14 +75,15 @@ public class NewCar implements Serializable {
     @Override
     public String toString(){
         String carBuild = "This car belongs to: \n";
-        carBuild += "Username: " + App.car.getUser() + "\n";
+        carBuild += "Username: " + App.car.getUser() + "\n\n";
         carBuild += "This car contains: " + "\n";
         carBuild += "Fuel: " + App.car.getFuel().getName() + " (kr" + App.car.getFuel().getCost() + ")\n";
         carBuild += "Wheels: " + App.car.getWheels().getName() + " (kr" + App.car.getWheels().getCost() + ")\n";
         carBuild += "Color: " + App.car.getColor().getName() + " (kr" + App.car.getColor().getCost() + ")\n";
-        for(int i = 0; i< App.car.getAddones().size(); i++) {
-            carBuild += "Add on: " + App.car.getAddones().getElement(i).getName() + " (kr" + App.car.getAddones().getElement(i).getCost() + ")\n";
+        for(int i = 0; i< App.car.getAddons().size(); i++) {
+            carBuild += "Add on: " + App.car.getAddons().getElement(i).getName() + " (kr" + App.car.getAddons().getElement(i).getCost() + ")\n";
         }
+        carBuild += "\n";
         
         return carBuild;
     }

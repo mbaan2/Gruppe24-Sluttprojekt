@@ -67,6 +67,6 @@ public class Login {
     }
 
     private void login() throws IOException {
-        App.setRoot("01-primary");
+        App.setRoot("00-nullary");
     }
 }

@@ -23,7 +23,7 @@ public class FileSaverJobj {
 
     public static void SaveCarCategoryArray(NewCar car) throws IOException {
         try {
-            OutputStream os = new FileOutputStream(new File("cars.jobj"), true);
+            OutputStream os = new FileOutputStream(new File(StandardPaths.carsPath), true);
             ObjectOutputStream out = new ObjectOutputStream(os);
             out.writeObject(car);
         } catch (IOException e) {

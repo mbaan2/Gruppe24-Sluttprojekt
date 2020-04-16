@@ -40,7 +40,7 @@ public class FileOpenerJobj {
 
     public static HashMap<String, String> openFileHashMap(){
         HashMap<String, String> userBase = null;
-        try (FileInputStream in = new FileInputStream("users.jobj");
+        try (FileInputStream in = new FileInputStream(StandardPaths.usersJOBJPath);
              ObjectInputStream oin = new ObjectInputStream(in)) {
             userBase = (HashMap) oin.readObject();
             in.close();

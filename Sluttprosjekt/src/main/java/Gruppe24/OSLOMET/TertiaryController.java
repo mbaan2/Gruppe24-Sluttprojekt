@@ -5,6 +5,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -50,7 +51,7 @@ public class TertiaryController implements Initializable {
     }
 
     public void openFile(){
-        Path path = Paths.get("color.jobj");
+        Path path = Paths.get(StandardPaths.colorPath);
         colorOptions = FileOpenerJobj.openFile(path);
         createButtons();
     }
@@ -89,7 +90,7 @@ public class TertiaryController implements Initializable {
     }
 
     public void createFile(){
-        Path filsti = Paths.get("color.jobj");
+        Path filsti = Paths.get(StandardPaths.colorPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, colorOptions);
         } catch (IOException ex) {

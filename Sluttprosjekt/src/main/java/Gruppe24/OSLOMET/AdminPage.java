@@ -5,6 +5,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,15 +62,15 @@ public class AdminPage implements Initializable {
 
     public void LoadCategory(){
         if(chbCategory.getValue().equals("Wheels")){
-            Path path = Paths.get("wheels.jobj");
+            Path path = Paths.get(StandardPaths.wheelPath);
             carCategory = FileOpenerJobj.openFile(path);
             createButtons();
         } else if(chbCategory.getValue().equals("Color")){
-            Path path = Paths.get("color.jobj");
+            Path path = Paths.get(StandardPaths.colorPath);
             carCategory = FileOpenerJobj.openFile(path);
             createButtons();
         } else if(chbCategory.getValue().equals("Addons")){
-            Path path = Paths.get("AddOns.jobj");
+            Path path = Paths.get(StandardPaths.addonPath);
             carCategory = FileOpenerJobj.openFile(path);
             createButtons();
         }
@@ -107,7 +108,7 @@ public class AdminPage implements Initializable {
 
     public void SaveChanges(){
         if(chbCategory.getValue().equals("Wheels")){
-            Path filsti = Paths.get("wheels.jobj");
+            Path filsti = Paths.get(StandardPaths.wheelPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -115,7 +116,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if(chbCategory.getValue().equals("Color")){
-            Path filsti = Paths.get("color.jobj");
+            Path filsti = Paths.get(StandardPaths.colorPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -123,7 +124,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if(chbCategory.getValue().equals("Addons")){
-            Path filsti = Paths.get("AddOns.jobj");
+            Path filsti = Paths.get(StandardPaths.addonPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -145,7 +146,7 @@ public class AdminPage implements Initializable {
         carCategory.add(newCarPart);
 
         if (chbCategory.getValue().equals("Wheels")) {
-            Path filsti = Paths.get("wheels.jobj");
+            Path filsti = Paths.get(StandardPaths.wheelPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -153,7 +154,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if (chbCategory.getValue().equals("Color")) {
-            Path filsti = Paths.get("color.jobj");
+            Path filsti = Paths.get(StandardPaths.colorPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {
@@ -161,7 +162,7 @@ public class AdminPage implements Initializable {
             }
             LoadCategory();
         } else if (chbCategory.getValue().equals("Addons")) {
-            Path filsti = Paths.get("AddOns.jobj");
+            Path filsti = Paths.get(StandardPaths.addonPath);
             try {
                 FileSaverJobj.SaveCarCategory(filsti, carCategory);
             } catch (IOException ex) {

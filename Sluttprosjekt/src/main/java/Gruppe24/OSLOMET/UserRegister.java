@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET;
 
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,7 +57,7 @@ public class UserRegister implements Initializable {
 
     @FXML
     void nextButton(ActionEvent event) throws IOException {
-        Path path = Paths.get(".\\user.txt");
+        Path path = Paths.get(StandardPaths.usersTXTPath);
 
         long count = Files.lines(path).count();
 
@@ -90,7 +91,7 @@ public class UserRegister implements Initializable {
     @FXML
     void retrievePwBtn(ActionEvent event) throws IOException {
 
-        Path path = Paths.get(".\\user.txt");
+        Path path = Paths.get(StandardPaths.usersTXTPath);
 
         long count = Files.lines(path).count();
 

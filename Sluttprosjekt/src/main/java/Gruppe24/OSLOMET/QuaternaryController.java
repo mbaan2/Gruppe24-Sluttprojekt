@@ -6,8 +6,10 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 
@@ -29,6 +31,9 @@ public class QuaternaryController implements Initializable {
     @FXML
     private VBox vboxAddOns;
 
+    @FXML
+    private Button quaternaryButton;
+
     List<Car> addOnOptions = new ArrayList<>();
     List<CheckBox> addOnButtons = new ArrayList<>();
 
@@ -37,10 +42,10 @@ public class QuaternaryController implements Initializable {
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
 
         //We have to add to function to check for prelaoded data see secondaryController however nothing is selected in there is no predata
-        if (App.car.addones != null) {
+        if (App.car.addons != null) {
             for (int i = 0; i < addOnOptions.size(); i++) {
-                for (int j = 0; j < App.car.getAddones().size(); j++) {
-                    if (App.car.getAddones().getElement(j).getName().equals(addOnOptions.get(i).getName())) {
+                for (int j = 0; j < App.car.getAddons().size(); j++) {
+                    if (App.car.getAddons().getElement(j).getName().equals(addOnOptions.get(i).getName())) {
                         addOnButtons.get(i).setSelected(true);
                     }
                 }
@@ -49,7 +54,7 @@ public class QuaternaryController implements Initializable {
     }
 
     public void openFile(){
-        Path path = Paths.get("AddOns.jobj");
+        Path path = Paths.get(StandardPaths.addonPath);
         addOnOptions = FileOpenerJobj.openFile(path);
         createButtons(addOnOptions);
     }
@@ -63,15 +68,9 @@ public class QuaternaryController implements Initializable {
               addons.add(addOnOptions.get(i));
             }
         }
-        App.car.setAddones(addons);
+        App.car.setAddons(addons);
         App.setRoot("05-quinary");
     }
-
-
-
-
-
-
 
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
@@ -88,7 +87,7 @@ public class QuaternaryController implements Initializable {
     }
 
     public void createFile(){
-        Path filsti = Paths.get("AddOns.jobj");
+        Path filsti = Paths.get(StandardPaths.addonPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
         } catch (IOException ex) {
