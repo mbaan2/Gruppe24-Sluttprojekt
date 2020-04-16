@@ -6,11 +6,14 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +43,23 @@ public class QuinaryController {
         btnNameCar.setVisible(true);
         btnSaveCar.setDisable(true);
 
+        ArrayList<NewCar> list2 = new ArrayList<>();
+
+        try {
+            //FileSaverJobj.SavingCarArray(path, list);
+            FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
+            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        for(int i = 0; i<list2.size(); i++){
+            System.out.println(list2.get(i).getUser());
+        }
+
+        /*
+        Code to set the initial two cars of the cars.jobj file
+        THIS HAS TO BE REMOVED LATER
         Carparts fuel = new Carparts("Diesel", 1000);
         Carparts wheels = new Carparts("Big wheels", 1000);
         Carparts color = new Carparts("Red", 1000);
@@ -61,21 +81,8 @@ public class QuinaryController {
         list.add(Car1);
         list.add(Car1);
 
-        ArrayList<NewCar> list2 = new ArrayList<>();
+         */
 
-
-        String path= "cars.jobj";
-        try {
-            FileSaverJobj.SavingCarArray(path, list);
-            FileSaverJobj.addingOnlyOneCarObject(path, App.car);
-            list2 = FileOpenerJobj.openingCarArray(path);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        System.out.println(list2.get(0).getUser());
-        System.out.println(list2.get(1).getUser());
-        System.out.println(list2.get(2).getUser());
     }
 
     @FXML
