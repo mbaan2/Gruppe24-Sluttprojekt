@@ -52,14 +52,14 @@ public class FileOpenerJobj {
     }
 
 
-    public static ArrayList<Car> openingCarArray(String path) throws IOException {
-        ArrayList<Car> carList = new ArrayList<>();
+    public static ArrayList<NewCar> openingCarArray(String path) throws IOException {
+        ArrayList<NewCar> carList = new ArrayList<>();
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
         boolean moreObjects = true;
 
         while (moreObjects) {
             try {
-                Car aCar = (Car) is.readObject();
+                NewCar aCar = (NewCar) is.readObject();
                 carList.add(aCar);
             } catch (Exception e){
                 moreObjects = false;
