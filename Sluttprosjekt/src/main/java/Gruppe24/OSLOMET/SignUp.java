@@ -116,7 +116,6 @@ public class SignUp implements Initializable {
 
             try {
                 WriteUser.writeString(selectedFile, str);
-                //App.setRoot("login");
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
