@@ -9,14 +9,16 @@ public class User implements Serializable {
     private SimpleStringProperty password;
     private SimpleStringProperty location;
     private SimpleStringProperty gender;
-    private SimpleStringProperty secretquestion;
+    private SimpleStringProperty secretQ;
+    private SimpleStringProperty secretQAnswer;
 
-    public User(String username, String password, String location, String gender, String secretQuestion) {
+    public User(String username, String password, String location, String gender, String secretQ, String secretQuestion) {
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
         this.location = new SimpleStringProperty(location);
         this.gender = new SimpleStringProperty(gender);
-        this.secretquestion = new SimpleStringProperty(secretQuestion);
+        this.secretQ = new SimpleStringProperty(secretQ);
+        this.secretQAnswer = new SimpleStringProperty(secretQuestion);
     }
 
     public String getUsername() {
@@ -31,8 +33,11 @@ public class User implements Serializable {
     public String getGender() {
         return gender.getValue();
     }
-    public String getSecretquestion() {
-        return secretquestion.getValue();
+    public String getSecretQ() {
+        return secretQ.getValue();
+    }
+    public String getSecretQAnswer() {
+        return secretQAnswer.getValue();
     }
 
     private void setUsername(String username) {
@@ -47,7 +52,10 @@ public class User implements Serializable {
     private void setGender(String gender) {
         this.gender.set(gender);
     }
-    private void setSecretquestion(String secretquestion) {
-        this.secretquestion.set(secretquestion);
+    private void setSecretQ(String secretQ) {
+        this.secretQ.set(secretQ);
+    }
+    private void setSecretQAnswer(String secretQAnswer) {
+        this.secretQAnswer.set(secretQAnswer);
     }
 }

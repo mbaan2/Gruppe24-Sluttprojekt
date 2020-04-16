@@ -42,7 +42,6 @@ public class Login {
             App.setRoot("adminPage");
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
-                //CarUsername carUsername = new CarUsername(usernameTxt.getText());
                 App.car.setUser(usernameTxt.getText());
                 login();
             }

@@ -1,10 +1,10 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
-import Gruppe24.OSLOMET.UserLogin.WriteUserJobj;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,9 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -54,6 +52,9 @@ public class SignUp implements Initializable {
     private Label locationError;
 
     @FXML
+    private Label secretQError;
+
+    @FXML
     private Label answerError;
 
     @FXML
@@ -62,6 +63,7 @@ public class SignUp implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox;
 
+    final ToggleGroup toggleGroup = new ToggleGroup();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
     public ObservableList<User> userList = FXCollections.observableArrayList();
     public HashMap<String, String> userBase = new HashMap<>();
@@ -80,6 +82,7 @@ public class SignUp implements Initializable {
         String location = signupLocation.getText();
         String gender = "";
         String answer = answerTxt.getText();
+        String secretQ = choiceBox.getValue();
 
         if(checkFemale.isSelected()) {
             gender = "Female";
@@ -91,21 +94,21 @@ public class SignUp implements Initializable {
             gender = "Other";
         }
 
-        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty()) {
-            User newUser = new User(username, password, location, gender, answer);
+        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
+            User newUser = new User(username, password, location, gender, secretQ, answer);
 
             userBase = FileOpenerJobj.openFileHashMap();
 
             if(!userBase.containsKey(newUser.getUsername())){
                 userBase.put(newUser.getUsername(), newUser.getPassword());
-                WriteUserJobj.SaveUser(userBase);
-
-                // When everything is done go back to login
+                FileSaverJobj.SaveUser(userBase);
                 App.setRoot("login");
             } else{
-                System.err.println("Username already exists");
+                System.err.println("Username already exisit");
             }
-            //Writing the list to a txt file to show the entire user profile to the user
+
+
+            //Writing the list to a txt file for the user register
             userList.add(newUser);
             String str = FormatUser.formatUsers(userList);
             Path path = Paths.get("user.txt");
@@ -113,9 +116,12 @@ public class SignUp implements Initializable {
 
             try {
                 WriteUser.writeString(selectedFile, str);
+                //App.setRoot("login");
             } catch (Exception e) {
                 System.err.println("Failed to write file");
             }
+
+
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
@@ -132,8 +138,10 @@ public class SignUp implements Initializable {
             if(gender.isEmpty()) {
                 genderError.setText("Choose a gender!");
             }
+            if(secretQ.equals("Select a question!")) {
+                secretQError.setText("Choose a question!");
+            }
         }
-
     }
 
     private void addChkBoxItems() {
@@ -156,5 +164,8 @@ public class SignUp implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChkBoxItems();
+        checkOther.setToggleGroup(toggleGroup);
+        checkFemale.setToggleGroup(toggleGroup);
+        checkMale.setToggleGroup(toggleGroup);
     }
 }
