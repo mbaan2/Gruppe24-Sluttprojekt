@@ -9,20 +9,117 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import kotlin.collections.unsigned.UArraysKt;
 
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class UserCarView implements Initializable {
     @FXML
     private TableView<NewCar> tableView;
 
+    @FXML
+    private ChoiceBox<String> filterBox;
+
+    @FXML
+    private TextField filterText;
+
+    @FXML
+    private Label filterLbl;
+
     Path path = Paths.get("cars.jobj");
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
+    List<Car> addonList = getAddonListFromObsList(carList);
+    ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+    ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
+    Filter filter = new Filter();
+
+    @FXML
+    void filterCars() {
+        filteredList.clear();
+        filterLbl.setText("");
+
+        String filteredText = filterText.getText();
+        String filterType = filterBox.getValue();
+
+        if(filteredText.equals("")) {
+            filterLbl.setText("You didnt enter anything..");
+        } else {
+            if(filterType.equals("User")) {
+                filteredList = filter.usernameFilter(filteredText, carList);
+                tableView.setItems(filteredList);
+                filterLbl.setText("Registry filtered by username.");
+                if(filteredList.isEmpty()) {
+                    filterLbl.setText("No car exists with that username.");
+                }
+            }
+            if(filterType.equals("Name")) {
+                filteredList = filter.nameFilter(filteredText, carList);
+                tableView.setItems(filteredList);
+                filterLbl.setText("Registry filtered by name.");
+                if(filteredList.isEmpty()) {
+                    filterLbl.setText("No car exists with that name.");
+                }
+            }
+            if(filterType.equals("Fuel")) {
+                filteredList = filter.fuelFilter(filteredText, carList);
+                tableView.setItems(filteredList);
+                filterLbl.setText("Registry filtered by fueltype.");
+                if(filteredList.isEmpty()) {
+                    filterLbl.setText("No car exists with that fueltype.");
+                }
+            }
+            if(filterType.equals("Wheels")) {
+                filteredList = filter.wheelsFilter(filteredText, carList);
+                tableView.setItems(filteredList);
+                filterLbl.setText("Registry filtered by wheels.");
+                if(filteredList.isEmpty()) {
+                    filterLbl.setText("No car exists with those wheels.");
+                }
+            }
+            if(filterType.equals("Color")) {
+                filteredList = filter.colorFilter(filteredText, carList);
+                tableView.setItems(filteredList);
+                filterLbl.setText("Registry filtered by color.");
+                if(filteredList.isEmpty()) {
+                    filterLbl.setText("No car exists with that color.");
+                }
+            }
+            if(filterType.equals("Addons")) {
+                int i = 0;
+
+                while(i < addonList.size()) {
+                    filteredList = filter.addonFilter(filteredText, carList, i);
+                    if(filteredList.isEmpty()) {
+                        filterLbl.setText("No car exists with that addon.");
+                        i++;
+                    } else if(!filteredList.isEmpty()) {
+                        tableView.setItems(filteredList);
+                        filterLbl.setText("Registry filtered by addons.");
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public List<Car> getAddonListFromObsList(ObservableList<NewCar> list) {
+        CarCategory addons;
+        List<Car> addonList = new ArrayList<>();
+        for(int i = 0; i < carList.size(); i++) {
+            addons = list.get(i).getAddons();
+            addonList.add(addons);
+        }
+        return addonList;
+    }
+
+
 
 
     @FXML
@@ -67,6 +164,7 @@ public class UserCarView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addChoiceBoxItems();
         showCars();
 
         TableColumn<NewCar, String> user = new TableColumn<>("User");
@@ -103,11 +201,34 @@ public class UserCarView implements Initializable {
 
             for (int j = 0; j < carList.get(i).getAddons().size(); j++) {
                 int finalJ = j;
+                System.out.println(carList.get(0).getAddons().size());
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
 
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
+                tc.setCellValueFactory(car -> new SimpleStringProperty(carList.get(finalI).getAddons().getElement(finalJ).getName()));
             }
         }
+        tableView.setItems(carList);
+    }
+
+    private void addChoiceBoxItems() {
+        choiceBoxList.removeAll();
+        String choiceBoxFilter = "Search Filters";
+        String choiceBoxUser = "User";
+        String choiceBoxName = "Name";
+        String choiceBoxFuel = "Fuel";
+        String choiceBoxWheels = "Wheels";
+        String choiceBoxColor = "Color";
+        String choiceBoxAddons = "Addons";
+
+        choiceBoxList.addAll(choiceBoxFilter, choiceBoxUser, choiceBoxName, choiceBoxFuel, choiceBoxWheels, choiceBoxColor, choiceBoxAddons);
+        filterBox.getItems().addAll(choiceBoxList);
+        filterBox.setValue(choiceBoxFilter);
+    }
+
+    @FXML
+    private void resetFilter() {
+        filterText.setText("");
+        filterLbl.setText("");
         tableView.setItems(carList);
     }
 }
