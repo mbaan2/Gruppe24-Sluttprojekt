@@ -42,7 +42,7 @@ public class UserCarView implements Initializable {
         ObservableList<NewCar> carList1 = FileOpenerJobj.openCarsToObsL(StandardPaths.carsPath);
         tableView.setItems(carList1);
         for(int i = 0; i < carList1.size(); i++) {
-            System.out.println(carList1);
+            System.out.println(carList1.get(i).getUser());
         }
     }
 
