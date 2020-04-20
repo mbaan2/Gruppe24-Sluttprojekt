@@ -34,7 +34,7 @@ public class FileSaverJobj {
 
 
 
-    public static void SavingCarArray(String path, ObservableList<NewCar> carList) throws IOException {
+    public static void SavingCarArray(String path, List<NewCar> carList) throws IOException {
         ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
         os1.writeObject(carList.get(0));
         os1.close();

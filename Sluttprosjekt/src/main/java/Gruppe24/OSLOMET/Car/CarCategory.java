@@ -1,21 +1,23 @@
 package Gruppe24.OSLOMET.Car;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarCategory implements Car, Serializable {
-    String name;
-    static List<Car> newCar = new ArrayList<>();
+    SimpleStringProperty name;
+    static transient List<Car> newCar = new ArrayList<>();
 
     public CarCategory(String name) {
         super();
-        this.name = name;
+        this.name = new SimpleStringProperty(name);
     }
 
     @Override
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     @Override
