@@ -43,7 +43,9 @@ public class NewCar implements Serializable {
     public Car getColor() { return color; }
     public void setColor(Car color) { this.color = color; }
     public CarCategory getAddons() { return addons; }
-    public void setAddons(CarCategory addons) { this.addons = addons; }
+    public void setAddons(CarCategory addons) {
+        this.addons = addons;
+    }
 
 
 

@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 
-public class UserTableView {
+public class EditUserRegisterTV {
     private transient ObservableList<User> list = FXCollections.observableArrayList();
 
     public void attachTableView(TableView<User> tv) {

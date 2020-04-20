@@ -17,5 +17,6 @@
       <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
       <Label fx:id="filterLbl" layoutX="28.0" layoutY="442.0" prefHeight="36.0" prefWidth="210.0" />
       <Button layoutX="28.0" layoutY="408.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" text="Reset filters" />
+      <Button layoutX="28.0" layoutY="210.0" mnemonicParsing="false" onAction="#loadYourCars" prefHeight="25.0" prefWidth="150.0" text="Load your cars!" />
    </children>
 </AnchorPane>

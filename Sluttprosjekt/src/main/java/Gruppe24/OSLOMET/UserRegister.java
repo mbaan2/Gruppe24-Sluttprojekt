@@ -50,7 +50,7 @@ public class UserRegister implements Initializable {
     @FXML
     private TableView<User> tableView;
 
-    UserTableView newUserTable = new UserTableView();
+    EditUserRegisterTV newUserTable = new EditUserRegisterTV();
 
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
 

@@ -4,21 +4,20 @@ import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import kotlin.collections.unsigned.UArraysKt;
 
+import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class UserCarView implements Initializable {
     @FXML
@@ -33,15 +32,22 @@ public class UserCarView implements Initializable {
     @FXML
     private Label filterLbl;
 
-    Path path = Paths.get("cars.jobj");
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     List<Car> addonList = getAddonListFromObsList(carList);
     ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
     ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
-    Filter filter = new Filter();
 
     @FXML
-    void filterCars() {
+    void loadYourCars() throws IOException {
+        ObservableList<NewCar> carList1 = FileOpenerJobj.openCarsToObsL(StandardPaths.carsPath);
+        tableView.setItems(carList1);
+        for(int i = 0; i < carList1.size(); i++) {
+            System.out.println(carList1);
+        }
+    }
+
+    @FXML
+    void filterCars() throws IOException {
         filteredList.clear();
         filterLbl.setText("");
 
@@ -50,9 +56,14 @@ public class UserCarView implements Initializable {
 
         if(filteredText.equals("")) {
             filterLbl.setText("You didnt enter anything..");
+            tableView.setItems(carList);
         } else {
+            if(filterType.equals("Search Filters")) {
+                filterLbl.setText("You didnt choose a filter.");
+                tableView.setItems(carList);
+            }
             if(filterType.equals("User")) {
-                filteredList = filter.usernameFilter(filteredText, carList);
+                filteredList = Filter.usernameFilter(filteredText, carList);
                 tableView.setItems(filteredList);
                 filterLbl.setText("Registry filtered by username.");
                 if(filteredList.isEmpty()) {
@@ -60,7 +71,7 @@ public class UserCarView implements Initializable {
                 }
             }
             if(filterType.equals("Name")) {
-                filteredList = filter.nameFilter(filteredText, carList);
+                filteredList = Filter.nameFilter(filteredText, carList);
                 tableView.setItems(filteredList);
                 filterLbl.setText("Registry filtered by name.");
                 if(filteredList.isEmpty()) {
@@ -68,7 +79,7 @@ public class UserCarView implements Initializable {
                 }
             }
             if(filterType.equals("Fuel")) {
-                filteredList = filter.fuelFilter(filteredText, carList);
+                filteredList = Filter.fuelFilter(filteredText, carList);
                 tableView.setItems(filteredList);
                 filterLbl.setText("Registry filtered by fueltype.");
                 if(filteredList.isEmpty()) {
@@ -76,7 +87,7 @@ public class UserCarView implements Initializable {
                 }
             }
             if(filterType.equals("Wheels")) {
-                filteredList = filter.wheelsFilter(filteredText, carList);
+                filteredList = Filter.wheelsFilter(filteredText, carList);
                 tableView.setItems(filteredList);
                 filterLbl.setText("Registry filtered by wheels.");
                 if(filteredList.isEmpty()) {
@@ -84,7 +95,7 @@ public class UserCarView implements Initializable {
                 }
             }
             if(filterType.equals("Color")) {
-                filteredList = filter.colorFilter(filteredText, carList);
+                filteredList = Filter.colorFilter(filteredText, carList);
                 tableView.setItems(filteredList);
                 filterLbl.setText("Registry filtered by color.");
                 if(filteredList.isEmpty()) {
@@ -95,7 +106,7 @@ public class UserCarView implements Initializable {
                 int i = 0;
 
                 while(i < addonList.size()) {
-                    filteredList = filter.addonFilter(filteredText, carList, i);
+                    filteredList = Filter.addonFilter(filteredText, carList, i);
                     if(filteredList.isEmpty()) {
                         filterLbl.setText("No car exists with that addon.");
                         i++;
@@ -112,7 +123,7 @@ public class UserCarView implements Initializable {
     public List<Car> getAddonListFromObsList(ObservableList<NewCar> list) {
         CarCategory addons;
         List<Car> addonList = new ArrayList<>();
-        for(int i = 0; i < carList.size(); i++) {
+        for(int i = 0; i < list.size(); i++) {
             addons = list.get(i).getAddons();
             addonList.add(addons);
         }
@@ -180,7 +191,6 @@ public class UserCarView implements Initializable {
         TableColumn<NewCar, String> addon = new TableColumn<>("Addon");
         tableView.getColumns().add(addon);
 
-
         //Adding tablecolumns, need to find a way to add only as many as max amount of addon buttons currently in the quaternarycontroller, because you cant have more addons than the amount of buttons there.
         for(int i = 0; i < 4; i ++) {
             TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
@@ -228,7 +238,7 @@ public class UserCarView implements Initializable {
     @FXML
     private void resetFilter() {
         filterText.setText("");
-        filterLbl.setText("");
+        filterLbl.setText("Tableview reset.");
         tableView.setItems(carList);
     }
 }
