@@ -7,6 +7,8 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -43,10 +45,34 @@ public class QuinaryController {
         btnNameCar.setVisible(true);
         btnSaveCar.setDisable(true);
 
+        Carparts fuel = new Carparts("Diesel", 1000);
+        Carparts wheels = new Carparts("Big wheels", 1000);
+        Carparts color = new Carparts("Red", 1000);
+
+
+        Carparts gps = new Carparts("GPS", 1000);
+        Carparts spoiler = new Carparts("Spoiler", 1000);
+        CarCategory add_ones = new CarCategory("Add Ones");
+        add_ones.add(gps);
+        add_ones.add(spoiler);
+
+
+        NewCar Car1 = new NewCar();
+        Car1.setUser("123");
+        Car1.setFuel(fuel);
+        Car1.setWheels(wheels);
+        Car1.setColor(color);
+        Car1.setAddons(add_ones);
+
+        List<NewCar> list = new ArrayList<>();
+        list.add(Car1);
+        list.add(Car1);
+
+
         ArrayList<NewCar> list2 = new ArrayList<>();
 
         try {
-            //FileSaverJobj.SavingCarArray(path, list);
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
             FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException ex) {
@@ -57,31 +83,17 @@ public class QuinaryController {
             System.out.println(list2.get(i).getUser());
         }
 
+
+
+
+
+
+
         /*
         Code to set the initial two cars of the cars.jobj file
         THIS HAS TO BE REMOVED LATER
-        Carparts fuel = new Carparts("Diesel", 1000);
-        Carparts wheels = new Carparts("Big wheels", 1000);
-        Carparts color = new Carparts("Red", 1000);
-        Carparts gps = new Carparts("GPS", 1000);
-        Carparts spoiler = new Carparts("Spoiler", 1000);
-        CarCategory add = new CarCategory("Add Ones");
-        add.add(gps);
-        add.add(spoiler);
+        */
 
-
-        NewCar Car1 = new NewCar();
-        Car1.setUser("123");
-        Car1.setFuel(fuel);
-        Car1.setWheels(wheels);
-        Car1.setColor(color);
-        Car1.setAddons(add);
-
-        List<NewCar> list = new ArrayList<>();
-        list.add(Car1);
-        list.add(Car1);
-
-         */
 
     }
 

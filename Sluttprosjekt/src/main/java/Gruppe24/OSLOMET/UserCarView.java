@@ -5,6 +5,7 @@ import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -131,10 +132,28 @@ public class UserCarView implements Initializable {
     }
 
 
-
-
     @FXML
-    void showCars() {
+    void showCars() throws IOException {
+        ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+
+        carList.addAll(list2);
+        System.out.println("gjort");
+
+        /*
+        for(int i = 0; i < carList.size(); i++){
+            for(int j = 0; j < carList.size(); j++){
+                if(carList.get(i).getAddons().getElement(j) == null){
+                    carList.get(i).getAddons().getElement(j).setName("hei");
+                    carList.get(i).getAddons().getElement(j).setCost(0);
+                }
+            }
+
+        }
+        
+         */
+
+
+        /*
         NewCar car = new NewCar();
         Car wheels = new Carparts("Medium Wheels", 1000);
         Carparts fuel = new Carparts("Diesel", 1000);
@@ -171,12 +190,18 @@ public class UserCarView implements Initializable {
 
         carList.add(car);
         carList.add(car2);
+
+         */
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChoiceBoxItems();
-        showCars();
+        try {
+            showCars();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         TableColumn<NewCar, String> user = new TableColumn<>("User");
         tableView.getColumns().add(user);
@@ -211,9 +236,8 @@ public class UserCarView implements Initializable {
 
             for (int j = 0; j < carList.get(i).getAddons().size(); j++) {
                 int finalJ = j;
-                System.out.println(carList.get(0).getAddons().size());
+                System.out.println(carList.get(0).getAddons().getElement(j).getName());
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-
                 tc.setCellValueFactory(car -> new SimpleStringProperty(carList.get(finalI).getAddons().getElement(finalJ).getName()));
             }
         }

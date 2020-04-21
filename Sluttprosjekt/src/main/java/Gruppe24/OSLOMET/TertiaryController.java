@@ -24,7 +24,10 @@ public class TertiaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        openFile();
+        setColors();
+        createFile();
+
+        //openFile();
     }
 
     @FXML

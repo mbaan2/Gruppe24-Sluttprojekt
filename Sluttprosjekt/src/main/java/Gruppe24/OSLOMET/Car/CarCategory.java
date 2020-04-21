@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarCategory implements Car, Serializable {
-    SimpleStringProperty name;
+    String name;
     static transient List<Car> newCar = new ArrayList<>();
 
     public CarCategory(String name) {
         super();
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
     }
 
     @Override
     public String getName() {
-        return name.getValue();
+        return name;
     }
 
     @Override
@@ -29,6 +29,15 @@ public class CarCategory implements Car, Serializable {
         return totalcost;
     }
 
+    @Override
+    public void setName(String name) {
+
+    }
+
+    @Override
+    public void setCost(int cost) {
+
+    }
 
 
     public void add(Car part){
