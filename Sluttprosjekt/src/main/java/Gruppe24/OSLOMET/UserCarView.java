@@ -8,11 +8,13 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,9 +44,6 @@ public class UserCarView implements Initializable {
     void loadYourCars() throws IOException {
         ObservableList<NewCar> carList1 = FileOpenerJobj.openCarsToObsL(StandardPaths.carsPath);
         tableView.setItems(carList1);
-        for(int i = 0; i < carList1.size(); i++) {
-            System.out.println(carList1.get(i).getUser());
-        }
     }
 
     @FXML
@@ -234,11 +233,20 @@ public class UserCarView implements Initializable {
 
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
 
-            for (int j = 0; j < carList.get(i).getAddons().size(); j++) {
+            for (int j = 0; j < 2; j++) {
                 int finalJ = j;
                 System.out.println(carList.get(0).getAddons().getElement(j).getName());
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
                 tc.setCellValueFactory(car -> new SimpleStringProperty(carList.get(finalI).getAddons().getElement(finalJ).getName()));
+                /*tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<NewCar, String> car) {
+                        return new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName());
+                    }
+                });
+
+                 */
+
             }
         }
         tableView.setItems(carList);
