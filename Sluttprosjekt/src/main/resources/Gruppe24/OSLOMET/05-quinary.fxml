@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="716.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.QuinaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.QuinaryController">
    <children>
-      <VBox alignment="BOTTOM_CENTER" layoutX="22.0" layoutY="32.0" prefHeight="269.0" prefWidth="672.0">
+      <VBox alignment="BOTTOM_CENTER" layoutX="84.0" layoutY="33.0" prefHeight="269.0" prefWidth="672.0">
          <children>
             <Label fx:id="lblCarComponents" contentDisplay="CENTER" textFill="#17252a" />
          </children>
       </VBox>
-      <Button fx:id="btnSaveCar" layoutX="316.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnSaveCar" style="-fx-background-color: #17252a;" text="Save your car" textFill="#def2f1" />
+      <Button fx:id="btnSaveCar" layoutX="363.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnSaveCar" style="-fx-background-color: #17252a;" text="Save your car" textFill="#def2f1" />
       <Button fx:id="btnNameCar" layoutX="558.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnNameCar" style="-fx-background-color: #17252a;" text="OK" textFill="#def2f1" visible="false" />
       <TextField fx:id="lblCarName" layoutX="406.0" layoutY="323.0" prefHeight="25.0" prefWidth="151.0" promptText="Set car name" visible="false" />
-      <Button fx:id="btnBuildCar" layoutX="318.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
-      <Button layoutX="647.0" layoutY="373.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
+      <Button fx:id="btnBuildCar" layoutX="365.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
+      <Button layoutX="764.0" layoutY="373.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
       <Button layoutX="14.0" layoutY="373.0" onAction="#switchToNullary" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
-      <Button layoutX="322.0" layoutY="373.0" onAction="#switchToPrimary" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
+      <Button layoutX="369.0" layoutY="373.0" onAction="#switchToPrimary" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
    </children>
 </AnchorPane>

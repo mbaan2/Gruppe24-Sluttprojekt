@@ -103,10 +103,10 @@ public class SuperUser implements Initializable {
             }
         }
 
-        SaveChanges();
+        saveChanges();
     }
 
-    public void SaveChanges(){
+    public void saveChanges(){
         if(chbCategory.getValue().equals("Wheels")){
             Path filsti = Paths.get(StandardPaths.wheelPath);
             try {
@@ -174,7 +174,7 @@ public class SuperUser implements Initializable {
     }
 
     @FXML
-    void btnBackToLoggInn() throws IOException {
+    void btnBackToLogin() throws IOException {
         App.setRoot("login");
     }
 

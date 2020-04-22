@@ -19,7 +19,7 @@
       <TextField fx:id="txfInputFieldName" layoutX="296.0" layoutY="248.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
       <Button layoutX="296.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
       <Button layoutX="295.0" layoutY="217.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
-      <Button layoutX="296.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnBackToLoggInn" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+      <Button layoutX="296.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button layoutX="295.0" layoutY="104.0" mnemonicParsing="false" onAction="#btnLoadCategory" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Load Category" textFill="#def2f1" />
       <Label layoutX="253.0" layoutY="253.0" text="Name:" />
       <TextField fx:id="txfInputFieldCost" layoutX="296.0" layoutY="276.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
