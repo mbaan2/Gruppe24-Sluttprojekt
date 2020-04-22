@@ -72,7 +72,8 @@ public class QuinaryController {
         ArrayList<NewCar> list2 = new ArrayList<>();
 
         try {
-            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
+            //TO SAVE THE INITIAL LIST
+            //FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
             FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException ex) {
@@ -81,6 +82,7 @@ public class QuinaryController {
 
         for(int i = 0; i<list2.size(); i++){
             System.out.println(list2.get(i).getUser());
+            System.out.println(list2.get(i).getAddons().getElement(0).getName());
         }
 
 

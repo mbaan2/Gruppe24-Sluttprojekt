@@ -7,4 +7,6 @@ public interface Car {
     void setName(String name);
 
     void setCost(int cost);
+
+    boolean exist(int index);
 }

@@ -31,4 +31,9 @@ public class Carparts implements Car, Serializable {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public boolean exist(int index) {
+        return false;
+    }
 }

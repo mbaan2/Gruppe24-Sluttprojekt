@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CarCategory implements Car, Serializable {
     String name;
-    static transient List<Car> newCar = new ArrayList<>();
+    List<Car> carpartsList = new ArrayList<>();
 
     public CarCategory(String name) {
         super();
@@ -23,7 +23,7 @@ public class CarCategory implements Car, Serializable {
     @Override
     public int getCost() {
         int totalcost = 0;
-        for(Car carparts : newCar){
+        for(Car carparts : carpartsList){
             totalcost += carparts.getCost();
         }
         return totalcost;
@@ -39,24 +39,30 @@ public class CarCategory implements Car, Serializable {
 
     }
 
-
     public void add(Car part){
-        newCar.add(part);
+        carpartsList.add(part);
     }
 
     public Car getElement(int index){
-        return newCar.get(index);
+        return carpartsList.get(index);
     }
 
     public int size(){
         int size =0;
-        for(int i = 0 ; i < newCar.size(); i++){
+        for(int i = 0 ; i < carpartsList.size(); i++){
             size++;
         }
         return size;
     }
 
     public void clear(){
-        newCar.clear();
+        carpartsList.clear();
     }
+
+    @Override
+    public boolean exist(int index) {
+
+        return false;
+    }
+
 }

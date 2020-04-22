@@ -5,7 +5,6 @@ import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -134,63 +133,7 @@ public class UserCarView implements Initializable {
     @FXML
     void showCars() throws IOException {
         ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-
         carList.addAll(list2);
-        System.out.println("gjort");
-
-        /*
-        for(int i = 0; i < carList.size(); i++){
-            for(int j = 0; j < carList.size(); j++){
-                if(carList.get(i).getAddons().getElement(j) == null){
-                    carList.get(i).getAddons().getElement(j).setName("hei");
-                    carList.get(i).getAddons().getElement(j).setCost(0);
-                }
-            }
-
-        }
-        
-         */
-
-
-        /*
-        NewCar car = new NewCar();
-        Car wheels = new Carparts("Medium Wheels", 1000);
-        Carparts fuel = new Carparts("Diesel", 1000);
-        Car color = new Carparts("Red", 1000);
-        Car gps = new Carparts("Gps", 1000);
-        Car stereo = new Carparts("Stereo", 1000);
-        CarCategory addons = new CarCategory("Addon");
-        addons.add(gps);
-        addons.add(stereo);
-
-        car.setUser("Deg");
-        car.setName("Hei");
-        car.setFuel(fuel);
-        car.setWheels(wheels);
-        car.setColor(color);
-        car.setAddons(addons);
-
-        NewCar car2 = new NewCar();
-        Car wheels2 = new Carparts("Big Wheels", 1000);
-        Carparts fuel2 = new Carparts("Electric", 1000);
-        Car color2 = new Carparts("Blue", 1000);
-        Car radio = new Carparts("Radio", 1000);
-        Car cupholder = new Carparts("Cupholder", 1000);
-        CarCategory addons2 = new CarCategory("Addon");
-        addons2.add(radio);
-        addons2.add(cupholder);
-
-        car2.setUser("Hei");
-        car2.setName("Deg");
-        car2.setFuel(fuel2);
-        car2.setWheels(wheels2);
-        car2.setColor(color2);
-        car2.setAddons(addons2);
-
-        carList.add(car);
-        carList.add(car2);
-
-         */
     }
 
     @Override
@@ -201,6 +144,9 @@ public class UserCarView implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        int maxAntallAddones = maxAddones();
+        fillemptyAddones();
+        //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
 
         TableColumn<NewCar, String> user = new TableColumn<>("User");
         tableView.getColumns().add(user);
@@ -216,7 +162,7 @@ public class UserCarView implements Initializable {
         tableView.getColumns().add(addon);
 
         //Adding tablecolumns, need to find a way to add only as many as max amount of addon buttons currently in the quaternarycontroller, because you cant have more addons than the amount of buttons there.
-        for(int i = 0; i < 4; i ++) {
+        for(int i = 0; i < maxAntallAddones; i ++) {
             TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
             addon.getColumns().add(tc);
         }
@@ -233,23 +179,47 @@ public class UserCarView implements Initializable {
 
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
 
-            for (int j = 0; j < 2; j++) {
-                int finalJ = j;
-                System.out.println(carList.get(0).getAddons().getElement(j).getName());
-                TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(carList.get(finalI).getAddons().getElement(finalJ).getName()));
-                /*tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, String>, ObservableValue<String>>() {
-                    @Override
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<NewCar, String> car) {
-                        return new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName());
-                    }
-                });
-
-                 */
-
+            for (int j = 0; j < maxAntallAddones; j++) {
+                    int finalJ = j;
+                    TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
+                    //tc.setCellValueFactory(car -> new SimpleStringProperty(carList.get(finalI).getAddons().getElement(finalJ).getName()));
+                    tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, String>, ObservableValue<String>>() {
+                        @Override
+                        public ObservableValue<String> call(TableColumn.CellDataFeatures<NewCar, String> car) {
+                            return new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName());
+                        }
+                    });
             }
         }
         tableView.setItems(carList);
+    }
+
+
+    private int maxAddones(){
+        int antall = 0;
+        for(int i = 0 ; i< carList.size(); i++){
+            for(int j = 1; j< (carList.get(i).getAddons().size() + 1); j++){
+                if(j > antall){
+                    antall = j;
+                }
+            }
+        }
+        return antall;
+    }
+
+    private  void fillemptyAddones(){
+        int maxAntall = maxAddones();
+        for(int i = 0 ; i< carList.size(); i++){
+            System.out.println(carList.get(i).getAddons().size());
+            for(int j = 0; j < maxAntall; j++){
+                System.out.println(!carList.get(i).getAddons().exist(j));
+                if(j >= carList.get(i).getAddons().size()){
+                    Car emptyAddone = new Carparts("", 0);
+                    carList.get(i).getAddons().add(emptyAddone);
+                    System.out.println("done");
+                }
+            }
+        }
     }
 
     private void addChoiceBoxItems() {

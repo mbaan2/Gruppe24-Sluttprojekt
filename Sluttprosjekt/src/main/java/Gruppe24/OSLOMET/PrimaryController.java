@@ -38,7 +38,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnDieselCar(ActionEvent event) throws IOException {
-        App.car.setFuel(new Carparts("Gasoline Car", 20_000));
+        App.car.setFuel(new Carparts("Diesel Car", 20_000));
         clicked = 1;
         txtDieselCar.setStyle("-fx-background-color: #def2f1;");
         txtDieselCar.setTextFill(Color.valueOf("#17252a"));
@@ -50,7 +50,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnElectricCar(ActionEvent event) throws IOException {
-        App.car.setFuel(new Carparts("Diesel Car", 17_500));
+        App.car.setFuel(new Carparts("Electric Car", 17_500));
         clicked = 2;
         txtElectricCar.setStyle("-fx-background-color: #def2f1;");
         txtElectricCar.setTextFill(Color.valueOf("#17252a"));
@@ -62,7 +62,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     void btnGasCar(ActionEvent event) throws IOException {
-        App.car.setFuel(new Carparts("Electric Car", 30_000));
+        App.car.setFuel(new Carparts("Gasoline Car", 30_000));
         clicked = 3;
         txtGasCar.setStyle("-fx-background-color: #def2f1;");
         txtGasCar.setTextFill(Color.valueOf("#17252a"));
