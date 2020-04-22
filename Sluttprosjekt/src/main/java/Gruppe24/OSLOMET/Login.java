@@ -41,7 +41,7 @@ public class Login {
         userBase = FileOpenerJobj.openFileHashMap();
 
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
-            App.setRoot("adminPage");
+            App.setRoot("superUser");
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                 App.car.setUser(usernameTxt.getText());

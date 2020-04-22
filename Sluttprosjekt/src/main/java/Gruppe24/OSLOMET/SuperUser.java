@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdminPage implements Initializable {
+public class SuperUser implements Initializable {
     List<Car> carCategory = new ArrayList<>();
 
     @Override
@@ -174,9 +174,13 @@ public class AdminPage implements Initializable {
     }
 
     @FXML
-    void btnBackToLoggInn(ActionEvent event) throws IOException {
+    void btnBackToLoggInn() throws IOException {
         App.setRoot("login");
+    }
 
+    @FXML
+    void switchToCarView() throws IOException {
+        App.setRoot("superUserView");
     }
 
 }
