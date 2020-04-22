@@ -148,6 +148,7 @@ public class UserCarView implements Initializable {
         fillemptyAddones();
         //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
 
+        //Setting of all the colums
         TableColumn<NewCar, String> user = new TableColumn<>("User");
         tableView.getColumns().add(user);
         TableColumn<NewCar, String> name = new TableColumn<>("Name");
@@ -161,12 +162,13 @@ public class UserCarView implements Initializable {
         TableColumn<NewCar, String> addon = new TableColumn<>("Addon");
         tableView.getColumns().add(addon);
 
-        //Adding tablecolumns, need to find a way to add only as many as max amount of addon buttons currently in the quaternarycontroller, because you cant have more addons than the amount of buttons there.
         for(int i = 0; i < maxAntallAddones; i ++) {
             TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
             addon.getColumns().add(tc);
         }
 
+
+        //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
             int finalI = i;
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
