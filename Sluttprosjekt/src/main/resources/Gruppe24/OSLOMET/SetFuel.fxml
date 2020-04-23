@@ -36,7 +36,7 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <Button fx:id="primaryButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Next page" textAlignment="CENTER" textFill="#def2f1" />
+      <Button fx:id="primaryButton" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Next page" textAlignment="CENTER" textFill="#def2f1" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

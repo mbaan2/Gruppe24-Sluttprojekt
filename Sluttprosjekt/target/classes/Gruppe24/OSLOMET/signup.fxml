@@ -11,25 +11,25 @@
 
 <AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SignUp_Controller">
    <children>
-      <TextField fx:id="signupUsername" layoutX="322.0" layoutY="110.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter username" />
-      <PasswordField fx:id="signupPassword" layoutX="322.0" layoutY="140.0" prefHeight="26.0" prefWidth="177.0" promptText="Enter password" />
-      <TextField fx:id="signupLocation" layoutX="322.0" layoutY="170.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter location" />
-      <ChoiceBox fx:id="choiceBox" layoutX="322.0" layoutY="200.0" prefHeight="25.0" prefWidth="178.0" />
-      <TextField fx:id="answerTxt" layoutX="322.0" layoutY="230.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter answer" />
-      <RadioButton fx:id="checkMale" layoutX="322.0" layoutY="272.0" mnemonicParsing="false" text="Male" />
-      <RadioButton fx:id="checkFemale" layoutX="381.0" layoutY="272.0" mnemonicParsing="false" text="Female" />
-      <RadioButton fx:id="checkOther" layoutX="450.0" layoutY="272.0" mnemonicParsing="false" text="Other" />
-      <Button layoutX="385.0" layoutY="331.0" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #17252a;" text="Signup" textFill="WHITE" />
-      <Button layoutX="760.0" layoutY="27.0" mnemonicParsing="false" onAction="#loginBtn2" prefWidth="53.2" style="-fx-background-color: #17252a;" text="Login" textFill="WHITE" />
-      <Label layoutX="274.0" layoutY="46.0" prefHeight="45.0" prefWidth="292.0" text="Signup for Cars R Us" textFill="#def2f1">
+      <TextField fx:id="signupUsername" layoutX="322.0" layoutY="113.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter username" />
+      <PasswordField fx:id="signupPassword" layoutX="322.0" layoutY="143.0" prefHeight="26.0" prefWidth="177.0" promptText="Enter password" />
+      <TextField fx:id="signupLocation" layoutX="322.0" layoutY="173.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter location" />
+      <ChoiceBox fx:id="choiceBox" layoutX="322.0" layoutY="203.0" prefHeight="25.0" prefWidth="178.0" />
+      <TextField fx:id="answerTxt" layoutX="322.0" layoutY="233.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter answer" />
+      <RadioButton fx:id="checkMale" layoutX="322.0" layoutY="275.0" mnemonicParsing="false" text="Male" />
+      <RadioButton fx:id="checkFemale" layoutX="381.0" layoutY="275.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="checkOther" layoutX="450.0" layoutY="275.0" mnemonicParsing="false" text="Other" />
+      <Button layoutX="356.0" layoutY="334.0" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #17252a;" text="Signup" textFill="WHITE" />
+      <Button layoutX="760.0" layoutY="30.0" mnemonicParsing="false" onAction="#loginBtn2" prefWidth="53.2" style="-fx-background-color: #17252a;" text="Login" textFill="WHITE" />
+      <Label layoutX="274.0" layoutY="49.0" prefHeight="45.0" prefWidth="292.0" text="Signup for Cars R Us" textFill="#def2f1">
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
-      <Label fx:id="usernameError" layoutX="505.0" layoutY="115.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="passwordError" layoutX="505.0" layoutY="145.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="locationError" layoutX="505.0" layoutY="175.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="secretQError" layoutX="505.0" layoutY="204.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="answerError" layoutX="505.0" layoutY="235.0" prefHeight="17.0" prefWidth="110.0" />
-      <Label fx:id="genderError" layoutX="511.0" layoutY="272.0" prefHeight="17.0" prefWidth="110.0" />
+      <Label fx:id="usernameError" layoutX="510.0" layoutY="117.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
+      <Label fx:id="passwordError" layoutX="510.0" layoutY="147.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
+      <Label fx:id="locationError" layoutX="510.0" layoutY="177.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
+      <Label fx:id="secretQError" layoutX="510.0" layoutY="208.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
+      <Label fx:id="answerError" layoutX="510.0" layoutY="237.0" prefHeight="17.0" prefWidth="110.0" />
+      <Label fx:id="genderError" layoutX="510.0" layoutY="275.0" prefHeight="17.0" prefWidth="110.0" />
    </children>
 </AnchorPane>

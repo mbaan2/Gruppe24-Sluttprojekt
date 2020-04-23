@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="816.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SuperUserCarView_Controller">
+<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SuperUserCarView_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="229.0" layoutY="51.0" prefHeight="382.0" prefWidth="522.0">
+        <TableView fx:id="tableView" layoutX="188.0" layoutY="16.0" prefHeight="417.0" prefWidth="632.0">
 
         </TableView>
         <TextField fx:id="filterText" layoutX="28.0" layoutY="333.0" prefHeight="25.0" prefWidth="150.0" />
