@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET;
+/*package Gruppe24.OSLOMET;
 
 //import Gruppe24.OSLOMET.FileTreatment.FileOpenerTxt;
 import javafx.event.ActionEvent;
@@ -40,3 +40,5 @@ public class LoadedCars implements Initializable{
     }
 
 }
+
+ */

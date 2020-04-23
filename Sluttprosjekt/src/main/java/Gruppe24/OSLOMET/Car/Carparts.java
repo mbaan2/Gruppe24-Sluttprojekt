@@ -1,27 +1,27 @@
 package Gruppe24.OSLOMET.Car;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.Serializable;
 
 public class Carparts implements Car, Serializable {
-    SimpleStringProperty name;
-    SimpleIntegerProperty cost;
+    String name;
+    int cost;
 
     public Carparts(String name, int cost) {
-        this.name = new SimpleStringProperty(name);
-        this.cost = new SimpleIntegerProperty(cost);
+        this.name = name;
+        this.cost = cost;
     }
 
     @Override
     public String getName() {
-        return name.getValue();
+        return name;
     }
 
     @Override
     public int getCost() {
-        return cost.getValue();
+        return cost;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

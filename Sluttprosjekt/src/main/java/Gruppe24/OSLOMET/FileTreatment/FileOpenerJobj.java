@@ -2,6 +2,8 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.NewCar;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -49,6 +51,22 @@ public class FileOpenerJobj {
             System.err.println(e.getMessage());
         }
         return userBase;
+    }
+
+    public static ObservableList<NewCar> openCarsToObsL(String path) throws IOException {
+        ObservableList<NewCar> carList = FXCollections.observableArrayList();
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+        boolean moreObjects = true;
+
+        while (moreObjects) {
+            try {
+                NewCar aCar = (NewCar) is.readObject();
+                carList.add(aCar);
+            } catch (Exception e){
+                moreObjects = false;
+            }
+        }
+        return carList;
     }
 
 

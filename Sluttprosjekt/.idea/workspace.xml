@@ -1,7 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e75d5b1-9e64-414b-93fd-09ac88732ec6" name="Default Changelist" comment="" />
+    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="Small changes">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/addons.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/cars.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/color.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/color.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/BuiltCarsHistory/BuiltCarsSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Carparts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Carparts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/LoadedCars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/LoadedCars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/NullaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/WelcomeScreen_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetFuel_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuaternaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetAddons_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Summary_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetWheels_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/TertiaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetColor_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserRegister_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/00-nullary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/WelcomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetFuel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/02-secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetWheels.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/03-tertiary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetColors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/04-quaternary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetAddons.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/Summary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/UserCarView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/00-nullary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/02-secondary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/03-tertiary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/04-quaternary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/BuiltCarsHistory/BuiltCarsSingleton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Carparts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Carparts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/LoadedCars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/NullaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuaternaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SecondaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/TertiaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserRegister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wheels.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/wheels.jobj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,8 +79,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -24,6 +92,13 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1ZTnDQJWKcZoVJ0A1I8ILOb9po9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,7 +115,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Oblig-1---Webprogrammering" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,21 +128,34 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Gruppe24.OSLOMET" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Gruppe24.OSLOMET" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
       <recent name="C:\Users\Ana\Google Drive\OsloMet\DATA1600 - Programutvikling\Projects\Oppgaver\Final Project\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Gruppe24.OSLOMET" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
-    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.App" />
+      <module name="Sluttprosjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Gruppe24.OSLOMET.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.App" />
       <module name="Sluttprosjekt" />
@@ -81,8 +169,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.Controllers.App" />
+      <module name="Sluttprosjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Gruppe24.OSLOMET.Controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.App (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.App (1)" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -118,7 +225,11 @@
       <workItem from="1586334173619" duration="2628000" />
       <workItem from="1586535312566" duration="275000" />
       <workItem from="1587057077130" duration="2444000" />
-      <workItem from="1587137671855" duration="6986000" />
+      <workItem from="1587137671855" duration="9982000" />
+      <workItem from="1587152575036" duration="2735000" />
+      <workItem from="1587387848595" duration="5643000" />
+      <workItem from="1587475383426" duration="2807000" />
+      <workItem from="1587566117441" duration="12203000" />
     </task>
     <task id="LOCAL-00001" summary="Added controllers 3-5, each directing to the next controller.">
       <created>1585219025324</created>
@@ -245,7 +356,19 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1587058094468</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Added filters to the users tableview.">
+      <created>1587144690083</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1587144690083</updated>
+    </task>
+    <task id="LOCAL−00021" summary="Small changes">
+      <created>1587393053579</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1587393053579</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,12 +379,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added controllers 3-5, each directing to the next controller." />
@@ -280,7 +404,9 @@
     <MESSAGE value="Minor updates because I made a couple of mistakes." />
     <MESSAGE value="Tiny update: changed to-do list location and updated contents." />
     <MESSAGE value="Added my userTableView so you can see what I've worked on so far." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added my userTableView so you can see what I've worked on so far." />
+    <MESSAGE value="Added filters to the users tableview." />
+    <MESSAGE value="Small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="71" key="#Notifications" timestamp="1584873334624">
@@ -296,31 +422,35 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="500" y="168" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585578903494" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587640069011">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587640069011" />
     <state x="625" y="296" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586280230874">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="625" y="296" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586280230874" />
     <state x="1042" y="503" key="#com.intellij.fileTypes.FileTypeChooser/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586265526479" />
-    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1586935799582">
+    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1587560897093">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586935799582" />
-    <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586646970419" />
+    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587560897093" />
+    <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587392261192" />
     <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673418652" />
-    <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587057079962">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587632806717">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1587051945861" />
-    <state x="1128" y="590" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585851657423" />
+    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1587632806717" />
+    <state x="1128" y="590" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587567982303" />
     <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587057079962" />
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586938137708">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1586938137708" />
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585581304633">
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587639209884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585581304633" />
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1587639209884" />
     <state x="870" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586181898692">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -333,66 +463,74 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="447" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586191035828" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1587363606520">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="462" y="154" key="CommitChangelistDialog2" timestamp="1587393065735">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587363606520" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586727432339" />
-    <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587058093902" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587035606591" />
+    <state x="462" y="154" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587393065735" />
+    <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144689339" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1586193041017">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586193041017" />
-    <state x="826" y="167" key="FileChooserDialogImpl" timestamp="1587035739727">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="1377" y="284" key="FileChooserDialogImpl" timestamp="1587388301724">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587035739727" />
-    <state x="1377" y="284" key="FileChooserDialogImpl/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586720413635" />
+    <state x="1377" y="284" key="FileChooserDialogImpl/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587388301724" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586263799515" />
-    <state width="2517" height="353" key="GridCell.Tab.0.bottom" timestamp="1587144378899">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587053353926" />
-    <state width="2517" height="405" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586727432358" />
-    <state width="2517" height="353" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144378899" />
-    <state width="2517" height="353" key="GridCell.Tab.0.center" timestamp="1587144378899">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
+    <state width="2517" height="343" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
+    <state width="2517" height="353" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
+    <state width="2517" height="491" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587053353926" />
-    <state width="2517" height="405" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586727432358" />
-    <state width="2517" height="353" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144378899" />
-    <state width="2517" height="353" key="GridCell.Tab.0.left" timestamp="1587144378899">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
+    <state width="2517" height="343" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
+    <state width="2517" height="353" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
+    <state width="2517" height="491" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left" timestamp="1587640042180">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587053353925" />
-    <state width="2517" height="405" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586727432358" />
-    <state width="2517" height="353" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144378899" />
-    <state width="2517" height="353" key="GridCell.Tab.0.right" timestamp="1587144378899">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587640042180" />
+    <state width="2517" height="343" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
+    <state width="2517" height="353" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
+    <state width="2517" height="491" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587053353926" />
-    <state width="2517" height="405" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586727432358" />
-    <state width="2517" height="353" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144378899" />
-    <state width="2517" height="491" key="GridCell.Tab.1.bottom" timestamp="1586217398874">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
+    <state width="2517" height="343" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
+    <state width="2517" height="353" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
+    <state width="2517" height="491" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="2517" height="491" key="GridCell.Tab.1.bottom" timestamp="1587300365330">
+      <screen x="2560" y="50" width="1920" height="1040" />
     </state>
     <state width="2517" height="491" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217398874" />
-    <state width="1340" height="324" key="GridCell.Tab.1.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673975823" />
-    <state width="2517" height="491" key="GridCell.Tab.1.center" timestamp="1586217398874">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="2517" height="491" key="GridCell.Tab.1.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165189149" />
+    <state width="2517" height="491" key="GridCell.Tab.1.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="2517" height="491" key="GridCell.Tab.1.center" timestamp="1587300365330">
+      <screen x="2560" y="50" width="1920" height="1040" />
     </state>
     <state width="2517" height="491" key="GridCell.Tab.1.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217398874" />
-    <state width="1340" height="324" key="GridCell.Tab.1.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673975823" />
-    <state width="2517" height="491" key="GridCell.Tab.1.left" timestamp="1586217398874">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="2517" height="491" key="GridCell.Tab.1.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165189149" />
+    <state width="2517" height="491" key="GridCell.Tab.1.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="2517" height="491" key="GridCell.Tab.1.left" timestamp="1587300365330">
+      <screen x="2560" y="50" width="1920" height="1040" />
     </state>
     <state width="2517" height="491" key="GridCell.Tab.1.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217398874" />
-    <state width="1340" height="324" key="GridCell.Tab.1.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673975823" />
-    <state width="2517" height="491" key="GridCell.Tab.1.right" timestamp="1586217398874">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="2517" height="491" key="GridCell.Tab.1.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165189149" />
+    <state width="2517" height="491" key="GridCell.Tab.1.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
+    <state width="2517" height="491" key="GridCell.Tab.1.right" timestamp="1587300365330">
+      <screen x="2560" y="50" width="1920" height="1040" />
     </state>
     <state width="2517" height="491" key="GridCell.Tab.1.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217398874" />
-    <state width="1340" height="324" key="GridCell.Tab.1.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673975823" />
+    <state width="2517" height="491" key="GridCell.Tab.1.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165189149" />
+    <state width="2517" height="491" key="GridCell.Tab.1.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
     <state x="810" y="355" key="Maven.ArtifactSearchDialog" timestamp="1587057136320">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -416,12 +554,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="316" y="129" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1586286735617" />
-    <state x="351" y="146" key="Vcs.Push.Dialog.v2" timestamp="1587363609768">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2" timestamp="1587393055037">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587363609768" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217371479" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587058096403" />
+    <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586522907712" />
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587393055037" />
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587144694020" />
     <state x="585" y="191" key="chooseDestDirectoryDialog" timestamp="1586124141446">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -430,15 +568,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586265594698" />
-    <state x="448" y="154" key="com.intellij.ide.util.TipDialog" timestamp="1585652844332">
+    <state x="448" y="154" key="com.intellij.ide.util.TipDialog" timestamp="1587475382189">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="448" y="154" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585652844332" />
-    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587138298729">
+    <state x="448" y="154" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587475382189" />
+    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587393067855">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587035562726" />
-    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586217385376" />
+    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587393067855" />
     <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587138298729" />
     <state x="462" y="144" width="618" height="536" key="find.popup" timestamp="1585577635086">
       <screen x="0" y="0" width="1536" height="824" />
@@ -453,11 +591,11 @@
     </state>
     <state x="512" y="42" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1585600312308" />
     <state x="853" y="71" key="refactoring.ChangeSignatureDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586646629892" />
-    <state x="943" y="314" width="1120" height="680" key="search.everywhere.popup" timestamp="1587138693905">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1587586024854">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="566" y="185" width="672" height="400" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587052459667" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586699436332" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587586024854" />
     <state x="943" y="314" width="1120" height="680" key="search.everywhere.popup/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587138693905" />
   </component>
 </project>
