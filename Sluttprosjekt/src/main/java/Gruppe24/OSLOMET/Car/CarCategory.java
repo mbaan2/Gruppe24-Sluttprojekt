@@ -1,7 +1,5 @@
 package Gruppe24.OSLOMET.Car;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +29,7 @@ public class CarCategory implements Car, Serializable {
 
     @Override
     public void setName(String name) {
-
-    }
-
-    @Override
-    public void setCost(int cost) {
-
+        this.name = name;
     }
 
     public void add(Car part){
@@ -57,12 +50,6 @@ public class CarCategory implements Car, Serializable {
 
     public void clear(){
         carpartsList.clear();
-    }
-
-    @Override
-    public boolean exist(int index) {
-
-        return false;
     }
 
 }

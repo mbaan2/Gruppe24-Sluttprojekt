@@ -2,28 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="Small changes">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/addons.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/cars.jobj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/color.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/color.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/NullaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/NullaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/00-nullary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/00-nullary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/02-secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/02-secondary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/03-tertiary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/03-tertiary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/04-quaternary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/04-quaternary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/BuiltCarsHistory/BuiltCarsSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/CarCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Carparts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Car/Carparts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/LoadedCars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/LoadedCars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/NullaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/WelcomeScreen_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetFuel_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuaternaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetAddons_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/QuinaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Summary_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SecondaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetWheels_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUser_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/TertiaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetColor_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserRegister_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/00-nullary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/WelcomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetFuel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/02-secondary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetWheels.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/03-tertiary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetColors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/04-quaternary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetAddons.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/Summary.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/UserCarView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/00-nullary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/01-primary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/02-secondary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/03-tertiary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/04-quaternary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/05-quinary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/BuiltCarsHistory/BuiltCarsSingleton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Carparts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/Carparts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/LoadedCars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/NullaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/PrimaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuaternaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/QuinaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SecondaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/TertiaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserRegister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wheels.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/wheels.jobj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,21 +128,34 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Gruppe24.OSLOMET" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Gruppe24.OSLOMET" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
       <recent name="C:\Users\Ana\Google Drive\OsloMet\DATA1600 - Programutvikling\Projects\Oppgaver\Final Project\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Gruppe24.OSLOMET" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\oyvin\IdeaProjects\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
-    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.App" />
+      <module name="Sluttprosjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Gruppe24.OSLOMET.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.App" />
       <module name="Sluttprosjekt" />
@@ -111,8 +169,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.Controllers.App" />
+      <module name="Sluttprosjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Gruppe24.OSLOMET.Controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.App (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.App (1)" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -345,6 +422,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="500" y="168" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585578903494" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587640069011">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587640069011" />
     <state x="625" y="296" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586280230874">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -356,20 +437,20 @@
     <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587560897093" />
     <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587392261192" />
     <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585673418652" />
-    <state x="1128" y="590" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587567982303">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587632806717">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1587475395293" />
+    <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1587632806717" />
     <state x="1128" y="590" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587567982303" />
     <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587057079962" />
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586938137708">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1586938137708" />
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585581304633">
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587639209884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585581304633" />
+    <state x="566" y="297" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1587639209884" />
     <state x="870" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586181898692">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -398,31 +479,31 @@
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587035739727" />
     <state x="1377" y="284" key="FileChooserDialogImpl/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587388301724" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586263799515" />
-    <state width="2517" height="343" key="GridCell.Tab.0.bottom" timestamp="1587589655192">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587561641474" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
     <state width="2517" height="343" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
     <state width="2517" height="353" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
     <state width="2517" height="491" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.center" timestamp="1587589655192">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587561641474" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
     <state width="2517" height="343" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
     <state width="2517" height="353" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
     <state width="2517" height="491" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.left" timestamp="1587589655192">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left" timestamp="1587640042180">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587561641474" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587640042180" />
     <state width="2517" height="343" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
     <state width="2517" height="353" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
     <state width="2517" height="491" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.right" timestamp="1587589655192">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right" timestamp="1587640042181">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="276" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587561641474" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587640042181" />
     <state width="2517" height="343" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587589655192" />
     <state width="2517" height="353" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587165318559" />
     <state width="2517" height="491" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />

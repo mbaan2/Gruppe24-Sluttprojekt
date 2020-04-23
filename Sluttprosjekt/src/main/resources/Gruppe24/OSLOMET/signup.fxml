@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SignUp">
+<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SignUp_Controller">
    <children>
       <TextField fx:id="signupUsername" layoutX="322.0" layoutY="110.0" prefHeight="26.0" prefWidth="178.0" promptText="Enter username" />
       <PasswordField fx:id="signupPassword" layoutX="322.0" layoutY="140.0" prefHeight="26.0" prefWidth="177.0" promptText="Enter password" />
