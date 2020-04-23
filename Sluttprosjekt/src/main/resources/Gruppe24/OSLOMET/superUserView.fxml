@@ -7,15 +7,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SuperUserCarView_Controller">
+<AnchorPane prefHeight="408.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SuperUserCarView_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="188.0" layoutY="16.0" prefHeight="417.0" prefWidth="632.0">
+        <TableView fx:id="tableView" layoutX="187.0" layoutY="4.0" prefHeight="417.0" prefWidth="632.0">
 
         </TableView>
         <TextField fx:id="filterText" layoutX="28.0" layoutY="333.0" prefHeight="25.0" prefWidth="150.0" />
-        <Button layoutX="28.0" layoutY="376.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
+        <Button layoutX="28.0" layoutY="366.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
         <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" layoutX="28.0" layoutY="442.0" prefHeight="36.0" prefWidth="210.0" />
-        <Button layoutX="28.0" layoutY="408.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
+        <Button layoutX="28.0" layoutY="396.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
     </children>
 </AnchorPane>

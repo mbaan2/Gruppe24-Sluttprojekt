@@ -40,7 +40,7 @@ public class UserCarView_Controller implements Initializable {
 
     @FXML
     void logout() throws IOException {
-        App.setRoot("login");
+        App.setRoot("Login");
     }
 
     void showCars() throws IOException {
@@ -82,7 +82,6 @@ public class UserCarView_Controller implements Initializable {
 
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
-            int finalI = i;
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
 
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
