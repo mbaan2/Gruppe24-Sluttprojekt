@@ -45,6 +45,7 @@ public class Summary_Controller {
         lblCarName.setVisible(true);
         btnNameCar.setVisible(true);
         btnSaveCar.setDisable(true);
+        btnSaveCar.setLayoutX(314.0);
 
         Carparts fuel = new Carparts("Diesel", 1000);
         Carparts wheels = new Carparts("Big wheels", 1000);
