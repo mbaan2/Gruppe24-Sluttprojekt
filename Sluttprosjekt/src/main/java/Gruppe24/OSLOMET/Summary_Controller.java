@@ -75,7 +75,7 @@ public class Summary_Controller {
 
         try {
             //TO SAVE THE INITIAL LIST
-            //FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
             FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException ex) {
