@@ -143,6 +143,7 @@ public class UserCarView_Controller implements Initializable {
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + " kr)"));
             color.setCellFactory(TextFieldTableCell.forTableColumn());
             color.setOnEditCommit(event -> event.getRowValue().setColor(new Carparts(event.getNewValue(), event.getRowValue().getColor().getCost())));
+            tableView.refresh();
 
             for (int j = 0; j < maxAntallAddons; j++) {
                 int finalJ = j;
@@ -180,35 +181,5 @@ public class UserCarView_Controller implements Initializable {
                 }
             }
         }
-    }
-
-    @FXML
-    private void colorEdited(TableColumn.CellEditEvent<NewCar, Carparts> event) {
-        event.getRowValue().setColor(event.getNewValue());
-    }
-
-    @FXML
-    private void wheelsEdited(TableColumn.CellEditEvent<NewCar, Carparts> event) {
-        event.getRowValue().setWheels(event.getNewValue());
-    }
-
-    @FXML
-    private void addonsEdited(TableColumn.CellEditEvent<NewCar, CarCategory> event) {
-        event.getRowValue().setAddons(event.getNewValue());
-    }
-
-    @FXML
-    private void fuelEdited(TableColumn.CellEditEvent<NewCar, Carparts> event) {
-        event.getRowValue().setFuel(event.getNewValue());
-    }
-
-    @FXML
-    private void nameEdited(TableColumn.CellEditEvent<NewCar, String> event) {
-        event.getRowValue().setName(event.getNewValue());
-    }
-
-    @FXML
-    private void userEdited(TableColumn.CellEditEvent<NewCar, String> event) {
-        event.getRowValue().setUser(event.getNewValue());
     }
 }

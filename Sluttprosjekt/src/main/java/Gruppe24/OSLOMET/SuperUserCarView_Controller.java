@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
@@ -11,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -145,23 +148,37 @@ public class SuperUserCarView_Controller implements Initializable {
             addon.getColumns().add(tc);
         }
 
+        tableView.setEditable(true);
+
 
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
+            user.setCellFactory(TextFieldTableCell.forTableColumn());
+            user.setOnEditCommit(event -> event.getRowValue().setUser(event.getNewValue()));
 
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
+            name.setCellFactory(TextFieldTableCell.forTableColumn());
+            user.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
 
-            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
+            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + " kr)"));
+            fuel.setCellFactory(TextFieldTableCell.forTableColumn());
+            fuel.setOnEditCommit(event -> event.getRowValue().setFuel(new Carparts(event.getNewValue(), event.getRowValue().getFuel().getCost())));
 
-            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName()));
+            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + " kr)"));
+            wheels.setCellFactory(TextFieldTableCell.forTableColumn());
+            wheels.setOnEditCommit(event -> event.getRowValue().setWheels(new Carparts(event.getNewValue(), event.getRowValue().getWheels().getCost())));
 
-            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
+            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + " kr)"));
+            color.setCellFactory(TextFieldTableCell.forTableColumn());
+            color.setOnEditCommit(event -> event.getRowValue().setColor(new Carparts(event.getNewValue(), event.getRowValue().getColor().getCost())));
 
             for (int j = 0; j < maxAntallAddones; j++) {
                 int finalJ = j;
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
+                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName() + " (" + car.getValue().getAddons().getElement(finalJ).getCost() + " kr)"));
+                tc.setCellFactory(TextFieldTableCell.forTableColumn());
+                tc.setOnEditCommit(event -> event.getRowValue().setAddons(new CarCategory(event.getNewValue())));
             }
         }
         tableView.setItems(carList);
