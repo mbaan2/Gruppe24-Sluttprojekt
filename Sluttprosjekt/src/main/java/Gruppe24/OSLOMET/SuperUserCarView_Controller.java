@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class SuperUserCarView_Controller implements Initializable {
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
     ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
-
+    ObservableList<String> fuelList = FXCollections.observableArrayList();
 
     @FXML
     void filterCars() {
@@ -125,7 +126,7 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int maxAntallAddones = maxAddons();
+        int maxAntallAddons = maxAddons();
         fillEmptyAddons();
         //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
 
@@ -143,7 +144,12 @@ public class SuperUserCarView_Controller implements Initializable {
         TableColumn<NewCar, String> addon = new TableColumn<>("Addons");
         tableView.getColumns().add(addon);
 
-        for(int i = 0; i < maxAntallAddones; i ++) {
+        String dieselFuel = "Diesel Car (20000 kr)";
+        String electricFuel = "Electric Car (17500 kr)";
+        String gasFuel = "Gasoline Car (30000 kr)";
+        fuelList.addAll(dieselFuel, electricFuel, gasFuel);
+
+        for(int i = 0; i < maxAntallAddons; i ++) {
             TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
             addon.getColumns().add(tc);
         }
@@ -162,7 +168,7 @@ public class SuperUserCarView_Controller implements Initializable {
             user.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
 
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + " kr)"));
-            fuel.setCellFactory(TextFieldTableCell.forTableColumn());
+            fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
             fuel.setOnEditCommit(event -> event.getRowValue().setFuel(new Carparts(event.getNewValue(), event.getRowValue().getFuel().getCost())));
 
             wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + " kr)"));
@@ -173,7 +179,7 @@ public class SuperUserCarView_Controller implements Initializable {
             color.setCellFactory(TextFieldTableCell.forTableColumn());
             color.setOnEditCommit(event -> event.getRowValue().setColor(new Carparts(event.getNewValue(), event.getRowValue().getColor().getCost())));
 
-            for (int j = 0; j < maxAntallAddones; j++) {
+            for (int j = 0; j < maxAntallAddons; j++) {
                 int finalJ = j;
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
                 tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName() + " (" + car.getValue().getAddons().getElement(finalJ).getCost() + " kr)"));
