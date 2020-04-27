@@ -1,7 +1,6 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
@@ -102,9 +101,9 @@ public class SuperUserCarView_Controller implements Initializable {
             }
             if(filterType.equals("Addons")) {
                 int i = 0;
-                int maxAntallAddones = maxAddons();
+                int maxAntallAddons = maxAddons();
 
-                while(i < maxAntallAddones) {
+                while(i < maxAntallAddons) {
                     filteredList = Filter.addonFilter(filteredText, carList, i);
                     if(filteredList.isEmpty()) {
                         filterLbl.setText("No car exists with that addon.");

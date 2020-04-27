@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
 import javafx.collections.FXCollections;
@@ -9,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -123,10 +121,6 @@ public class UserRegister_Controller implements Initializable {
                         nextBtn.setVisible(true);
                         setNotVisible();
                         return;
-                    } if(usernameTxt.getText().isEmpty()) {
-                        usernameError.setText("Enter a username!");
-                    } else if(!username.trim().equals(usernameTxt.getText())) {
-                        usernameError.setText("Wrong username!");
                     }
                     if(answerTxt.getText().isEmpty()) {
                         answerError.setText("Enter an answer!");

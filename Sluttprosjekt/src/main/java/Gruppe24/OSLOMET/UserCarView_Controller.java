@@ -36,9 +36,6 @@ public class UserCarView_Controller implements Initializable {
         usersCarList = Filter.usernameFilter(username, carList);
         tableView.setItems(usersCarList);
         tableView.setVisible(true);
-        for(int j = 0; j < usersCarList.size(); j++) {
-            System.out.println(usersCarList.get(j).getFuel().getName() + " " + usersCarList.get(j).getFuel().getCost());
-        }
     }
 
     @FXML
