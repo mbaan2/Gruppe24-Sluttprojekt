@@ -150,6 +150,12 @@ public class SuperUserCarView_Controller implements Initializable {
         TableColumn<NewCar, String> addon = new TableColumn<>("Addons");
         tableView.getColumns().add(addon);
 
+        for(int i = 0; i < maxAntallAddons; i ++) {
+            TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
+            addon.getColumns().add(tc);
+        }
+
+        //Adding values to the lists for the comboboxes for editing
         String dieselFuel = "Diesel Car";
         String electricFuel = "Electric Car";
         String gasFuel = "Gasoline Car";
@@ -166,11 +172,6 @@ public class SuperUserCarView_Controller implements Initializable {
         String blackColor = "Black";
         String greenColor = "Green";
         colorList.addAll(redColor, blueColor, yellowColor, blackColor, greenColor);
-
-        for(int i = 0; i < maxAntallAddons; i ++) {
-            TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
-            addon.getColumns().add(tc);
-        }
 
         tableView.setEditable(true);
 
