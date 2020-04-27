@@ -446,12 +446,12 @@
     </state>
     <state x="1010" y="447" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587758016247" />
     <state x="1010" y="447" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587996293859" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1587999756909">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1588003628152">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587654319197" />
     <state x="462" y="154" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587768659572" />
-    <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587999756909" />
+    <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588003628152" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1587663853938">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -538,12 +538,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="316" y="129" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1586286735617" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2" timestamp="1587999759483">
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2" timestamp="1588003629820">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587654329481" />
     <state x="585" y="248" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587768662505" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587999759483" />
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588003629820" />
     <state x="585" y="191" key="chooseDestDirectoryDialog" timestamp="1586124141446">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -227,9 +227,7 @@ public class SuperUserCarView_Controller implements Initializable {
             for (int j = 0; j < maxAntallAddons; j++) {
                 int finalJ = j;
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName() + " (" + car.getValue().getAddons().getElement(finalJ).getCost() + " kr)"));
-                tc.setCellFactory(TextFieldTableCell.forTableColumn());
-                tc.setOnEditCommit(event -> event.getRowValue().setAddons(new CarCategory(event.getNewValue())));
+                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
             }
         }
         tableView.setItems(carList);
