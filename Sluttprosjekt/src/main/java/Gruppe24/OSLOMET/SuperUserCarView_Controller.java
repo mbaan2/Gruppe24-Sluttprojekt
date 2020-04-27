@@ -144,9 +144,9 @@ public class SuperUserCarView_Controller implements Initializable {
         TableColumn<NewCar, String> addon = new TableColumn<>("Addons");
         tableView.getColumns().add(addon);
 
-        String dieselFuel = "Diesel Car (20000 kr)";
-        String electricFuel = "Electric Car (17500 kr)";
-        String gasFuel = "Gasoline Car (30000 kr)";
+        String dieselFuel = "Diesel Car";
+        String electricFuel = "Electric Car";
+        String gasFuel = "Gasoline Car";
         fuelList.addAll(dieselFuel, electricFuel, gasFuel);
 
         for(int i = 0; i < maxAntallAddons; i ++) {
