@@ -209,7 +209,7 @@ public class SuperUserCarView_Controller implements Initializable {
                 }
             });
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
-            color.setCellFactory(ComboBoxTableCell.forTableColumn());
+            color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
             color.setOnEditCommit(event -> {
                 if(event.getNewValue().equals("Red")) {
                     event.getRowValue().setFuel(new Carparts(event.getNewValue(), 5000));
