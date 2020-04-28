@@ -106,7 +106,7 @@ public class SignUp_Controller implements Initializable {
                 FileSaverJobj.SaveUser(userBase);
                 App.setRoot("login");
             } else{
-                System.err.println("Username already exisit");
+                usernameError.setText("Username already exists!");
             }
 
 
@@ -158,7 +158,7 @@ public class SignUp_Controller implements Initializable {
     }
 
     @FXML
-    void loginBtn2(ActionEvent event) throws IOException {
+    void loginBtn(ActionEvent event) throws IOException {
         App.setRoot("login");
     }
 

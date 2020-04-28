@@ -2,14 +2,8 @@ package Gruppe24.OSLOMET;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
-
-import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
