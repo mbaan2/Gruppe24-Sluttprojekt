@@ -1,29 +1,20 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Summary_Controller {
-
-    @FXML
-    private Button btnSaveCar;
 
     @FXML
     private Button btnNameCar;
@@ -39,10 +30,7 @@ public class Summary_Controller {
 
     @FXML
     private Label lblCarComponents;
-
-    @FXML
-    private Button quinaryButton;
-
+    
 
     @FXML
     void btnBuildCar(ActionEvent event) {
@@ -123,6 +111,8 @@ public class Summary_Controller {
 
     @FXML
     void btnSaveCarToText(ActionEvent event) {
+        lblCarName.setText("");
+        
         FileSaverTxt fs = new FileSaverTxt();
         try{
             fs.saveTxtFile(App.car);
