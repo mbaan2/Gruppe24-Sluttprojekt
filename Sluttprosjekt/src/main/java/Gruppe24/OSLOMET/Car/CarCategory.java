@@ -40,6 +40,14 @@ public class CarCategory implements Car, Serializable {
         return carpartsList.get(index);
     }
 
+    public void remove(int index){
+        carpartsList.remove(index);
+    }
+
+    public void remove(Car addon){
+        carpartsList.remove(addon);
+    }
+
     public int size(){
         int size =0;
         for(int i = 0 ; i < carpartsList.size(); i++){

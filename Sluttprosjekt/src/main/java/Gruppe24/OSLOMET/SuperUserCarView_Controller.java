@@ -1,22 +1,29 @@
 package Gruppe24.OSLOMET;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SuperUserCarView_Controller implements Initializable {
@@ -99,9 +106,10 @@ public class SuperUserCarView_Controller implements Initializable {
                     filterLbl.setText("No car exists with that color.");
                 }
             }
+            //TODO Edit to include deprecated (beyond number specified)
             if(filterType.equals("Addons")) {
                 int i = 0;
-                int maxAntallAddons = maxAddons();
+                int maxAntallAddons = addOnSupUser.size();
 
                 while(i < maxAntallAddons) {
                     filteredList = Filter.addonFilter(filteredText, carList, i);
@@ -119,8 +127,49 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     void showCars() throws IOException {
+        //TODO Fix opening of JOBJ
         ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         carList.addAll(list2);
+
+        NewCar car1 = new NewCar();
+        car1.setFuel(new Carparts("Diesel", 10000));
+        car1.setColor(new Carparts("Red", 5));
+        CarCategory addonsCar1 = new CarCategory("Addons");
+        Car GPS = new Carparts("GPS", 100);
+        Car subwoofer = new Carparts("Subwoofer", 1000);
+        Car ice = new Carparts("Ice", 5);
+        Car lemons = new Carparts("Lemons", 10);
+        addonsCar1.add(GPS);
+        addonsCar1.add(subwoofer);
+        addonsCar1.add(ice);
+        addonsCar1.add(lemons);
+        car1.setAddons(addonsCar1);
+        car1.setUser("Aaa");
+        car1.setWheels(new Carparts("Big wheels", 1000));
+        car1.setName("Car1");
+
+        NewCar car2 = new NewCar();
+        car2.setFuel(new Carparts("Electric", 10000));
+        car2.setColor(new Carparts("Pink", 5));
+        CarCategory addonsCar2 = new CarCategory("Addons");
+        Car spoiler = new Carparts("Spoiler", 100);
+        Car paprika = new Carparts("Paprika", 10);
+        addonsCar2.add(spoiler);
+        addonsCar2.add(ice);
+        addonsCar2.add(paprika);
+        car2.setAddons(addonsCar2);
+        car2.setUser("Bbb");
+        car2.setWheels(new Carparts("Tiny wheels", 1000));
+        car2.setName("Car2");
+
+        carList.addAll(car1, car2);
+    }
+
+    List<Car> addOnSupUser = new ArrayList<>();
+
+    public void openFile() throws IOException{
+        Path path = Paths.get(StandardPaths.addonPath);
+        addOnSupUser = FileOpenerJobj.openFile(path);
     }
 
     @Override
@@ -131,9 +180,15 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int maxAntallAddons = maxAddons();
-        fillEmptyAddons();
-        //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
+
+        int maxNrAddons = 0;
+
+        try {
+            openFile();
+            maxNrAddons = addOnSupUser.size();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //Setting of all the colums
         TableColumn<NewCar, String> user = new TableColumn<>("User");
@@ -146,11 +201,12 @@ public class SuperUserCarView_Controller implements Initializable {
         tableView.getColumns().add(wheels);
         TableColumn<NewCar, String> color = new TableColumn<>("Color");
         tableView.getColumns().add(color);
-        TableColumn<NewCar, String> addon = new TableColumn<>("Addons");
+        TableColumn<NewCar, String> addon = new TableColumn<>("Add-ons");
         tableView.getColumns().add(addon);
 
-        for(int i = 0; i < maxAntallAddons; i ++) {
-            TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
+        for(int i = 0; i < maxNrAddons; i++) {
+            TableColumn<NewCar, CheckBox> tc = new TableColumn<>(addOnSupUser.get(i).getName());
+            tc.setText(addOnSupUser.get(i).getName());
             addon.getColumns().add(tc);
         }
 
@@ -173,6 +229,8 @@ public class SuperUserCarView_Controller implements Initializable {
         colorList.addAll(redColor, blueColor, yellowColor, blackColor, greenColor);
 
         tableView.setEditable(true);
+        TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
+        addon.getColumns().add(deprecatedAddon);
 
 
         //Loading of the data into the tableview
@@ -224,40 +282,67 @@ public class SuperUserCarView_Controller implements Initializable {
                 }
             });
 
-            for (int j = 0; j < maxAntallAddons; j++) {
+            for (int j = 0; j < maxNrAddons; j++) {
+                TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
-                TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
+                tc.setCellValueFactory(car -> {
+                    CheckBox checkbox = new CheckBox("kr" + addOnSupUser.get(finalJ).getCost());
+                    checkbox.setSelected(false);
+                    for (int k = 0; k < car.getValue().getAddons().size(); k++) {
+                        if (car.getValue().getAddons().getElement(k).getName().toLowerCase().equals(car.getTableColumn().getText().toLowerCase())) {
+                            checkbox.setSelected(true);
+                        }
+
+                        int finalK = k;
+                        checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addOnSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected()));
+                    }
+                    return new SimpleObjectProperty<CheckBox>(checkbox);
+                });
             }
+
+
+            deprecatedAddon.setCellValueFactory(car -> {
+                List<String> availableAddOns = new ArrayList<>();
+                for (Car c : addOnSupUser){
+                    String s = c.getName().toLowerCase();
+                    availableAddOns.add(s);
+                }
+
+                HBox deprecatedAddonsList = new HBox();
+                for (int j = 0; j < car.getValue().getAddons().size(); j++) {
+                    boolean hasMatch = false;
+                    for (String availableAddOn : availableAddOns){
+                        if (car.getValue().getAddons().getElement(j).getName().toLowerCase().equals(availableAddOn)){
+                            hasMatch = true;
+                        }
+                    }
+                    if (!hasMatch){
+                        Button unmatchedAddon = new Button();
+                        unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
+                        int finalJ = j;
+                        unmatchedAddon.setOnAction(actionEvent -> deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons));
+                        deprecatedAddonsList.getChildren().add(unmatchedAddon);
+                    }
+                }
+                return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
+            });
         }
         tableView.setItems(carList);
     }
 
+    private void handleAddonCheckbox(ActionEvent actionEvent, Car addonSupUser, Car addonUser, CarCategory addonsCarUser, boolean selected){
+        if (!selected){
+            addonsCarUser.remove(addonUser);
 
-    private int maxAddons(){
-        int antall = 0;
-        for(int i = 0 ; i< carList.size(); i++){
-            for(int j = 1; j< (carList.get(i).getAddons().size() + 1); j++){
-                if(j > antall){
-                    antall = j;
-                }
-            }
+        } else {
+            addonsCarUser.add(addonSupUser);
         }
-        return antall;
+        tableView.refresh();
     }
 
-    private  void fillEmptyAddons(){
-        int maxAntall = maxAddons();
-        for(int i = 0 ; i< carList.size(); i++){
-            System.out.println(carList.get(i).getAddons().size());
-            for(int j = 0; j < maxAntall; j++){
-                if(j >= carList.get(i).getAddons().size()){
-                    Car emptyAddone = new Carparts("", 0);
-                    carList.get(i).getAddons().add(emptyAddone);
-                    System.out.println("done");
-                }
-            }
-        }
+    private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist){
+        addonlist.remove(addon);
+        tableView.refresh();
     }
 
     private void addChoiceBoxItems() {

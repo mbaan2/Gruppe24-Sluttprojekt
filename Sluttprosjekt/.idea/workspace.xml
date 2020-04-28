@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetFuel_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetFuel_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetWheels_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SetWheels_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SignUp_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/UserCarView_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetFuel_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetFuel_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetWheels_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetWheels_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Summary_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Summary_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +50,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ZTnDQJWKcZoVJ0A1I8ILOb9po9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -74,7 +93,7 @@
       <recent name="C:\Users\Ana\Google Drive\OsloMet\DATA1600 - Programutvikling\Projects\Oppgaver\Final Project\Gruppe24-Sluttprojekt\Sluttprosjekt\src\main\resources\Gruppe24\OSLOMET" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.App (1)">
     <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Gruppe24.OSLOMET.App" />
       <module name="Sluttprosjekt" />
@@ -120,11 +139,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.App (1)" />
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.App (1)" />
-        <item itemvalue="Application.App (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -389,13 +408,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added controllers 3-5, each directing to the next controller." />
@@ -487,9 +505,10 @@
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587654319197" />
     <state x="462" y="154" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587768659572" />
     <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031569244" />
-    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1587663853938">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="55" y="54" width="1426" height="716" key="DiffContextDialog" timestamp="1588070519545">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="55" y="54" width="1426" height="716" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588070519545" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1586193041017" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587663853938" />
     <state x="1377" y="284" key="FileChooserDialogImpl" timestamp="1587388301724">
@@ -498,31 +517,31 @@
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587035739727" />
     <state x="1377" y="284" key="FileChooserDialogImpl/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587388301724" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586263799515" />
-    <state width="2517" height="343" key="GridCell.Tab.0.bottom" timestamp="1588031773019">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="173" key="GridCell.Tab.0.bottom" timestamp="1588070109184">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587654718925" />
+    <state width="1493" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588070109184" />
     <state width="2517" height="343" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587770005119" />
     <state width="2517" height="343" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.center" timestamp="1588031773019">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="173" key="GridCell.Tab.0.center" timestamp="1588070109184">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587654718925" />
+    <state width="1493" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588070109184" />
     <state width="2517" height="343" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587770005119" />
     <state width="2517" height="343" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.left" timestamp="1588031773018">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="173" key="GridCell.Tab.0.left" timestamp="1588070109184">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587654718925" />
+    <state width="1493" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588070109184" />
     <state width="2517" height="343" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587770005119" />
     <state width="2517" height="343" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773018" />
     <state width="2517" height="491" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.right" timestamp="1588031773019">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="173" key="GridCell.Tab.0.right" timestamp="1588070109184">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587654718925" />
+    <state width="1493" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588070109184" />
     <state width="2517" height="343" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587770005119" />
     <state width="2517" height="343" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
@@ -569,6 +588,10 @@
     </state>
     <state x="555" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586516051838" />
     <state x="925" y="93" key="SettingsEditor/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585670089143" />
+    <state x="94" y="94" width="1349" height="637" key="ShowDiffWithBranchDialog" timestamp="1588070519545">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="94" y="94" width="1349" height="637" key="ShowDiffWithBranchDialog/0.0.1536.824@0.0.1536.824" timestamp="1588070519545" />
     <state x="316" y="129" key="VCS.ChangeListViewerDialog" timestamp="1586286735617">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -591,16 +614,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="448" y="154" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587805154034" />
-    <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588031579666">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588070092416">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587654568251" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1588070092416" />
     <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587754735022" />
     <state x="963" y="561" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031579666" />
     <state x="462" y="144" width="618" height="536" key="find.popup" timestamp="1585577635086">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="144" width="618" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585577635086" />
+    <state x="313" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1588070142013">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="313" y="126" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1588070142013" />
     <state x="974" y="491" key="git4idea.merge.GitPullDialog" timestamp="1587991587438">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
