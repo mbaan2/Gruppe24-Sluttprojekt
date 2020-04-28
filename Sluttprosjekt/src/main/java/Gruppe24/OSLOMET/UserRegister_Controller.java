@@ -81,7 +81,6 @@ public class UserRegister_Controller implements Initializable {
                     passwordBtn.setVisible(true);
                     choiceBox.setValue(secretQ);
                     newUserTable.setNotVisible(tableView);
-                    nextBtn.setVisible(false);
                 }
             }
         }
@@ -118,7 +117,6 @@ public class UserRegister_Controller implements Initializable {
                         newUserTable.addElement(newUser);
                         newUserTable.setVisible(tableView);
 
-                        nextBtn.setVisible(true);
                         setNotVisible();
                         return;
                     }
