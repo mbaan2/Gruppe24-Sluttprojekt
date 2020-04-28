@@ -131,6 +131,7 @@ public class SuperUserCarView_Controller implements Initializable {
         ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         carList.addAll(list2);
 
+        //TODO Delete these placeholder cars
         NewCar car1 = new NewCar();
         car1.setFuel(new Carparts("Diesel", 10000));
         car1.setColor(new Carparts("Red", 5));
@@ -231,7 +232,6 @@ public class SuperUserCarView_Controller implements Initializable {
         tableView.setEditable(true);
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
-
 
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
