@@ -52,60 +52,24 @@ public class SuperUserCarView_Controller implements Initializable {
             System.out.println(carList.get(i).getFuel().getName() + " " + carList.get(i).getFuel().getCost());
         }
 
-        filteredList.clear();
-        filterLbl.setText("");
-
         String filteredText = filterText.getText();
         String filterType = filterBox.getValue();
 
+        filteredList.clear();
+        filterLbl.setText("");
+
         if(filteredText.equals("")) {
             filterLbl.setText("You didnt enter anything..");
-            tableView.setItems(carList);
-        } else {
-            if(filterType.equals("Search Filters")) {
-                filterLbl.setText("You didnt choose a filter.");
-                tableView.setItems(carList);
             }
-            if(filterType.equals("User")) {
-                    filteredList = Filter.usernameFilter(filteredText, carList);
-                    tableView.setItems(filteredList);
-                    filterLbl.setText("Registry filtered by username.");
-                if(filteredList.isEmpty()) {
-                    filterLbl.setText("No car exists with that username.");
-                }
-            }
-            if(filterType.equals("Name")) {
-                    filteredList = Filter.nameFilter(filteredText, carList);
-                    tableView.setItems(filteredList);
-                    filterLbl.setText("Registry filtered by name.");
-                if(filteredList.isEmpty()) {
-                    filterLbl.setText("No car exists with that name.");
-                }
-            }
-            if(filterType.equals("Fuel")) {
-                filteredList = Filter.fuelFilter(filteredText, carList);
-                tableView.setItems(filteredList);
-                filterLbl.setText("Registry filtered by fueltype.");
-                if(filteredList.isEmpty()) {
-                    filterLbl.setText("No car exists with that fueltype.");
-                }
-            }
-            if(filterType.equals("Wheels")) {
-                filteredList = Filter.wheelsFilter(filteredText, carList);
-                tableView.setItems(filteredList);
-                filterLbl.setText("Registry filtered by wheels.");
-                if(filteredList.isEmpty()) {
-                    filterLbl.setText("No car exists with those wheels.");
-                }
-            }
-            if(filterType.equals("Color")) {
-                filteredList = Filter.colorFilter(filteredText, carList);
-                tableView.setItems(filteredList);
-                filterLbl.setText("Registry filtered by color.");
-                if(filteredList.isEmpty()) {
-                    filterLbl.setText("No car exists with that color.");
-                }
-            }
+        else if (filterType.equals("Search Filters")) {
+            filterLbl.setText("You didnt choose a filter.");
+        } else{
+            filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
+            filterLbl.setText(Filter.filteringFeedback(filteredText, filterType, filteredList));
+            tableView.setItems(filteredList);
+        }
+
+        /*
             //TODO Edit to include deprecated (beyond number specified)
             if(filterType.equals("Addons")) {
                 int i = 0;
@@ -124,6 +88,7 @@ public class SuperUserCarView_Controller implements Initializable {
                 }
             }
         }
+        */
     }
 
     void showCars() throws IOException {
