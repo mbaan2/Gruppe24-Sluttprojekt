@@ -8,6 +8,25 @@ import java.util.stream.Collectors;
 
 public class Filter {
 
+    public static ObservableList<String> choiceBoxList(){
+        ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
+        choiceBoxList.removeAll();
+
+        String choiceBoxFilter = "Search Filters";
+        String choiceBoxUser = "User";
+        String choiceBoxName = "Name";
+        String choiceBoxFuel = "Fuel";
+        String choiceBoxWheels = "Wheels";
+        String choiceBoxColor = "Color";
+        String choiceBoxAddons = "Addons";
+
+        choiceBoxList.addAll(choiceBoxFilter, choiceBoxUser, choiceBoxName, choiceBoxFuel, choiceBoxWheels, choiceBoxColor, choiceBoxAddons);
+
+        return choiceBoxList;
+
+    }
+
+
     public static ObservableList<NewCar> filtering (String filteredText, String filterType, ObservableList<NewCar> filteredList, ObservableList<NewCar> carList){
 
         switch (filterType) {
@@ -67,14 +86,12 @@ public class Filter {
                 filterLbl = "Registry filtered by username.";
                 if (filteredList.isEmpty()) {
                     filterLbl = "No car exists with that username.";
-                    ;
                 }
                 break;
             case "Name":
                 filterLbl = "Registry filtered by name.";
                 if (filteredList.isEmpty()) {
                     filterLbl = "No car exists with that name.";
-                    ;
                 }
                 break;
             case "Fuel":

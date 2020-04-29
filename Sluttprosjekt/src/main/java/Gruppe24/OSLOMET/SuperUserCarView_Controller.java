@@ -40,14 +40,11 @@ public class SuperUserCarView_Controller implements Initializable {
     private Label filterLbl;
 
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
-    ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
-    ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
-    ObservableList<String> fuelList = FXCollections.observableArrayList();
-    ObservableList<String> wheelList = FXCollections.observableArrayList();
-    ObservableList<String> colorList = FXCollections.observableArrayList();
 
     @FXML
     void filterCars() {
+        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+
         String filteredText = filterText.getText();
         String filterType = filterBox.getValue();
 
@@ -64,31 +61,9 @@ public class SuperUserCarView_Controller implements Initializable {
             filterLbl.setText(Filter.filteringFeedback(filteredText, filterType, filteredList));
             tableView.setItems(filteredList);
         }
-
-        /*
-            //TODO Edit to include deprecated (beyond number specified)
-            if(filterType.equals("Addons")) {
-                int i = 0;
-                int maxAntallAddons = addOnSupUser.size();
-
-                while(i < maxAntallAddons) {
-                    filteredList = Filter.addonFilter(filteredText, carList, i);
-                    if(filteredList.isEmpty()) {
-                        filterLbl.setText("No car exists with that addon.");
-                        i++;
-                    } else if(!filteredList.isEmpty()) {
-                        tableView.setItems(filteredList);
-                        filterLbl.setText("Registry filtered by addons.");
-                        return;
-                    }
-                }
-            }
-        }
-        */
     }
 
     void showCars() throws IOException {
-        //TODO Fix opening of JOBJ
         ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         carList.addAll(list2);
 
@@ -173,14 +148,17 @@ public class SuperUserCarView_Controller implements Initializable {
 
         //Adding values to the lists for the comboboxes for editing
         // Fuel doesnt come from a file yet.
+        ObservableList<String> fuelList = FXCollections.observableArrayList();
         String dieselFuel = "Diesel Car";
         String electricFuel = "Electric Car";
         String gasFuel = "Gasoline Car";
         fuelList.addAll(dieselFuel, electricFuel, gasFuel);
 
+        ObservableList<String> wheelList = FXCollections.observableArrayList();
         List<Car> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
         wheelOptions.forEach(car -> wheelList.add(car.getName()));
 
+        ObservableList<String> colorList = FXCollections.observableArrayList();
         List<Car> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
         colorOptions.forEach(car -> colorList.add(car.getName()));
 
@@ -302,18 +280,9 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     private void addChoiceBoxItems() {
-        choiceBoxList.removeAll();
-        String choiceBoxFilter = "Search Filters";
-        String choiceBoxUser = "User";
-        String choiceBoxName = "Name";
-        String choiceBoxFuel = "Fuel";
-        String choiceBoxWheels = "Wheels";
-        String choiceBoxColor = "Color";
-        String choiceBoxAddons = "Addons";
-
-        choiceBoxList.addAll(choiceBoxFilter, choiceBoxUser, choiceBoxName, choiceBoxFuel, choiceBoxWheels, choiceBoxColor, choiceBoxAddons);
+        ObservableList<String> choiceBoxList = Filter.choiceBoxList();
         filterBox.getItems().addAll(choiceBoxList);
-        filterBox.setValue(choiceBoxFilter);
+        filterBox.setValue(choiceBoxList.get(0));
     }
 
     @FXML

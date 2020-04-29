@@ -70,10 +70,12 @@ public class Summary_Controller {
 
             NewCar Car1 = new NewCar();
             Car1.setUser("123");
+            Car1.setName("test");
             Car1.setFuel(fuel);
             Car1.setWheels(wheels);
             Car1.setColor(color);
             Car1.setAddons(add_ones);
+
 
             List<NewCar> list = new ArrayList<>();
             list.add(Car1);
