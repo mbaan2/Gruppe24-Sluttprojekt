@@ -32,11 +32,9 @@ public class SuperUserCarView_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChoiceBoxItems();
-        try {
-            openCars();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        openCars();
+
 
         int maxNrAddons = 0;
 
@@ -102,11 +100,8 @@ public class SuperUserCarView_Controller implements Initializable {
                 }
 
                 btnSaveChanges();
-                try {
-                    openCars();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                openCars();
+
             });
 
 
@@ -123,11 +118,8 @@ public class SuperUserCarView_Controller implements Initializable {
                     }
                 }
                 btnSaveChanges();
-                try {
-                    openCars();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                openCars();
+
             });
 
 
@@ -145,11 +137,7 @@ public class SuperUserCarView_Controller implements Initializable {
                 }
 
                 btnSaveChanges();
-                try {
-                    openCars();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                openCars();
             });
 
 
@@ -238,10 +226,15 @@ public class SuperUserCarView_Controller implements Initializable {
         }
     }
 
-    void openCars() throws IOException {
+    void openCars() {
         carList.clear();
 
-        ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        ArrayList<NewCar> list2 = new ArrayList<>();
+        try{
+            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        } catch (IOException e){
+            e.getMessage();
+        }
         carList.addAll(list2);
 
         NewCar car1 = new NewCar();
