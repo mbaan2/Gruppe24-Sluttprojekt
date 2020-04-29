@@ -12,62 +12,56 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class SuperUserCarView_Controller implements Initializable {
+public class TableViewCreation {
 
-    TableViewCreation createView = new TableViewCreation();
+    List<Carparts> addonSupUser = new ArrayList<>();
+    ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        addChoiceBoxItems();
-        createView.initializeTv(tableView);
-        /*openCars();
-
-
+    public void initializeTv(TableView<NewCar> tv) {
         int maxNrAddons = 0;
 
         try {
             openFile();
-            maxNrAddons = addOnSupUser.size();
+            maxNrAddons = addonSupUser.size();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //Setting of all the colums
         TableColumn<NewCar, String> user = new TableColumn<>("User");
-        tableView.getColumns().add(user);
+        tv.getColumns().add(user);
         TableColumn<NewCar, String> name = new TableColumn<>("Name");
-        tableView.getColumns().add(name);
+        tv.getColumns().add(name);
         TableColumn<NewCar, String> fuel = new TableColumn<>("Fuel");
-        tableView.getColumns().add(fuel);
+        tv.getColumns().add(fuel);
         TableColumn<NewCar, String> wheels = new TableColumn<>("Wheels");
-        tableView.getColumns().add(wheels);
+        tv.getColumns().add(wheels);
         TableColumn<NewCar, String> color = new TableColumn<>("Color");
-        tableView.getColumns().add(color);
+        tv.getColumns().add(color);
         TableColumn<NewCar, String> addon = new TableColumn<>("Add-ons");
-        tableView.getColumns().add(addon);
+        tv.getColumns().add(addon);
 
         for(int i = 0; i < maxNrAddons; i++) {
-            TableColumn<NewCar, CheckBox> tc = new TableColumn<>(addOnSupUser.get(i).getName());
-            tc.setText(addOnSupUser.get(i).getName());
+            TableColumn<NewCar, CheckBox> tc = new TableColumn<>(addonSupUser.get(i).getName());
+            tc.setText(addonSupUser.get(i).getName());
             addon.getColumns().add(tc);
         }
 
-        tableView.setEditable(true);
+        tv.setEditable(true);
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
 
@@ -147,7 +141,7 @@ public class SuperUserCarView_Controller implements Initializable {
                 TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
                 tc.setCellValueFactory(car -> {
-                    CheckBox checkbox = new CheckBox("kr" + addOnSupUser.get(finalJ).getCost());
+                    CheckBox checkbox = new CheckBox("kr" + addonSupUser.get(finalJ).getCost());
                     checkbox.setSelected(false);
                     for (int k = 0; k < car.getValue().getAddons().size(); k++) {
                         if (car.getValue().getAddons().getElement(k).getName().toLowerCase().equals(car.getTableColumn().getText().toLowerCase())) {
@@ -155,7 +149,7 @@ public class SuperUserCarView_Controller implements Initializable {
                         }
 
                         int finalK = k;
-                        checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addOnSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected()));
+                        checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
                     }
                     return new SimpleObjectProperty<CheckBox>(checkbox);
                 });
@@ -164,7 +158,7 @@ public class SuperUserCarView_Controller implements Initializable {
 
             deprecatedAddon.setCellValueFactory(car -> {
                 List<String> availableAddOns = new ArrayList<>();
-                for (Car c : addOnSupUser){
+                for (Car c : addonSupUser){
                     String s = c.getName().toLowerCase();
                     availableAddOns.add(s);
                 }
@@ -181,56 +175,46 @@ public class SuperUserCarView_Controller implements Initializable {
                         Button unmatchedAddon = new Button();
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
                         int finalJ = j;
-                        unmatchedAddon.setOnAction(actionEvent -> deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons));
+                        unmatchedAddon.setOnAction(actionEvent -> deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
                         deprecatedAddonsList.getChildren().add(unmatchedAddon);
                     }
                 }
                 return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
             });
         }
-        tableView.setItems(carList);
-
-         */
+        tv.setItems(carList);
     }
 
+    public void openFile() throws IOException{
+        Path path = Paths.get(StandardPaths.addonPath);
+        addonSupUser = FileOpenerJobj.openFile(path);
+    }
 
-    @FXML
-    private TableView<NewCar> tableView;
-
-    @FXML
-    private ChoiceBox<String> filterBox;
-
-    @FXML
-    private TextField filterText;
-
-    @FXML
-    private Label filterLbl;
-
-    //ObservableList<NewCar> carList = FXCollections.observableArrayList();
-    ObservableList<NewCar> carList = createView.carList;
-
-    @FXML
-    void filterCars() {
-        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
-
-        String filteredText = filterText.getText();
-        String filterType = filterBox.getValue();
-
-        filteredList.clear();
-        filterLbl.setText("");
-
-        if(filteredText.equals("")) {
-            filterLbl.setText("You didnt enter anything..");
-            }
-        else if (filterType.equals("Search Filters")) {
-            filterLbl.setText("You didnt choose a filter.");
-        } else{
-            filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
-            filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
-            tableView.setItems(filteredList);
+    private void btnSaveChanges(){
+        List<NewCar> newList = new ArrayList<>();
+        newList.addAll(carList);
+        try {
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
+        } catch (IOException e){
+            System.err.println(e.getMessage());
         }
     }
-/*
+
+    private void handleAddonCheckbox(ActionEvent actionEvent, Car addonSupUser, Car addonUser, CarCategory addonsCarUser, boolean selected, TableView<NewCar> tv){
+        if (!selected){
+            addonsCarUser.remove(addonUser);
+
+        } else {
+            addonsCarUser.add(addonSupUser);
+        }
+        tv.refresh();
+    }
+
+    private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv){
+        addonlist.remove(addon);
+        tv.refresh();
+    }
+
     void openCars() {
         carList.clear();
 
@@ -275,44 +259,4 @@ public class SuperUserCarView_Controller implements Initializable {
 
         carList.addAll(car1, car2);
     }
-
-    List<Carparts> addOnSupUser = new ArrayList<>();
-
-    public void openFile() throws IOException{
-        Path path = Paths.get(StandardPaths.addonPath);
-        addOnSupUser = FileOpenerJobj.openFile(path);
-    }
-
-    private void handleAddonCheckbox(ActionEvent actionEvent, Car addonSupUser, Car addonUser, CarCategory addonsCarUser, boolean selected){
-        if (!selected){
-            addonsCarUser.remove(addonUser);
-
-        } else {
-            addonsCarUser.add(addonSupUser);
-        }
-        tableView.refresh();
-    }
-
-    private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist){
-        addonlist.remove(addon);
-        tableView.refresh();
-    }
-
- */
-
-    private void addChoiceBoxItems() {
-        ObservableList<String> choiceBoxList = Filter.choiceBoxList();
-        filterBox.getItems().addAll(choiceBoxList);
-        filterBox.setValue(choiceBoxList.get(0));
-    }
-
-    @FXML
-    private void resetFilter() {
-        filterText.setText("");
-        filterLbl.setText("Tableview reset.");
-        tableView.setItems(carList);
-        filterBox.setValue("Search Filters");
-    }
-
-
 }

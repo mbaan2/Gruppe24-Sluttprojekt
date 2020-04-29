@@ -78,7 +78,7 @@ public class Filter {
         return filteredList;
     }
 
-    public static String filteringFeedback(String filteredText, String filterType, ObservableList<NewCar> filteredList){
+    public static String filteringFeedback(String filterType, ObservableList<NewCar> filteredList){
         String filterLbl = "";
 
         switch (filterType) {
