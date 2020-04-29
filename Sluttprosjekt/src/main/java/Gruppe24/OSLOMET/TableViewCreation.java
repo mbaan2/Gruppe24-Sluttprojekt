@@ -31,7 +31,7 @@ public class TableViewCreation {
     List<Carparts> addonSupUser = new ArrayList<>();
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
-    public void initializeTv(TableView<NewCar> tv) {
+    public TableView<NewCar> initializeTv(TableView<NewCar> tv) {
         int maxNrAddons = 0;
 
         try {
@@ -65,124 +65,7 @@ public class TableViewCreation {
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
 
-
-        //Loading of the data into the tableview
-        for (int i = 0; i < carList.size(); i++) {
-            user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
-            user.setCellFactory(TextFieldTableCell.forTableColumn());
-            user.setOnEditCommit(event -> event.getRowValue().setUser(event.getNewValue()));
-
-            name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
-            name.setCellFactory(TextFieldTableCell.forTableColumn());
-            name.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
-
-            //Adding values to the lists for the comboboxes for editing
-            // Fuel doesnt come from a file yet.
-            ObservableList<String> fuelList = FXCollections.observableArrayList();
-            String dieselFuel = "Diesel Car";
-            String electricFuel = "Electric Car";
-            String gasFuel = "Gasoline Car";
-            fuelList.addAll(dieselFuel, electricFuel, gasFuel);
-
-            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
-            fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
-            fuel.setOnEditCommit(event -> {
-                if(event.getNewValue().equals("Diesel Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 20000));
-                } else if(event.getNewValue().equals("Electric Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 17500));
-                } else if(event.getNewValue().equals("Gasoline Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 30000));
-                }
-
-                btnSaveChanges();
-                openCars();
-
-            });
-
-
-            ObservableList<String> wheelList = FXCollections.observableArrayList();
-            List<Carparts> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
-            wheelOptions.forEach(car -> wheelList.add(car.getName()));
-
-            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName()));
-            wheels.setCellFactory(ComboBoxTableCell.forTableColumn(wheelList));
-            wheels.setOnEditCommit(event -> {
-                for(int j = 0; j < wheelOptions.size(); j++){
-                    if(event.getNewValue().equals(wheelOptions.get(j).getName())) {
-                        event.getRowValue().setWheels(wheelOptions.get(j));
-                    }
-                }
-                btnSaveChanges();
-                openCars();
-
-            });
-
-
-            ObservableList<String> colorList = FXCollections.observableArrayList();
-            List<Carparts> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
-            colorOptions.forEach(car -> colorList.add(car.getName()));
-
-            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
-            color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
-            color.setOnEditCommit(event -> {
-                for(int j = 0; j < colorOptions.size(); j++){
-                    if(event.getNewValue().equals(colorOptions.get(j).getName())) {
-                        event.getRowValue().setColor(colorOptions.get(j));
-                    }
-                }
-
-                btnSaveChanges();
-                openCars();
-            });
-
-
-            for (int j = 0; j < maxNrAddons; j++) {
-                TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
-                int finalJ = j;
-                tc.setCellValueFactory(car -> {
-                    CheckBox checkbox = new CheckBox("kr" + addonSupUser.get(finalJ).getCost());
-                    checkbox.setSelected(false);
-                    for (int k = 0; k < car.getValue().getAddons().size(); k++) {
-                        if (car.getValue().getAddons().getElement(k).getName().toLowerCase().equals(car.getTableColumn().getText().toLowerCase())) {
-                            checkbox.setSelected(true);
-                        }
-
-                        int finalK = k;
-                        checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
-                    }
-                    return new SimpleObjectProperty<CheckBox>(checkbox);
-                });
-            }
-
-
-            deprecatedAddon.setCellValueFactory(car -> {
-                List<String> availableAddOns = new ArrayList<>();
-                for (Car c : addonSupUser){
-                    String s = c.getName().toLowerCase();
-                    availableAddOns.add(s);
-                }
-
-                HBox deprecatedAddonsList = new HBox();
-                for (int j = 0; j < car.getValue().getAddons().size(); j++) {
-                    boolean hasMatch = false;
-                    for (String availableAddOn : availableAddOns){
-                        if (car.getValue().getAddons().getElement(j).getName().toLowerCase().equals(availableAddOn)){
-                            hasMatch = true;
-                        }
-                    }
-                    if (!hasMatch){
-                        Button unmatchedAddon = new Button();
-                        unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
-                        int finalJ = j;
-                        unmatchedAddon.setOnAction(actionEvent -> deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
-                        deprecatedAddonsList.getChildren().add(unmatchedAddon);
-                    }
-                }
-                return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
-            });
-        }
-        tv.setItems(carList);
+        return tv;
     }
 
     public void openFile() throws IOException{
