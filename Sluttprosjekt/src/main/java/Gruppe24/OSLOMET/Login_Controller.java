@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

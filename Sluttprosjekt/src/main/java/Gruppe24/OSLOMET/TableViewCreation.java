@@ -97,7 +97,6 @@ public class TableViewCreation {
                 }
 
                 btnSaveChanges();
-
             });
 
 
@@ -148,8 +147,10 @@ public class TableViewCreation {
 
                         int finalK = k;
                         checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
+                        btnSaveChanges();
                     }
                     return new SimpleObjectProperty<CheckBox>(checkbox);
+
                 });
             }
 
