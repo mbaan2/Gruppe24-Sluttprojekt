@@ -211,22 +211,17 @@ public class SuperUserCarView_Controller implements Initializable {
         }
 
         //Adding values to the lists for the comboboxes for editing
+        // Fuel doesnt come from a file yet.
         String dieselFuel = "Diesel Car";
         String electricFuel = "Electric Car";
         String gasFuel = "Gasoline Car";
         fuelList.addAll(dieselFuel, electricFuel, gasFuel);
 
-        String bigWheels = "Big wheels";
-        String smallWheels = "Small wheels";
-        String mediumWheels = "Medium wheels";
-        wheelList.addAll(smallWheels, mediumWheels, bigWheels);
+        List<Car> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
+        wheelOptions.forEach(car -> wheelList.add(car.getName()));
 
-        String redColor = "Red";
-        String blueColor = "Blue";
-        String yellowColor = "Yellow";
-        String blackColor = "Black";
-        String greenColor = "Green";
-        colorList.addAll(redColor, blueColor, yellowColor, blackColor, greenColor);
+        List<Car> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
+        colorOptions.forEach(car -> colorList.add(car.getName()));
 
         tableView.setEditable(true);
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
