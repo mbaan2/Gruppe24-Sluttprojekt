@@ -48,10 +48,6 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @FXML
     void filterCars() {
-        for(int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getFuel().getName() + " " + carList.get(i).getFuel().getCost());
-        }
-
         String filteredText = filterText.getText();
         String filterType = filterBox.getValue();
 

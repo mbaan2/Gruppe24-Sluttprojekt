@@ -12,44 +12,50 @@ public class Filter {
 
         switch (filterType) {
             case "User":
-                filteredList = Filter.usernameFilter(filteredText, carList);
+                filteredList = carList.stream().filter(
+                        newCar -> newCar.getUser().toLowerCase().matches(
+                                String.format("%s%s%s", ".*", filteredText.toLowerCase(), ".*")
+                        )
+                ).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 break;
             case "Name":
-                 filteredList = Filter.nameFilter(filteredText, carList);
+                 filteredList = carList.stream().filter(
+                         newCar -> newCar.getName().toLowerCase().matches(
+                                 String.format("%s%s%s", ".*", filteredText.toLowerCase(), ".*")
+                         )
+                 ).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 break;
             case "Fuel":
-                filteredList = Filter.fuelFilter(filteredText, carList);
+                filteredList = carList.stream().filter(
+                        newCar -> newCar.getFuel().getName().toLowerCase().matches(
+                                String.format("%s%s%s", ".*", filteredText.toLowerCase(), ".*")
+                        )
+                ).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 break;
             case "Wheels":
-                filteredList = Filter.wheelsFilter(filteredText, carList);
+                filteredList = carList.stream().filter(
+                        newCar -> newCar.getWheels().getName().toLowerCase().matches(
+                                String.format("%s%s%s", ".*", filteredText.toLowerCase(), ".*")
+                        )
+                ).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 break;
             case "Color":
-                filteredList = Filter.colorFilter(filteredText, carList);
+                filteredList = carList.stream().filter(
+                        newCar -> newCar.getColor().getName().toLowerCase().matches(
+                                String.format("%s%s%s", ".*", filteredText.toLowerCase(), ".*")
+                        )
+                ).collect(Collectors.toCollection(FXCollections::observableArrayList));
                 break;
-        }
-            /*
-            //TODO Edit to include deprecated (beyond number specified)
-            if(filterType.equals("Addons")) {
-                int i = 0;
-                int maxAntallAddons = addOnSupUser.size();
-
-                while(i < maxAntallAddons) {
-                    filteredList = Filter.addonFilter(filteredText, carList, i);
-                    if(filteredList.isEmpty()) {
-                        filterLbl.setText("No car exists with that addon.");
-                        i++;
-                    } else if(!filteredList.isEmpty()) {
-                        tableView.setItems(filteredList);
-                        filterLbl.setText("Registry filtered by addons.");
-                        return;
+            case "Addons":
+                for(int i=0; i < carList.size(); i++){
+                    for (int j =0; j < carList.get(i).getAddons().size(); j++){
+                        if(filteredText.toLowerCase().equals(carList.get(i).getAddons().getElement(j).getName().toLowerCase())){
+                            filteredList.add(carList.get(i));
+                        }
                     }
                 }
-
-            }
-            }
-            */
-
-
+                break;
+        }
         return filteredList;
     }
 
@@ -89,35 +95,21 @@ public class Filter {
                     filterLbl = "No car exists with that color.";
                 }
                 break;
+            case "Addons":
+                filterLbl = "Registry filtered by addons.";
+                if(filteredList.isEmpty()) {
+                    filterLbl = "No car exists with that addon.";
+                }
+                break;
         }
         return filterLbl;
     }
-
 
     public static ObservableList<NewCar> usernameFilter(String username, ObservableList<NewCar> list) {
         return list.stream().filter(newCar -> newCar.getUser().toLowerCase().matches(String.format("%s%s%s", ".*", username.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public static ObservableList<NewCar> nameFilter(String name, ObservableList<NewCar> list) {
-        return list.stream().filter(newCar -> newCar.getName().toLowerCase().matches(String.format("%s%s%s", ".*", name.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
 
-    public static ObservableList<NewCar> fuelFilter(String fuel, ObservableList<NewCar> list) {
-        return list.stream().filter(newCar -> newCar.getFuel().getName().toLowerCase().matches(String.format("%s%s%s", ".*", fuel.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
-
-    public static ObservableList<NewCar> wheelsFilter(String wheels, ObservableList<NewCar> carList) {
-        return carList.stream().filter(newCar -> newCar.getWheels().getName().toLowerCase().matches(String.format("%s%s%s", ".*", wheels.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
-
-
-    public static ObservableList<NewCar> colorFilter(String color, ObservableList<NewCar> list) {
-        return list.stream().filter(newCar -> newCar.getColor().getName().toLowerCase().matches(String.format("%s%s%s", ".*", color.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
-
-    public static ObservableList<NewCar> addonFilter(String addon, ObservableList<NewCar> list, int i) {
-        return list.stream().filter(newCar -> newCar.getAddons().getElement(i).getName().toLowerCase().matches(String.format("%s%s%s", ".*", addon.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
 
 
 
