@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileOpenerJobj {
-    public static List<Car> openFile(Path path) {
-        List<Car> carParts = new ArrayList<>();
+    public static List<Carparts> openFile(Path path) {
+        List<Carparts> carParts = new ArrayList<>();
 
         try (   InputStream in = Files.newInputStream(path);
                 ObjectInputStream oin = new ObjectInputStream(in))
         {
-            carParts = (List<Car>) oin.readObject();
+            carParts = (List<Carparts>) oin.readObject();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

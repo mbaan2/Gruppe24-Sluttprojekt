@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class LoadingValuesOnScreen {
 
-    public static List<RadioButton> creatingList(List<RadioButton> buttonList, List<Car> valuesList, ToggleGroup toggleGroup){
+    public static List<RadioButton> creatingList(List<RadioButton> buttonList, List<Carparts> valuesList, ToggleGroup toggleGroup){
 
         for(int i = 0; i< valuesList.size(); i++){
             String str = "";
@@ -23,7 +24,7 @@ public class LoadingValuesOnScreen {
         return buttonList;
     }
 
-    public static List<CheckBox> creatingList(List<CheckBox> buttonList, List<Car> valuesList){
+    public static List<CheckBox> creatingList(List<CheckBox> buttonList, List<Carparts> valuesList){
 
         for(int i = 0; i< valuesList.size(); i++){
             String str = "";

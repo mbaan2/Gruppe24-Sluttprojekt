@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
-    List<Car> carCategory = new ArrayList<>();
+    List<Carparts> carCategory = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -141,7 +141,7 @@ public class SuperUser_Controller implements Initializable {
         String costString = txfInputFieldCost.getText();
         int cost = Integer.parseInt(costString);
 
-        Car newCarPart = new Carparts(name, cost);
+        Carparts newCarPart = new Carparts(name, cost);
         carCategory.add(newCarPart);
 
         if (chbCategory.getValue().equals("Wheels")) {

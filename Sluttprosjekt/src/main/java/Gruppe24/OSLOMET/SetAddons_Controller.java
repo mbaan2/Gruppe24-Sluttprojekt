@@ -34,10 +34,10 @@ public class SetAddons_Controller implements Initializable {
     @FXML
     private VBox vboxAddOns;
 
-    List<Car> addOnOptions = new ArrayList<>();
+    List<Carparts> addOnOptions = new ArrayList<>();
     List<CheckBox> addOnButtons = new ArrayList<>();
 
-    public void createButtons(List<Car> addon) {
+    public void createButtons(List<Carparts> addon) {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
 
@@ -76,9 +76,9 @@ public class SetAddons_Controller implements Initializable {
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
     public void setAddOns(){
-        Car addOneGPS = new Carparts("GPS", 5000);
-        Car spoiler = new Carparts("Spoiler", 4000);
-        Car subwoofer = new Carparts("Subwoofer", 7500);
+        Carparts addOneGPS = new Carparts("GPS", 5000);
+        Carparts spoiler = new Carparts("Spoiler", 4000);
+        Carparts subwoofer = new Carparts("Subwoofer", 7500);
 
         addOnOptions.add(addOneGPS);
         addOnOptions.add(spoiler);
