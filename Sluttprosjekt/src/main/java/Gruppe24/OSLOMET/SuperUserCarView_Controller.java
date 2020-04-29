@@ -5,6 +5,7 @@ import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,7 +33,7 @@ public class SuperUserCarView_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChoiceBoxItems();
         try {
-            showCars();
+            openCars();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,6 +100,13 @@ public class SuperUserCarView_Controller implements Initializable {
                 } else if(event.getNewValue().equals("Gasoline Car")) {
                     event.getRowValue().setFuel(new Carparts(event.getNewValue(), 30000));
                 }
+
+                btnSaveChanges();
+                try {
+                    openCars();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             });
 
 
@@ -111,8 +119,14 @@ public class SuperUserCarView_Controller implements Initializable {
             wheels.setOnEditCommit(event -> {
                 for(int j = 0; j < wheelOptions.size(); j++){
                     if(event.getNewValue().equals(wheelOptions.get(j).getName())) {
-                        event.getRowValue().setFuel(wheelOptions.get(j));
+                        event.getRowValue().setWheels(wheelOptions.get(j));
                     }
+                }
+                btnSaveChanges();
+                try {
+                    openCars();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             });
 
@@ -126,8 +140,15 @@ public class SuperUserCarView_Controller implements Initializable {
             color.setOnEditCommit(event -> {
                 for(int j = 0; j < colorOptions.size(); j++){
                     if(event.getNewValue().equals(colorOptions.get(j).getName())) {
-                        event.getRowValue().setFuel(colorOptions.get(j));
+                        event.getRowValue().setColor(colorOptions.get(j));
                     }
+                }
+
+                btnSaveChanges();
+                try {
+                    openCars();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             });
 
@@ -217,7 +238,9 @@ public class SuperUserCarView_Controller implements Initializable {
         }
     }
 
-    void showCars() throws IOException {
+    void openCars() throws IOException {
+        carList.clear();
+
         ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         carList.addAll(list2);
 
@@ -290,4 +313,17 @@ public class SuperUserCarView_Controller implements Initializable {
         tableView.setItems(carList);
         filterBox.setValue("Search Filters");
     }
+
+    private void btnSaveChanges(){
+        List<NewCar> newList = new ArrayList<>();
+        newList.addAll(carList);
+        try {
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+
+
+    }
+
 }
