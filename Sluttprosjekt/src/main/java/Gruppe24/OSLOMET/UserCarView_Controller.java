@@ -20,6 +20,9 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private TableView<NewCar> tableView;
 
+    @FXML
+    private Label tvLabel;
+
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
 
@@ -28,7 +31,12 @@ public class UserCarView_Controller implements Initializable {
         String username = App.car.getUser();
         usersCarList = Filter.usernameFilter(username, carList);
         tableView.setItems(usersCarList);
-        tableView.setVisible(true);
+        if(tableView.getItems().isEmpty()) {
+            tableView.setVisible(false);
+            tvLabel.setText("You dont have any saved cars!");
+        } else {
+            tableView.setVisible(true);
+        }
     }
 
     @FXML
@@ -82,14 +90,14 @@ public class UserCarView_Controller implements Initializable {
         for (int i = 0; i < carList.size(); i++) {
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
-            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + " kr)"));
-            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + " kr)"));
-            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + " kr)"));
+            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
+            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName()));
+            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
 
             for (int j = 0; j < maxAntallAddons; j++) {
                 int finalJ = j;
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName() + " (" + car.getValue().getAddons().getElement(finalJ).getCost() + " kr)"));
+                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
             }
         }
     }
@@ -110,12 +118,10 @@ public class UserCarView_Controller implements Initializable {
     private  void fillEmptyAddons(){
         int maxAntall = maxAddons();
         for(int i = 0 ; i< carList.size(); i++){
-            System.out.println(carList.get(i).getAddons().size());
             for(int j = 0; j < maxAntall; j++){
                 if(j >= carList.get(i).getAddons().size()){
                     Car emptyAddon = new Carparts("", 0);
                     carList.get(i).getAddons().add(emptyAddon);
-                    System.out.println("done");
                 }
             }
         }
