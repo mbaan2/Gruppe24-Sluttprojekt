@@ -158,21 +158,19 @@ public class TableViewCreation {
                             @Override
                             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
                                 if(newValue){
-                                    List<Carparts> addonOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.addonPath));
-                                    for(int k = 0; k < addonOptions.size(); k++) {
-                                        if(addonOptions.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
-                                            newcar.getAddons().add(addonOptions.get(k));
+                                    for(int k = 0; k < addonSupUser.size(); k++) {
+                                        if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
+                                            newcar.getAddons().add(addonSupUser.get(k));
                                         }
                                     }
-                                    btnSaveChanges();
-                                    } else {
+                                } else {
                                     for(int k = 0; k < newcar.getAddons().size(); k++) {
                                         if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
                                             newcar.getAddons().remove(k);
                                         }
                                     }
-                                    btnSaveChanges();
                                 }
+                                btnSaveChanges();
                             }
                         });
                         return booleanProp;
