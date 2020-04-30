@@ -69,9 +69,9 @@ public class TableViewCreation {
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
 
-
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
+
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
             user.setCellFactory(TextFieldTableCell.forTableColumn());
             user.setOnEditCommit(event -> event.getRowValue().setUser(event.getNewValue()));
@@ -147,13 +147,19 @@ public class TableViewCreation {
                     public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<NewCar, Boolean> newCarBooleanCellDataFeatures) {
                         NewCar newcar = newCarBooleanCellDataFeatures.getValue();
                         SimpleBooleanProperty booleanProp = new SimpleBooleanProperty();
+                        booleanProp.set(false);
+                        for(int k = 0; k < newcar.getAddons().size(); k++){
+                            if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
+                                booleanProp.set(true);
+                            }
+                        }
 
                         booleanProp.addListener(new ChangeListener<Boolean>() {
                             @Override
                             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
                                 if(newValue){
                                     System.out.println("true");
-                                    newcar.getAddons().add(new Carparts("addoneTEST", 2000));
+                                    //newcar.getAddons().add(new Carparts("addoneTEST", 2000));
                                 } else {
                                     System.out.println("false");
                                     // newcar.getAddons().getElement(finalJ).remove();
@@ -172,6 +178,8 @@ public class TableViewCreation {
                         return cell;
                     }
                 });
+
+
 
 
 
@@ -195,9 +203,6 @@ public class TableViewCreation {
 
                  */
             }
-
-
-
 
             deprecatedAddon.setCellValueFactory(car -> {
                 List<String> availableAddOns = new ArrayList<>();
