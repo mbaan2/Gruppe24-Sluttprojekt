@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cars.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/cars.jobj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserCarView_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/TableViewCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/TableViewCreation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/TableViewCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/TableViewCreation.class" afterDir="false" />
-    </list>
+    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
