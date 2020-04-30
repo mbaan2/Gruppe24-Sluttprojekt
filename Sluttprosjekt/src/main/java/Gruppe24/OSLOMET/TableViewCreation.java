@@ -230,7 +230,8 @@ public class TableViewCreation {
                         Button unmatchedAddon = new Button();
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
                         int finalJ = j;
-                        unmatchedAddon.setOnAction(actionEvent -> deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
+                        unmatchedAddon.setOnAction(actionEvent -> 
+                                deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
                         deprecatedAddonsList.getChildren().add(unmatchedAddon);
                     }
                 }
@@ -267,6 +268,7 @@ public class TableViewCreation {
 
     private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv){
         addonlist.remove(addon);
+        btnSaveChanges();
         tv.refresh();
     }
 
