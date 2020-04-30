@@ -1,7 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -34,7 +32,7 @@ public class SetColor_Controller implements Initializable {
     private VBox vboxColor;
 
     final ToggleGroup colorGroup = new ToggleGroup();
-    List<Car> colorOptions = new ArrayList<>();
+    List<Carparts> colorOptions = new ArrayList<>();
     List<RadioButton> colorButtons = new ArrayList<>();
 
     public void createButtons(){
@@ -77,11 +75,11 @@ public class SetColor_Controller implements Initializable {
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
     public void setColors(){
-        Car red = new Carparts("Red", 5000);
-        Car blue = new Carparts("Blue", 2500);
-        Car yellow = new Carparts("Yellow", 2500);
-        Car black = new Carparts("Black", 0);
-        Car green = new Carparts("Green", 3500);
+        Carparts red = new Carparts("Red", 5000);
+        Carparts blue = new Carparts("Blue", 2500);
+        Carparts yellow = new Carparts("Yellow", 2500);
+        Carparts black = new Carparts("Black", 0);
+        Carparts green = new Carparts("Green", 3500);
 
         colorOptions.add(black);
         colorOptions.add(green);

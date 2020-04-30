@@ -31,7 +31,7 @@ public class SetWheels_Controller implements Initializable {
     private VBox vboxWheels;
 
     final ToggleGroup wheelGroup = new ToggleGroup();
-    List<Car> wheelOptions = new ArrayList<>();
+    List<Carparts> wheelOptions = new ArrayList<>();
     List<RadioButton> wheelButtons = new ArrayList<>();
 
     public void createButtons(){
@@ -76,9 +76,9 @@ public class SetWheels_Controller implements Initializable {
 
     //ONLY USED FOR CREATING THE .JOBJ FILE
     public void setWheels(){
-        Car wheelsBig = new Carparts("Big wheels", 5000);
-        Car wheelsSmall = new Carparts("Small wheels", 0);
-        Car wheelsMedium = new Carparts("Medium wheels", 2500);
+        Carparts wheelsBig = new Carparts("Big wheels", 5000);
+        Carparts wheelsSmall = new Carparts("Small wheels", 0);
+        Carparts wheelsMedium = new Carparts("Medium wheels", 2500);
 
         wheelOptions.add(wheelsBig);
         wheelOptions.add(wheelsMedium);

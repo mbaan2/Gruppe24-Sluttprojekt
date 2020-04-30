@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
+import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import javafx.collections.ObservableList;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileSaverJobj {
-    public static void SaveCarCategory(Path path, List<Car> c) throws IOException {
+    public static void SaveCarCategory(Path path, List<Carparts> c) throws IOException {
         try {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);

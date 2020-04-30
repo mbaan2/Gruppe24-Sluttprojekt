@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET;
 
-import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,8 +50,7 @@ public class Login_Controller {
         //Feedback to the user
         if (usernameTxt.getText().isEmpty()) {
                 usernameError.setText("Enter a username");
-        }
-        if (!userBase.containsKey(usernameTxt.getText())) {
+        } else if(!userBase.containsKey(usernameTxt.getText())) {
                 usernameError.setText("Wrong username");
         }
         if (passwordTxt.getText().isEmpty()) {
