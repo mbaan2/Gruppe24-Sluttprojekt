@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="" />
+    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -392,7 +394,14 @@
       <option name="presentableId" value="LOCAL−00033" />
       <updated>1588031569827</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Made some smaller changes.">
+      <created>1588237650823</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1588237650823</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,10 +579,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="810" y="355" key="Maven.ArtifactSearchDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587057136320" />
-    <state x="802" y="217" key="MultipleFileMergeDialog" timestamp="1586262056277">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="481" y="128" key="MultipleFileMergeDialog" timestamp="1588237777695">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1585563884076" />
+    <state x="481" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1588237777695" />
     <state x="802" y="217" key="MultipleFileMergeDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1585851652181" />
     <state x="802" y="217" key="MultipleFileMergeDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586262056277" />
     <state x="996" y="411" key="RollbackChangesDialog" timestamp="1588175476623">
