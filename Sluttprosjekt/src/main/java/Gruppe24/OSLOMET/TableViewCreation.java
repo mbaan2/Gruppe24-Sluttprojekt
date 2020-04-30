@@ -7,18 +7,21 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -130,15 +133,52 @@ public class TableViewCreation {
                         event.getRowValue().setColor(colorOptions.get(j));
                     }
                 }
-
                 btnSaveChanges();
             });
 
 
             for (int j = 0; j < maxNrAddons; j++) {
-                TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
+                //TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
+                TableColumn<NewCar, Boolean> tc = (TableColumn<NewCar, Boolean>) addon.getColumns().get(j);
+                tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, Boolean>, ObservableValue<Boolean>>() {
+
+                    @Override
+                    public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<NewCar, Boolean> newCarBooleanCellDataFeatures) {
+                        NewCar newcar = newCarBooleanCellDataFeatures.getValue();
+                        SimpleBooleanProperty booleanProp = new SimpleBooleanProperty();
+
+                        booleanProp.addListener(new ChangeListener<Boolean>() {
+                            @Override
+                            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
+                                if(newValue){
+                                    System.out.println("true");
+                                    newcar.getAddons().add(new Carparts("addoneTEST", 2000));
+                                } else {
+                                    System.out.println("false");
+                                    // newcar.getAddons().getElement(finalJ).remove();
+                                }
+                            }
+                        });
+                        return booleanProp;
+                    }
+                });
+                tc.setCellFactory(new Callback<TableColumn<NewCar, Boolean>, TableCell<NewCar, Boolean>>() {
+                    @Override
+                    public TableCell<NewCar, Boolean> call(TableColumn<NewCar, Boolean> newCarBooleanTableColumn) {
+                        CheckBoxTableCell<NewCar, Boolean> cell = new CheckBoxTableCell<NewCar, Boolean>();
+                        cell.setText(addonSupUser.get(finalJ).getCost() + "kr");
+                        cell.setAlignment(Pos.CENTER_LEFT);
+                        return cell;
+                    }
+                });
+
+
+
+                /*
                 tc.setCellValueFactory(car -> {
+
+
                     CheckBox checkbox = new CheckBox("kr" + addonSupUser.get(finalJ).getCost());
                     checkbox.setSelected(false);
                     for (int k = 0; k < car.getValue().getAddons().size(); k++) {
@@ -147,11 +187,16 @@ public class TableViewCreation {
                         }
 
                         int finalK = k;
-                        checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
+                        //checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
                     }
+
                     return new SimpleObjectProperty<CheckBox>(checkbox);
                 });
+
+                 */
             }
+
+
 
 
             deprecatedAddon.setCellValueFactory(car -> {

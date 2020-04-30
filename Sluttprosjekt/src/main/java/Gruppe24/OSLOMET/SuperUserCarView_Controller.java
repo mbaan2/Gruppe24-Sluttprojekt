@@ -51,6 +51,11 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     @FXML
+    void btnBack(ActionEvent event) throws IOException {
+        App.setRoot("superUser");
+    }
+
+    @FXML
     void filterCars() {
         ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
 
