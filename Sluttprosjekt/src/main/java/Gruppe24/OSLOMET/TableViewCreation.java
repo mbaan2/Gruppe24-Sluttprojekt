@@ -140,9 +140,9 @@ public class TableViewCreation {
             for (int j = 0; j < maxNrAddons; j++) {
                 //TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
+                // Based on: https://o7planning.org/en/11079/javafx-tableview-tutorial
                 TableColumn<NewCar, Boolean> tc = (TableColumn<NewCar, Boolean>) addon.getColumns().get(j);
                 tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, Boolean>, ObservableValue<Boolean>>() {
-
                     @Override
                     public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<NewCar, Boolean> newCarBooleanCellDataFeatures) {
                         NewCar newcar = newCarBooleanCellDataFeatures.getValue();
