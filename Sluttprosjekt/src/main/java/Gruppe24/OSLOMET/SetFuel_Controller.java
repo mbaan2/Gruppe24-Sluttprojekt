@@ -41,7 +41,7 @@ public class SetFuel_Controller implements Initializable {
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(fuelButtons, fuelOptions, fuelGroup);
         LoadingValuesOnScreen.returnVbox(fuelButtons, vboxFuel);
-        
+
         if(App.car.fuel == null) {
             fuelButtons.get(0).setSelected(true);
         } else{

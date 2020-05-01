@@ -27,6 +27,10 @@ import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
     List<Carparts> carCategory = new ArrayList<>();
+    final String fuelCHB = "Fuel type";
+    final String wheelsCHB = "Wheels";
+    final String colorCHB = "Color";
+    final String addOnesCHB = "Addons";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,10 +52,7 @@ public class SuperUser_Controller implements Initializable {
     ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
     private void loadChoiceBoxStrings(){
         choiceboxStrings.removeAll();
-        String wheelsCHB = "Wheels";
-        String colorCHB = "Color";
-        String addOnesCHB = "Addons";
-        choiceboxStrings.addAll(wheelsCHB, colorCHB, addOnesCHB);
+        choiceboxStrings.addAll(fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
         chbCategory.getItems().addAll(choiceboxStrings);
     }
 
@@ -62,18 +63,32 @@ public class SuperUser_Controller implements Initializable {
     }
 
     public void LoadCategory(){
-        if(chbCategory.getValue().equals("Wheels")){
-            Path path = Paths.get(StandardPaths.wheelPath);
-            carCategory = FileOpenerJobj.openFile(path);
-            createButtons();
-        } else if(chbCategory.getValue().equals("Color")){
-            Path path = Paths.get(StandardPaths.colorPath);
-            carCategory = FileOpenerJobj.openFile(path);
-            createButtons();
-        } else if(chbCategory.getValue().equals("Addons")){
-            Path path = Paths.get(StandardPaths.addonPath);
-            carCategory = FileOpenerJobj.openFile(path);
-            createButtons();
+
+        switch (chbCategory.getValue()) {
+            case fuelCHB:{
+                Path path = Paths.get(StandardPaths.fuelPath);
+                carCategory = FileOpenerJobj.openFile(path);
+                createButtons();
+                break;
+            }
+            case wheelsCHB: {
+                Path path = Paths.get(StandardPaths.wheelPath);
+                carCategory = FileOpenerJobj.openFile(path);
+                createButtons();
+                break;
+            }
+            case colorCHB: {
+                Path path = Paths.get(StandardPaths.colorPath);
+                carCategory = FileOpenerJobj.openFile(path);
+                createButtons();
+                break;
+            }
+            case addOnesCHB: {
+                Path path = Paths.get(StandardPaths.addonPath);
+                carCategory = FileOpenerJobj.openFile(path);
+                createButtons();
+                break;
+            }
         }
     }
 
@@ -106,30 +121,47 @@ public class SuperUser_Controller implements Initializable {
     }
 
     public void saveChanges(){
-        if(chbCategory.getValue().equals("Wheels")){
-            Path filsti = Paths.get(StandardPaths.wheelPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+        switch (chbCategory.getValue()) {
+            case fuelCHB: {
+                Path filsti = Paths.get(StandardPaths.fuelPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
-        } else if(chbCategory.getValue().equals("Color")){
-            Path filsti = Paths.get(StandardPaths.colorPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            case wheelsCHB: {
+                Path filsti = Paths.get(StandardPaths.wheelPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
-        } else if(chbCategory.getValue().equals("Addons")){
-            Path filsti = Paths.get(StandardPaths.addonPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            case colorCHB: {
+                Path filsti = Paths.get(StandardPaths.colorPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
+            case addOnesCHB: {
+                Path filsti = Paths.get(StandardPaths.addonPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                LoadCategory();
+                break;
+            }
         }
 
     }
@@ -144,30 +176,47 @@ public class SuperUser_Controller implements Initializable {
         Carparts newCarPart = new Carparts(name, cost);
         carCategory.add(newCarPart);
 
-        if (chbCategory.getValue().equals("Wheels")) {
-            Path filsti = Paths.get(StandardPaths.wheelPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+        switch (chbCategory.getValue()) {
+            case fuelCHB: {
+                Path filsti = Paths.get(StandardPaths.fuelPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
-        } else if (chbCategory.getValue().equals("Color")) {
-            Path filsti = Paths.get(StandardPaths.colorPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            case wheelsCHB: {
+                Path filsti = Paths.get(StandardPaths.wheelPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
-        } else if (chbCategory.getValue().equals("Addons")) {
-            Path filsti = Paths.get(StandardPaths.addonPath);
-            try {
-                FileSaverJobj.SaveCarCategory(filsti, carCategory);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            case colorCHB: {
+                Path filsti = Paths.get(StandardPaths.colorPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                LoadCategory();
+                break;
             }
-            LoadCategory();
+            case addOnesCHB: {
+                Path filsti = Paths.get(StandardPaths.addonPath);
+                try {
+                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                LoadCategory();
+                break;
+            }
         }
 
     }
