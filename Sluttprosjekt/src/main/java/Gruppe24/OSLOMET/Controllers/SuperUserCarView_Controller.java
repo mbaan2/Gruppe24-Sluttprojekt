@@ -1,6 +1,9 @@
-package Gruppe24.OSLOMET;
+package Gruppe24.OSLOMET.Controllers;
 
+import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.Filter;
+import Gruppe24.OSLOMET.TableViewCreation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

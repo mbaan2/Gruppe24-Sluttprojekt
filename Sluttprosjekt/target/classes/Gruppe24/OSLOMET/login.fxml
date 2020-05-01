@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Login_Controller">
+<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Login_Controller">
    <children>
       <Label layoutX="361.0" layoutY="85.0" prefHeight="39.0" prefWidth="118.0" text="Cars R Us" textFill="#def2f1">
          <font>

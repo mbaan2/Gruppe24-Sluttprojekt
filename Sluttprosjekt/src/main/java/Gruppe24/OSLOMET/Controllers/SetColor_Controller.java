@@ -1,5 +1,6 @@
-package Gruppe24.OSLOMET;
+package Gruppe24.OSLOMET.Controllers;
 
+import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;

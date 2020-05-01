@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET;
+package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Car;

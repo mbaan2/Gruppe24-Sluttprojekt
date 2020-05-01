@@ -32,7 +32,7 @@ import java.util.List;
 public class TableViewCreation {
 
     List<Carparts> addonSupUser = new ArrayList<>();
-    ObservableList<NewCar> carList = FXCollections.observableArrayList();
+    public ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
     public void initializeTv(TableView<NewCar> tv) {
         openCars();

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.UserCarView_Controller">
+<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.UserCarView_Controller">
    <children>
       <TableView fx:id="tableView" layoutX="188.0" layoutY="26.0" prefHeight="382.0" prefWidth="637.0" />
       <Button layoutX="26.0" layoutY="322.0" mnemonicParsing="false" onAction="#loadYourCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Load your cars!" textFill="#def2f1" />
