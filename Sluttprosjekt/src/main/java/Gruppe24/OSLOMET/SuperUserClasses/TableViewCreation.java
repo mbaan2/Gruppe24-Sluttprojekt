@@ -1,4 +1,4 @@
-package Gruppe24.OSLOMET;
+package Gruppe24.OSLOMET.SuperUserClasses;
 
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
