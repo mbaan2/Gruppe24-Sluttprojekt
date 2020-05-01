@@ -2,81 +2,114 @@ package Gruppe24.OSLOMET;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class SetFuel_Controller implements Initializable {
 
-    private int clicked = 0;
+    final ToggleGroup fuelGroup = new ToggleGroup();
+    List<Carparts> fuelOptions = new ArrayList<>();
+    List<RadioButton> fuelButtons = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtGasCar.setText("Gasoline Car \n Cost: 20.000 kr");
-        txtDieselCar.setText("Diesel Car \n Cost: 17.500 kr");
-        txtElectricCar.setText("Electric Car \n Cost: 30.000 kr");
+        setFuel();
+        createFile();
+        //openFile();
     }
 
     @FXML
-    private Button txtGasCar;
+    private VBox vboxFuel;
 
-    @FXML
-    private Button txtDieselCar;
+    public void createButtons(){
+        LoadingValuesOnScreen.creatingList(fuelButtons, fuelOptions, fuelGroup);
+        LoadingValuesOnScreen.returnVbox(fuelButtons, vboxFuel);
+        
+        if(App.car.fuel == null) {
+            fuelButtons.get(0).setSelected(true);
+        } else{
+            for(int i=0; i <fuelOptions.size();i++){
+                if(App.car.getFuel().getName().equals(fuelOptions.get(i).getName())){
+                    fuelButtons.get(i).setSelected(true);
+                    break;
+                }
+            }
+        }
 
-    @FXML
-    private Button txtElectricCar;
-
-    @FXML
-    void btnDieselCar(ActionEvent event) {
-        App.car.setFuel(new Carparts("Diesel Car", 20_000));
-        clicked = 1;
-        txtDieselCar.setStyle("-fx-background-color: #def2f1;");
-        txtDieselCar.setTextFill(Color.valueOf("#17252a"));
-        txtElectricCar.setStyle("-fx-background-color: #17252a;");
-        txtElectricCar.setTextFill(Color.valueOf("#def2f1"));
-        txtGasCar.setStyle("-fx-background-color: #17252a;");
-        txtGasCar.setTextFill(Color.valueOf("#def2f1"));
-    }
-
-    @FXML
-    void btnElectricCar(ActionEvent event) {
-        App.car.setFuel(new Carparts("Electric Car", 17_500));
-        clicked = 2;
-        txtElectricCar.setStyle("-fx-background-color: #def2f1;");
-        txtElectricCar.setTextFill(Color.valueOf("#17252a"));
-        txtGasCar.setStyle("-fx-background-color: #17252a;");
-        txtGasCar.setTextFill(Color.valueOf("#def2f1"));
-        txtDieselCar.setStyle("-fx-background-color: #17252a;");
-        txtDieselCar.setTextFill(Color.valueOf("#def2f1"));
     }
 
     @FXML
     void btnGasCar(ActionEvent event) {
         App.car.setFuel(new Carparts("Gasoline Car", 30_000));
-        clicked = 3;
-        txtGasCar.setStyle("-fx-background-color: #def2f1;");
-        txtGasCar.setTextFill(Color.valueOf("#17252a"));
-        txtElectricCar.setStyle("-fx-background-color: #17252a;");
-        txtElectricCar.setTextFill(Color.valueOf("#def2f1"));
-        txtDieselCar.setStyle("-fx-background-color: #17252a;");
-        txtDieselCar.setTextFill(Color.valueOf("#def2f1"));
+        //txtGasCar.setStyle("-fx-background-color: #def2f1;");
+        //txtGasCar.setTextFill(Color.valueOf("#17252a"));
+        //txtElectricCar.setStyle("-fx-background-color: #17252a;");
+        //txtElectricCar.setTextFill(Color.valueOf("#def2f1"));
+        //txtDieselCar.setStyle("-fx-background-color: #17252a;");
+        //txtDieselCar.setTextFill(Color.valueOf("#def2f1"));
+    }
 
+    public void openFile(){
+        Path path = Paths.get(StandardPaths.fuelPath);
+        fuelOptions = FileOpenerJobj.openFile(path);
+        createButtons();
     }
 
     @FXML
     void switchToSecondary(ActionEvent event) throws IOException{
-        if (clicked != 0){
-            App.setRoot("SetWheels");
-        } else {
-            Alert mustChoose = new Alert(Alert.AlertType.ERROR);
-            mustChoose.setHeaderText("Choose fuel!");
-            mustChoose.setContentText("You must choose a fuel type to proceed.");
-            mustChoose.show();
+
+        for(int i = 0; i<fuelOptions.size();i++){
+            if(fuelButtons.get(i).isSelected()){
+                App.car.setFuel(fuelOptions.get(i));
+            }
+        }
+
+        App.setRoot("SetWheels");
+    }
+
+
+
+
+
+    //ONLY USED FOR CREATING THE .JOBJ FILE
+    public void setFuel(){
+        Carparts diesel = new Carparts("Diesel", 20_000);
+        Carparts gasoline = new Carparts("Gasoline", 15_00);
+        Carparts electric = new Carparts("Electric", 35_000);
+
+
+        fuelOptions.add(gasoline);
+        fuelOptions.add(diesel);
+        fuelOptions.add(electric);
+
+
+        createButtons();
+    }
+
+    public void createFile(){
+        Path filsti = Paths.get(StandardPaths.fuelPath);
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
+
 }
