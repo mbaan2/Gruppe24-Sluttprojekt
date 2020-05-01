@@ -6,11 +6,13 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,11 +24,18 @@ import java.util.ResourceBundle;
 
 public class SetColor_Controller implements Initializable {
 
+    @FXML
+    private VBox colorVbox;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setColors();
         createFile();
         //openFile();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) colorVbox.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 
     @FXML

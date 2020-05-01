@@ -3,12 +3,16 @@ package Gruppe24.OSLOMET.Controllers;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -19,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class UserRegister_Controller implements Initializable {
 
+    @FXML
+    private AnchorPane registerPane;
 
     @FXML
     private TextField usernameTxt;
@@ -31,9 +37,6 @@ public class UserRegister_Controller implements Initializable {
 
     @FXML
     private Button passwordBtn;
-
-    @FXML
-    private Button nextBtn;
 
     @FXML
     private Label usernameError;
@@ -165,5 +168,10 @@ public class UserRegister_Controller implements Initializable {
         setNotVisible();
         newUserTable.attachTableView(tableView);
         tableView.setVisible(false);
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) registerPane.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 }

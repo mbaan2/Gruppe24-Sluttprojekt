@@ -8,11 +8,13 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,10 +31,17 @@ public class SetAddons_Controller implements Initializable {
         setAddOns();
         createFile();
         //openFile();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) addonsVbox.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 
     @FXML
     private VBox vboxAddOns;
+
+    @FXML
+    private VBox addonsVbox;
 
     List<Carparts> addOnOptions = new ArrayList<>();
     List<CheckBox> addOnButtons = new ArrayList<>();

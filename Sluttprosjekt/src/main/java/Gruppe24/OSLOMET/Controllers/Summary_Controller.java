@@ -10,12 +10,16 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Summary_Controller {
+
+    @FXML
+    private AnchorPane summaryPane;
 
     @FXML
     private Button btnNameCar;
@@ -40,7 +44,7 @@ public class Summary_Controller {
         lblCarComponents.setText(ut + "Totalcost of this car is: " + totalCost + "kr");
 
         btnBuildCar.setDisable(true);
-        btnBuildCar.setLayoutX(226.0);
+        btnBuildCar.setLayoutX(130.0);
         btnNameCar.setVisible(true);
         lblCarName.setVisible(true);
 
@@ -130,7 +134,7 @@ public class Summary_Controller {
     void switchToPrimary(ActionEvent event) throws IOException {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
-        btnBuildCar.setLayoutX(318.0);
+        btnBuildCar.setLayoutX(259.0);
         btnBuildCar.setDisable(false);
         App.setRoot("SetFuel");
     }

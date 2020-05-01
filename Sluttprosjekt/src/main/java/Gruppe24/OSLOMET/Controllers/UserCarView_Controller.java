@@ -7,18 +7,26 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.Filter;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserCarView_Controller implements Initializable {
+
+    @FXML
+    private AnchorPane userViewPane;
+
     @FXML
     private TableView<NewCar> tableView;
 
@@ -58,6 +66,11 @@ public class UserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) userViewPane.getScene().getWindow();
+            stage.setWidth(850);
+        });
+
         tableView.setVisible(false);
         try {
             showCars();

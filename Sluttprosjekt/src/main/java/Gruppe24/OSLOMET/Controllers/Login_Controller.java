@@ -2,16 +2,24 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
-public class Login_Controller {
+public class Login_Controller implements Initializable {
+
+    @FXML
+    private AnchorPane loginPane;
 
     @FXML
     private PasswordField passwordTxt;
@@ -70,5 +78,15 @@ public class Login_Controller {
 
     private void login() throws IOException {
         App.setRoot("WelcomeScreen");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
+        //Code based on a comment from https://stackoverflow.com/a/59880899
+        Platform.runLater(() -> {
+            Stage stage = (Stage) loginPane.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 }

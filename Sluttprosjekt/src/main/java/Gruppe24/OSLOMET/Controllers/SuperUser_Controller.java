@@ -7,6 +7,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +38,14 @@ public class SuperUser_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadChoiceBoxStrings();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) superUserPane.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
+
+    @FXML
+    private AnchorPane superUserPane;
 
     @FXML
     private VBox vboxSelectedChoiceBox;

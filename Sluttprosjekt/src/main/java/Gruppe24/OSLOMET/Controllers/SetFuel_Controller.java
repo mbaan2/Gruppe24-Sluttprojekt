@@ -14,6 +14,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class SetFuel_Controller implements Initializable {
 
@@ -35,7 +37,15 @@ public class SetFuel_Controller implements Initializable {
         setFuel();
         createFile();
         //openFile();
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) fuelVbox.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
+
+    @FXML
+    private VBox fuelVbox;
 
     @FXML
     private VBox vboxFuel;

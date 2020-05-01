@@ -7,12 +7,16 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,6 +27,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class SignUp_Controller implements Initializable {
+
+    @FXML
+    private AnchorPane signupPane;
 
     @FXML
     private PasswordField signupPassword;
@@ -178,5 +185,10 @@ public class SignUp_Controller implements Initializable {
         checkOther.setToggleGroup(toggleGroup);
         checkFemale.setToggleGroup(toggleGroup);
         checkMale.setToggleGroup(toggleGroup);
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) signupPane.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 }

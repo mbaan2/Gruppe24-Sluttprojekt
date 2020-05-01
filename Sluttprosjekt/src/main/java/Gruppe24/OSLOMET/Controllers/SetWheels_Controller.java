@@ -14,11 +14,13 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class SetWheels_Controller implements Initializable {
 
@@ -27,10 +29,17 @@ public class SetWheels_Controller implements Initializable {
         setWheels();
         createFile();
         //openFile();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) wheelsVbox.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 
     @FXML
     private VBox vboxWheels;
+
+    @FXML
+    private VBox wheelsVbox;
 
     final ToggleGroup wheelGroup = new ToggleGroup();
     List<Carparts> wheelOptions = new ArrayList<>();

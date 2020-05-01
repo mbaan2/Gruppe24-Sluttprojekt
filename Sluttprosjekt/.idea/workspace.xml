@@ -19,54 +19,53 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="Style stuff and you cant signup with a username that already exists.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cars.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/cars.jobj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/Login_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetAddons_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetAddons_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetColor_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetColor_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetFuel_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetFuel_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetWheels_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SetWheels_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SignUp_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SignUp_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/Summary_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/Summary_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/LoadingValuesOnScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/FileTreatment/LoadingValuesOnScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUserCarView_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/UserCarView_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/UserCarView_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/UserRegister_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/UserRegister_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/WelcomeScreen_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/WelcomeScreen_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetAddons.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetAddons.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetColors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetColors.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetFuel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetFuel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetWheels.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/SetWheels.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/Summary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/Summary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/UserCarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/UserCarView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/WelcomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/WelcomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Car/CarCategory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetAddons_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetAddons_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetColor_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetColor_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetFuel_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetFuel_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetWheels_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SetWheels_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SignUp_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SignUp_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/FileOpenerJobj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/LoadingValuesOnScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/FileTreatment/LoadingValuesOnScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Login_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/Summary_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/Summary_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/WelcomeScreen_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/WelcomeScreen_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetAddons.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetAddons.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetAddons_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetColor_Controller.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetColors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetColors.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetFuel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetFuel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetFuel_Controller.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetWheels.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetWheels.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SetWheels_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SignUp_Controller.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Summary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Summary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Summary_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUserCarView_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/SuperUser_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView_Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserRegister_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/UserCarView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/WelcomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/WelcomeScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/WelcomeScreen_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/superUserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/userRegister.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +228,7 @@
       <workItem from="1588142100482" duration="7477000" />
       <workItem from="1588174091972" duration="1777000" />
       <workItem from="1588333223595" duration="8101000" />
-      <workItem from="1588349787671" duration="4088000" />
+      <workItem from="1588349787671" duration="13549000" />
     </task>
     <task id="LOCAL-00001" summary="Added controllers 3-5, each directing to the next controller.">
       <created>1585219025324</created>
@@ -449,7 +448,13 @@
       <option name="project" value="LOCAL" />
       <updated>1588237650823</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL−00035" summary="Style stuff and you cant signup with a username that already exists.">
+      <created>1588353906882</created>
+      <option name="number" value="LOCAL−00035" />
+      <option name="presentableId" value="LOCAL−00035" />
+      <updated>1588353906883</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +498,8 @@
     <MESSAGE value="I am tired. Stuff I was working on." />
     <MESSAGE value="Made some small changes. /shrug" />
     <MESSAGE value="Made some smaller changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some smaller changes." />
+    <MESSAGE value="Style stuff and you cant signup with a username that already exists." />
+    <option name="LAST_COMMIT_MESSAGE" value="Style stuff and you cant signup with a username that already exists." />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="71" key="#Notifications" timestamp="1584873334624">
@@ -519,11 +525,11 @@
     </state>
     <state x="625" y="296" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586280230874" />
     <state x="1042" y="503" key="#com.intellij.fileTypes.FileTypeChooser/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586265526479" />
-    <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1588237145890">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1588373009250">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="857" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588237145890" />
-    <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587392261192" />
+    <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588373009250" />
     <state x="1428" y="219" key="#com.intellij.ide.util.MemberChooser/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588001648150" />
     <state x="677" y="347" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588233847978">
       <screen x="0" y="0" width="1536" height="824" />
@@ -553,11 +559,11 @@
     <state x="606" y="263" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588236987372" />
     <state x="1010" y="447" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1587758016247" />
     <state x="1010" y="447" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587996293859" />
-    <state x="544" y="161" width="1159" height="947" key="CommitChangelistDialog2" timestamp="1588343216859">
+    <state x="544" y="161" width="1159" height="947" key="CommitChangelistDialog2" timestamp="1588372229090">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587654319197" />
-    <state x="544" y="161" width="1159" height="947" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588343216859" />
+    <state x="544" y="161" width="1159" height="947" key="CommitChangelistDialog2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588372229090" />
     <state x="0" y="0" key="CommitChangelistDialog2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031569244" />
     <state x="86" y="123" width="2376" height="1216" key="DiffContextDialog" timestamp="1588175499276">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -571,32 +577,32 @@
     <state x="826" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588169243739" />
     <state x="1377" y="284" key="FileChooserDialogImpl/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588165158637" />
     <state x="1377" y="284" key="FileChooserDialogImpl/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586263799515" />
-    <state width="2517" height="343" key="GridCell.Tab.0.bottom" timestamp="1588353397745">
+    <state width="2517" height="343" key="GridCell.Tab.0.bottom" timestamp="1588376235466">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588324399397" />
-    <state width="2517" height="343" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588353397745" />
+    <state width="2517" height="343" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588376235466" />
     <state width="2517" height="343" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.bottom/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.center" timestamp="1588353397745">
+    <state width="2517" height="343" key="GridCell.Tab.0.center" timestamp="1588376235466">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="281" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588324399397" />
-    <state width="2517" height="343" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588353397745" />
+    <state width="2517" height="343" key="GridCell.Tab.0.center/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588376235466" />
     <state width="2517" height="343" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.center/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.left" timestamp="1588353397745">
+    <state width="2517" height="343" key="GridCell.Tab.0.left" timestamp="1588376235465">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="281" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588324399396" />
-    <state width="2517" height="343" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588353397745" />
+    <state width="2517" height="343" key="GridCell.Tab.0.left/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588376235465" />
     <state width="2517" height="343" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773018" />
     <state width="2517" height="491" key="GridCell.Tab.0.left/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
-    <state width="2517" height="343" key="GridCell.Tab.0.right" timestamp="1588353397745">
+    <state width="2517" height="343" key="GridCell.Tab.0.right" timestamp="1588376235466">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1493" height="281" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588324399397" />
-    <state width="2517" height="343" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588353397745" />
+    <state width="2517" height="343" key="GridCell.Tab.0.right/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588376235466" />
     <state width="2517" height="343" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031773019" />
     <state width="2517" height="491" key="GridCell.Tab.0.right/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@2560.50.1920.1040" timestamp="1587300365330" />
     <state width="2517" height="491" key="GridCell.Tab.1.bottom" timestamp="1587671201251">
@@ -650,11 +656,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="316" y="129" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1586286735617" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2" timestamp="1588168412626">
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2" timestamp="1588353908560">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="351" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587654329481" />
-    <state x="585" y="248" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588168412626" />
+    <state x="585" y="248" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.50.1920.1040/-1920.53.1920.1040@0.0.2560.1400" timestamp="1588353908560" />
     <state x="585" y="248" key="Vcs.Push.Dialog.v2/2560.50.1920.1040/-1920.53.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1588031571422" />
     <state x="585" y="191" key="chooseDestDirectoryDialog" timestamp="1586124141446">
       <screen x="0" y="0" width="1536" height="824" />

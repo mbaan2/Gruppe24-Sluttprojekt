@@ -10,25 +10,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.UserRegister_Controller">
+<AnchorPane fx:id="registerPane" prefHeight="434.0" prefWidth="600.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.UserRegister_Controller">
    <children>
-      <TextField fx:id="usernameTxt" layoutX="356.0" layoutY="156.0" promptText="Username" />
+      <TextField fx:id="usernameTxt" layoutX="226.0" layoutY="156.0" promptText="Username" />
       <Label layoutX="447.0" layoutY="204.0" prefHeight="17.0" prefWidth="57.0" />
-      <Button fx:id="passwordBtn" layoutX="356.0" layoutY="297.0" mnemonicParsing="false" onAction="#retrievePwBtn" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #17252a;" text="Retrieve password" textFill="#def2f1" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="285.0" layoutY="48.0" prefHeight="45.0" prefWidth="292.0" text="Password retrieval" textFill="#def2f1">
+      <Button fx:id="passwordBtn" layoutX="226.0" layoutY="300.0" mnemonicParsing="false" onAction="#retrievePwBtn" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #17252a;" text="Retrieve password" textFill="#def2f1" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="48.0" prefHeight="45.0" prefWidth="292.0" text="Password retrieval" textFill="#def2f1">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="357.0" layoutY="139.0" prefHeight="17.0" prefWidth="92.0" text="Enter username:" />
-      <Label fx:id="answerLbl" layoutX="356.0" layoutY="221.0" prefHeight="17.0" prefWidth="172.0" text="Enter answer to secret question:" />
-      <TextField fx:id="answerTxt" layoutX="356.0" layoutY="238.0" promptText="Answer" />
-      <ChoiceBox fx:id="choiceBox" layoutX="355.0" layoutY="267.0" prefWidth="150.0" />
-      <Button fx:id="nextBtn" layoutX="398.0" layoutY="181.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #17252a;" text="Next" textFill="#def2f1" />
-      <Label fx:id="usernameError" layoutX="523.0" layoutY="160.0" prefHeight="17.0" prefWidth="172.0" />
-      <Label fx:id="answerError" layoutX="523.0" layoutY="234.0" prefHeight="17.0" prefWidth="162.0" />
-      <Label fx:id="choiceBoxError" layoutX="523.0" layoutY="263.0" prefHeight="17.0" prefWidth="183.0" />
-      <TableView fx:id="tableView" layoutX="249.0" layoutY="228.0" prefHeight="66.0" prefWidth="361.0">
+      <Label layoutX="226.0" layoutY="139.0" prefHeight="17.0" prefWidth="92.0" text="Enter username:" />
+      <Label fx:id="answerLbl" layoutX="226.0" layoutY="221.0" prefHeight="17.0" prefWidth="172.0" text="Enter answer to secret question:" />
+      <TextField fx:id="answerTxt" layoutX="226.0" layoutY="239.0" promptText="Answer" />
+      <ChoiceBox fx:id="choiceBox" layoutX="226.0" layoutY="268.0" prefWidth="150.0" />
+      <Button layoutX="270.0" layoutY="192.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #17252a;" text="Next" textFill="#def2f1" />
+      <Label fx:id="usernameError" layoutX="425.0" layoutY="160.0" prefHeight="17.0" prefWidth="172.0" />
+      <Label fx:id="answerError" layoutX="416.0" layoutY="243.0" prefHeight="17.0" prefWidth="162.0" />
+      <Label fx:id="choiceBoxError" layoutX="420.0" layoutY="272.0" prefHeight="17.0" prefWidth="183.0" />
+      <TableView fx:id="tableView" layoutX="121.0" layoutY="335.0" prefHeight="66.0" prefWidth="361.0">
          <columns>
             <TableColumn prefWidth="90.0" text="Username">
                <cellValueFactory>
@@ -55,6 +55,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="760.0" layoutY="35.0" mnemonicParsing="false" onAction="#loginBtn" prefWidth="53.2" style="-fx-background-color: #17252a;" text="Login" textFill="#def2f1" />
+      <Button layoutX="512.0" layoutY="23.0" mnemonicParsing="false" onAction="#loginBtn" prefWidth="53.2" style="-fx-background-color: #17252a;" text="Login" textFill="#def2f1" />
    </children>
 </AnchorPane>

@@ -4,18 +4,24 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.SuperUserClasses.Filter;
 import Gruppe24.OSLOMET.SuperUserClasses.TableViewCreation;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SuperUserCarView_Controller implements Initializable {
+
+    @FXML
+    private AnchorPane superUserViewPane;
 
     @FXML
     private TableView<NewCar> tableView;
@@ -36,6 +42,11 @@ public class SuperUserCarView_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChoiceBoxItems();
         createView.initializeTv(tableView);
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) superUserViewPane.getScene().getWindow();
+            stage.setWidth(850);
+        });
     }
 
     @FXML
