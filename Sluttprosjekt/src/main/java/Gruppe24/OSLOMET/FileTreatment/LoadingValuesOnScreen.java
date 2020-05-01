@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -19,7 +20,7 @@ public class LoadingValuesOnScreen {
             RadioButton newButton = new RadioButton(str);
             newButton.setToggleGroup(toggleGroup);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 175px;");
+            newButton.getStyleClass().add("set-radiobutton");
         }
         return buttonList;
     }
@@ -31,7 +32,7 @@ public class LoadingValuesOnScreen {
             str = valuesList.get(i).getName() + " (" + valuesList.get(i).getCost() + "kr)";
             CheckBox newButton = new CheckBox(str);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 175px;");
+            newButton.getStyleClass().add("set-check-box");
         }
         return buttonList;
     }
@@ -63,6 +64,7 @@ public class LoadingValuesOnScreen {
                     numberOfButtons++;
                 }
             }
+            newHBox.setAlignment(Pos.CENTER);
             vbox.getChildren().add(newHBox);
             rows++;
         }

@@ -1,0 +1,25 @@
+.set-check-box > .box {
+    -fx-padding: 3px 3px 6px 6px;
+}
+
+.set-check-box > .box > .mark {
+    -fx-padding: 5px 5px 10px 10px;
+}
+
+.set-check-box {
+    -fx-padding: 15px;
+    -fx-min-width: 100px;
+}
+
+.set-radiobutton {
+    -fx-padding: 5px;
+    -fx-min-width: 100px;
+}
+
+.set-radiobutton > .radio {
+
+}
+
+.set-radiobutton > .radio:selected {
+
+}

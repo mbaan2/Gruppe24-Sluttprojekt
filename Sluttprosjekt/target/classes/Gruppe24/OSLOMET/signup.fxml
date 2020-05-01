@@ -25,11 +25,11 @@
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
-      <Label fx:id="usernameError" layoutX="510.0" layoutY="117.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="passwordError" layoutX="510.0" layoutY="147.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="locationError" layoutX="510.0" layoutY="177.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="secretQError" layoutX="510.0" layoutY="208.0" prefHeight="17.0" prefWidth="110.0" textFill="#17252a" />
-      <Label fx:id="answerError" layoutX="510.0" layoutY="237.0" prefHeight="17.0" prefWidth="110.0" />
-      <Label fx:id="genderError" layoutX="510.0" layoutY="275.0" prefHeight="17.0" prefWidth="110.0" />
+      <Label fx:id="usernameError" layoutX="510.0" layoutY="117.0" prefHeight="17.0" prefWidth="161.0" textFill="#17252a" />
+      <Label fx:id="passwordError" layoutX="510.0" layoutY="147.0" prefHeight="17.0" prefWidth="161.0" textFill="#17252a" />
+      <Label fx:id="locationError" layoutX="510.0" layoutY="177.0" prefHeight="17.0" prefWidth="161.0" textFill="#17252a" />
+      <Label fx:id="secretQError" layoutX="510.0" layoutY="208.0" prefHeight="17.0" prefWidth="161.0" textFill="#17252a" />
+      <Label fx:id="answerError" layoutX="510.0" layoutY="237.0" prefHeight="17.0" prefWidth="161.0" />
+      <Label fx:id="genderError" layoutX="510.0" layoutY="275.0" prefHeight="17.0" prefWidth="161.0" />
    </children>
 </AnchorPane>

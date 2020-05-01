@@ -135,6 +135,11 @@ public class Summary_Controller {
         App.setRoot("SetFuel");
     }
 
+    @FXML
+    void backBtn() throws IOException{
+        App.setRoot("SetAddons");
+    }
+
 
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML

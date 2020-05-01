@@ -8,12 +8,13 @@
 
 <VBox alignment="CENTER" prefHeight="434.0" prefWidth="840.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SetColor_Controller">
     <children>
-        <Label text="Color" textFill="#def2f1">
+        <Label text="Color" textFill="#def2f1" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
-      <VBox fx:id="vboxColor" prefHeight="200.0" prefWidth="100.0" />
+      <VBox fx:id="vboxColor" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
         <Button fx:id="tertiaryButton" onAction="#switchToQuaternary" style="-fx-background-color: #17252a;" text="Next page" textFill="#def2f1" />
+      <Button contentDisplay="CENTER" onAction="#backBtn" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

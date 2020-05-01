@@ -71,7 +71,10 @@ public class SetAddons_Controller implements Initializable {
         App.setRoot("Summary");
     }
 
-
+    @FXML
+    void backBtn() throws IOException{
+        App.setRoot("SetColors");
+    }
 
 
     //ONLY USED FOR CREATING THE .JOBJ FILE

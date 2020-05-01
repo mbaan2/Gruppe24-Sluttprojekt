@@ -69,7 +69,10 @@ public class SetWheels_Controller implements Initializable {
         App.setRoot("SetColors");
     }
 
-
+    @FXML
+    void backBtn() throws IOException{
+        App.setRoot("SetFuel");
+    }
 
 
 

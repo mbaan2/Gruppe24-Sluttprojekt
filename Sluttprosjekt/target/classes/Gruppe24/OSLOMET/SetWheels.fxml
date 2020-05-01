@@ -12,8 +12,9 @@
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
-      <VBox fx:id="vboxWheels" prefHeight="200.0" prefWidth="100.0" />
+      <VBox fx:id="vboxWheels" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
         <Button fx:id="secondaryButton" onAction="#switchToTertiary" style="-fx-background-color: #17252a;" text="Next page" textFill="#def2f1" />
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" onAction="#backBtn" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

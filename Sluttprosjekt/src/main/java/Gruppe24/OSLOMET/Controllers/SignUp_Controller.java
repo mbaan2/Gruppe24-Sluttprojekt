@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -101,25 +102,34 @@ public class SignUp_Controller implements Initializable {
 
             userBase = FileOpenerJobj.openFileHashMap();
 
-            if(!userBase.containsKey(newUser.getUsername())){
-                userBase.put(newUser.getUsername(), newUser.getPassword());
-                FileSaverJobj.SaveUser(userBase);
-                App.setRoot("login");
-            } else{
-                usernameError.setText("Username already exists!");
+            if(!userBase.containsKey(username)) {
+                try {
+                    userBase.put(newUser.getUsername(), newUser.getPassword());
+                    FileSaverJobj.SaveUser(userBase);
+                } catch (FileNotFoundException e) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setHeaderText("File not found");
+                    alert.setContentText(e.getMessage());
+                }
+            } else {
+                    usernameError.setText("Username already exists!");
             }
 
-
             //Writing the list to a txt file for the user register
-            userList.add(newUser);
-            String str = FormatUser.formatUsers(userList);
-            Path path = Paths.get(StandardPaths.usersTXTPath);
-            File selectedFile = new File(String.valueOf(path));
-
-            try {
-                WriteUser.writeString(selectedFile, str);
-            } catch (Exception e) {
-                System.err.println("Failed to write file");
+            if(!userBase.containsKey(username)) {
+                try {
+                    userList.add(newUser);
+                    String str = FormatUser.formatUsers(userList);
+                    Path path = Paths.get(StandardPaths.usersTXTPath);
+                    File selectedFile = new File(String.valueOf(path));
+                    WriteUser.writeString(selectedFile, str);
+                } catch (FileNotFoundException e) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText(e.getMessage());
+                    alert.setHeaderText("File not found");
+                }
+            } else {
+                    usernameError.setText("Username already exists!");
             }
 
 

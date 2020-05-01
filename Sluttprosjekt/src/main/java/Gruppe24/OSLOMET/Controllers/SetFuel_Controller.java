@@ -86,7 +86,10 @@ public class SetFuel_Controller implements Initializable {
         App.setRoot("SetWheels");
     }
 
-
+    @FXML
+    void backBtn() throws IOException{
+        App.setRoot("WelcomeScreen");
+    }
 
 
 

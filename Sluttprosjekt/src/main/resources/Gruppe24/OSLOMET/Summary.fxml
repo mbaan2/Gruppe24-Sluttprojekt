@@ -20,5 +20,6 @@
       <Button layoutX="25.0" layoutY="373.0" onAction="#switchToNullary" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
       <Button layoutX="369.0" layoutY="373.0" onAction="#switchToPrimary" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
       <Button fx:id="btnSaveCarToText" layoutX="644.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnSaveCarToText" style="-fx-background-color: #17252a;" text="Save Car to File" textFill="#def2f1" visible="false" />
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" layoutX="25.0" layoutY="336.0" onAction="#backBtn" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
    </children>
 </AnchorPane>
