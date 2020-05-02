@@ -106,7 +106,7 @@ public class SetFuel_Controller implements Initializable {
     //ONLY USED FOR CREATING THE .JOBJ FILE
     public void setFuel(){
         Carparts diesel = new Carparts("Diesel", 20_000);
-        Carparts gasoline = new Carparts("Gasoline", 15_00);
+        Carparts gasoline = new Carparts("Gasoline", 15_000);
         Carparts electric = new Carparts("Electric", 35_000);
 
 

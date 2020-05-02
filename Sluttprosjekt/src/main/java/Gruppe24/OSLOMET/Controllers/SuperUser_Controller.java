@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -58,6 +59,9 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     private TextField txfInputFieldCost;
+
+    @FXML
+    private Label lblError;
 
     ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
     private void loadChoiceBoxStrings(){
@@ -176,15 +180,41 @@ public class SuperUser_Controller implements Initializable {
 
     }
 
+    public List<Carparts> allCarParts() {
+        List<Carparts> fuelList = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
+        List<Carparts> wheelsList = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
+        List<Carparts> colorList = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
+        List<Carparts> addonsList = FileOpenerJobj.openFile(Paths.get(StandardPaths.addonPath));
+
+        List<Carparts> allCarparts = new ArrayList<>();
+        allCarparts.addAll(fuelList);
+        allCarparts.addAll(wheelsList);
+        allCarparts.addAll(colorList);
+        allCarparts.addAll(addonsList);
+
+        return allCarparts;
+    }
+
+    public boolean containsName(List<Carparts> list, String name) {
+        return list.stream().noneMatch(carpart -> carpart.getName().equals(name));
+    }
+
 
     @FXML
     void btnAdd(ActionEvent event) {
+        lblError.setText("");
         String name = txfInputFieldName.getText();
         String costString = txfInputFieldCost.getText();
         int cost = Integer.parseInt(costString);
 
+        List<Carparts> allCarparts = allCarParts();
+
         Carparts newCarPart = new Carparts(name, cost);
-        carCategory.add(newCarPart);
+        if(containsName(allCarparts, name)) {
+            carCategory.add(newCarPart);
+        } else {
+            lblError.setText("A carpart with that name already exists, try editing it instead!");
+        }
 
         switch (chbCategory.getValue()) {
             case fuelCHB: {

@@ -1,9 +1,9 @@
 .set-check-box > .box {
-    -fx-padding: 3px 3px 6px 6px;
+
 }
 
 .set-check-box > .box > .mark {
-    -fx-padding: 5px 5px 10px 10px;
+
 }
 
 .set-check-box {
