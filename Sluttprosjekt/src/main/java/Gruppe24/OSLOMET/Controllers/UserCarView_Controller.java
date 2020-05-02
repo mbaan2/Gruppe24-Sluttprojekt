@@ -46,6 +46,8 @@ public class UserCarView_Controller implements Initializable {
             tvLabel.setText("You dont have any saved cars!");
         } else {
             tableView.setVisible(true);
+            Stage stage = (Stage) userViewPane.getScene().getWindow();
+            stage.setWidth(850);
         }
     }
 
@@ -66,10 +68,6 @@ public class UserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(850);
-        });
 
         tableView.setVisible(false);
         try {

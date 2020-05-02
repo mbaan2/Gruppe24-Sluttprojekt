@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
 import javafx.application.Platform;
@@ -18,6 +19,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
@@ -33,13 +35,13 @@ public class UserRegister_Controller implements Initializable {
     private TextField answerTxt;
 
     @FXML
+    private Label usernameError;
+
+    @FXML
     private Label answerLbl;
 
     @FXML
     private Button passwordBtn;
-
-    @FXML
-    private Label usernameError;
 
     @FXML
     private Label answerError;
@@ -54,14 +56,15 @@ public class UserRegister_Controller implements Initializable {
     private TableView<User> tableView;
 
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
-
+    HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
 
 
     @FXML
     void nextButton(ActionEvent event) throws IOException {
-        Path path = Paths.get(StandardPaths.usersTXTPath);
+        userBase = FileOpenerJobj.openFileHashMap();
 
+        Path path = Paths.get(StandardPaths.usersTXTPath);
         long count = Files.lines(path).count();
 
         for (int i = 0; i < count; i++) {
@@ -69,22 +72,25 @@ public class UserRegister_Controller implements Initializable {
             if (!line.trim().equals("")) {
                 String[] user = line.split(";");
 
-                String username = user[0];
-                String password = user[1];
-                String location = user[2];
-                String gender = user[3];
                 String secretQ = user[4];
-                String questionAnswer = user[5];
 
-                if(username.trim().equals(usernameTxt.getText())) {
+                if(userBase.containsKey(usernameTxt.getText())) {
                     usernameError.setText("");
+                    answerError.setText("");
+                    choiceBoxError.setText("");
                     newUserTable.resetTableView();
                     choiceBox.setVisible(true);
                     answerLbl.setVisible(true);
                     answerTxt.setVisible(true);
+                    answerTxt.setText("");
                     passwordBtn.setVisible(true);
                     choiceBox.setValue(secretQ);
                     newUserTable.setNotVisible(tableView);
+                }
+                if(usernameTxt.getText().equals("")) {
+                    usernameError.setText("Enter a username!");
+                } else if(!userBase.containsKey(usernameTxt.getText())) {
+                    usernameError.setText("Username doesnt exist!");
                 }
             }
         }
@@ -114,7 +120,6 @@ public class UserRegister_Controller implements Initializable {
                     User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
                     if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
                         choiceBoxError.setText("");
-                        usernameError.setText("");
                         answerError.setText("");
 
                         // Adding values to the tableview
@@ -124,13 +129,13 @@ public class UserRegister_Controller implements Initializable {
                         setNotVisible();
                         return;
                     }
-                    if(answerTxt.getText().isEmpty()) {
-                        answerError.setText("Enter an answer!");
-                    } else if(!questionAnswer.trim().equals(answerTxt.getText())) {
-                        answerError.setText("Wrong answer!");
-                    }
                 } else {
                     choiceBoxError.setText("Wrong secret question!");
+                }
+                if(answerTxt.getText().isEmpty()) {
+                    answerError.setText("Enter an answer!");
+                } else if(!questionAnswer.trim().equals(answerTxt.getText())) {
+                    answerError.setText("Wrong answer!");
                 }
             }
         }
