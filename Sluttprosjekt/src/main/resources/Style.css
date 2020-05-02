@@ -23,3 +23,13 @@
 .set-radiobutton > .radio:selected {
 
 }
+
+.hbox {
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+}
+
+.set-button {
+    -fx-padding: 5px;
+    -fx-min-width: 100px;
+}

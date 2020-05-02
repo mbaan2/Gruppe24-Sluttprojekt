@@ -43,7 +43,7 @@ public class LoadingValuesOnScreen {
             str = valuesList.get(i).getName() + "\n" +" (" + valuesList.get(i).getCost() + "kr)";
             Button newButton = new Button(str);
             buttonList.add(newButton);
-            newButton.setStyle("-fx-padding: 5px; -fx-min-width: 175px;");
+            newButton.getStyleClass().add("set-button");
         }
         return buttonList;
     }
@@ -57,7 +57,7 @@ public class LoadingValuesOnScreen {
 
         while (rows <= numberOfRows){
             HBox newHBox = new HBox();
-            newHBox.setStyle("-fx-min-height: 40px; -fx-max-height: 40px");
+            newHBox.getStyleClass().add("hbox");
             for(int i = 0; i< (numberOfButtonPerLine); i++){
                 if(numberOfButtons < valuesList.size()) {
                     newHBox.getChildren().add((Node) valuesList.get(numberOfButtons));
