@@ -83,20 +83,16 @@ public class TableViewCreation {
             //Adding values to the lists for the comboboxes for editing
             // Fuel doesnt come from a file yet.
             ObservableList<String> fuelList = FXCollections.observableArrayList();
-            String dieselFuel = "Diesel Car";
-            String electricFuel = "Electric Car";
-            String gasFuel = "Gasoline Car";
-            fuelList.addAll(dieselFuel, electricFuel, gasFuel);
+            List<Carparts> fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
+            fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
             fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
             fuel.setOnEditCommit(event -> {
-                if(event.getNewValue().equals("Diesel Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 20000));
-                } else if(event.getNewValue().equals("Electric Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 17500));
-                } else if(event.getNewValue().equals("Gasoline Car")) {
-                    event.getRowValue().setFuel(new Carparts(event.getNewValue(), 30000));
+                for(int j = 0; j < fuelOptions.size(); j++){
+                    if(event.getNewValue().equals(fuelOptions.get(j).getName())) {
+                        event.getRowValue().setWheels(fuelOptions.get(j));
+                    }
                 }
 
                 btnSaveChanges();
