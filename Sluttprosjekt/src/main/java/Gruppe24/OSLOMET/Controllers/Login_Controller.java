@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -32,6 +33,9 @@ public class Login_Controller implements Initializable {
 
     @FXML
     private Label passwordError;
+
+    @FXML
+    private Button loginBtn;
 
     HashMap<String, String> userBase;
 
@@ -82,6 +86,8 @@ public class Login_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginBtn.setDefaultButton(true);
+
         //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
         //Code based on a comment from https://stackoverflow.com/a/59880899
         Platform.runLater(() -> {

@@ -80,8 +80,6 @@ public class TableViewCreation {
             name.setCellFactory(TextFieldTableCell.forTableColumn());
             name.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
 
-            //Adding values to the lists for the comboboxes for editing
-            // Fuel doesnt come from a file yet.
             ObservableList<String> fuelList = FXCollections.observableArrayList();
             List<Carparts> fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
@@ -94,9 +92,7 @@ public class TableViewCreation {
                         event.getRowValue().setWheels(fuelOptions.get(j));
                     }
                 }
-
                 btnSaveChanges();
-
             });
 
 
@@ -113,7 +109,6 @@ public class TableViewCreation {
                     }
                 }
                 btnSaveChanges();
-
             });
 
 
