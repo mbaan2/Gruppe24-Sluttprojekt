@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -58,11 +59,18 @@ public class UserRegister_Controller implements Initializable {
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
     HashMap<String, String> userBase = FileOpenerJobj.openFileHashMap();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
+    ObservableList<User> userList = FXCollections.observableArrayList();
 
     @FXML
     void nextButton(ActionEvent event) throws IOException {
-        Path path = Paths.get(StandardPaths.usersTXTPath);
-        ObservableList<User> userList = ImportUser.readUser(path.toString());
+        try {
+            Path path = Paths.get(StandardPaths.usersTXTPath);
+            userList = ImportUser.readUser(path.toString());
+        } catch (FileNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("File not found");
+            alert.setContentText(e.getMessage());
+        }
 
         for (int i = 0; i < userList.size(); i++) {
             String username = userList.get(i).getUsername();
@@ -91,8 +99,14 @@ public class UserRegister_Controller implements Initializable {
 
     @FXML
     void retrievePwBtn(ActionEvent event) throws IOException {
-        Path path = Paths.get(StandardPaths.usersTXTPath);
-        ObservableList<User> userList = ImportUser.readUser(path.toString());
+        try {
+            Path path = Paths.get(StandardPaths.usersTXTPath);
+            userList = ImportUser.readUser(path.toString());
+        } catch (FileNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("File not found!");
+            alert.setContentText(e.getMessage());
+        }
 
         for (int i = 0; i < userList.size(); i++) {
             String username = userList.get(i).getUsername();
