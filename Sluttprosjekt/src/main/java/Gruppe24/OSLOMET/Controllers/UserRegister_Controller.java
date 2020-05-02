@@ -72,11 +72,11 @@ public class UserRegister_Controller implements Initializable {
             alert.setContentText(e.getMessage());
         }
 
-        for (int i = 0; i < userList.size(); i++) {
-            String username = userList.get(i).getUsername();
-            String secretQ = userList.get(i).getSecretQ();
+        for (User user : userList) {
+            String username = user.getUsername();
+            String secretQ = user.getSecretQ();
 
-            if(username.trim().equals(usernameTxt.getText())) {
+            if (username.trim().equals(usernameTxt.getText())) {
                 usernameError.setText("");
                 answerError.setText("");
                 choiceBoxError.setText("");
@@ -89,9 +89,9 @@ public class UserRegister_Controller implements Initializable {
                 choiceBox.setValue(secretQ);
                 newUserTable.setNotVisible(tableView);
             }
-            if(usernameTxt.getText().equals("")) {
+            if (usernameTxt.getText().equals("")) {
                 usernameError.setText("Enter a username!");
-            } else if(!userBase.containsKey(usernameTxt.getText())) {
+            } else if (!userBase.containsKey(usernameTxt.getText())) {
                 usernameError.setText("Username doesnt exist!");
             }
         }
@@ -108,15 +108,15 @@ public class UserRegister_Controller implements Initializable {
             alert.setContentText(e.getMessage());
         }
 
-        for (int i = 0; i < userList.size(); i++) {
-            String username = userList.get(i).getUsername();
-            String password = userList.get(i).getPassword();
-            String location = userList.get(i).getLocation();
-            String gender = userList.get(i).getGender();
-            String secretQ = userList.get(i).getSecretQ();
-            String questionAnswer = userList.get(i).getSecretQAnswer();
+        for (User user : userList) {
+            String username = user.getUsername();
+            String password = user.getPassword();
+            String location = user.getLocation();
+            String gender = user.getGender();
+            String secretQ = user.getSecretQ();
+            String questionAnswer = user.getSecretQAnswer();
 
-            if(choiceBox.getValue().equals(secretQ)) {
+            if (choiceBox.getValue().equals(secretQ)) {
                 choiceBoxError.setText("");
                 User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
                 if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
@@ -132,9 +132,9 @@ public class UserRegister_Controller implements Initializable {
             } else {
                 choiceBoxError.setText("Wrong secret question!");
             }
-            if(answerTxt.getText().isEmpty()) {
+            if (answerTxt.getText().isEmpty()) {
                 answerError.setText("Enter an answer!");
-            } else if(!questionAnswer.trim().equals(answerTxt.getText())) {
+            } else if (!questionAnswer.trim().equals(answerTxt.getText())) {
                 answerError.setText("Wrong answer!");
             }
         }
