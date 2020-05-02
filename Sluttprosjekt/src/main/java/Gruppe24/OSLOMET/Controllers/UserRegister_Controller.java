@@ -72,9 +72,10 @@ public class UserRegister_Controller implements Initializable {
             if (!line.trim().equals("")) {
                 String[] user = line.split(";");
 
+                String username = user[0];
                 String secretQ = user[4];
 
-                if(userBase.containsKey(usernameTxt.getText())) {
+                if(username.trim().equals(usernameTxt.getText())) {
                     usernameError.setText("");
                     answerError.setText("");
                     choiceBoxError.setText("");

@@ -17,6 +17,6 @@
         <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" layoutX="27.0" layoutY="230.0" prefHeight="57.0" prefWidth="150.0" wrapText="true" />
         <Button layoutX="28.0" layoutY="396.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
-      <Button layoutX="77.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" text="back (temp)" />
+      <Button layoutX="28.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     </children>
 </AnchorPane>
