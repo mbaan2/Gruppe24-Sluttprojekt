@@ -16,9 +16,9 @@
       </Label>
       <TextField fx:id="usernameTxt" layoutX="195.0" layoutY="147.0" prefHeight="26.0" prefWidth="210.0" promptText="Username" />
       <PasswordField fx:id="passwordTxt" layoutX="195.0" layoutY="189.0" prefHeight="26.0" prefWidth="210.0" promptText="Password" />
-      <Button layoutX="255.0" layoutY="242.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #17252a;" text="Login" textFill="WHITE" />
+      <Button layoutX="255.0" layoutY="242.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #17252a;" text="Login" textFill="#def2f1" />
       <Button layoutX="215.0" layoutY="312.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="18.0" prefWidth="171.0" style="-fx-background-color: #3aafa9;" text="Forgot your password?" textFill="#17252a" underline="true" />
-      <Button layoutX="512.0" layoutY="27.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: #17252a;" text="Signup" textFill="WHITE" />
+      <Button layoutX="512.0" layoutY="27.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: #17252a;" text="Signup" textFill="#def2f1" />
       <Label fx:id="usernameError" layoutX="421.0" layoutY="151.0" prefHeight="18.0" prefWidth="118.0" textFill="#17252a" />
       <Label fx:id="passwordError" layoutX="421.0" layoutY="193.0" prefHeight="18.0" prefWidth="118.0" textFill="#17252a" />
    </children>
