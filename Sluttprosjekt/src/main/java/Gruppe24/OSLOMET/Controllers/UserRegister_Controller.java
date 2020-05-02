@@ -56,91 +56,76 @@ public class UserRegister_Controller implements Initializable {
     private TableView<User> tableView;
 
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
-    HashMap<String, String> userBase = new HashMap<>();
+    HashMap<String, String> userBase = FileOpenerJobj.openFileHashMap();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-
 
     @FXML
     void nextButton(ActionEvent event) throws IOException {
-        userBase = FileOpenerJobj.openFileHashMap();
-
         Path path = Paths.get(StandardPaths.usersTXTPath);
-        long count = Files.lines(path).count();
+        ObservableList<User> userList = ImportUser.readUser(path.toString());
 
-        for (int i = 0; i < count; i++) {
-            String line = Files.readAllLines(path).get(i);
-            if (!line.trim().equals("")) {
-                String[] user = line.split(";");
+        for (int i = 0; i < userList.size(); i++) {
+            String username = userList.get(i).getUsername();
+            String secretQ = userList.get(i).getSecretQ();
 
-                String username = user[0];
-                String secretQ = user[4];
-
-                if(username.trim().equals(usernameTxt.getText())) {
-                    usernameError.setText("");
-                    answerError.setText("");
-                    choiceBoxError.setText("");
-                    newUserTable.resetTableView();
-                    choiceBox.setVisible(true);
-                    answerLbl.setVisible(true);
-                    answerTxt.setVisible(true);
-                    answerTxt.setText("");
-                    passwordBtn.setVisible(true);
-                    choiceBox.setValue(secretQ);
-                    newUserTable.setNotVisible(tableView);
-                }
-                if(usernameTxt.getText().equals("")) {
-                    usernameError.setText("Enter a username!");
-                } else if(!userBase.containsKey(usernameTxt.getText())) {
-                    usernameError.setText("Username doesnt exist!");
-                }
+            if(username.trim().equals(usernameTxt.getText())) {
+                usernameError.setText("");
+                answerError.setText("");
+                choiceBoxError.setText("");
+                newUserTable.resetTableView();
+                choiceBox.setVisible(true);
+                answerLbl.setVisible(true);
+                answerTxt.setVisible(true);
+                answerTxt.setText("");
+                passwordBtn.setVisible(true);
+                choiceBox.setValue(secretQ);
+                newUserTable.setNotVisible(tableView);
+            }
+            if(usernameTxt.getText().equals("")) {
+                usernameError.setText("Enter a username!");
+            } else if(!userBase.containsKey(usernameTxt.getText())) {
+                usernameError.setText("Username doesnt exist!");
             }
         }
     }
 
     @FXML
     void retrievePwBtn(ActionEvent event) throws IOException {
-
         Path path = Paths.get(StandardPaths.usersTXTPath);
+        ObservableList<User> userList = ImportUser.readUser(path.toString());
 
-        long count = Files.lines(path).count();
+        for (int i = 0; i < userList.size(); i++) {
+            String username = userList.get(i).getUsername();
+            String password = userList.get(i).getPassword();
+            String location = userList.get(i).getLocation();
+            String gender = userList.get(i).getGender();
+            String secretQ = userList.get(i).getSecretQ();
+            String questionAnswer = userList.get(i).getSecretQAnswer();
 
-        for (int i = 0; i < count; i++) {
-            String line = Files.readAllLines(path).get(i);
-            if (!line.trim().equals("")) {
-                String[] user = line.split(";");
-
-                String username = user[0];
-                String password = user[1];
-                String location = user[2];
-                String gender = user[3];
-                String secretQ = user[4];
-                String questionAnswer = user[5];
-
-                if(choiceBox.getValue().equals(secretQ)) {
+            if(choiceBox.getValue().equals(secretQ)) {
+                choiceBoxError.setText("");
+                User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
+                if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
                     choiceBoxError.setText("");
-                    User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
-                    if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
-                        choiceBoxError.setText("");
-                        answerError.setText("");
+                    answerError.setText("");
+                    // Adding values to the tableview
+                    newUserTable.addElement(newUser);
+                    newUserTable.setVisible(tableView);
 
-                        // Adding values to the tableview
-                        newUserTable.addElement(newUser);
-                        newUserTable.setVisible(tableView);
-
-                        setNotVisible();
-                        return;
-                    }
-                } else {
-                    choiceBoxError.setText("Wrong secret question!");
+                    setNotVisible();
+                    return;
                 }
-                if(answerTxt.getText().isEmpty()) {
-                    answerError.setText("Enter an answer!");
-                } else if(!questionAnswer.trim().equals(answerTxt.getText())) {
-                    answerError.setText("Wrong answer!");
-                }
+            } else {
+                choiceBoxError.setText("Wrong secret question!");
+            }
+            if(answerTxt.getText().isEmpty()) {
+                answerError.setText("Enter an answer!");
+            } else if(!questionAnswer.trim().equals(answerTxt.getText())) {
+                answerError.setText("Wrong answer!");
             }
         }
     }
+
 
     @FXML
     void loginBtn() throws IOException {
@@ -174,6 +159,7 @@ public class UserRegister_Controller implements Initializable {
         setNotVisible();
         newUserTable.attachTableView(tableView);
         tableView.setVisible(false);
+
 
         Platform.runLater(() -> {
             Stage stage = (Stage) registerPane.getScene().getWindow();

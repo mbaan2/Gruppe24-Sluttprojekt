@@ -31,5 +31,6 @@
       <Label fx:id="secretQError" layoutX="397.0" layoutY="208.0" prefHeight="17.0" prefWidth="161.0" textFill="#17252a" />
       <Label fx:id="answerError" layoutX="397.0" layoutY="239.0" prefHeight="17.0" prefWidth="161.0" />
       <Label fx:id="genderError" layoutX="397.0" layoutY="267.0" prefHeight="17.0" prefWidth="161.0" />
+      <Label fx:id="signupLbl" layoutX="363.0" layoutY="338.0" prefHeight="17.0" prefWidth="161.0" />
    </children>
 </AnchorPane>

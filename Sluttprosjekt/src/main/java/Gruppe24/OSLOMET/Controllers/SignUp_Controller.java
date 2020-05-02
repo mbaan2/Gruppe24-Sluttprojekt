@@ -71,6 +71,9 @@ public class SignUp_Controller implements Initializable {
     private Label genderError;
 
     @FXML
+    private Label signupLbl;
+
+    @FXML
     private ChoiceBox<String> choiceBox;
 
     final ToggleGroup toggleGroup = new ToggleGroup();
@@ -109,10 +112,12 @@ public class SignUp_Controller implements Initializable {
 
             userBase = FileOpenerJobj.openFileHashMap();
 
+            //Writing only the username and the password to a hashmap for logging in.
             if(!userBase.containsKey(username)) {
                 try {
                     userBase.put(newUser.getUsername(), newUser.getPassword());
                     FileSaverJobj.SaveUser(userBase);
+                    signupLbl.setText("User created!");
                 } catch (FileNotFoundException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setHeaderText("File not found");
@@ -138,8 +143,6 @@ public class SignUp_Controller implements Initializable {
             } else {
                     usernameError.setText("Username already exists!");
             }
-
-
         } else {
             if(username.isEmpty()) {
                 usernameError.setText("Enter a username!");
