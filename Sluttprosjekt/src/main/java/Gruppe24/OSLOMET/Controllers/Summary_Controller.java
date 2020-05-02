@@ -7,16 +7,21 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Summary_Controller {
+public class Summary_Controller implements Initializable {
 
     @FXML
     private AnchorPane summaryPane;
@@ -158,5 +163,13 @@ public class Summary_Controller {
     @FXML
     void logoutBtn(ActionEvent event) throws IOException {
         App.setRoot("login");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) summaryPane.getScene().getWindow();
+            stage.setWidth(600);
+        });
     }
 }
