@@ -9,7 +9,7 @@ public class EditCarpart {
         for(int i = 0; i < checkBoxList.size(); i++) {
             if(checkBoxList.get(i).isSelected()) {
                 carpartsList.get(i).setName(name);
-                //carpartsList.get(i).setCost(cost);
+                carpartsList.get(i).setCost(cost);
             }
         }
         return carpartsList;

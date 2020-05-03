@@ -21,9 +21,9 @@
       <Button fx:id="removeBtn" layoutX="224.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
       <Button fx:id="editBtn" layoutX="224.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Edit" textFill="#def2f1" />
       <Label layoutX="189.0" layoutY="269.0" text="Name:" />
-      <TextField fx:id="txfInputFieldName" layoutX="224.0" layoutY="265.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
+      <TextField fx:id="txtName" layoutX="224.0" layoutY="265.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
       <Label layoutX="193.0" layoutY="297.0" text="Cost:" />
-      <TextField fx:id="txfInputFieldCost" layoutX="224.0" layoutY="295.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
+      <TextField fx:id="txtCost" layoutX="224.0" layoutY="295.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
       <Button fx:id="addBtn" layoutX="224.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
       <Button layoutX="224.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button layoutX="487.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />

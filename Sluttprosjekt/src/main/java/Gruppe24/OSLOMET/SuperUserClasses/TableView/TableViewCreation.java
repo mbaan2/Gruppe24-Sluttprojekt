@@ -48,14 +48,19 @@ public class TableViewCreation {
         //Setting of all the colums
         TableColumn<NewCar, String> user = new TableColumn<>("User");
         tv.getColumns().add(user);
+        user.setMinWidth(75);
         TableColumn<NewCar, String> name = new TableColumn<>("Name");
         tv.getColumns().add(name);
+        name.setMinWidth(75);
         TableColumn<NewCar, String> fuel = new TableColumn<>("Fuel");
         tv.getColumns().add(fuel);
+        fuel.setMinWidth(75);
         TableColumn<NewCar, String> wheels = new TableColumn<>("Wheels");
         tv.getColumns().add(wheels);
+        wheels.setMinWidth(75);
         TableColumn<NewCar, String> color = new TableColumn<>("Color");
         tv.getColumns().add(color);
+        color.setMinWidth(75);
         TableColumn<NewCar, String> addon = new TableColumn<>("Add-ons");
         tv.getColumns().add(addon);
 
@@ -63,6 +68,7 @@ public class TableViewCreation {
             TableColumn<NewCar, CheckBox> tc = new TableColumn<>(addonSupUser.get(i).getName());
             tc.setText(addonSupUser.get(i).getName());
             addon.getColumns().add(tc);
+            tc.setMinWidth(75);
         }
 
         tv.setEditable(true);

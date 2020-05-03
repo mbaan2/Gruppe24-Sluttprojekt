@@ -25,4 +25,8 @@ public class Carparts implements Car, Serializable {
         this.name = name;
     }
 
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
 }
