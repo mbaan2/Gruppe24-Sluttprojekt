@@ -135,7 +135,7 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        //So here we go through all the categories but we only need to go through the selected one.
+        //Here we go through all the categories but we only need to go through the selected one.
         lblError.setText("");
         String name = txfInputFieldName.getText();
         String costString = txfInputFieldCost.getText();
