@@ -1,13 +1,11 @@
-package Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories;
+package Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SaveCarparts {

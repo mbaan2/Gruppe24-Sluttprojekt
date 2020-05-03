@@ -3,9 +3,10 @@ package Gruppe24.OSLOMET.Controllers;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
-import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.LoadCategory;
-import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.RemoveCarpart;
-import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.SaveCarparts;
+import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.EditCarpart;
+import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadCategory;
+import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.RemoveCarpart;
+import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.SaveCarparts;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -30,7 +31,11 @@ public class SuperUser_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        chbCategory.getSelectionModel().selectedItemProperty().addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> addBtn.setDisable(true));
+        setDisableBtn();
+        //Disabling the buttons when changing the value of the choicebox - so that you cant add/edit/remove carparts to/from the wrong carcategory.
+        chbCategory.getSelectionModel().selectedItemProperty().addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            setDisableBtn();
+        });
         loadChoiceBoxStrings();
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
@@ -48,16 +53,22 @@ public class SuperUser_Controller implements Initializable {
     private ChoiceBox<String> chbCategory;
 
     @FXML
-    private TextField txfInputFieldName;
+    private TextField txtName;
 
     @FXML
-    private TextField txfInputFieldCost;
+    private TextField txtCost;
 
     @FXML
     private Label lblError;
 
     @FXML
     private Button addBtn;
+
+    @FXML
+    private Button removeBtn;
+
+    @FXML
+    private Button editBtn;
 
     private void loadChoiceBoxStrings(){
         String fuelCHB = "Fuel type";
@@ -72,11 +83,20 @@ public class SuperUser_Controller implements Initializable {
         chbCategory.getItems().addAll(choiceboxStrings);
     }
 
+    private void setDisableBtn() {
+        addBtn.setDisable(true);
+        removeBtn.setDisable(true);
+        editBtn.setDisable(true);
+    }
+
     @FXML
     void btnLoadCategory(ActionEvent event) {
         carCategory.clear();
         loadCategory();
+        //Enabling the buttons after loading the value of the choicebox.
         addBtn.setDisable(false);
+        removeBtn.setDisable(false);
+        editBtn.setDisable(false);
     }
 
     public void loadCategory(){
@@ -92,6 +112,32 @@ public class SuperUser_Controller implements Initializable {
         LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
     }
 
+    @FXML
+    void btnEdit(ActionEvent event) {
+        String editedItems = "";
+        String name = txtName.getText();
+        String costString = txtCost.getText();
+        int cost = Integer.parseInt(costString);
+        int amountSelected = 0;
+
+
+        for(CheckBox carpart : selectedCategoryButtons) {
+            if (carpart.isSelected()) {
+                editedItems = carpart.getText() + " has been edited.";
+                amountSelected++;
+            }
+        }
+        if(amountSelected > 1) {
+            lblError.setText("You can only choose one carpart to edit!");
+        } else if(amountSelected < 1) {
+            lblError.setText("Nothing is selected!");
+        } else {
+            lblError.setText(editedItems);
+            EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
+            SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+            loadCategory();
+        }
+    }
 
     @FXML
     void btnRemove(ActionEvent event) {
@@ -120,9 +166,10 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     void btnAdd(ActionEvent event) {
         lblError.setText("");
-        String name = txfInputFieldName.getText();
-        String costString = txfInputFieldCost.getText();
+        String name = txtName.getText();
+        String costString = txtCost.getText();
         int cost = Integer.parseInt(costString);
+
 
         List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
 
@@ -132,7 +179,6 @@ public class SuperUser_Controller implements Initializable {
         } else {
             lblError.setText("A carpart with that name already exists, try editing it instead!");
         }
-
         SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
         loadCategory();
     }
