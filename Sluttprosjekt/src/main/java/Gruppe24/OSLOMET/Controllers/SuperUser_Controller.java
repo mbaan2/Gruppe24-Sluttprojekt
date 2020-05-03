@@ -1,10 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.LoadCategory;
@@ -34,13 +32,7 @@ import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
     List<Carparts> carCategory = new ArrayList<>();
-    ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
     List<CheckBox> selectedCategoryButtons = new ArrayList<>();
-
-    final String fuelCHB = "Fuel type";
-    final String wheelsCHB = "Wheels";
-    final String colorCHB = "Color";
-    final String addOnesCHB = "Addons";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,8 +62,15 @@ public class SuperUser_Controller implements Initializable {
     private Label lblError;
 
     private void loadChoiceBoxStrings(){
+        String fuelCHB = "Fuel type";
+        String wheelsCHB = "Wheels";
+        String colorCHB = "Color";
+        String addOnesCHB = "Addons";
+
+        ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
         choiceboxStrings.removeAll();
         choiceboxStrings.addAll(fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
+
         chbCategory.getItems().addAll(choiceboxStrings);
     }
 

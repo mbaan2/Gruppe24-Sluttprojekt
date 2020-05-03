@@ -7,6 +7,7 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SaveCarparts {
@@ -14,6 +15,7 @@ public class SaveCarparts {
     final static String wheelsCHB = "Wheels";
     final static String colorCHB = "Color";
     final static String addOnesCHB = "Addons";
+
 
 
     public static void saveChanges(List<Carparts> carCategory, String value){
