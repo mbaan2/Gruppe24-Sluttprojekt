@@ -2,30 +2,24 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.LoadCategory;
 import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.RemoveCarpart;
 import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.SaveCarparts;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,6 +30,7 @@ public class SuperUser_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        chbCategory.getSelectionModel().selectedItemProperty().addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> addBtn.setDisable(true));
         loadChoiceBoxStrings();
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
@@ -61,6 +56,9 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Label lblError;
 
+    @FXML
+    private Button addBtn;
+
     private void loadChoiceBoxStrings(){
         String fuelCHB = "Fuel type";
         String wheelsCHB = "Wheels";
@@ -78,10 +76,11 @@ public class SuperUser_Controller implements Initializable {
     void btnLoadCategory(ActionEvent event) {
         carCategory.clear();
         loadCategory();
+        addBtn.setDisable(false);
     }
 
     public void loadCategory(){
-        LoadCategory.loadCategory(chbCategory.getValue());
+        carCategory = LoadCategory.loadCategory(chbCategory.getValue());
         createButtons();
     }
 
@@ -113,19 +112,8 @@ public class SuperUser_Controller implements Initializable {
         loadCategory();
     }
 
-    public List<Carparts> allCarParts() {
-        List<Carparts> fuelList = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
-        List<Carparts> wheelsList = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
-        List<Carparts> colorList = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
-        List<Carparts> addonsList = FileOpenerJobj.openFile(Paths.get(StandardPaths.addonPath));
-
-        List<Carparts> allCarparts = new ArrayList<>();
-        allCarparts.addAll(fuelList);
-        allCarparts.addAll(wheelsList);
-        allCarparts.addAll(colorList);
-        allCarparts.addAll(addonsList);
-
-        return allCarparts;
+    public List<Carparts> getSpecificCarpartList() {
+        return LoadCategory.loadCategory(chbCategory.getValue());
     }
 
     public boolean containsName(List<Carparts> list, String name) {
@@ -135,16 +123,15 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        //Here we go through all the categories but we only need to go through the selected one.
         lblError.setText("");
         String name = txfInputFieldName.getText();
         String costString = txfInputFieldCost.getText();
         int cost = Integer.parseInt(costString);
 
-        List<Carparts> allCarparts = allCarParts();
+        List<Carparts> specificCategory = getSpecificCarpartList();
 
         Carparts newCarPart = new Carparts(name, cost);
-        if(containsName(allCarparts, name)) {
+        if(containsName(specificCategory, name)) {
             carCategory.add(newCarPart);
         } else {
             lblError.setText("A carpart with that name already exists, try editing it instead!");
