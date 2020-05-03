@@ -8,15 +8,13 @@ import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -39,6 +37,7 @@ public class SuperUser_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadChoiceBoxStrings();
+        chbCategory.getSelectionModel().selectedItemProperty().addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> addBtn.setDisable(true));
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
             stage.setWidth(600);
@@ -63,6 +62,9 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Label lblError;
 
+    @FXML
+    private Button addBtn;
+
     ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
     private void loadChoiceBoxStrings(){
         choiceboxStrings.removeAll();
@@ -74,6 +76,7 @@ public class SuperUser_Controller implements Initializable {
     void btnLoadCategory(ActionEvent event) {
         carCategory.clear();
         LoadCategory();
+        addBtn.setDisable(false);
     }
 
     public void LoadCategory(){
