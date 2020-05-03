@@ -26,6 +26,6 @@
       <Button fx:id="addBtn" layoutX="224.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
       <Button layoutX="224.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button layoutX="487.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
-      <Label fx:id="lblError" layoutX="411.0" layoutY="268.0" prefHeight="87.0" prefWidth="162.0" wrapText="true" />
+      <Label fx:id="lblError" layoutX="411.0" layoutY="149.0" prefHeight="257.0" prefWidth="162.0" wrapText="true" />
    </children>
 </AnchorPane>
