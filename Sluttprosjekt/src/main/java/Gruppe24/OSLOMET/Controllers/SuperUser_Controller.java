@@ -121,12 +121,17 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     void btnRemove(ActionEvent event) {
         String removedItems = "";
+
         for(CheckBox carpart : selectedCategoryButtons){
             if(carpart.isSelected()){
                 removedItems += (carpart.getText() + " has been removed." + "\n");
             }
         }
-        lblError.setText(removedItems);
+        if(removedItems.equals("")){
+            lblError.setText("Nothing is selected");
+        } else{
+            lblError.setText(removedItems);
+        }
         RemoveCarpart.remove(carCategory, selectedCategoryButtons);
         saveChanges();
     }
@@ -213,49 +218,7 @@ public class SuperUser_Controller implements Initializable {
             lblError.setText("A carpart with that name already exists, try editing it instead!");
         }
 
-        switch (chbCategory.getValue()) {
-            case fuelCHB: {
-                Path filsti = Paths.get(StandardPaths.fuelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case wheelsCHB: {
-                Path filsti = Paths.get(StandardPaths.wheelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case colorCHB: {
-                Path filsti = Paths.get(StandardPaths.colorPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case addOnesCHB: {
-                Path filsti = Paths.get(StandardPaths.addonPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-        }
-
+        saveChanges();
     }
 
     @FXML
