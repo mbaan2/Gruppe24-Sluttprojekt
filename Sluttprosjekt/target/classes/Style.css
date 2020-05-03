@@ -1,0 +1,35 @@
+.set-check-box > .box {
+
+}
+
+.set-check-box > .box > .mark {
+
+}
+
+.set-check-box {
+    -fx-padding: 15px;
+    -fx-min-width: 100px;
+}
+
+.set-radiobutton {
+    -fx-padding: 5px;
+    -fx-min-width: 100px;
+}
+
+.set-radiobutton > .radio {
+
+}
+
+.set-radiobutton > .radio:selected {
+
+}
+
+.hbox {
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+}
+
+.set-button {
+    -fx-padding: 5px;
+    -fx-min-width: 100px;
+}

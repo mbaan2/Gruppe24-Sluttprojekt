@@ -7,6 +7,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.RemoveCarpart;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +32,9 @@ import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
     List<Carparts> carCategory = new ArrayList<>();
+    ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
+    List<CheckBox> selectedCategoryButtons = new ArrayList<>();
+
     final String fuelCHB = "Fuel type";
     final String wheelsCHB = "Wheels";
     final String colorCHB = "Color";
@@ -63,7 +67,6 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Label lblError;
 
-    ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
     private void loadChoiceBoxStrings(){
         choiceboxStrings.removeAll();
         choiceboxStrings.addAll(fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
@@ -106,8 +109,6 @@ public class SuperUser_Controller implements Initializable {
         }
     }
 
-    List<CheckBox> selectedCategoryButtons = new ArrayList<>();
-
     public void createButtons(){
         selectedCategoryButtons.clear();
         LoadingValuesOnScreen.creatingList(selectedCategoryButtons, carCategory);
@@ -119,18 +120,14 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnRemove(ActionEvent event) {
-        //HAVE TO ADD THAT YOU CANNOT MAKE DUPLICATE VALUES!
-        for(int i = 0; i < selectedCategoryButtons.size(); i++){
-            if(selectedCategoryButtons.get(i).isSelected()){
-                for(int j =0; j<carCategory.size(); j++){
-                    if (selectedCategoryButtons.get(i).getText().equals(carCategory.get(j).getName())){
-                        System.out.println(selectedCategoryButtons.get(i).getText() + " is removed");
-                        carCategory.remove(j);
-                    }
-                }
+        String removedItems = "";
+        for(CheckBox carpart : selectedCategoryButtons){
+            if(carpart.isSelected()){
+                removedItems += (carpart.getText() + " has been removed." + "\n");
             }
         }
-
+        lblError.setText(removedItems);
+        RemoveCarpart.remove(carCategory, selectedCategoryButtons);
         saveChanges();
     }
 

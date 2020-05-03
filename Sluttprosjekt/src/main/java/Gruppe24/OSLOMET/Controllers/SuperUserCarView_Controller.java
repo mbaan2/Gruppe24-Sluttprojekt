@@ -2,8 +2,8 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.SuperUserClasses.Filter;
-import Gruppe24.OSLOMET.SuperUserClasses.TableViewCreation;
+import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
+import Gruppe24.OSLOMET.SuperUserClasses.TableView.TableViewCreation;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

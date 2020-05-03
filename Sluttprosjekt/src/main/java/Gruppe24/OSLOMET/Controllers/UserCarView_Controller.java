@@ -6,7 +6,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import Gruppe24.OSLOMET.SuperUserClasses.Filter;
+import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
