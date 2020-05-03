@@ -112,10 +112,6 @@ public class SuperUser_Controller implements Initializable {
         loadCategory();
     }
 
-    public List<Carparts> getSpecificCarpartList() {
-        return LoadCategory.loadCategory(chbCategory.getValue());
-    }
-
     public boolean containsName(List<Carparts> list, String name) {
         return list.stream().noneMatch(carpart -> carpart.getName().equals(name));
     }
@@ -128,7 +124,7 @@ public class SuperUser_Controller implements Initializable {
         String costString = txfInputFieldCost.getText();
         int cost = Integer.parseInt(costString);
 
-        List<Carparts> specificCategory = getSpecificCarpartList();
+        List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
 
         Carparts newCarPart = new Carparts(name, cost);
         if(containsName(specificCategory, name)) {
