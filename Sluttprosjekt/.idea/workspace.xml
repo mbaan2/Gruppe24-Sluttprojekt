@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74294aa0-4972-427c-a415-f9aba82c8aba" name="Default Changelist" comment="Once again I am doing smaller changes to stuff">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/color.jobj" beforeDir="false" afterPath="$PROJECT_DIR$/color.jobj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserClasses/AdaptationsCarCategories/LoadCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/SuperUserClasses/AdaptationsCarCategories/SaveCarparts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gruppe24/OSLOMET/Controllers/SuperUser_Controller.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +187,7 @@
       <workItem from="1588333223595" duration="8101000" />
       <workItem from="1588349787671" duration="15112000" />
       <workItem from="1588423181685" duration="18107000" />
-      <workItem from="1588507401119" duration="694000" />
+      <workItem from="1588507401119" duration="1386000" />
     </task>
     <task id="LOCAL-00001" summary="Added controllers 3-5, each directing to the next controller.">
       <created>1585219025324</created>

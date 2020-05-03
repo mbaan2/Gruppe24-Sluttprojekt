@@ -7,7 +7,9 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.LoadCategory;
 import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.RemoveCarpart;
+import Gruppe24.OSLOMET.SuperUserClasses.AdaptationsCarCategories.SaveCarparts;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -76,37 +78,12 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     void btnLoadCategory(ActionEvent event) {
         carCategory.clear();
-        LoadCategory();
+        loadCategory();
     }
 
-    public void LoadCategory(){
-
-        switch (chbCategory.getValue()) {
-            case fuelCHB:{
-                Path path = Paths.get(StandardPaths.fuelPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                createButtons();
-                break;
-            }
-            case wheelsCHB: {
-                Path path = Paths.get(StandardPaths.wheelPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                createButtons();
-                break;
-            }
-            case colorCHB: {
-                Path path = Paths.get(StandardPaths.colorPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                createButtons();
-                break;
-            }
-            case addOnesCHB: {
-                Path path = Paths.get(StandardPaths.addonPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                createButtons();
-                break;
-            }
-        }
+    public void loadCategory(){
+        LoadCategory.loadCategory(chbCategory.getValue());
+        createButtons();
     }
 
     public void createButtons(){
@@ -133,53 +110,8 @@ public class SuperUser_Controller implements Initializable {
             lblError.setText(removedItems);
         }
         RemoveCarpart.remove(carCategory, selectedCategoryButtons);
-        saveChanges();
-    }
-
-    public void saveChanges(){
-        switch (chbCategory.getValue()) {
-            case fuelCHB: {
-                Path filsti = Paths.get(StandardPaths.fuelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case wheelsCHB: {
-                Path filsti = Paths.get(StandardPaths.wheelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case colorCHB: {
-                Path filsti = Paths.get(StandardPaths.colorPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-            case addOnesCHB: {
-                Path filsti = Paths.get(StandardPaths.addonPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                LoadCategory();
-                break;
-            }
-        }
-
+        SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+        loadCategory();
     }
 
     public List<Carparts> allCarParts() {
@@ -204,6 +136,7 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
+        //So here we go through all the categories but we only need to go through the selected one.
         lblError.setText("");
         String name = txfInputFieldName.getText();
         String costString = txfInputFieldCost.getText();
@@ -218,7 +151,8 @@ public class SuperUser_Controller implements Initializable {
             lblError.setText("A carpart with that name already exists, try editing it instead!");
         }
 
-        saveChanges();
+        SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+        loadCategory();
     }
 
     @FXML
