@@ -36,6 +36,7 @@ public class SetColor_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) colorVbox.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 

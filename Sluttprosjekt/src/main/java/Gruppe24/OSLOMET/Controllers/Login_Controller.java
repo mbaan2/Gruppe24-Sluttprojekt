@@ -93,6 +93,7 @@ public class Login_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) loginPane.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 }

@@ -47,6 +47,7 @@ public class UserCarView_Controller implements Initializable {
             tableView.setVisible(true);
             Stage stage = (Stage) userViewPane.getScene().getWindow();
             stage.setWidth(850);
+            stage.setHeight(470);
         }
     }
 

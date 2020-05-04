@@ -37,6 +37,7 @@ public class SetFuel_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) fuelVbox.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 

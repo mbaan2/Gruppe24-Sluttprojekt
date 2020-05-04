@@ -177,6 +177,7 @@ public class UserRegister_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) registerPane.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 }

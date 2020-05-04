@@ -192,6 +192,7 @@ public class SignUp_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) signupPane.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 }

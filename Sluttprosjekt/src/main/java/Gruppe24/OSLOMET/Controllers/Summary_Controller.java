@@ -170,6 +170,7 @@ public class Summary_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) summaryPane.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 }

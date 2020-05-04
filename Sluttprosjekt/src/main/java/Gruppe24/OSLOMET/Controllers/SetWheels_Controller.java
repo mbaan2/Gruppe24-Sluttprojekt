@@ -36,6 +36,7 @@ public class SetWheels_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) wheelsVbox.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 

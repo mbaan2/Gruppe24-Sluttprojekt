@@ -36,6 +36,7 @@ public class SetAddons_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) addonsVbox.getScene().getWindow();
             stage.setWidth(600);
+            stage.setHeight(470);
         });
     }
 
