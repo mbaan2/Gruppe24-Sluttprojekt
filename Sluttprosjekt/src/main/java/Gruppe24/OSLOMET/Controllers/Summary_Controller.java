@@ -136,7 +136,7 @@ public class Summary_Controller implements Initializable {
 
 
     @FXML
-    void switchToPrimary(ActionEvent event) throws IOException {
+    void btnToFuel(ActionEvent event) throws IOException {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(259.0);
@@ -152,7 +152,7 @@ public class Summary_Controller implements Initializable {
 
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
-    void switchToNullary(ActionEvent event) throws IOException {
+    void btnToWelcomScreen(ActionEvent event) throws IOException {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(318.0);

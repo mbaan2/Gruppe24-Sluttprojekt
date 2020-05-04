@@ -14,8 +14,8 @@
          </children>
       </VBox>
       <Button layoutX="514.0" layoutY="35.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
-      <Button layoutX="25.0" layoutY="373.0" onAction="#switchToNullary" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
-      <Button layoutX="259.0" layoutY="373.0" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
+      <Button layoutX="25.0" layoutY="373.0" onAction="#btnToWelcomScreen" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
+      <Button layoutX="259.0" layoutY="373.0" onAction="#btnToFuel" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
       <Button fx:id="btnBuildCar" layoutX="259.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
       <TextField fx:id="lblCarName" layoutX="225.0" layoutY="324.0" prefHeight="25.0" prefWidth="151.0" promptText="Give your car a name" visible="false" />
       <Button fx:id="btnNameCar" layoutX="387.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnNameCar" style="-fx-background-color: #17252a;" text="Save the Car" textFill="#def2f1" visible="false" />

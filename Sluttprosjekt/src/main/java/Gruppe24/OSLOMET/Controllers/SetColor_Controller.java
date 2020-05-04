@@ -68,7 +68,7 @@ public class SetColor_Controller implements Initializable {
     }
 
     @FXML
-    private void switchToQuaternary() throws IOException {
+    private void btnToAddons() throws IOException {
         for(int i = 0; i<colorOptions.size();i++){
             if(colorButtons.get(i).isSelected()){
                 App.car.setColor(colorOptions.get(i));

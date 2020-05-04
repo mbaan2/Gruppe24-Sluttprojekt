@@ -69,7 +69,7 @@ public class SetFuel_Controller implements Initializable {
     }
 
     @FXML
-    void switchToSecondary(ActionEvent event) throws IOException{
+    void btnToWheels(ActionEvent event) throws IOException{
         for(int i = 0; i<fuelOptions.size();i++){
             if(fuelButtons.get(i).isSelected()){
                 App.car.setFuel(fuelOptions.get(i));

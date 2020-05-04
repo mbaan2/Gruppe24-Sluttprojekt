@@ -68,7 +68,7 @@ public class SetWheels_Controller implements Initializable {
     }
 
     @FXML
-    private void switchToTertiary() throws IOException {
+    private void btnToColor() throws IOException {
         for(int i = 0; i<wheelOptions.size();i++){
             if(wheelButtons.get(i).isSelected()){
                 App.car.setWheels(wheelOptions.get(i));

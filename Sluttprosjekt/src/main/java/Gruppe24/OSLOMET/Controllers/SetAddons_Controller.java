@@ -67,7 +67,7 @@ public class SetAddons_Controller implements Initializable {
     }
 
     @FXML
-    private void switchToQuinary() throws IOException {
+    private void btnToSummary() throws IOException {
         CarCategory addons = new CarCategory("addons");
         addons.clear();
 
