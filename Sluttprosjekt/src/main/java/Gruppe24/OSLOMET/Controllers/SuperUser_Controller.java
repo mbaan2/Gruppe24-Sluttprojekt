@@ -124,7 +124,6 @@ public class SuperUser_Controller implements Initializable {
         selectedCategoryButtons.clear();
         selectedCategoryButtons = task.call();
         LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
-        //Enabling the buttons again when the thread is done.
         if(lblError.getText().equals("Loading category...")) {
             lblError.setText("Category successfully loaded!");
         }
@@ -137,6 +136,7 @@ public class SuperUser_Controller implements Initializable {
         if(lblError.getText().equals("Adding carpart...")) {
             lblError.setText("Carpart has been added!");
         }
+        //Enabling the buttons again when the thread is done.
         addBtn.setDisable(false);
         removeBtn.setDisable(false);
         editBtn.setDisable(false);
