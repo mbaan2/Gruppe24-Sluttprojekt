@@ -11,7 +11,6 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,12 +24,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SetAddons_Controller implements Initializable {
+    List<Carparts> addOnOptions = new ArrayList<>();
+    List<CheckBox> addOnButtons = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setAddOns();
         createFile();
         //openFile();
+
         Platform.runLater(() -> {
             Stage stage = (Stage) addonsVbox.getScene().getWindow();
             stage.setWidth(600);
@@ -43,10 +45,7 @@ public class SetAddons_Controller implements Initializable {
     @FXML
     private VBox addonsVbox;
 
-    List<Carparts> addOnOptions = new ArrayList<>();
-    List<CheckBox> addOnButtons = new ArrayList<>();
-
-    public void createButtons(List<Carparts> addon) {
+    public void createButtons() {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
 
@@ -64,19 +63,21 @@ public class SetAddons_Controller implements Initializable {
     public void openFile(){
         Path path = Paths.get(StandardPaths.addonPath);
         addOnOptions = FileOpenerJobj.openFile(path);
-        createButtons(addOnOptions);
+        createButtons();
     }
 
     @FXML
     private void switchToQuinary() throws IOException {
         CarCategory addons = new CarCategory("addons");
         addons.clear();
-        for(int i = 0; i< addOnOptions.size(); i++){
+
+        for(int i = 0; i < addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
               addons.add(addOnOptions.get(i));
             }
         }
         App.car.setAddons(addons);
+
         App.setRoot("Summary");
     }
 
@@ -86,7 +87,9 @@ public class SetAddons_Controller implements Initializable {
     }
 
 
-    //ONLY USED FOR CREATING THE .JOBJ FILE
+
+
+    //Only used for creating/setting the initial .jobj file
     public void setAddOns(){
         Carparts addOneGPS = new Carparts("GPS", 5000);
         Carparts spoiler = new Carparts("Spoiler", 4000);
@@ -96,7 +99,7 @@ public class SetAddons_Controller implements Initializable {
         addOnOptions.add(spoiler);
         addOnOptions.add(subwoofer);
 
-        createButtons(addOnOptions);
+        createButtons();
     }
 
     public void createFile(){
@@ -106,7 +109,5 @@ public class SetAddons_Controller implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
-
 }

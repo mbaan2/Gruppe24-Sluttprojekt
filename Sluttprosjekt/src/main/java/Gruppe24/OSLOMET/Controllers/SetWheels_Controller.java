@@ -23,12 +23,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SetWheels_Controller implements Initializable {
+    final ToggleGroup wheelGroup = new ToggleGroup();
+    List<Carparts> wheelOptions = new ArrayList<>();
+    List<RadioButton> wheelButtons = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setWheels();
         createFile();
         //openFile();
+
         Platform.runLater(() -> {
             Stage stage = (Stage) wheelsVbox.getScene().getWindow();
             stage.setWidth(600);
@@ -40,10 +44,6 @@ public class SetWheels_Controller implements Initializable {
 
     @FXML
     private VBox wheelsVbox;
-
-    final ToggleGroup wheelGroup = new ToggleGroup();
-    List<Carparts> wheelOptions = new ArrayList<>();
-    List<RadioButton> wheelButtons = new ArrayList<>();
 
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
@@ -86,9 +86,7 @@ public class SetWheels_Controller implements Initializable {
 
 
 
-
-
-    //ONLY USED FOR CREATING THE .JOBJ FILE
+    //Only used for creating/setting the initial .jobj file
     public void setWheels(){
         Carparts wheelsBig = new Carparts("Big wheels", 5000);
         Carparts wheelsSmall = new Carparts("Small wheels", 0);

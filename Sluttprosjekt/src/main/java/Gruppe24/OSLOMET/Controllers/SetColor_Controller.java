@@ -23,15 +23,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SetColor_Controller implements Initializable {
-
-    @FXML
-    private VBox colorVbox;
+    final ToggleGroup colorGroup = new ToggleGroup();
+    List<Carparts> colorOptions = new ArrayList<>();
+    List<RadioButton> colorButtons = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setColors();
         createFile();
         //openFile();
+
         Platform.runLater(() -> {
             Stage stage = (Stage) colorVbox.getScene().getWindow();
             stage.setWidth(600);
@@ -39,11 +40,10 @@ public class SetColor_Controller implements Initializable {
     }
 
     @FXML
-    private VBox vboxColor;
+    private VBox colorVbox;
 
-    final ToggleGroup colorGroup = new ToggleGroup();
-    List<Carparts> colorOptions = new ArrayList<>();
-    List<RadioButton> colorButtons = new ArrayList<>();
+    @FXML
+    private VBox vboxColor;
 
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
@@ -86,7 +86,7 @@ public class SetColor_Controller implements Initializable {
 
 
 
-    //ONLY USED FOR CREATING THE .JOBJ FILE
+    //Only used for creating/setting the initial .jobj file
     public void setColors(){
         Carparts red = new Carparts("Red", 5000);
         Carparts blue = new Carparts("Blue", 2500);

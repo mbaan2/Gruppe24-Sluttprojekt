@@ -18,16 +18,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SetFuel_Controller implements Initializable {
-
     final ToggleGroup fuelGroup = new ToggleGroup();
     List<Carparts> fuelOptions = new ArrayList<>();
     List<RadioButton> fuelButtons = new ArrayList<>();
@@ -64,18 +60,6 @@ public class SetFuel_Controller implements Initializable {
                 }
             }
         }
-
-    }
-
-    @FXML
-    void btnGasCar(ActionEvent event) {
-        App.car.setFuel(new Carparts("Gasoline Car", 30_000));
-        //txtGasCar.setStyle("-fx-background-color: #def2f1;");
-        //txtGasCar.setTextFill(Color.valueOf("#17252a"));
-        //txtElectricCar.setStyle("-fx-background-color: #17252a;");
-        //txtElectricCar.setTextFill(Color.valueOf("#def2f1"));
-        //txtDieselCar.setStyle("-fx-background-color: #17252a;");
-        //txtDieselCar.setTextFill(Color.valueOf("#def2f1"));
     }
 
     public void openFile(){
@@ -86,7 +70,6 @@ public class SetFuel_Controller implements Initializable {
 
     @FXML
     void switchToSecondary(ActionEvent event) throws IOException{
-
         for(int i = 0; i<fuelOptions.size();i++){
             if(fuelButtons.get(i).isSelected()){
                 App.car.setFuel(fuelOptions.get(i));
@@ -103,17 +86,16 @@ public class SetFuel_Controller implements Initializable {
 
 
 
-    //ONLY USED FOR CREATING THE .JOBJ FILE
+
+    //Only used for creating/setting the initial .jobj file
     public void setFuel(){
         Carparts diesel = new Carparts("Diesel", 20_000);
         Carparts gasoline = new Carparts("Gasoline", 15_000);
         Carparts electric = new Carparts("Electric", 35_000);
 
-
         fuelOptions.add(gasoline);
         fuelOptions.add(diesel);
         fuelOptions.add(electric);
-
 
         createButtons();
     }
@@ -126,5 +108,4 @@ public class SetFuel_Controller implements Initializable {
             ex.printStackTrace();
         }
     }
-
 }
