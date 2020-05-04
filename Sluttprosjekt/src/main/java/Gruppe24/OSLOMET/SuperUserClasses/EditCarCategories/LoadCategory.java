@@ -42,5 +42,4 @@ public class LoadCategory {
 
         return carCategory;
     }
-
 }

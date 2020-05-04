@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableViewCreation {
-
     List<Carparts> addonSupUser = new ArrayList<>();
     public ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
@@ -117,7 +116,6 @@ public class TableViewCreation {
                 btnSaveChanges();
             });
 
-
             ObservableList<String> colorList = FXCollections.observableArrayList();
             List<Carparts> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
             colorOptions.forEach(car -> colorList.add(car.getName()));
@@ -182,30 +180,6 @@ public class TableViewCreation {
                         return cell;
                     }
                 });
-
-
-
-
-
-                /*
-                tc.setCellValueFactory(car -> {
-
-
-                    CheckBox checkbox = new CheckBox("kr" + addonSupUser.get(finalJ).getCost());
-                    checkbox.setSelected(false);
-                    for (int k = 0; k < car.getValue().getAddons().size(); k++) {
-                        if (car.getValue().getAddons().getElement(k).getName().toLowerCase().equals(car.getTableColumn().getText().toLowerCase())) {
-                            checkbox.setSelected(true);
-                        }
-
-                        int finalK = k;
-                        //checkbox.setOnAction(actionEvent -> handleAddonCheckbox(actionEvent, addonSupUser.get(finalJ), car.getValue().getAddons().getElement(finalK), car.getValue().addons, checkbox.isSelected(), tv));
-                    }
-
-                    return new SimpleObjectProperty<CheckBox>(checkbox);
-                });
-
-                 */
             }
 
             deprecatedAddon.setCellValueFactory(car -> {
@@ -251,16 +225,6 @@ public class TableViewCreation {
         } catch (IOException e){
             System.err.println(e.getMessage());
         }
-    }
-
-    private void handleAddonCheckbox(ActionEvent actionEvent, Car addonSupUser, Car addonUser, CarCategory addonsCarUser, boolean selected, TableView<NewCar> tv){
-        if (!selected){
-            addonsCarUser.remove(addonUser);
-
-        } else {
-            addonsCarUser.add(addonSupUser);
-        }
-        tv.refresh();
     }
 
     private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv){

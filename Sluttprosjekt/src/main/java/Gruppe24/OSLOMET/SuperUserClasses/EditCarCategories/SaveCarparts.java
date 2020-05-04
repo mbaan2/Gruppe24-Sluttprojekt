@@ -14,8 +14,6 @@ public class SaveCarparts {
     final static String colorCHB = "Color";
     final static String addOnesCHB = "Addons";
 
-
-
     public static void saveChanges(List<Carparts> carCategory, String value){
         switch (value) {
             case fuelCHB: {

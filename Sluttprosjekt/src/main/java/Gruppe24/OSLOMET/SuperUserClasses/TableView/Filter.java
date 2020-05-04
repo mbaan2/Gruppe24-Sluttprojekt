@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import java.util.stream.Collectors;
 
 public class Filter {
-
     public static ObservableList<String> choiceBoxList(){
         ObservableList<String> choiceBoxList = FXCollections.observableArrayList();
         choiceBoxList.removeAll();
@@ -23,12 +22,9 @@ public class Filter {
         choiceBoxList.addAll(choiceBoxFilter, choiceBoxUser, choiceBoxName, choiceBoxFuel, choiceBoxWheels, choiceBoxColor, choiceBoxAddons);
 
         return choiceBoxList;
-
     }
 
-
     public static ObservableList<NewCar> filtering (String filteredText, String filterType, ObservableList<NewCar> filteredList, ObservableList<NewCar> carList){
-
         switch (filterType) {
             case "User":
                 filteredList = carList.stream().filter(
@@ -125,10 +121,4 @@ public class Filter {
     public static ObservableList<NewCar> usernameFilter(String username, ObservableList<NewCar> list) {
         return list.stream().filter(newCar -> newCar.getUser().toLowerCase().matches(String.format("%s%s%s", ".*", username.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
-
-
-
-
-
-
 }

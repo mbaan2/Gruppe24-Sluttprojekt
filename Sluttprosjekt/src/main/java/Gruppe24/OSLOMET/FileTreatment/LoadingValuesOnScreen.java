@@ -13,7 +13,6 @@ import java.util.List;
 public class LoadingValuesOnScreen {
 
     public static List<RadioButton> creatingList(List<RadioButton> buttonList, List<Carparts> valuesList, ToggleGroup toggleGroup){
-
         for(int i = 0; i< valuesList.size(); i++){
             String str = "";
             str = valuesList.get(i).getName() + " (" + valuesList.get(i).getCost() + "kr)";
@@ -33,17 +32,6 @@ public class LoadingValuesOnScreen {
             CheckBox newButton = new CheckBox(str);
             buttonList.add(newButton);
             newButton.getStyleClass().add("set-check-box");
-        }
-        return buttonList;
-    }
-
-    public static List<Button> creatingList(List<Button> buttonList, List<Carparts> valuesList, String button){
-        for(int i = 0; i< valuesList.size(); i++){
-            String str = "";
-            str = valuesList.get(i).getName() + "\n" +" (" + valuesList.get(i).getCost() + "kr)";
-            Button newButton = new Button(str);
-            buttonList.add(newButton);
-            newButton.getStyleClass().add("set-button");
         }
         return buttonList;
     }
@@ -70,8 +58,5 @@ public class LoadingValuesOnScreen {
         }
 
         return vbox;
-
     }
-
-
 }

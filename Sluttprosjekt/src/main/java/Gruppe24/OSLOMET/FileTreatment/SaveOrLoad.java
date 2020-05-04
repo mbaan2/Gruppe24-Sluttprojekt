@@ -26,8 +26,6 @@ public class SaveOrLoad{
             i = 1;
         } else if (choice.get() == existingFile){
             i = 2;
-        } else {
-            i = 0;
         }
 
         return i;

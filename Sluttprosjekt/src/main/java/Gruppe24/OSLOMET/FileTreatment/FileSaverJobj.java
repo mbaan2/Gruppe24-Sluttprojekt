@@ -22,19 +22,6 @@ public class FileSaverJobj {
         }
     }
 
-    public static void SaveCarCategoryArray(NewCar car) throws IOException {
-        try {
-            OutputStream os = new FileOutputStream(new File(StandardPaths.carsPath), true);
-            ObjectOutputStream out = new ObjectOutputStream(os);
-            out.writeObject(car);
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
-        }
-    }
-
-
-
-
     public static void SavingCarArray(String path, List<NewCar> carList) throws IOException {
         ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
         os1.writeObject(carList.get(0));
