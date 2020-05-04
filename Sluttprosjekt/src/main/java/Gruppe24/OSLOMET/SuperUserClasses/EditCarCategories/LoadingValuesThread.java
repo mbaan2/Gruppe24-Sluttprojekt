@@ -11,8 +11,6 @@ public class LoadingValuesThread extends Task<List<CheckBox>> {
     private List<Carparts> carCategory;
     private List<CheckBox> selectedCategoryButtons;
 
-
-
     public LoadingValuesThread(List<Carparts> carCategory, List<CheckBox> selectedCategoryButtons) {
         this.carCategory = carCategory;
         this.selectedCategoryButtons = selectedCategoryButtons;
