@@ -62,7 +62,13 @@ public class SuperUser_Controller implements Initializable {
     private TextField txtCost;
 
     @FXML
-    private Label lblError;
+    private Label superUserLbl;
+
+    @FXML
+    private Label lblNameError;
+
+    @FXML
+    private Label lblCostError;
 
     @FXML
     private Button addBtn;
@@ -74,6 +80,7 @@ public class SuperUser_Controller implements Initializable {
     private Button editBtn;
 
     private void loadChoiceBoxStrings(){
+        String chooseValue = "Choose a category";
         String fuelCHB = "Fuel type";
         String wheelsCHB = "Wheels";
         String colorCHB = "Color";
@@ -81,9 +88,10 @@ public class SuperUser_Controller implements Initializable {
 
         ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
         choiceboxStrings.removeAll();
-        choiceboxStrings.addAll(fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
+        choiceboxStrings.addAll(chooseValue, fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
 
         chbCategory.getItems().addAll(choiceboxStrings);
+        chbCategory.setValue(chooseValue);
     }
 
     private void setDisableBtn() {
@@ -94,9 +102,15 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnLoadCategory(ActionEvent event) {
-        lblError.setText("Loading category...");
-        carCategory.clear();
-        loadCategory();
+        lblCostError.setText("");
+        lblNameError.setText("");
+        if(chbCategory.getValue().equals("Choose a category")) {
+            superUserLbl.setText("Choose a category to load!");
+        } else {
+            superUserLbl.setText("Loading category...");
+            carCategory.clear();
+            loadCategory();
+        }
     }
 
     public void loadCategory(){
@@ -116,7 +130,7 @@ public class SuperUser_Controller implements Initializable {
 
     private void threadFailed(WorkerStateEvent event) {
         var e = event.getSource().getException();
-        lblError.setText(e.getMessage());
+        superUserLbl.setText(e.getMessage());
     }
 
     private void threadDone(WorkerStateEvent event) {
@@ -124,17 +138,18 @@ public class SuperUser_Controller implements Initializable {
         selectedCategoryButtons.clear();
         selectedCategoryButtons = task.call();
         LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
-        if(lblError.getText().equals("Loading category...")) {
-            lblError.setText("Category successfully loaded!");
+        //Depending on which button is pressed the label will change value when the thread is done.
+        if(superUserLbl.getText().equals("Loading category...")) {
+            superUserLbl.setText("Category successfully loaded!");
         }
-        if(lblError.getText().equals("Editing carpart...")) {
-            lblError.setText("Carpart has been edited!");
+        if(superUserLbl.getText().equals("Editing carpart...")) {
+            superUserLbl.setText("Carpart has been edited!");
         }
-        if(lblError.getText().equals("Removing carpart(s)...")) {
-            lblError.setText("Carpart(s) removed!");
+        if(superUserLbl.getText().equals("Removing carpart(s)...")) {
+            superUserLbl.setText("Carpart(s) removed!");
         }
-        if(lblError.getText().equals("Adding carpart...")) {
-            lblError.setText("Carpart has been added!");
+        if(superUserLbl.getText().equals("Adding carpart...")) {
+            superUserLbl.setText("Carpart has been added!");
         }
         //Enabling the buttons again when the thread is done.
         addBtn.setDisable(false);
@@ -144,32 +159,44 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnEdit(ActionEvent event) {
-        lblError.setText("Editing carpart...");
+        superUserLbl.setText("Editing carpart...");
         String name = txtName.getText();
         String costString = txtCost.getText();
-        int cost = Integer.parseInt(costString);
+        int cost = -1;
+        try {
+            cost = Integer.parseInt(costString);
+        } catch (NumberFormatException e) {
+            lblCostError.setText("Enter a number!");
+            superUserLbl.setText("");
+        }
         int amountSelected = 0;
 
-
-        for(CheckBox carpart : selectedCategoryButtons) {
-            if (carpart.isSelected()) {
-                amountSelected++;
+        if(!name.isEmpty() && cost != -1) {
+            for (CheckBox carpart : selectedCategoryButtons) {
+                if (carpart.isSelected()) {
+                    amountSelected++;
+                }
             }
-        }
-        if(amountSelected > 1) {
-            lblError.setText("You can only choose one carpart to edit!");
-        } else if(amountSelected < 1) {
-            lblError.setText("Nothing is selected!");
-        } else {
-            EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
-            SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
-            loadCategory();
+            if (amountSelected > 1) {
+                superUserLbl.setText("You can only choose one carpart to edit!");
+            } else if (amountSelected < 1) {
+                superUserLbl.setText("Nothing is selected!");
+            } else {
+                EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+                loadCategory();
+            }
+        } else if(name.isEmpty()) {
+            lblNameError.setText("Enter a name!");
+            superUserLbl.setText("");
         }
     }
 
     @FXML
     void btnRemove(ActionEvent event) {
-        lblError.setText("Removing carpart(s)...");
+        superUserLbl.setText("Removing carpart(s)...");
+        lblCostError.setText("");
+        lblNameError.setText("");
         int removedItems = 0;
 
         for(CheckBox carpart : selectedCategoryButtons){
@@ -178,7 +205,7 @@ public class SuperUser_Controller implements Initializable {
             }
         }
         if(removedItems < 1){
-            lblError.setText("Nothing is selected");
+            superUserLbl.setText("Nothing is selected");
         } else{
             RemoveCarpart.remove(carCategory, selectedCategoryButtons);
             SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
@@ -192,20 +219,31 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        lblError.setText("Adding carpart...");
+        superUserLbl.setText("Adding carpart...");
         String name = txtName.getText();
         String costString = txtCost.getText();
-        int cost = Integer.parseInt(costString);
+        int cost = -1;
+        try {
+            cost = Integer.parseInt(costString);
+        } catch (NumberFormatException e) {
+            lblCostError.setText("Enter a number!");
+            superUserLbl.setText("");
+        }
 
-        List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
+        if(!name.isEmpty() && cost != -1) {
+            List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
+            Carparts newCarPart = new Carparts(name, cost);
 
-        Carparts newCarPart = new Carparts(name, cost);
-        if(containsName(specificCategory, name)) {
-            carCategory.add(newCarPart);
-            SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
-            loadCategory();
-        } else {
-            lblError.setText("A carpart with that name already exists, try editing it instead!");
+            if (containsName(specificCategory, name)) {
+                carCategory.add(newCarPart);
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+                loadCategory();
+            } else {
+                superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
+            }
+        } else if(name.isEmpty()) {
+            lblNameError.setText("Enter a name!");
+            superUserLbl.setText("");
         }
     }
 
