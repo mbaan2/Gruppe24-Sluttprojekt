@@ -1,3 +1,7 @@
+Gruppe24\OSLOMET\Controllers\SuperUser_Controller.class
 Gruppe24\OSLOMET\DataValidation\ValidName.class
 Gruppe24\OSLOMET\SuperUserClasses\EditCarCategories\LoadingValuesThread.class
+module-info.class
+Gruppe24\OSLOMET\SuperUserClasses\TableView\TableViewCreation.class
+Gruppe24\OSLOMET\SuperUserClasses\TableView\TableViewCreation$1.class
 Gruppe24\OSLOMET\DataValidation\ValidPrice.class
