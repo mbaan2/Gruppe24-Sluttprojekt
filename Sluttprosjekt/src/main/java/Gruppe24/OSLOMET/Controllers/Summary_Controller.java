@@ -49,7 +49,8 @@ public class Summary_Controller implements Initializable {
         String ut = App.car.toString();
 
         int totalCost = App.car.totalCost();
-        lblCarComponents.setText(ut + "Total cost of this car is: " + totalCost + "kr");
+        App.car.setCost(totalCost);
+        lblCarComponents.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
 
         btnBuildCar.setDisable(true);
         btnBuildCar.setLayoutX(130.0);

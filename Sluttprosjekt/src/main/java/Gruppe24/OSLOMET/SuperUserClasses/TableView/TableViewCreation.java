@@ -102,10 +102,13 @@ public class TableViewCreation {
             fuel.setOnEditCommit(event -> {
                 for(int j = 0; j < fuelOptions.size(); j++){
                     if(event.getNewValue().equals(fuelOptions.get(j).getName())) {
-                        event.getRowValue().setWheels(fuelOptions.get(j));
+                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getFuel().getCost());
+                        event.getRowValue().setFuel(fuelOptions.get(j));
+                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getFuel().getCost());
                     }
                 }
                 btnSaveChanges();
+                tv.refresh();
             });
 
 
@@ -118,10 +121,13 @@ public class TableViewCreation {
             wheels.setOnEditCommit(event -> {
                 for(int j = 0; j < wheelOptions.size(); j++){
                     if(event.getNewValue().equals(wheelOptions.get(j).getName())) {
+                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getWheels().getCost());
                         event.getRowValue().setWheels(wheelOptions.get(j));
+                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getWheels().getCost());
                     }
                 }
                 btnSaveChanges();
+                tv.refresh();
             });
 
             ObservableList<String> colorList = FXCollections.observableArrayList();
@@ -133,10 +139,13 @@ public class TableViewCreation {
             color.setOnEditCommit(event -> {
                 for(int j = 0; j < colorOptions.size(); j++){
                     if(event.getNewValue().equals(colorOptions.get(j).getName())) {
+                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getColor().getCost());
                         event.getRowValue().setColor(colorOptions.get(j));
+                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getColor().getCost());
                     }
                 }
                 btnSaveChanges();
+                tv.refresh();
             });
 
 
