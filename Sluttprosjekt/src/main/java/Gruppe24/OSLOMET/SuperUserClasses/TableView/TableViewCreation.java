@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -206,9 +208,12 @@ public class TableViewCreation {
                 return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
             });
 
-            //price.setCellValueFactory(new PropertyValueFactory<NewCar, Integer>(String.valueOf(carList.get(i).getCost())));
-
-            //deleteBtn.setCellValueFactory(car -> deleteCar(car.getValue()));
+            price.setCellValueFactory(car -> new ObservableValueBase<Integer>(){
+                @Override
+                public Integer getValue(){
+                    return car.getValue().getCost();
+                }
+            });
         }
         tv.setItems(carList);
     }

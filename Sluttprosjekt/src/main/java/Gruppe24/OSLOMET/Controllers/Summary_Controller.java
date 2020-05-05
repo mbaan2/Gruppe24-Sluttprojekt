@@ -47,8 +47,9 @@ public class Summary_Controller implements Initializable {
     @FXML
     void btnBuildCar(ActionEvent event) {
         String ut = App.car.toString();
-        int totalCost = App.car.getCost();
-        lblCarComponents.setText(ut + "Totalcost of this car is: " + totalCost + "kr");
+
+        int totalCost = App.car.totalCost();
+        lblCarComponents.setText(ut + "Total cost of this car is: " + totalCost + "kr");
 
         btnBuildCar.setDisable(true);
         btnBuildCar.setLayoutX(130.0);
@@ -75,7 +76,7 @@ public class Summary_Controller implements Initializable {
 
             Carparts gps = new Carparts("GPS", 1000);
             Carparts spoiler = new Carparts("Spoiler", 1000);
-            CarCategory add_ones = new CarCategory("Add Ones");
+            CarCategory add_ones = new CarCategory("Add Ons");
             add_ones.add(gps);
             add_ones.add(spoiler);
 
