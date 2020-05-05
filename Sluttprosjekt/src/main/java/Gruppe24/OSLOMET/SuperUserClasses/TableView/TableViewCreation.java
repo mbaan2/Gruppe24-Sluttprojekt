@@ -97,7 +97,7 @@ public class TableViewCreation {
             List<Carparts> fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
-            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
+            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + "kr)"));
             fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
             fuel.setOnEditCommit(event -> {
                 for(int j = 0; j < fuelOptions.size(); j++){
@@ -116,7 +116,7 @@ public class TableViewCreation {
             List<Carparts> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
             wheelOptions.forEach(car -> wheelList.add(car.getName()));
 
-            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName()));
+            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + "kr)"));
             wheels.setCellFactory(ComboBoxTableCell.forTableColumn(wheelList));
             wheels.setOnEditCommit(event -> {
                 for(int j = 0; j < wheelOptions.size(); j++){
@@ -134,7 +134,7 @@ public class TableViewCreation {
             List<Carparts> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
             colorOptions.forEach(car -> colorList.add(car.getName()));
 
-            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
+            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + "kr)"));
             color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
             color.setOnEditCommit(event -> {
                 for(int j = 0; j < colorOptions.size(); j++){
