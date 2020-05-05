@@ -2,3 +2,6 @@
 234;234;Oslo;Male;Name of first pet?;234
 345;345;Oslo;Female;Mothers maiden name?;345
 Aaa;aaa;aaa;Other;Whos your daddy?;aaa
+oyvind91;oyvind1991;Oslo;Male;Whos your daddy?;Me
+Bruker;passord;Nowhere;Other;Name of first pet?;Katt
+admin;admin;adminland;Other;Mothers maiden name?;admin

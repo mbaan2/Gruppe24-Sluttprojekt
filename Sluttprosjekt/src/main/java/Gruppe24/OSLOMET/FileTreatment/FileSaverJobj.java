@@ -12,28 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileSaverJobj {
-    public static void SaveCarCategory(Path path, List<Carparts> c) throws IOException {
+    public static void SaveCarCategory(Path path, List<Carparts> list) throws IOException {
         try {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);
-            out.writeObject(c);
+            out.writeObject(list);
         } catch (IOException e) {
             throw new IOException(e.getMessage());
         }
     }
-
-    public static void SaveCarCategoryArray(NewCar car) throws IOException {
-        try {
-            OutputStream os = new FileOutputStream(new File(StandardPaths.carsPath), true);
-            ObjectOutputStream out = new ObjectOutputStream(os);
-            out.writeObject(car);
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
-        }
-    }
-
-
-
 
     public static void SavingCarArray(String path, List<NewCar> carList) throws IOException {
         ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));

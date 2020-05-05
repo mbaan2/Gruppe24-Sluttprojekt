@@ -4,7 +4,7 @@ module Gruppe24.OSLOMET {
     requires kotlin.stdlib;
     requires annotations;
 
-    opens Gruppe24.OSLOMET to javafx.fxml;
+    opens Gruppe24.OSLOMET.Controllers to javafx.fxml;
     opens Gruppe24.OSLOMET.UserLogin to javafx.base;
     opens Gruppe24.OSLOMET.Car to javafx.base;
     exports Gruppe24.OSLOMET;

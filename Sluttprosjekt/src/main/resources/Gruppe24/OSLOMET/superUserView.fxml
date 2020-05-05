@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="434.0" prefWidth="840.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SuperUserCarView_Controller">
+<AnchorPane fx:id="superUserViewPane" prefHeight="434.0" prefWidth="850.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
     <children>
         <TableView fx:id="tableView" layoutX="187.0" layoutY="4.0" prefHeight="417.0" prefWidth="632.0">
 
@@ -17,6 +17,6 @@
         <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" layoutX="27.0" layoutY="230.0" prefHeight="57.0" prefWidth="150.0" wrapText="true" />
         <Button layoutX="28.0" layoutY="396.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
-      <Button layoutX="77.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" text="back (temp)" />
+      <Button layoutX="28.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     </children>
 </AnchorPane>

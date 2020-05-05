@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="434.0" prefWidth="840.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.SetFuel_Controller">
+<VBox fx:id="fuelVbox" alignment="CENTER" prefHeight="434.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SetFuel_Controller">
    <children>
       <Label text="Choose the type of fuel" textFill="#def2f1">
          <font>
@@ -15,28 +15,15 @@
          </font>
       </Label>
       <HBox alignment="CENTER" prefHeight="202.0">
-         <children>
-            <Button fx:id="txtGasCar" onAction="#btnGasCar" style="-fx-background-color: #17252a;" text="Gasoline Car " textAlignment="CENTER" textFill="#def2f1">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="txtDieselCar" onAction="#btnDieselCar" style="-fx-background-color: #17252a;" text="Diesel Car" textAlignment="CENTER" textFill="#def2f1">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="txtElectricCar" onAction="#btnElectricCar" style="-fx-background-color: #17252a;" text="Electric Car" textAlignment="CENTER" textFill="#def2f1">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Button>
-         </children>
          <VBox.margin>
             <Insets />
          </VBox.margin>
+         <children>
+            <VBox fx:id="vboxFuel" alignment="CENTER" prefHeight="202.0" prefWidth="386.0" />
+         </children>
       </HBox>
-      <Button fx:id="primaryButton" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#switchToSecondary" style="-fx-background-color: #17252a;" text="Next page" textAlignment="CENTER" textFill="#def2f1" />
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" onAction="#btnToWheels" style="-fx-background-color: #17252a;" text="Next page" textAlignment="CENTER" textFill="#def2f1" />
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" onAction="#backBtn" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

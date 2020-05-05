@@ -48,7 +48,6 @@ public class NewCar implements Serializable {
     }
 
 
-
     //ALL THE FUNCTIONS
     public int totalCost(){
         int totalcost = 0;

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="434.0" prefWidth="840.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.WelcomeScreen_Controller">
+<VBox fx:id="welcomeVbox" alignment="CENTER" prefHeight="434.0" prefWidth="840.0" spacing="20.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.WelcomeScreen_Controller">
     <children>
         <Label text="Build a new car" textFill="#def2f1">
             <font>
@@ -21,7 +21,7 @@
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
-        <Button onAction="#btnLoadCars" style="-fx-background-color: #17252a;" text="Load" textFill="#def2f1" />
+        <Button onAction="#btnLoadCars" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #17252a;" text="Load" textFill="#def2f1" />
         <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
     </children>
     <padding>
