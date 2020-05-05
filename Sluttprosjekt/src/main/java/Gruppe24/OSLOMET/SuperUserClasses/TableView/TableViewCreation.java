@@ -169,16 +169,19 @@ public class TableViewCreation {
                             for(int k = 0; k < addonSupUser.size(); k++) {
                                 if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
                                     newcar.getAddons().add(addonSupUser.get(k));
+                                    newcar.setCost(newcar.getCost() +addonSupUser.get(k).getCost());
                                 }
                             }
                         } else {
                             for(int k = 0; k < newcar.getAddons().size(); k++) {
                                 if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
                                     newcar.getAddons().remove(k);
+                                    newcar.setCost(newcar.getCost() - addonSupUser.get(k).getCost());
                                 }
                             }
                         }
                         btnSaveChanges();
+                        tv.refresh();
                     });
                     return booleanProp;
                 });
