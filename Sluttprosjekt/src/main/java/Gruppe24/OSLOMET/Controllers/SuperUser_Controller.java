@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.DataValidation.ValidPrice;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.EditCarpart;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadCategory;
@@ -164,7 +165,12 @@ public class SuperUser_Controller implements Initializable {
         String costString = txtCost.getText();
         int cost = -1;
         try {
-            cost = Integer.parseInt(costString);
+            if (ValidPrice.priceTest(Integer.parseInt(costString))){
+                cost = Integer.parseInt(costString);
+            } else {
+                lblCostError.setText("Enter a price above 0!");
+                superUserLbl.setText("");
+            }
         } catch (NumberFormatException e) {
             lblCostError.setText("Enter a number!");
             superUserLbl.setText("");
@@ -224,7 +230,12 @@ public class SuperUser_Controller implements Initializable {
         String costString = txtCost.getText();
         int cost = -1;
         try {
-            cost = Integer.parseInt(costString);
+            if (ValidPrice.priceTest(Integer.parseInt(costString))){
+                cost = Integer.parseInt(costString);
+            } else {
+                lblCostError.setText("Enter a price above 0!");
+                superUserLbl.setText("");
+            }
         } catch (NumberFormatException e) {
             lblCostError.setText("Enter a number!");
             superUserLbl.setText("");

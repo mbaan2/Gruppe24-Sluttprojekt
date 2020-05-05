@@ -3,9 +3,9 @@
     1)      Add thread for superuser when changing carparts             HIGH PRIORITY
     2)      Add filters and ordering for superuser                      LOW PRIORITY
     3)      Double check the crashes and try/catches                    MEDIUM PRIORITY
-    4)      Tests for data validation                                   HIGH PRIORITY       Ana
+    4)      Tests for data validation                                   HIGH PRIORITY       Ana (Missing test for existing)
     5)      Edit buttons for carparts in superuser                      HIGH PRIORITY
-    6)      JUnit testing                                               MEDIUM PRIORITY
+    6)      JUnit testing                                               done
     7)      Make fuel buttons save to file and make them editable       HIGH PRIORITY       Mark
     8)      Polish look                                                 MEDIUM PRIORITY     Øyvind
     9)      Undo button per car                                         LOW PRIORITY

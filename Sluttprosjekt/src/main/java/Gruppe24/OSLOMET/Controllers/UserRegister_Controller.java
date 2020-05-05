@@ -91,7 +91,7 @@ public class UserRegister_Controller implements Initializable {
             if (usernameTxt.getText().equals("")) {
                 usernameError.setText("Enter a username!");
             } else if (!userBase.containsKey(usernameTxt.getText())) {
-                usernameError.setText("Username doesnt exist!");
+                usernameError.setText("Username doesn't exist!");
             }
         }
     }

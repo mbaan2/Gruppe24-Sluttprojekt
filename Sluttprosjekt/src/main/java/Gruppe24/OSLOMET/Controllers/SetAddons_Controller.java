@@ -9,6 +9,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -68,21 +69,6 @@ public class SetAddons_Controller implements Initializable {
     }
 
     @FXML
-    private void switchToQuinary() throws IOException {
-        CarCategory addons = new CarCategory("addons");
-        addons.clear();
-
-        for(int i = 0; i < addOnOptions.size(); i++){
-            if(addOnButtons.get(i).isSelected()){
-              addons.add(addOnOptions.get(i));
-            }
-        }
-        App.car.setAddons(addons);
-
-        App.setRoot("Summary");
-    }
-
-    @FXML
     void backBtn() throws IOException{
         App.setRoot("SetColors");
     }
@@ -110,5 +96,20 @@ public class SetAddons_Controller implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    public void btnToSummary(ActionEvent actionEvent) throws IOException{
+        CarCategory addons = new CarCategory("addons");
+        addons.clear();
+
+        for(int i = 0; i < addOnOptions.size(); i++){
+            if(addOnButtons.get(i).isSelected()){
+                addons.add(addOnOptions.get(i));
+            }
+        }
+        App.car.setAddons(addons);
+
+        App.setRoot("Summary");
     }
 }

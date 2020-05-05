@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
@@ -90,9 +91,15 @@ public class SignUp_Controller implements Initializable {
         genderError.setText("");
 
 
-        String username = signupUsername.getText();
+        String username = "";
+        if (ValidName.usernameTest(signupUsername.getText())){
+            username = signupUsername.getText();
+        }
         String password = signupPassword.getText();
-        String location = signupLocation.getText();
+        String location = "";
+        if (ValidName.nameTest(signupLocation.getText())){
+            location = signupLocation.getText();
+        }
         String gender = "";
         String answer = answerTxt.getText();
         String secretQ = choiceBox.getValue();
@@ -145,13 +152,13 @@ public class SignUp_Controller implements Initializable {
             }
         } else {
             if(username.isEmpty()) {
-                usernameError.setText("Enter a username!");
+                usernameError.setText("Enter a valid username!");
             }
             if(password.isEmpty()) {
                 passwordError.setText("Enter a password!");
             }
             if(location.isEmpty()) {
-                locationError.setText("Enter a location!");
+                locationError.setText("Enter a valid location!");
             }
             if(answer.isEmpty()) {
                 answerError.setText("Enter an answer!");
@@ -170,7 +177,7 @@ public class SignUp_Controller implements Initializable {
         String checkBoxQuestion = "Select a question!";
         String checkBoxQType = "Name of first pet?";
         String checkBoxQType2 = "Mothers maiden name?";
-        String checkBoxQType3 = "Whos your daddy?";
+        String checkBoxQType3 = "Who's your daddy?";
 
         checkBoxList.addAll(checkBoxQuestion, checkBoxQType, checkBoxQType2, checkBoxQType3);
         choiceBox.getItems().addAll(checkBoxList);
