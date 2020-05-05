@@ -1,4 +1,5 @@
 Gruppe24\OSLOMET\Controllers\SuperUser_Controller.class
+Gruppe24\OSLOMET\Controllers\SuperUserCarView_Controller.class
 Gruppe24\OSLOMET\DataValidation\ValidName.class
 Gruppe24\OSLOMET\SuperUserClasses\EditCarCategories\LoadingValuesThread.class
 module-info.class

@@ -8,6 +8,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -97,6 +98,8 @@ public class UserCarView_Controller implements Initializable {
             TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
             addon.getColumns().add(tc);
         }
+        TableColumn<NewCar, Integer> totalprice = new TableColumn<>("Totalprice");
+        tableView.getColumns().add(totalprice);
 
 
         //Loading of the data into the tableview
@@ -112,6 +115,12 @@ public class UserCarView_Controller implements Initializable {
                 TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
                 tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
             }
+            totalprice.setCellValueFactory(car -> new ObservableValueBase<Integer>(){
+                @Override
+                public Integer getValue(){
+                    return car.getValue().getCost();
+                }
+            });
         }
     }
 
