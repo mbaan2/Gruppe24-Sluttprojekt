@@ -33,3 +33,8 @@
     -fx-padding: 5px;
     -fx-min-width: 100px;
 }
+
+.delete-button {
+    -fx-text-fill: white;
+    -fx-background-color: #B22222;
+}

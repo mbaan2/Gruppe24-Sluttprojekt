@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -32,9 +33,6 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     private Button btnBuildCar;
-
-    @FXML
-    private Button btnSaveCarToText;
 
     @FXML
     private Label lblCarComponents;
@@ -68,7 +66,6 @@ public class Summary_Controller implements Initializable {
         if (!nameCar.equals("")) {
             App.car.setName(lblCarName.getText());
             btnNameCar.setDisable(true);
-            btnSaveCarToText.setVisible(true);
 
             List<NewCar> list;
             list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
@@ -77,19 +74,18 @@ public class Summary_Controller implements Initializable {
                 //TO SAVE THE INITIAL LIST
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
+                saveCarToText();
+                summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
             } catch (IOException ex) {
-                ex.printStackTrace();
+                summaryLbl.setText("You didnt choose a file to save to!");
             }
-
-            summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
         } else{
             summaryLbl.setText("Please give the car a name");
         }
 
     }
 
-    @FXML
-    void btnSaveCarToText(ActionEvent event) {
+    void saveCarToText() {
         lblCarName.setText("");
         
         FileSaverTxt fs = new FileSaverTxt();
@@ -98,7 +94,6 @@ public class Summary_Controller implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
-        btnNameCar.setDisable(false);
     }
 
 

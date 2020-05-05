@@ -231,8 +231,8 @@ public class TableViewCreation {
             deleteBtn.setCellValueFactory(car -> {
                 Button delete = new Button();
                 delete.setText("Delete");
-                delete.setTextFill(Color.WHITE);
-                delete.setStyle("-fx-background-color: #B22222");
+                delete.getStyleClass().add("delete-button");
+                delete.setAlignment(Pos.CENTER);
                 delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv));
 
                 ObservableValue<Button> btn = new ObservableValueBase<Button>(){

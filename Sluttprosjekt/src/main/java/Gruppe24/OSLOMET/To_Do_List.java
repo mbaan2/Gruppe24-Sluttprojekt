@@ -21,6 +21,6 @@
 //    19)     Option to edit a specific car                               LOW PRIORITY        Mark
 //    20)     Fix example data                                            HIGH PRIORITY
 //    21)     Save file to txt file-not-selected crash: FIX               HIGH PRIORITY
-//    22)     Feedback to the user on sout, but not on GUI. FIX           HIGH PRIORITY
+//    22)     Feedback to the user on sout, but not on GUI. FIX           done
 //    23)     Tableview on thread                                         HIGH PRIORITY
 //    24)     Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
