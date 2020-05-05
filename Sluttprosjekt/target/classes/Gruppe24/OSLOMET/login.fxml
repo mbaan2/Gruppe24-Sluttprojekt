@@ -22,7 +22,7 @@
       <Button layoutX="512.0" layoutY="27.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: #17252a;" text="Signup" textFill="#def2f1" />
       <Label fx:id="usernameError" layoutX="421.0" layoutY="151.0" prefHeight="18.0" prefWidth="118.0" textFill="#17252a" />
       <Label fx:id="passwordError" layoutX="421.0" layoutY="193.0" prefHeight="18.0" prefWidth="118.0" textFill="#17252a" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="414.0" layoutY="164.0" prefHeight="2.0" prefWidth="33.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="166.0" prefHeight="2.0" prefWidth="33.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

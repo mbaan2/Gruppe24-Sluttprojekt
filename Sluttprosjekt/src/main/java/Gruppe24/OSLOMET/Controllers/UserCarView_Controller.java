@@ -38,8 +38,6 @@ public class UserCarView_Controller implements Initializable {
 
     @FXML
     void loadYourCars() {
-        String username = App.car.getUser();
-        usersCarList = Filter.usernameFilter(username, carList);
         tableView.setItems(usersCarList);
         if(tableView.getItems().isEmpty()) {
             tableView.setVisible(false);
@@ -76,6 +74,8 @@ public class UserCarView_Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String username = App.car.getUser();
+        usersCarList =  Filter.usernameFilter(username, carList);
         int maxAntallAddons = maxAddons();
         fillEmptyAddons();
         //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
@@ -103,7 +103,7 @@ public class UserCarView_Controller implements Initializable {
 
 
         //Loading of the data into the tableview
-        for (int i = 0; i < carList.size(); i++) {
+        for (int i = 0; i < usersCarList.size(); i++) {
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
@@ -127,8 +127,8 @@ public class UserCarView_Controller implements Initializable {
 
     private int maxAddons(){
         int antall = 0;
-        for(int i = 0 ; i< carList.size(); i++){
-            for(int j = 1; j< (carList.get(i).getAddons().size() + 1); j++){
+        for(int i = 0 ; i< usersCarList.size(); i++){
+            for(int j = 1; j< (usersCarList.get(i).getAddons().size() + 1); j++){
                 if(j > antall){
                     antall = j;
                 }
@@ -139,11 +139,11 @@ public class UserCarView_Controller implements Initializable {
 
     private  void fillEmptyAddons(){
         int maxAntall = maxAddons();
-        for(int i = 0 ; i< carList.size(); i++){
+        for(int i = 0 ; i< usersCarList.size(); i++){
             for(int j = 0; j < maxAntall; j++){
-                if(j >= carList.get(i).getAddons().size()){
+                if(j >= usersCarList.get(i).getAddons().size()){
                     Car emptyAddon = new Carparts("", 0);
-                    carList.get(i).getAddons().add(emptyAddon);
+                    usersCarList.get(i).getAddons().add(emptyAddon);
                 }
             }
         }

@@ -47,7 +47,6 @@ public class FileSaverJobj {
         };
         os.writeObject(carObject);
         os.close();
-        System.out.println("Car is added.");
     }
 
     public static void SaveUser(HashMap<String, String> userList) throws IOException {
