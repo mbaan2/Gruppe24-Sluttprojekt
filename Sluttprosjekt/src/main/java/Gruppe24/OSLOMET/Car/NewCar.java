@@ -11,6 +11,8 @@ public class NewCar implements Serializable {
     public Car wheels;
     public Car color;
     public CarCategory addons;
+    private int cost;
+
 
     //GETTER AND SETTER METHODS
     public String getUser() {
@@ -26,7 +28,10 @@ public class NewCar implements Serializable {
         this.name = name;
     }
     public int getCost() {
-        return totalCost();
+        return cost;
+    }
+    private void setCost(int cost){
+        this.cost = cost;
     }
     public Carparts getFuel() {
         return fuel;
@@ -57,6 +62,7 @@ public class NewCar implements Serializable {
         for(int i = 0; i< App.car.getAddons().size(); i++) {
             totalcost += App.car.getAddons().getElement(i).getCost();
         }
+        setCost(totalcost);
         return totalcost;
     }
 
