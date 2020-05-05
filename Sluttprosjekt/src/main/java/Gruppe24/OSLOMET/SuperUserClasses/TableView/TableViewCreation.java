@@ -8,6 +8,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -19,6 +20,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -73,6 +75,8 @@ public class TableViewCreation {
         tv.setEditable(true);
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
+        TableColumn<NewCar, Integer> price = new TableColumn<>("Total price");
+        tv.getColumns().add(price);
         TableColumn<NewCar, Button> deleteBtn = new TableColumn<>("");
         tv.getColumns().add(deleteBtn);
 
@@ -201,6 +205,8 @@ public class TableViewCreation {
                 }
                 return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
             });
+
+            //price.setCellValueFactory(new PropertyValueFactory<NewCar, Integer>(String.valueOf(carList.get(i).getCost())));
 
             //deleteBtn.setCellValueFactory(car -> deleteCar(car.getValue()));
         }

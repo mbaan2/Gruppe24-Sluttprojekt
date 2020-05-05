@@ -106,8 +106,6 @@ public class SuperUser_Controller implements Initializable {
         addBtn.setDisable(true);
         removeBtn.setDisable(true);
         editBtn.setDisable(true);
-        backBtn.setDisable(true);
-        loadBtn.setDisable(true);
     }
 
     @FXML
@@ -117,6 +115,8 @@ public class SuperUser_Controller implements Initializable {
         if(chbCategory.getValue().equals("Choose a category")) {
             superUserLbl.setText("Choose a category to load!");
         } else {
+            backBtn.setDisable(true);
+            loadBtn.setDisable(true);
             superUserLbl.setText("Loading category...");
             carCategory.clear();
             loadCategory();
