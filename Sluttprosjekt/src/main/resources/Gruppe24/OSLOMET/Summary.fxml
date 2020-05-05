@@ -21,5 +21,6 @@
       <Button fx:id="btnNameCar" layoutX="387.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnNameCar" style="-fx-background-color: #17252a;" text="Save the Car" textFill="#def2f1" visible="false" />
       <Button fx:id="btnSaveCarToText" layoutX="478.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnSaveCarToText" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #17252a;" text="Save Car to File" textFill="#def2f1" visible="false" />
       <Button contentDisplay="CENTER" graphicTextGap="0.0" layoutX="25.0" layoutY="324.0" onAction="#backBtn" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
+      <Label fx:id="carNameLbl" layoutX="225.0" layoutY="306.0" text="Enter car name:" />
    </children>
 </AnchorPane>

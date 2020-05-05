@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.DataValidation.ValidPrice;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.EditCarpart;
@@ -80,6 +81,12 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Button editBtn;
 
+    @FXML
+    private Button backBtn;
+
+    @FXML
+    private Button loadBtn;
+
     private void loadChoiceBoxStrings(){
         String chooseValue = "Choose a category";
         String fuelCHB = "Fuel type";
@@ -99,6 +106,8 @@ public class SuperUser_Controller implements Initializable {
         addBtn.setDisable(true);
         removeBtn.setDisable(true);
         editBtn.setDisable(true);
+        backBtn.setDisable(true);
+        loadBtn.setDisable(true);
     }
 
     @FXML
@@ -156,12 +165,17 @@ public class SuperUser_Controller implements Initializable {
         addBtn.setDisable(false);
         removeBtn.setDisable(false);
         editBtn.setDisable(false);
+        backBtn.setDisable(false);
+        loadBtn.setDisable(false);
     }
 
     @FXML
     void btnEdit(ActionEvent event) {
         superUserLbl.setText("Editing carpart...");
-        String name = txtName.getText();
+        String name = "";
+        if (ValidName.carpartNameTest(txtName.getText())){
+            name = txtName.getText();
+        }
         String costString = txtCost.getText();
         int cost = -1;
         try {
@@ -226,7 +240,10 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     void btnAdd(ActionEvent event) {
         superUserLbl.setText("Adding carpart...");
-        String name = txtName.getText();
+        String name = "";
+        if (ValidName.carpartNameTest(txtName.getText())){
+            name = txtName.getText();
+        }
         String costString = txtCost.getText();
         int cost = -1;
         try {
@@ -253,7 +270,7 @@ public class SuperUser_Controller implements Initializable {
                 superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
             }
         } else if(name.isEmpty()) {
-            lblNameError.setText("Enter a name!");
+            lblNameError.setText("Enter a valid name!");
             superUserLbl.setText("");
         }
     }

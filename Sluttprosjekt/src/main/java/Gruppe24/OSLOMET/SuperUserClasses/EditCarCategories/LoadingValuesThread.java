@@ -19,7 +19,7 @@ public class LoadingValuesThread extends Task<List<CheckBox>> {
     @Override
     public List<CheckBox> call() {
         try {
-            Thread.sleep(1500);
+            Thread.sleep(1000);
         } catch (Exception e) {
             Alert failed = new Alert(Alert.AlertType.ERROR);
             failed.setContentText("Could not load the list!");
