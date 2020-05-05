@@ -6,22 +6,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidNameTest{
 
     @Test
-    void nameTest(){
-        assertTrue(ValidName.nameTest("Aaa"));
-        assertTrue(ValidName.nameTest("Aa Aa Aa"));
-        assertTrue(ValidName.nameTest("Åå Åå"));
-        assertTrue(ValidName.nameTest("Aa Aa Aa Aa Aa"));
+    void locationTest(){
+        assertTrue(ValidName.locationTest("Aaa"));
+        assertTrue(ValidName.locationTest("Aa Aa Aa"));
+        assertTrue(ValidName.locationTest("Åå Åå"));
+        assertTrue(ValidName.locationTest("Aa Aa Aa Aa Aa"));
 
-        assertFalse(ValidName.nameTest(" "));
-        assertFalse(ValidName.nameTest("A"));
-        assertFalse(ValidName.nameTest("AAA"));
-        assertFalse(ValidName.nameTest("aaa"));
-        assertFalse(ValidName.nameTest("Âa"));
-        assertFalse(ValidName.nameTest("A1a"));
-        assertFalse(ValidName.nameTest("Aa A"));
-        assertFalse(ValidName.nameTest("RuPaul"));
-        assertFalse(ValidName.nameTest("@a"));
-        assertFalse(ValidName.nameTest("Aa aa"));
+        assertFalse(ValidName.locationTest(" "));
+        assertFalse(ValidName.locationTest("A"));
+        assertFalse(ValidName.locationTest("AAA"));
+        assertFalse(ValidName.locationTest("aaa"));
+        assertFalse(ValidName.locationTest("Âa"));
+        assertFalse(ValidName.locationTest("A1a"));
+        assertFalse(ValidName.locationTest("Aa A"));
+        assertFalse(ValidName.locationTest("RuPaul"));
+        assertFalse(ValidName.locationTest("@a"));
+        assertFalse(ValidName.locationTest("Aa aa"));
 
     }
 
@@ -42,5 +42,23 @@ class ValidNameTest{
         assertFalse(ValidName.usernameTest("Aa A"));
         assertFalse(ValidName.usernameTest("@a"));
         assertFalse(ValidName.usernameTest("Aa aa"));
+    }
+
+    @Test
+    void carpartNameTest(){
+        assertTrue(ValidName.carpartNameTest("GPS"));
+        assertTrue(ValidName.carpartNameTest("GPS1"));
+        assertTrue(ValidName.carpartNameTest("GPS1.0"));
+        assertTrue(ValidName.carpartNameTest("GPS 1.0"));
+        assertTrue(ValidName.carpartNameTest("GPS 1_0"));
+        assertTrue(ValidName.carpartNameTest("Subwoofer"));
+        assertTrue(ValidName.carpartNameTest("Subwøøfer ver. 1.0.3"));
+        assertTrue(ValidName.carpartNameTest("Sub VERS 1.3_245"));
+        assertTrue(ValidName.carpartNameTest("gps"));
+
+        assertFalse(ValidName.carpartNameTest(" GPS"));
+        assertFalse(ValidName.carpartNameTest(" "));
+        assertFalse(ValidName.carpartNameTest("Âa"));
+        assertFalse(ValidName.carpartNameTest("@a"));
     }
 }

@@ -97,7 +97,7 @@ public class SignUp_Controller implements Initializable {
         }
         String password = signupPassword.getText();
         String location = "";
-        if (ValidName.nameTest(signupLocation.getText())){
+        if (ValidName.locationTest(signupLocation.getText())){
             location = signupLocation.getText();
         }
         String gender = "";
