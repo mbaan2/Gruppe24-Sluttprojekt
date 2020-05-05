@@ -40,7 +40,9 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     private Label lblCarComponents;
-    
+
+    @FXML
+    private Label carNameLbl;
 
     @FXML
     void btnBuildCar(ActionEvent event) {
@@ -50,9 +52,9 @@ public class Summary_Controller implements Initializable {
 
         btnBuildCar.setDisable(true);
         btnBuildCar.setLayoutX(130.0);
+        carNameLbl.setVisible(true);
         btnNameCar.setVisible(true);
         lblCarName.setVisible(true);
-
     }
 
     @FXML
@@ -172,5 +174,6 @@ public class Summary_Controller implements Initializable {
             stage.setWidth(600);
             stage.setHeight(470);
         });
+        carNameLbl.setVisible(false);
     }
 }

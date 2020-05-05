@@ -73,6 +73,8 @@ public class TableViewCreation {
         tv.setEditable(true);
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
+        TableColumn<NewCar, Button> deleteBtn = new TableColumn<>("");
+        tv.getColumns().add(deleteBtn);
 
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
@@ -137,48 +139,39 @@ public class TableViewCreation {
                 int finalJ = j;
                 // Based on: https://o7planning.org/en/11079/javafx-tableview-tutorial
                 TableColumn<NewCar, Boolean> tc = (TableColumn<NewCar, Boolean>) addon.getColumns().get(j);
-                tc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<NewCar, Boolean>, ObservableValue<Boolean>>() {
-                    @Override
-                    public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<NewCar, Boolean> newCarBooleanCellDataFeatures) {
-                        NewCar newcar = newCarBooleanCellDataFeatures.getValue();
-                        SimpleBooleanProperty booleanProp = new SimpleBooleanProperty();
-                        booleanProp.set(false);
-                        for(int k = 0; k < newcar.getAddons().size(); k++){
-                            if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
-                                booleanProp.set(true);
+                tc.setCellValueFactory(newCarBooleanCellDataFeatures -> {
+                    NewCar newcar = newCarBooleanCellDataFeatures.getValue();
+                    SimpleBooleanProperty booleanProp = new SimpleBooleanProperty();
+                    booleanProp.set(false);
+                    for(int k = 0; k < newcar.getAddons().size(); k++){
+                        if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
+                            booleanProp.set(true);
+                        }
+                    }
+
+                    booleanProp.addListener((observableValue, oldValue, newValue) -> {
+                        if(newValue){
+                            for(int k = 0; k < addonSupUser.size(); k++) {
+                                if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
+                                    newcar.getAddons().add(addonSupUser.get(k));
+                                }
+                            }
+                        } else {
+                            for(int k = 0; k < newcar.getAddons().size(); k++) {
+                                if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
+                                    newcar.getAddons().remove(k);
+                                }
                             }
                         }
-
-                        booleanProp.addListener(new ChangeListener<Boolean>() {
-                            @Override
-                            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
-                                if(newValue){
-                                    for(int k = 0; k < addonSupUser.size(); k++) {
-                                        if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
-                                            newcar.getAddons().add(addonSupUser.get(k));
-                                        }
-                                    }
-                                } else {
-                                    for(int k = 0; k < newcar.getAddons().size(); k++) {
-                                        if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
-                                            newcar.getAddons().remove(k);
-                                        }
-                                    }
-                                }
-                                btnSaveChanges();
-                            }
-                        });
-                        return booleanProp;
-                    }
+                        btnSaveChanges();
+                    });
+                    return booleanProp;
                 });
-                tc.setCellFactory(new Callback<TableColumn<NewCar, Boolean>, TableCell<NewCar, Boolean>>() {
-                    @Override
-                    public TableCell<NewCar, Boolean> call(TableColumn<NewCar, Boolean> newCarBooleanTableColumn) {
-                        CheckBoxTableCell<NewCar, Boolean> cell = new CheckBoxTableCell<NewCar, Boolean>();
-                        cell.setText(addonSupUser.get(finalJ).getCost() + "kr");
-                        cell.setAlignment(Pos.CENTER_LEFT);
-                        return cell;
-                    }
+                tc.setCellFactory(newCarBooleanTableColumn -> {
+                    CheckBoxTableCell<NewCar, Boolean> cell = new CheckBoxTableCell<>();
+                    cell.setText(addonSupUser.get(finalJ).getCost() + "kr");
+                    cell.setAlignment(Pos.CENTER_LEFT);
+                    return cell;
                 });
             }
 
@@ -208,6 +201,8 @@ public class TableViewCreation {
                 }
                 return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
             });
+
+            //deleteBtn.setCellValueFactory(car -> deleteCar(car.getValue()));
         }
         tv.setItems(carList);
     }
@@ -243,5 +238,9 @@ public class TableViewCreation {
             e.getMessage();
         }
         carList.addAll(list2);
+    }
+
+    void deleteCar(NewCar car){
+
     }
 }

@@ -81,6 +81,12 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Button editBtn;
 
+    @FXML
+    private Button backBtn;
+
+    @FXML
+    private Button loadBtn;
+
     private void loadChoiceBoxStrings(){
         String chooseValue = "Choose a category";
         String fuelCHB = "Fuel type";
@@ -100,6 +106,8 @@ public class SuperUser_Controller implements Initializable {
         addBtn.setDisable(true);
         removeBtn.setDisable(true);
         editBtn.setDisable(true);
+        backBtn.setDisable(true);
+        loadBtn.setDisable(true);
     }
 
     @FXML
@@ -157,6 +165,8 @@ public class SuperUser_Controller implements Initializable {
         addBtn.setDisable(false);
         removeBtn.setDisable(false);
         editBtn.setDisable(false);
+        backBtn.setDisable(false);
+        loadBtn.setDisable(false);
     }
 
     @FXML
