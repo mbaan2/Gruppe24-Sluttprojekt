@@ -6,12 +6,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -36,6 +34,9 @@ public class Login_Controller implements Initializable {
 
     @FXML
     private Button loginBtn;
+
+    @FXML
+    private Tooltip superuserInfo;
 
     HashMap<String, String> userBase;
 
@@ -87,6 +88,8 @@ public class Login_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginBtn.setDefaultButton(true);
+        superuserInfo.setShowDelay(Duration.millis(100.0));
+        superuserInfo.setHideDelay(Duration.millis(200.0));
 
         //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
         //Code based on a comment from https://stackoverflow.com/a/59880899

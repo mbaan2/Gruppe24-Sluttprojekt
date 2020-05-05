@@ -24,6 +24,7 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -226,6 +227,22 @@ public class TableViewCreation {
                     return car.getValue().getCost();
                 }
             });
+
+            deleteBtn.setCellValueFactory(car -> {
+                Button delete = new Button();
+                delete.setText("Delete");
+                delete.setTextFill(Color.WHITE);
+                delete.setStyle("-fx-background-color: #B22222");
+                delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv));
+
+                ObservableValue<Button> btn = new ObservableValueBase<Button>(){
+                    @Override
+                    public Button getValue(){
+                        return delete;
+                    }
+                };
+                return btn;
+            });
         }
         tv.setItems(carList);
     }
@@ -263,7 +280,9 @@ public class TableViewCreation {
         carList.addAll(list2);
     }
 
-    void deleteCar(NewCar car){
-
+    void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv){
+        carList.remove(car);
+        btnSaveChanges();
+        tv.refresh();
     }
 }
