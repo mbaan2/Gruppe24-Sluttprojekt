@@ -95,7 +95,7 @@ public class TableViewCreation {
 
             ObservableList<String> fuelList = FXCollections.observableArrayList();
             List<Carparts> fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
-            fuelOptions.forEach(car -> fuelList.add(car.getName()));
+            fuelOptions.forEach(car -> fuelList.add(car.getName() + " (" + car.getCost() + "kr)"));
 
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + "kr)"));
             fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
@@ -114,7 +114,7 @@ public class TableViewCreation {
 
             ObservableList<String> wheelList = FXCollections.observableArrayList();
             List<Carparts> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
-            wheelOptions.forEach(car -> wheelList.add(car.getName()));
+            wheelOptions.forEach(car -> wheelList.add(car.getName() + " (" + car.getCost() + "kr)"));
 
             wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + "kr)"));
             wheels.setCellFactory(ComboBoxTableCell.forTableColumn(wheelList));
@@ -132,7 +132,7 @@ public class TableViewCreation {
 
             ObservableList<String> colorList = FXCollections.observableArrayList();
             List<Carparts> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
-            colorOptions.forEach(car -> colorList.add(car.getName()));
+            colorOptions.forEach(car -> colorList.add(car.getName() + " (" + car.getCost() + "kr)"));
 
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + "kr)"));
             color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
