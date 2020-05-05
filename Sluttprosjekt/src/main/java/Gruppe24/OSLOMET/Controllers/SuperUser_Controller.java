@@ -115,8 +115,6 @@ public class SuperUser_Controller implements Initializable {
         if(chbCategory.getValue().equals("Choose a category")) {
             superUserLbl.setText("Choose a category to load!");
         } else {
-            backBtn.setDisable(true);
-            loadBtn.setDisable(true);
             superUserLbl.setText("Loading category...");
             carCategory.clear();
             loadCategory();
@@ -134,6 +132,8 @@ public class SuperUser_Controller implements Initializable {
         task.setOnFailed(this::threadFailed);
         Thread th = new Thread(task);
         th.setDaemon(true);
+        backBtn.setDisable(true);
+        loadBtn.setDisable(true);
         setDisableBtn();
         th.start();
     }
