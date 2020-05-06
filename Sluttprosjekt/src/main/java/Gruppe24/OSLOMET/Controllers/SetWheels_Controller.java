@@ -17,6 +17,7 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -80,7 +81,9 @@ public class SetWheels_Controller implements Initializable {
         }
         try{
             App.setRoot("SetColors");
-        } catch (IOException e){
+        } catch (LoadException e) {
+            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
+        } catch(IOException e){
             System.err.println(e.getMessage());
         }
     }

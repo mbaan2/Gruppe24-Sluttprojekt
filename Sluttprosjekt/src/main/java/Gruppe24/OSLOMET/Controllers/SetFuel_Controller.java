@@ -82,6 +82,8 @@ public class SetFuel_Controller implements Initializable {
         }
         try{
             App.setRoot("SetWheels");
+        } catch (LoadException e){
+            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
         } catch (IOException e){
             System.err.println(e.getMessage());
         }

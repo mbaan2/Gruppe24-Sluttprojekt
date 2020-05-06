@@ -51,7 +51,9 @@ public class SetAddons_Controller implements Initializable {
     public void createButtons() {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
-
+        if(App.car.getAddons() == null){
+            addOnButtons.get(0).setSelected(false);
+        }
         if (App.car.addons != null) {
             for (int i = 0; i < addOnOptions.size(); i++) {
                 for (int j = 0; j < App.car.getAddons().size(); j++) {
