@@ -24,6 +24,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,6 +48,8 @@ public class SuperUser_Controller implements Initializable {
             stage.setWidth(600);
             stage.setHeight(550);
         });
+        superuserInfo.setShowDelay(Duration.millis(100.0));
+        superuserInfo.setHideDelay(Duration.millis(200.0));
     }
 
     private LoadingValuesThread task;
@@ -95,6 +99,12 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Button btnLoadUsers;
 
+    @FXML
+    private Button btnRestoreUsers;
+
+    @FXML
+    private Tooltip superuserInfo;
+
     private void loadChoiceBoxStrings(){
         String chooseValue = "Choose a category";
         String fuelCHB = "Fuel type";
@@ -143,6 +153,8 @@ public class SuperUser_Controller implements Initializable {
         backBtn.setDisable(true);
         loadBtn.setDisable(true);
         btnRestoreFiles.setDisable(true);
+        btnLoadUsers.setDisable(true);
+        btnRestoreUsers.setDisable(true);
         setDisableBtn();
         th.start();
     }
@@ -177,6 +189,8 @@ public class SuperUser_Controller implements Initializable {
         backBtn.setDisable(false);
         loadBtn.setDisable(false);
         btnRestoreFiles.setDisable(false);
+        btnLoadUsers.setDisable(false);
+        btnRestoreUsers.setDisable(false);
     }
 
     @FXML
@@ -309,6 +323,14 @@ public class SuperUser_Controller implements Initializable {
         restoreAddon.createFile();
 
         superUserLbl.setText("Files are restored!");
+    }
+
+    @FXML
+    void btnRestoreUsers(ActionEvent event) {
+        SignUp_Controller restoreUser = new SignUp_Controller();
+        restoreUser.createFile();
+
+        superUserLbl.setText("Users are restored!");
     }
 
     @FXML

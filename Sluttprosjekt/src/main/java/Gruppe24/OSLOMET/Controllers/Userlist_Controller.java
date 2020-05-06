@@ -128,8 +128,7 @@ public class Userlist_Controller implements Initializable {
             lblUserList.setText(e.getLocalizedMessage());
         }
 
-        HashMap<String, String> newMap = new HashMap<>();
-        newMap.putAll(userBase);
+        HashMap<String, String> newMap = new HashMap<>(userBase);
         try {
             FileSaverJobj.SaveUser(newMap);
         } catch (IOException e) {
@@ -142,7 +141,7 @@ public class Userlist_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) userListPane.getScene().getWindow();
             stage.setHeight(470);
-            stage.setWidth(903);
+            stage.setWidth(1000);
         });
 
         addChkBoxItems();

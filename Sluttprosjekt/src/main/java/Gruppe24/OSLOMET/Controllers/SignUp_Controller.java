@@ -193,6 +193,32 @@ public class SignUp_Controller implements Initializable {
         }
     }
 
+    public void setUser() {
+        User newUser = new User("123", "123", "Oslo", "Male", "Whos your daddy?", "123");
+        User newUser2 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
+        User newUser3 = new User("234", "234", "Oslo", "Male", "Name of first pet?", "234");
+        User newUser4 = new User("Aaa", "aaa", "aaa", "Other", "Whos your daddy?", "aaa");
+
+        userList.addAll(newUser, newUser2, newUser3, newUser4);
+        userBase.put(newUser.getUsername(), newUser.getPassword());
+        userBase.put(newUser2.getUsername(), newUser2.getPassword());
+        userBase.put(newUser3.getUsername(), newUser3.getPassword());
+        userBase.put(newUser4.getUsername(), newUser4.getPassword());
+    }
+
+    public void createFile() {
+        setUser();
+        try{
+            FileSaverJobj.SaveUser(userBase);
+            String str = FormatUser.formatUsers(userList);
+            Path path = Paths.get(StandardPaths.usersTXTPath);
+            File selectedFile = new File(String.valueOf(path));
+            WriteUser.writeString(selectedFile, str);
+        } catch (IOException e) {
+            signupLbl.setText(e.getLocalizedMessage());
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addChkBoxItems();
