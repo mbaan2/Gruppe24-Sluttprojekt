@@ -8,6 +8,7 @@
       16)     Include text file talking about the
               possible JUnit problem and how to fix                       HIGH PRIORITY
       18)     Remove the overwriting code                                 HIGH PRIORITY
+      19)     ADD Button to restore original data in case of crash        MEDIUM PRIORITY
       20)     Fix example data                                            HIGH PRIORITY
       21)     Save file to txt file-not-selected crash: FIX               HIGH PRIORITY
       23)     Tableview on thread                                         HIGH PRIORITY
