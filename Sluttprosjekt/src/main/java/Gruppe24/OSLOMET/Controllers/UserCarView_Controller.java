@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class UserCarView_Controller implements Initializable {
         } else {
             tableView.setVisible(true);
             Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(850);
+            stage.setWidth(925);
             stage.setHeight(470);
         }
     }

@@ -14,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,10 +29,13 @@ public class Summary_Controller implements Initializable {
     private Button btnNameCar;
 
     @FXML
-    private TextField lblCarName;
+    private TextField txtCarName;
 
     @FXML
     private Button btnBuildCar;
+
+    @FXML
+    private Button btnSaveCarToText;
 
     @FXML
     private Label lblCarComponents;
@@ -56,16 +58,16 @@ public class Summary_Controller implements Initializable {
         btnBuildCar.setLayoutX(130.0);
         carNameLbl.setVisible(true);
         btnNameCar.setVisible(true);
-        lblCarName.setVisible(true);
+        txtCarName.setVisible(true);
     }
 
     @FXML
     void btnNameCar(ActionEvent event) {
         // We need a function here that test if the name already exist
         // If we have time it would be could to add a random name generator
-        String nameCar = lblCarName.getText();
+        String nameCar = txtCarName.getText();
         if (!nameCar.equals("")) {
-            App.car.setName(lblCarName.getText());
+            App.car.setName(txtCarName.getText());
             btnNameCar.setDisable(true);
 
             List<NewCar> list = new ArrayList<>();
@@ -80,10 +82,10 @@ public class Summary_Controller implements Initializable {
                 //TO SAVE THE INITIAL LIST
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                saveCarToText();
                 summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
-            } catch (IOException ex) {
-                summaryLbl.setText("You didnt choose a file to save to!");
+                btnSaveCarToText.setVisible(true);
+            } catch (IOException e) {
+                summaryLbl.setText(e.getMessage());
             }
         } else{
             summaryLbl.setText("Please give the car a name");
@@ -91,24 +93,27 @@ public class Summary_Controller implements Initializable {
 
     }
 
-    void saveCarToText() {
-        lblCarName.setText("");
+    @FXML
+    void btnSaveCarToText(ActionEvent event) {
+        txtCarName.setText("");
         
         FileSaverTxt fs = new FileSaverTxt();
         try{
             fs.saveTxtFile(App.car);
+            btnSaveCarToText.setVisible(false);
         }catch (IOException e){
-            e.printStackTrace();
+            summaryLbl.setText("You did not select a valid file.");
         }
     }
 
 
     @FXML
     void btnToFuel(ActionEvent event) {
-        lblCarName.setVisible(false);
+        txtCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(259.0);
         btnBuildCar.setDisable(false);
+        btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetFuel");
         } catch (IOException e){
@@ -118,6 +123,11 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     void backBtn() {
+        txtCarName.setVisible(false);
+        btnNameCar.setVisible(false);
+        btnBuildCar.setLayoutX(259.0);
+        btnBuildCar.setDisable(false);
+        btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetAddons");
         } catch (IOException e){
@@ -129,10 +139,11 @@ public class Summary_Controller implements Initializable {
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
     void btnToWelcomScreen(ActionEvent event) {
-        lblCarName.setVisible(false);
+        txtCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(318.0);
         btnBuildCar.setDisable(false);
+        btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){

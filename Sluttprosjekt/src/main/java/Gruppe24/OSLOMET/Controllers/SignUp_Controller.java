@@ -6,6 +6,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
+import Gruppe24.OSLOMET.UserLogin.ImportUser;
 import Gruppe24.OSLOMET.UserLogin.User;
 import Gruppe24.OSLOMET.UserLogin.WriteUser;
 import javafx.application.Platform;
@@ -83,7 +84,7 @@ public class SignUp_Controller implements Initializable {
     public HashMap<String, String> userBase = new HashMap<>();
 
     @FXML
-    void signUp(ActionEvent event) {
+    void signUp(ActionEvent event) throws IOException {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
@@ -117,6 +118,7 @@ public class SignUp_Controller implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
             User newUser = new User(username, password, location, gender, secretQ, answer);
 
+            userList = ImportUser.readUser(StandardPaths.usersTXTPath);
             userBase = FileOpenerJobj.openFileHashMap();
 
             //Writing only the username and the password to a hashmap for logging in.
@@ -135,7 +137,7 @@ public class SignUp_Controller implements Initializable {
             }
 
             //Writing the list to a txt file for the user register
-            if(!userBase.containsKey(username)) {
+            if(!userList.contains(newUser)) {
                 try {
                     userList.add(newUser);
                     String str = FormatUser.formatUsers(userList);
@@ -147,8 +149,6 @@ public class SignUp_Controller implements Initializable {
                     alert.setContentText(e.getMessage());
                     alert.setHeaderText("File not found");
                 }
-            } else {
-                    usernameError.setText("Username already exists!");
             }
         } else {
             if(username.isEmpty()) {

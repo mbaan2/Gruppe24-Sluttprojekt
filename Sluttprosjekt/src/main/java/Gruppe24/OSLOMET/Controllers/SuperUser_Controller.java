@@ -44,7 +44,7 @@ public class SuperUser_Controller implements Initializable {
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
             stage.setWidth(600);
-            stage.setHeight(520);
+            stage.setHeight(550);
         });
     }
 
@@ -91,6 +91,9 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     private Button btnRestoreFiles;
+
+    @FXML
+    private Button btnLoadUsers;
 
     private void loadChoiceBoxStrings(){
         String chooseValue = "Choose a category";
@@ -302,8 +305,8 @@ public class SuperUser_Controller implements Initializable {
         SetColor_Controller restoreColor = new SetColor_Controller();
         restoreColor.createFile();
 
-        SetAddons_Controller restoreAddone = new SetAddons_Controller();
-        restoreAddone.createFile();
+        SetAddons_Controller restoreAddon = new SetAddons_Controller();
+        restoreAddon.createFile();
 
         superUserLbl.setText("Files are restored!");
     }
@@ -311,8 +314,17 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     void switchToCarView() {
         try {
-            App.setRoot("superUserView");
+            App.setRoot("SuperUserCarView");
         } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    void switchToUserView() {
+        try {
+            App.setRoot("Userlist");
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }

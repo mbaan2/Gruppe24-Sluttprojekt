@@ -3,6 +3,7 @@ package Gruppe24.OSLOMET.SuperUserClasses.TableView;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -115,6 +116,55 @@ public class Filter {
                 filterLbl = "Registry filtered by addons.";
                 if(filteredList.isEmpty()) {
                     filterLbl = "No car exists with that addon.";
+                }
+                break;
+        }
+        return filterLbl;
+    }
+
+    public static ObservableList<User> filterUser(String filterType, String filterText, ObservableList<User> userList, ObservableList<User> filteredList){
+        switch (filterType) {
+            case "Username":
+                filteredList = userList.stream().filter(User -> User.getUsername().toLowerCase().matches(String.format("%s%s%s", ".*", filterText.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                break;
+            case "Location":
+                filteredList = userList.stream().filter(User -> User.getLocation().toLowerCase().matches(String.format("%s%s%s", ".*", filterText.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                break;
+            case "Gender":
+                filteredList = userList.stream().filter(User -> User.getGender().toLowerCase().matches(String.format("%s%s%s", ".*", filterText.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                break;
+            case "Secret Question":
+                filteredList = userList.stream().filter(User -> User.getSecretQ().toLowerCase().matches(String.format("%s%s%s", ".*", filterText.toLowerCase(), ".*"))).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                break;
+        }
+        return filteredList;
+    }
+
+    public static String filterUserFeedback(String filterType, ObservableList<User> filteredList) {
+        String filterLbl = "";
+        switch (filterType) {
+            case "Username":
+                filterLbl = "Registry filtered by username.";
+                if(filteredList.isEmpty()) {
+                    filterLbl = "No user exists with that username";
+                }
+                break;
+            case "Location":
+                filterLbl = "Registry filtered by Location.";
+                if(filteredList.isEmpty()) {
+                    filterLbl = "No user exists with that location";
+                }
+                break;
+            case "Gender":
+                filterLbl = "Registry filtered by gender.";
+                if(filteredList.isEmpty()) {
+                    filterLbl = "No user exists with that gender";
+                }
+                break;
+            case "Secret Question":
+                filterLbl = "Registry filtered by secret question.";
+                if(filteredList.isEmpty()) {
+                    filterLbl = "No user exists with that secret question";
                 }
                 break;
         }

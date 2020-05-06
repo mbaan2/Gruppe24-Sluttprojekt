@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
-public class UserRegister_Controller implements Initializable {
+public class RetrievePassword_Controller implements Initializable {
 
     @FXML
     private AnchorPane registerPane;
@@ -54,6 +54,12 @@ public class UserRegister_Controller implements Initializable {
 
     @FXML
     private TableView<User> tableView;
+
+    @FXML
+    private Button nextBtn;
+
+    @FXML
+    private Label usernameLbl;
 
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
     HashMap<String, String> userBase = FileOpenerJobj.openFileHashMap();
@@ -87,6 +93,10 @@ public class UserRegister_Controller implements Initializable {
                 passwordBtn.setVisible(true);
                 choiceBox.setValue(secretQ);
                 newUserTable.setNotVisible(tableView);
+                nextBtn.setLayoutY(192);
+                usernameLbl.setLayoutY(139);
+                usernameError.setLayoutY(160);
+                usernameTxt.setLayoutY(156);
             }
             if (usernameTxt.getText().equals("")) {
                 usernameError.setText("Enter a username!");
@@ -124,7 +134,10 @@ public class UserRegister_Controller implements Initializable {
                     // Adding values to the tableview
                     newUserTable.addElement(newUser);
                     newUserTable.setVisible(tableView);
-
+                    nextBtn.setLayoutY(268);
+                    usernameTxt.setLayoutY(239);
+                    usernameLbl.setLayoutY(221);
+                    usernameError.setLayoutY(244);
                     setNotVisible();
                     return;
                 }

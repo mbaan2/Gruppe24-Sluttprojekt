@@ -17,10 +17,11 @@
       <Button layoutX="25.0" layoutY="373.0" onAction="#btnToWelcomScreen" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
       <Button layoutX="259.0" layoutY="373.0" onAction="#btnToFuel" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
       <Button fx:id="btnBuildCar" layoutX="259.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
-      <TextField fx:id="lblCarName" layoutX="225.0" layoutY="324.0" prefHeight="25.0" prefWidth="151.0" promptText="Give your car a name" visible="false" />
-      <Button fx:id="btnNameCar" layoutX="387.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnNameCar" style="-fx-background-color: #17252a;" text="Save the Car" textFill="#def2f1" visible="false" />
+      <TextField fx:id="txtCarName" layoutX="225.0" layoutY="324.0" prefHeight="25.0" prefWidth="151.0" promptText="Give your car a name" visible="false" />
+      <Button fx:id="btnNameCar" layoutX="387.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnNameCar" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #17252a;" text="Save the car" textFill="#def2f1" visible="false" />
+      <Button fx:id="btnSaveCarToText" layoutX="470.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnSaveCarToText" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #17252a;" text="Save to own file" textFill="#def2f1" visible="false" />
       <Button contentDisplay="CENTER" graphicTextGap="0.0" layoutX="25.0" layoutY="324.0" onAction="#backBtn" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
       <Label fx:id="carNameLbl" layoutX="225.0" layoutY="306.0" text="Enter car name:" />
-      <Label fx:id="summaryLbl" layoutX="373.0" layoutY="355.0" prefHeight="43.0" prefWidth="208.0" wrapText="true" />
+      <Label fx:id="summaryLbl" layoutX="387.0" layoutY="355.0" prefHeight="43.0" prefWidth="194.0" wrapText="true" />
    </children>
 </AnchorPane>

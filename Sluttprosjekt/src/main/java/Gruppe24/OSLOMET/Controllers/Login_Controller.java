@@ -43,7 +43,7 @@ public class Login_Controller implements Initializable {
     @FXML
     void forgotPassword(){
         try {
-            App.setRoot("userRegister");
+            App.setRoot("RetrievePassword");
         }
         catch (IOException e){
             System.err.println(e.getMessage());
@@ -59,7 +59,7 @@ public class Login_Controller implements Initializable {
 
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             try {
-                App.setRoot("superUser");
+                App.setRoot("SuperUser");
             }
             catch (IOException e){
                 System.err.println(e.getMessage());
@@ -89,7 +89,7 @@ public class Login_Controller implements Initializable {
     @FXML
     void signUp() {
         try{
-            App.setRoot("signup");
+            App.setRoot("Signup");
         }
         catch (IOException e){
             System.err.println(e.getMessage());
