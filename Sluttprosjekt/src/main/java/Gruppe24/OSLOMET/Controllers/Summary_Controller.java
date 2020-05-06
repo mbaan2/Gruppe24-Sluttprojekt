@@ -1,6 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.Car.CarCategory;
+import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -44,6 +46,8 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     private Label summaryLbl;
+
+    List<NewCar> carList = new ArrayList<>();
 
     @FXML
     void btnBuildCar(ActionEvent event) {
@@ -157,6 +161,67 @@ public class Summary_Controller implements Initializable {
             App.setRoot("login");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        }
+    }
+
+    public void setCars() {
+        NewCar car1 = new NewCar();
+        NewCar car2 = new NewCar();
+        NewCar car3 = new NewCar();
+        NewCar car4 = new NewCar();
+
+        car1.setUser("123");
+        car1.setName("GreatCar");
+        car1.setFuel(new Carparts("Diesel", 20000));
+        car1.setWheels(new Carparts("Medium wheels", 2500));
+        car1.setColor(new Carparts("Blue", 2500));
+        CarCategory addons = new CarCategory("Addons");
+        addons.add(new Carparts("Spoiler", 4000));
+        addons.add(new Carparts("Subwoofer", 7500));
+        car1.setAddons(addons);
+
+        car2.setUser("123");
+        car2.setName("BestCar");
+        car2.setFuel(new Carparts("Gasoline", 15000));
+        car2.setWheels(new Carparts("Big wheels", 5000));
+        car2.setColor(new Carparts("Black", 0));
+        CarCategory addons2 = new CarCategory("Addons");
+        addons2.add(new Carparts("Spoiler", 4000));
+        addons2.add(new Carparts("Subwoofer", 7500));
+        addons2.add(new Carparts("GPS", 5000));
+        car2.setAddons(addons2);
+
+        car3.setUser("234");
+        car3.setName("ZoomZoom");
+        car3.setFuel(new Carparts("Electric", 35000));
+        car3.setWheels(new Carparts("Medium wheels", 2500));
+        car3.setColor(new Carparts("Red", 5000));
+        CarCategory addons3 = new CarCategory("Addons");
+        addons3.add(new Carparts("Spoiler", 4000));
+        addons3.add(new Carparts("GPS", 5000));
+        car3.setAddons(addons3);
+
+        car4.setUser("Aaa");
+        car4.setName("ChooChoo");
+        car4.setFuel(new Carparts("Electric", 35000));
+        car4.setWheels(new Carparts("Small wheels", 2500));
+        car4.setColor(new Carparts("Yellow", 2500));
+        CarCategory addons4 = new CarCategory("Addons");
+        addons4.add(new Carparts("Subwoofer", 7500));
+        car4.setAddons(addons4);
+
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+        carList.add(car4);
+    }
+
+    public void createFile() {
+        setCars();
+        try {
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
+        } catch (IOException e) {
+            System.err.println(e.getLocalizedMessage());
         }
     }
 

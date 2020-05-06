@@ -23,11 +23,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
@@ -43,7 +43,7 @@ public class SuperUser_Controller implements Initializable {
         loadChoiceBoxStrings();
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
-            stage.setWidth(600);
+            stage.setWidth(650);
             stage.setHeight(550);
         });
         superuserInfo.setShowDelay(Duration.millis(100.0));
@@ -89,6 +89,9 @@ public class SuperUser_Controller implements Initializable {
     private Button backBtn;
 
     @FXML
+    private Button btnLoadCars;
+
+    @FXML
     private Button loadBtn;
 
     @FXML
@@ -99,6 +102,9 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     private Button btnRestoreUsers;
+
+    @FXML
+    private Button btnRestoreCars;
 
     @FXML
     private Tooltip superuserInfo;
@@ -139,20 +145,22 @@ public class SuperUser_Controller implements Initializable {
 
     public void loadCategory(){
         carCategory = LoadCategory.loadCategory(chbCategory.getValue());
-        createButtons();
+        createButtonsThread();
     }
 
-    public void createButtons(){
+    public void createButtonsThread(){
         task = new LoadingValuesThread(carCategory, selectedCategoryButtons);
         task.setOnSucceeded(this::threadDone);
         task.setOnFailed(this::threadFailed);
         Thread th = new Thread(task);
         th.setDaemon(true);
         backBtn.setDisable(true);
-        loadBtn.setDisable(true);
+        btnLoadCars.setDisable(true);
         btnRestoreFiles.setDisable(true);
         btnLoadUsers.setDisable(true);
         btnRestoreUsers.setDisable(true);
+        btnRestoreCars.setDisable(true);
+        loadBtn.setDisable(true);
         setDisableBtn();
         th.start();
     }
@@ -185,10 +193,12 @@ public class SuperUser_Controller implements Initializable {
         removeBtn.setDisable(false);
         editBtn.setDisable(false);
         backBtn.setDisable(false);
-        loadBtn.setDisable(false);
+        btnLoadCars.setDisable(false);
         btnRestoreFiles.setDisable(false);
         btnLoadUsers.setDisable(false);
         btnRestoreUsers.setDisable(false);
+        btnRestoreCars.setDisable(false);
+        loadBtn.setDisable(false);
     }
 
     @FXML
@@ -292,6 +302,8 @@ public class SuperUser_Controller implements Initializable {
                 carCategory.add(newCarPart);
                 SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
                 loadCategory();
+                txtName.setText("");
+                txtCost.setText("");
             } else {
                 superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
             }
@@ -312,27 +324,68 @@ public class SuperUser_Controller implements Initializable {
 
     @FXML
     void btnRestoreFiles(ActionEvent event) {
-        SetFuel_Controller restoreFuel = new SetFuel_Controller();
-        restoreFuel.createFile();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Users");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore users?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
 
-        SetWheels_Controller restoreWheels = new SetWheels_Controller();
-        restoreWheels.createFile();
-
-        SetColor_Controller restoreColor = new SetColor_Controller();
-        restoreColor.createFile();
-
-        SetAddons_Controller restoreAddon = new SetAddons_Controller();
-        restoreAddon.createFile();
-
-        superUserLbl.setText("Files are restored!");
+        if(result.get() == yesBtn) {
+            SetFuel_Controller restoreFuel = new SetFuel_Controller();
+            restoreFuel.createFile();
+            SetWheels_Controller restoreWheels = new SetWheels_Controller();
+            restoreWheels.createFile();
+            SetColor_Controller restoreColor = new SetColor_Controller();
+            restoreColor.createFile();
+            SetAddons_Controller restoreAddon = new SetAddons_Controller();
+            restoreAddon.createFile();
+            superUserLbl.setText("Files are restored!");
+        } else {
+            superUserLbl.setText("Process cancelled, carparts were not restored.");
+        }
     }
 
     @FXML
     void btnRestoreUsers(ActionEvent event) {
-        SignUp_Controller restoreUser = new SignUp_Controller();
-        restoreUser.createFile();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Users");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore users?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
 
-        superUserLbl.setText("Users are restored!");
+        if(result.get() == yesBtn) {
+            SignUp_Controller restoreUser = new SignUp_Controller();
+            restoreUser.createFile();
+            superUserLbl.setText("Users are restored!");
+        } else {
+            superUserLbl.setText("Process cancelled, users were not restored.");
+        }
+    }
+
+    @FXML
+    void btnRestoreCars(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Users");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore users?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.get() == yesBtn) {
+            Summary_Controller restoreCars = new Summary_Controller();
+            restoreCars.createFile();
+            superUserLbl.setText("Cars are restored!");
+        } else {
+            superUserLbl.setText("Process cancelled, cars were not restored.");
+        }
     }
 
     @FXML
@@ -352,5 +405,4 @@ public class SuperUser_Controller implements Initializable {
             System.err.println(e.getMessage());
         }
     }
-
 }
