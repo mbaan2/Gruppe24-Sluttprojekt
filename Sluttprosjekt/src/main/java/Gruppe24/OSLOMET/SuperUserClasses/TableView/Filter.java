@@ -1,5 +1,7 @@
 package Gruppe24.OSLOMET.SuperUserClasses.TableView;
 
+import Gruppe24.OSLOMET.Car.CarCategory;
+import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -64,8 +66,9 @@ public class Filter {
             case "Addons":
                 for(int i=0; i < carList.size(); i++){
                     for (int j =0; j < carList.get(i).getAddons().size(); j++){
-                        if(filteredText.toLowerCase().equals(carList.get(i).getAddons().getElement(j).getName().toLowerCase())){
+                        if(carList.get(i).getAddons().getElement(j).getName().toLowerCase().contains(filteredText.toLowerCase())){
                             filteredList.add(carList.get(i));
+                            break;
                         }
                     }
                 }

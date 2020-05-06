@@ -75,6 +75,7 @@ public class SuperUserCarView_Controller implements Initializable {
             filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
             filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
+            tableView.refresh();
         }
     }
 
