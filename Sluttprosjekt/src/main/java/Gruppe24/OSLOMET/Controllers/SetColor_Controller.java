@@ -29,9 +29,9 @@ public class SetColor_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setColors();
-        createFile();
-        //openFile();
+        //createFile();
+        openFile();
+        createButtons();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) colorVbox.getScene().getWindow();
@@ -64,8 +64,11 @@ public class SetColor_Controller implements Initializable {
 
     public void openFile(){
         Path path = Paths.get(StandardPaths.colorPath);
-        colorOptions = FileOpenerJobj.openFile(path);
-        createButtons();
+        try {
+            colorOptions = FileOpenerJobj.openFile(path);
+        } catch (ClassNotFoundException | IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -77,8 +80,7 @@ public class SetColor_Controller implements Initializable {
         }
         try{
             App.setRoot("SetAddons");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -87,8 +89,7 @@ public class SetColor_Controller implements Initializable {
     void backBtn() {
         try{
             App.setRoot("SetWheels");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -109,11 +110,10 @@ public class SetColor_Controller implements Initializable {
         colorOptions.add(red);
         colorOptions.add(blue);
         colorOptions.add(yellow);
-
-        createButtons();
     }
 
     public void createFile(){
+        setColors();
         Path filsti = Paths.get(StandardPaths.colorPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, colorOptions);

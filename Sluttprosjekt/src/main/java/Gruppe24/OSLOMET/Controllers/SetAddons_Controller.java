@@ -25,14 +25,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SetAddons_Controller implements Initializable {
-    List<Carparts> addOnOptions = new ArrayList<>();
+    static List<Carparts> addOnOptions = new ArrayList<>();
     List<CheckBox> addOnButtons = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setAddOns();
-        createFile();
-        //openFile();
+        //createFile();
+        openFile();
+        createButtons();
+
 
         Platform.runLater(() -> {
             Stage stage = (Stage) addonsVbox.getScene().getWindow();
@@ -64,8 +65,30 @@ public class SetAddons_Controller implements Initializable {
 
     public void openFile(){
         Path path = Paths.get(StandardPaths.addonPath);
-        addOnOptions = FileOpenerJobj.openFile(path);
-        createButtons();
+        try {
+            addOnOptions = FileOpenerJobj.openFile(path);
+        } catch (ClassNotFoundException | IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void btnToSummary(ActionEvent actionEvent){
+        CarCategory addons = new CarCategory("addons");
+        addons.clear();
+
+        for(int i = 0; i < addOnOptions.size(); i++){
+            if(addOnButtons.get(i).isSelected()){
+                addons.add(addOnOptions.get(i));
+            }
+        }
+        App.car.setAddons(addons);
+
+        try{
+            App.setRoot("Summary");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -90,36 +113,15 @@ public class SetAddons_Controller implements Initializable {
         addOnOptions.add(addOneGPS);
         addOnOptions.add(spoiler);
         addOnOptions.add(subwoofer);
-
-        createButtons();
     }
 
     public void createFile(){
+        setAddOns();
         Path filsti = Paths.get(StandardPaths.addonPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void btnToSummary(ActionEvent actionEvent){
-        CarCategory addons = new CarCategory("addons");
-        addons.clear();
-
-        for(int i = 0; i < addOnOptions.size(); i++){
-            if(addOnButtons.get(i).isSelected()){
-                addons.add(addOnOptions.get(i));
-            }
-        }
-        App.car.setAddons(addons);
-
-        try{
-            App.setRoot("Summary");
-        }
-        catch (IOException e){
-            System.err.println(e.getMessage());
         }
     }
 }

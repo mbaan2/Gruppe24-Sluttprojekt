@@ -95,16 +95,22 @@ public class TableViewCreation {
             name.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
 
             ObservableList<String> fuelList = FXCollections.observableArrayList();
-            List<Carparts> fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
+            List<Carparts> fuelOptions = new ArrayList<>();
+            try {
+               fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
+            } catch (ClassNotFoundException | IOException e) {
+                System.err.println(e.getMessage());
+            }
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + "kr)"));
             fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
+            List<Carparts> finalFuelOptions = fuelOptions;
             fuel.setOnEditCommit(event -> {
-                for(int j = 0; j < fuelOptions.size(); j++){
-                    if(event.getNewValue().equals(fuelOptions.get(j).getName())) {
+                for(int j = 0; j < finalFuelOptions.size(); j++){
+                    if(event.getNewValue().equals(finalFuelOptions.get(j).getName())) {
                         event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getFuel().getCost());
-                        event.getRowValue().setFuel(fuelOptions.get(j));
+                        event.getRowValue().setFuel(finalFuelOptions.get(j));
                         event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getFuel().getCost());
                     }
                 }
@@ -114,16 +120,22 @@ public class TableViewCreation {
 
 
             ObservableList<String> wheelList = FXCollections.observableArrayList();
-            List<Carparts> wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
+            List<Carparts> wheelOptions = new ArrayList<>();
+            try {
+                wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
+            } catch (ClassNotFoundException | IOException e) {
+                System.err.println(e.getMessage());
+            }
             wheelOptions.forEach(car -> wheelList.add(car.getName()));
 
             wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + "kr)"));
             wheels.setCellFactory(ComboBoxTableCell.forTableColumn(wheelList));
+            List<Carparts> finalWheelOptions = wheelOptions;
             wheels.setOnEditCommit(event -> {
-                for(int j = 0; j < wheelOptions.size(); j++){
-                    if(event.getNewValue().equals(wheelOptions.get(j).getName())) {
+                for(int j = 0; j < finalWheelOptions.size(); j++){
+                    if(event.getNewValue().equals(finalWheelOptions.get(j).getName())) {
                         event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getWheels().getCost());
-                        event.getRowValue().setWheels(wheelOptions.get(j));
+                        event.getRowValue().setWheels(finalWheelOptions.get(j));
                         event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getWheels().getCost());
                     }
                 }
@@ -132,16 +144,22 @@ public class TableViewCreation {
             });
 
             ObservableList<String> colorList = FXCollections.observableArrayList();
-            List<Carparts> colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
+            List<Carparts> colorOptions = new ArrayList<>();
+            try {
+                colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
+            } catch (ClassNotFoundException | IOException e) {
+                System.err.println(e.getMessage());
+            }
             colorOptions.forEach(car -> colorList.add(car.getName()));
 
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + "kr)"));
             color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
+            List<Carparts> finalColorOptions = colorOptions;
             color.setOnEditCommit(event -> {
-                for(int j = 0; j < colorOptions.size(); j++){
-                    if(event.getNewValue().equals(colorOptions.get(j).getName())) {
+                for(int j = 0; j < finalColorOptions.size(); j++){
+                    if(event.getNewValue().equals(finalColorOptions.get(j).getName())) {
                         event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getColor().getCost());
-                        event.getRowValue().setColor(colorOptions.get(j));
+                        event.getRowValue().setColor(finalColorOptions.get(j));
                         event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getColor().getCost());
                     }
                 }
@@ -249,7 +267,11 @@ public class TableViewCreation {
 
     public void openFile() throws IOException{
         Path path = Paths.get(StandardPaths.addonPath);
-        addonSupUser = FileOpenerJobj.openFile(path);
+        try {
+            addonSupUser = FileOpenerJobj.openFile(path);
+        } catch (ClassNotFoundException | IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     private void btnSaveChanges(){

@@ -29,9 +29,9 @@ public class SetWheels_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setWheels();
-        createFile();
-        //openFile();
+        //createFile();
+        openFile();
+        createButtons();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) wheelsVbox.getScene().getWindow();
@@ -64,8 +64,11 @@ public class SetWheels_Controller implements Initializable {
 
     public void openFile(){
         Path path = Paths.get(StandardPaths.wheelPath);
-        wheelOptions = FileOpenerJobj.openFile(path);
-        createButtons();
+        try {
+            wheelOptions = FileOpenerJobj.openFile(path);
+        } catch (ClassNotFoundException | IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -77,8 +80,7 @@ public class SetWheels_Controller implements Initializable {
         }
         try{
             App.setRoot("SetColors");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -87,8 +89,7 @@ public class SetWheels_Controller implements Initializable {
     void backBtn() {
         try{
             App.setRoot("SetFuel");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -105,11 +106,10 @@ public class SetWheels_Controller implements Initializable {
         wheelOptions.add(wheelsBig);
         wheelOptions.add(wheelsMedium);
         wheelOptions.add(wheelsSmall);
-
-        createButtons();
     }
 
     public void createFile(){
+        setWheels();
         Path filsti = Paths.get(StandardPaths.wheelPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, wheelOptions);

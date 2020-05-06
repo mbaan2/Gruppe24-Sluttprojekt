@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,7 +22,9 @@ public class WelcomeScreen_Controller implements Initializable {
     void btnStartBuilding(ActionEvent event) {
         try {
             App.setRoot("SetFuel");
-        } catch (IOException e) {
+        } catch (LoadException e){
+            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
+        }catch (IOException e) {
             e.printStackTrace();
         }
 

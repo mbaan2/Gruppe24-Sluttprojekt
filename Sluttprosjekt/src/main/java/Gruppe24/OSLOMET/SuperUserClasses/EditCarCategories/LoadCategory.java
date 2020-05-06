@@ -4,6 +4,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,23 +21,36 @@ public class LoadCategory {
         switch (value) {
             case fuelCHB:{
                 Path path = Paths.get(StandardPaths.fuelPath);
-                carCategory = FileOpenerJobj.openFile(path);
+                try {
+                    carCategory = FileOpenerJobj.openFile(path);
+                } catch (ClassNotFoundException | IOException e) {
+                    System.err.println(e.getMessage());
+                }
                 break;
             }
             case wheelsCHB: {
                 Path path = Paths.get(StandardPaths.wheelPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                break;
+                try {
+                    carCategory = FileOpenerJobj.openFile(path);
+                } catch (ClassNotFoundException | IOException e) {
+                    System.err.println(e.getMessage());
+                }                break;
             }
             case colorCHB: {
                 Path path = Paths.get(StandardPaths.colorPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                break;
+                try {
+                    carCategory = FileOpenerJobj.openFile(path);
+                } catch (ClassNotFoundException | IOException e) {
+                    System.err.println(e.getMessage());
+                }                break;
             }
             case addOnesCHB: {
                 Path path = Paths.get(StandardPaths.addonPath);
-                carCategory = FileOpenerJobj.openFile(path);
-                break;
+                try {
+                    carCategory = FileOpenerJobj.openFile(path);
+                } catch (ClassNotFoundException | IOException e) {
+                    System.err.println(e.getMessage());
+                }                break;
             }
         }
 

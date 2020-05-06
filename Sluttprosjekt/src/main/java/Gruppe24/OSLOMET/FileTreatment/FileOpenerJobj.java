@@ -14,15 +14,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileOpenerJobj {
-    public static List<Carparts> openFile(Path path) {
+    public static List<Carparts> openFile(Path path) throws ClassNotFoundException, IOException {
         List<Carparts> carParts = new ArrayList<>();
 
         try (   InputStream in = Files.newInputStream(path);
                 ObjectInputStream oin = new ObjectInputStream(in))
         {
             carParts = (List<Carparts>) oin.readObject();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ClassNotFoundException();
+        } catch (IOException e){
+            throw new IOException();
         }
         return carParts;
     }

@@ -89,6 +89,9 @@ public class SuperUser_Controller implements Initializable {
     @FXML
     private Button loadBtn;
 
+    @FXML
+    private Button btnRestoreFiles;
+
     private void loadChoiceBoxStrings(){
         String chooseValue = "Choose a category";
         String fuelCHB = "Fuel type";
@@ -136,6 +139,7 @@ public class SuperUser_Controller implements Initializable {
         th.setDaemon(true);
         backBtn.setDisable(true);
         loadBtn.setDisable(true);
+        btnRestoreFiles.setDisable(true);
         setDisableBtn();
         th.start();
     }
@@ -169,6 +173,7 @@ public class SuperUser_Controller implements Initializable {
         editBtn.setDisable(false);
         backBtn.setDisable(false);
         loadBtn.setDisable(false);
+        btnRestoreFiles.setDisable(false);
     }
 
     @FXML
@@ -284,7 +289,23 @@ public class SuperUser_Controller implements Initializable {
         } catch (IOException e){
             System.err.println(e.getMessage());
         }
+    }
 
+    @FXML
+    void btnRestoreFiles(ActionEvent event) {
+        SetFuel_Controller restoreFuel = new SetFuel_Controller();
+        restoreFuel.createFile();
+
+        SetWheels_Controller restoreWheels = new SetWheels_Controller();
+        restoreWheels.createFile();
+
+        SetColor_Controller restoreColor = new SetColor_Controller();
+        restoreColor.createFile();
+
+        SetAddons_Controller restoreAddone = new SetAddons_Controller();
+        restoreAddone.createFile();
+
+        superUserLbl.setText("Files are restored!");
     }
 
     @FXML

@@ -18,6 +18,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -30,9 +31,9 @@ public class SetFuel_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setFuel();
-        createFile();
-        //openFile();
+        //createFile();
+        openFile();
+        createButtons();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) fuelVbox.getScene().getWindow();
@@ -65,8 +66,11 @@ public class SetFuel_Controller implements Initializable {
 
     public void openFile(){
         Path path = Paths.get(StandardPaths.fuelPath);
-        fuelOptions = FileOpenerJobj.openFile(path);
-        createButtons();
+        try {
+            fuelOptions = FileOpenerJobj.openFile(path);
+        } catch (ClassNotFoundException | IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -78,8 +82,7 @@ public class SetFuel_Controller implements Initializable {
         }
         try{
             App.setRoot("SetWheels");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -88,8 +91,7 @@ public class SetFuel_Controller implements Initializable {
     void backBtn(){
         try{
             App.setRoot("WelcomeScreen");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
@@ -106,11 +108,10 @@ public class SetFuel_Controller implements Initializable {
         fuelOptions.add(gasoline);
         fuelOptions.add(diesel);
         fuelOptions.add(electric);
-
-        createButtons();
     }
 
     public void createFile(){
+        setFuel();
         Path filsti = Paths.get(StandardPaths.fuelPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
