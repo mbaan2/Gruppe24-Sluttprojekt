@@ -7,17 +7,11 @@
       15)     Test with Netbeans and Eclipse                              HIGH PRIORITY
       16)     Include text file talking about the
               possible JUnit problem and how to fix                       HIGH PRIORITY
-      18)     Remove the overwriting code                                 HIGH PRIORITY
       19)     ADD Button to restore original data in case of crash        MEDIUM PRIORITY
       20)     Fix example data                                            HIGH PRIORITY
-      21)     Save file to txt file-not-selected crash: FIX               HIGH PRIORITY
       23)     Tableview on thread                                         HIGH PRIORITY
       24)     Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
-      25)     ValidName.functions if() statements in the program
-              dont have a else function (feedback to user yet)            HIGH PRIORITY
       26)     Saving and resaving of a car check if car already exist?    HIGH PRIORITY
-
-
       9)      Undo button per car                                         LOW PRIORITY
       19)     Option to edit a specific car                               LOW PRIORITY        Mark
 */
@@ -39,6 +33,10 @@
       14)     Total cost column at the end                                done
       22)     Feedback to the user on sout, but not on GUI. FIX           done
       17)     Add to login screen admin/admin                             done
+      25)     ValidName.functions if() statements in the program
+              dont have a else function (feedback to user yet)            done
+      21)     Save file to txt file-not-selected crash: FIX               done
+      18)     Remove the overwriting code                                 done (the overwriting code is now in buttons @ superuser)
 
 
  */
