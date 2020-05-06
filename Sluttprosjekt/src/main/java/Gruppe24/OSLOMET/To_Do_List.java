@@ -15,6 +15,7 @@
       24)     Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
       25)     ValidName.functions if() statements in the program
               dont have a else function (feedback to user yet)            HIGH PRIORITY
+      26)     Saving and resaving of a car check if car already exist?    HIGH PRIORITY
 
 
       9)      Undo button per car                                         LOW PRIORITY
