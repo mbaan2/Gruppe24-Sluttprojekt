@@ -83,7 +83,7 @@ public class SignUp_Controller implements Initializable {
     public HashMap<String, String> userBase = new HashMap<>();
 
     @FXML
-    void signUp(ActionEvent event) throws IOException {
+    void signUp(ActionEvent event) {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
@@ -125,7 +125,7 @@ public class SignUp_Controller implements Initializable {
                     userBase.put(newUser.getUsername(), newUser.getPassword());
                     FileSaverJobj.SaveUser(userBase);
                     signupLbl.setText("User created!");
-                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setHeaderText("File not found");
                     alert.setContentText(e.getMessage());
@@ -142,7 +142,7 @@ public class SignUp_Controller implements Initializable {
                     Path path = Paths.get(StandardPaths.usersTXTPath);
                     File selectedFile = new File(String.valueOf(path));
                     WriteUser.writeString(selectedFile, str);
-                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText(e.getMessage());
                     alert.setHeaderText("File not found");
@@ -185,8 +185,12 @@ public class SignUp_Controller implements Initializable {
     }
 
     @FXML
-    void loginBtn(ActionEvent event) throws IOException {
-        App.setRoot("login");
+    void loginBtn(ActionEvent event) {
+        try {
+            App.setRoot("login");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

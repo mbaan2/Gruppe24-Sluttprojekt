@@ -18,18 +18,31 @@ public class WelcomeScreen_Controller implements Initializable {
     private VBox welcomeVbox;
 
     @FXML
-    void btnStartBuilding(ActionEvent event) throws IOException{
-        App.setRoot("SetFuel");
+    void btnStartBuilding(ActionEvent event) {
+        try {
+            App.setRoot("SetFuel");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
-    void btnLoadCars(ActionEvent event) throws IOException{
-        App.setRoot("UserCarView");
+    void btnLoadCars(ActionEvent event) {
+        try {
+            App.setRoot("UserCarView");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    void logoutBtn() throws IOException {
-        App.setRoot("login");
+    void logoutBtn() {
+        try {
+            App.setRoot("login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

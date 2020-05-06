@@ -51,29 +51,38 @@ public class UserCarView_Controller implements Initializable {
     }
 
     @FXML
-    void goBack() throws IOException {
-        App.setRoot("WelcomeScreen");
+    void goBack() {
+        try {
+            App.setRoot("WelcomeScreen");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
-    void logout() throws IOException {
-        App.setRoot("Login");
+    void logout() {
+        try {
+            App.setRoot("Login");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
-    void showCars() throws IOException {
-        ArrayList<NewCar> list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-        carList.addAll(list2);
+    void showCars() {
+        ArrayList<NewCar> list2;
+        try {
+            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+            carList.addAll(list2);
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         tableView.setVisible(false);
-        try {
-            showCars();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        showCars();
         String username = App.car.getUser();
         usersCarList =  Filter.usernameFilter(username, carList);
         int maxAntallAddons = maxAddons();

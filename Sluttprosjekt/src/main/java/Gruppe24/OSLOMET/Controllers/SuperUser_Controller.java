@@ -4,7 +4,9 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.DataValidation.ValidPrice;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.EditCarpart;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadCategory;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.RemoveCarpart;
@@ -276,13 +278,22 @@ public class SuperUser_Controller implements Initializable {
     }
 
     @FXML
-    void btnBackToLogin() throws IOException {
-        App.setRoot("login");
+    void btnBackToLogin() {
+        try {
+            App.setRoot("login");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     @FXML
-    void switchToCarView() throws IOException {
-        App.setRoot("superUserView");
+    void switchToCarView() {
+        try {
+            App.setRoot("superUserView");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
 }

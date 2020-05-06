@@ -9,10 +9,9 @@ public class WriteUser {
     public static void writeString(File selectedFile, String str) throws IOException {
         try {
             FileWriter fw = new FileWriter(selectedFile, true);
-
             fw.write(str);
             fw.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new IOException("Failed to write on this file");
         }
     }

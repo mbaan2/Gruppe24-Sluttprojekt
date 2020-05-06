@@ -41,19 +41,29 @@ public class Login_Controller implements Initializable {
     HashMap<String, String> userBase;
 
     @FXML
-    void forgotPassword() throws IOException {
-        App.setRoot("userRegister");
+    void forgotPassword(){
+        try {
+            App.setRoot("userRegister");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
-    void loginBtn(ActionEvent event) throws IOException {
+    void loginBtn(ActionEvent event) {
         passwordError.setText("");
         usernameError.setText("");
 
         userBase = FileOpenerJobj.openFileHashMap();
 
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
-            App.setRoot("superUser");
+            try {
+                App.setRoot("superUser");
+            }
+            catch (IOException e){
+                System.err.println(e.getMessage());
+            }
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                 App.car.setUser(usernameTxt.getText());
@@ -77,12 +87,22 @@ public class Login_Controller implements Initializable {
     }
 
     @FXML
-    void signUp() throws IOException {
-        App.setRoot("signup");
+    void signUp() {
+        try{
+            App.setRoot("signup");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
-    private void login() throws IOException {
-        App.setRoot("WelcomeScreen");
+    private void login() {
+        try{
+            App.setRoot("WelcomeScreen");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

@@ -52,8 +52,12 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     @FXML
-    void btnBack(ActionEvent event) throws IOException {
-        App.setRoot("superUser");
+    void btnBack(ActionEvent event) {
+        try {
+            App.setRoot("superUser");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML

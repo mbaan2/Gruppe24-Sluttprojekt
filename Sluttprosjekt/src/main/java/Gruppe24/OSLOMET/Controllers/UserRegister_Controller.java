@@ -61,11 +61,11 @@ public class UserRegister_Controller implements Initializable {
     ObservableList<User> userList = FXCollections.observableArrayList();
 
     @FXML
-    void nextButton(ActionEvent event) throws IOException {
+    void nextButton(ActionEvent event) {
         try {
             Path path = Paths.get(StandardPaths.usersTXTPath);
             userList = ImportUser.readUser(path.toString());
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("File not found");
             alert.setContentText(e.getMessage());
@@ -97,11 +97,11 @@ public class UserRegister_Controller implements Initializable {
     }
 
     @FXML
-    void retrievePwBtn(ActionEvent event) throws IOException {
+    void retrievePwBtn(ActionEvent event) {
         try {
             Path path = Paths.get(StandardPaths.usersTXTPath);
             userList = ImportUser.readUser(path.toString());
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("File not found!");
             alert.setContentText(e.getMessage());
@@ -141,8 +141,13 @@ public class UserRegister_Controller implements Initializable {
 
 
     @FXML
-    void loginBtn() throws IOException {
-        App.setRoot("login");
+    void loginBtn() {
+        try {
+            App.setRoot("login");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     private void addChkBoxItems() {

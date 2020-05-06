@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,7 +60,7 @@ public class Summary_Controller implements Initializable {
     }
 
     @FXML
-    void btnNameCar(ActionEvent event) throws IOException {
+    void btnNameCar(ActionEvent event) {
         // We need a function here that test if the name already exist
         // If we have time it would be could to add a random name generator
         String nameCar = lblCarName.getText();
@@ -67,8 +68,13 @@ public class Summary_Controller implements Initializable {
             App.car.setName(lblCarName.getText());
             btnNameCar.setDisable(true);
 
-            List<NewCar> list;
-            list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+            List<NewCar> list = new ArrayList<>();
+            try{
+                list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+            }
+            catch (IOException e){
+                System.err.println(e.getMessage());
+            }
 
             try {
                 //TO SAVE THE INITIAL LIST
@@ -98,33 +104,50 @@ public class Summary_Controller implements Initializable {
 
 
     @FXML
-    void btnToFuel(ActionEvent event) throws IOException {
+    void btnToFuel(ActionEvent event) {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(259.0);
         btnBuildCar.setDisable(false);
-        App.setRoot("SetFuel");
+        try{
+            App.setRoot("SetFuel");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
-    void backBtn() throws IOException{
-        App.setRoot("SetAddons");
+    void backBtn() {
+        try{
+            App.setRoot("SetAddons");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
 
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
-    void btnToWelcomScreen(ActionEvent event) throws IOException {
+    void btnToWelcomScreen(ActionEvent event) {
         lblCarName.setVisible(false);
         btnNameCar.setVisible(false);
         btnBuildCar.setLayoutX(318.0);
         btnBuildCar.setDisable(false);
-        App.setRoot("WelcomeScreen");
+        try{
+            App.setRoot("WelcomeScreen");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     @FXML
-    void logoutBtn(ActionEvent event) throws IOException {
-        App.setRoot("login");
+    void logoutBtn(ActionEvent event){
+        try{
+            App.setRoot("login");
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

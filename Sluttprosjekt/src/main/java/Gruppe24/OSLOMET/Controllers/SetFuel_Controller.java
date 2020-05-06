@@ -70,19 +70,28 @@ public class SetFuel_Controller implements Initializable {
     }
 
     @FXML
-    void btnToWheels(ActionEvent event) throws IOException{
+    void btnToWheels(ActionEvent event) {
         for(int i = 0; i<fuelOptions.size();i++){
             if(fuelButtons.get(i).isSelected()){
                 App.car.setFuel(fuelOptions.get(i));
             }
         }
-
-        App.setRoot("SetWheels");
+        try{
+            App.setRoot("SetWheels");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
-    void backBtn() throws IOException{
-        App.setRoot("WelcomeScreen");
+    void backBtn(){
+        try{
+            App.setRoot("WelcomeScreen");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
 

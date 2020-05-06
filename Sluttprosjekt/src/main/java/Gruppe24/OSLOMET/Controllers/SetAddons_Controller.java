@@ -69,8 +69,13 @@ public class SetAddons_Controller implements Initializable {
     }
 
     @FXML
-    void backBtn() throws IOException{
-        App.setRoot("SetColors");
+    void backBtn(){
+        try{
+            App.setRoot("SetColors");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
 
@@ -99,7 +104,7 @@ public class SetAddons_Controller implements Initializable {
     }
 
     @FXML
-    public void btnToSummary(ActionEvent actionEvent) throws IOException{
+    public void btnToSummary(ActionEvent actionEvent){
         CarCategory addons = new CarCategory("addons");
         addons.clear();
 
@@ -110,6 +115,11 @@ public class SetAddons_Controller implements Initializable {
         }
         App.car.setAddons(addons);
 
-        App.setRoot("Summary");
+        try{
+            App.setRoot("Summary");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 }

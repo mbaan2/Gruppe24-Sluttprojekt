@@ -46,7 +46,7 @@ public class FileSaverJobj {
         os.close();
     }
 
-    public static void SaveUser(HashMap<String, String> userList) throws IOException {
+    public static void SaveUser(HashMap<String, String> userList) throws FileNotFoundException, IOException {
         try {
             FileOutputStream os = new FileOutputStream("users.jobj");
             ObjectOutputStream oos = new ObjectOutputStream(os);

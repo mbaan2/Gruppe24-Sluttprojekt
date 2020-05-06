@@ -69,19 +69,28 @@ public class SetWheels_Controller implements Initializable {
     }
 
     @FXML
-    private void btnToColor() throws IOException {
+    private void btnToColor() {
         for(int i = 0; i<wheelOptions.size();i++){
             if(wheelButtons.get(i).isSelected()){
                 App.car.setWheels(wheelOptions.get(i));
             }
         }
-
-        App.setRoot("SetColors");
+        try{
+            App.setRoot("SetColors");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
-    void backBtn() throws IOException{
-        App.setRoot("SetFuel");
+    void backBtn() {
+        try{
+            App.setRoot("SetFuel");
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 
 
