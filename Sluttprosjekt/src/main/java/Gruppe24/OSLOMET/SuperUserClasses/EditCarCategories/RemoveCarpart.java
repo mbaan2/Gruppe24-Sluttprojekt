@@ -2,7 +2,6 @@ package Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.scene.control.CheckBox;
-
 import java.util.ArrayList;
 import java.util.List;
 

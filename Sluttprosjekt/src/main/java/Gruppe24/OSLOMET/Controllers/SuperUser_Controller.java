@@ -4,9 +4,7 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.DataValidation.ValidPrice;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.EditCarpart;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadCategory;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.RemoveCarpart;
@@ -199,6 +197,8 @@ public class SuperUser_Controller implements Initializable {
         String name = "";
         if (ValidName.carpartNameTest(txtName.getText())){
             name = txtName.getText();
+        } else {
+            lblNameError.setText("Enter a valid carpart name!");
         }
         String costString = txtCost.getText();
         int cost = -1;
@@ -267,6 +267,8 @@ public class SuperUser_Controller implements Initializable {
         String name = "";
         if (ValidName.carpartNameTest(txtName.getText())){
             name = txtName.getText();
+        } else {
+            lblNameError.setText("Enter a valid carpart name!");
         }
         String costString = txtCost.getText();
         int cost = -1;

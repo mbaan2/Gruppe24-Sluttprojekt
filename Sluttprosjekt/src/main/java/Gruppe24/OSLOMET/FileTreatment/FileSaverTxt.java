@@ -1,7 +1,6 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.NewCar;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

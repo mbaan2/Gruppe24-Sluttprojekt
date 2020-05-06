@@ -1,7 +1,6 @@
 package Gruppe24.OSLOMET.UserLogin;
 
 import javafx.beans.property.SimpleStringProperty;
-
 import java.io.Serializable;
 
 public class User implements Serializable {

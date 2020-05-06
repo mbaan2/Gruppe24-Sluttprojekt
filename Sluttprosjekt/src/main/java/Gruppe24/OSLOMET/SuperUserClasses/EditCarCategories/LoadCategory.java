@@ -3,7 +3,6 @@ package Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;

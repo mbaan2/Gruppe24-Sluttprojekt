@@ -1,6 +1,5 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
-import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
