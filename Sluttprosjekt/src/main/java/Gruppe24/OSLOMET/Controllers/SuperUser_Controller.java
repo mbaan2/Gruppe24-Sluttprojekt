@@ -327,7 +327,7 @@ public class SuperUser_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Users");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to restore users?");
+        alert.setContentText("Do you want to restore the carparts?");
         ButtonType yesBtn = new ButtonType("Yes");
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
@@ -353,7 +353,7 @@ public class SuperUser_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Users");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to restore users?");
+        alert.setContentText("Do you want to restore the users?");
         ButtonType yesBtn = new ButtonType("Yes");
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
@@ -373,7 +373,7 @@ public class SuperUser_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Users");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to restore users?");
+        alert.setContentText("Do you want to restore the cars?");
         ButtonType yesBtn = new ButtonType("Yes");
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
