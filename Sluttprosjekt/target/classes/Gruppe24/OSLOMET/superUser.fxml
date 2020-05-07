@@ -28,7 +28,10 @@
       <Button fx:id="backBtn" layoutX="224.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button fx:id="addBtn" layoutX="224.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
       <Button fx:id="btnLoadCars" layoutX="489.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
-      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="27.0" layoutY="305.0" prefHeight="168.0" prefWidth="149.0" wrapText="true" />
+      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="27.0" layoutY="305.0" prefHeight="168.0" prefWidth="149.0" textFill="#def2f1" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <Label fx:id="lblNameError" layoutX="397.0" layoutY="337.0" prefHeight="17.0" prefWidth="184.0" />
       <Label fx:id="lblCostError" layoutX="397.0" layoutY="365.0" prefHeight="17.0" prefWidth="184.0" />
       <Button fx:id="btnRestoreFiles" layoutX="480.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnRestoreFiles" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Carparts" textFill="#def2f1" />

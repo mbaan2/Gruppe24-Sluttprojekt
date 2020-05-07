@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="userListPane" prefHeight="434.0" prefWidth="1000.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Userlist_Controller">
    <children>
@@ -49,7 +50,10 @@
       <Button layoutX="29.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Filter" textFill="#def2f1" />
       <TextField fx:id="filterTxt" layoutX="29.0" layoutY="284.0" prefHeight="25.0" prefWidth="139.0" />
       <ChoiceBox fx:id="choiceBox" layoutX="29.0" layoutY="253.0" prefHeight="25.0" prefWidth="139.0" />
-      <Label fx:id="lblUserList" layoutX="29.0" layoutY="108.0" prefHeight="130.0" prefWidth="139.0" wrapText="true" />
+      <Label fx:id="lblUserList" layoutX="29.0" layoutY="108.0" prefHeight="130.0" prefWidth="139.0" textFill="#def2f1" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <Button layoutX="29.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnResetFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Reset Filter" textFill="#def2f1" />
    </children>
 </AnchorPane>
