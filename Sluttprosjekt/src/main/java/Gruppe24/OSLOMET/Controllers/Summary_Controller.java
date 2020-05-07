@@ -95,11 +95,18 @@ public class Summary_Controller implements Initializable {
                 List<NewCar> list = new ArrayList<>();
                 try{
                     list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+                    for (int i=0; i<list.size(); i++){
+                        if(list.get(i).getUser().equals(App.car.getUser())){
+                            if(list.get(i).getName().equals(App.car.getName())){
+                                list.remove(i);
+                            }
+                        }
+                    }
                 }catch (IOException e){
                     System.err.println(e.getMessage());
                     Alert error = new Alert(Alert.AlertType.ERROR);
                     error.setTitle("Car list error");
-                    error.setHeaderText("Car list error");
+                    error.setHeaderText("Could not load car list");
                     error.setContentText("There is a problem with the car list file.\nContact your administrator.");
                 }
 
@@ -111,7 +118,13 @@ public class Summary_Controller implements Initializable {
                     btnSaveCarToText.setVisible(true);
                 }catch (IOException e){
                     summaryLbl.setText(e.getMessage());
+                    Alert error = new Alert(Alert.AlertType.ERROR);
+                    error.setTitle("Car list error");
+                    error.setHeaderText("Could not save to car list");
+                    error.setContentText("There is a problem with the car list file.\nContact your administrator.");
                 }
+                txtCarName.setDisable(false);
+            } else {
                 txtCarName.setDisable(false);
             }
         } else if (!validName) {

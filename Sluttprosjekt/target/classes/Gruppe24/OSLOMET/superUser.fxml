@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="superUserPane" prefHeight="510.0" prefWidth="600.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUser_Controller">
+<AnchorPane fx:id="superUserPane" prefHeight="510.0" prefWidth="605.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUser_Controller">
    <children>
       <Label layoutX="224.0" layoutY="33.0" prefHeight="45.0" prefWidth="162.0" text="SuperUser!!!" textFill="#def2f1">
          <font>
@@ -27,15 +27,12 @@
       <TextField fx:id="txtCost" layoutX="224.0" layoutY="361.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
       <Button fx:id="backBtn" layoutX="224.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button fx:id="addBtn" layoutX="224.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
-      <Button fx:id="btnLoadCars" layoutX="489.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
-      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="27.0" layoutY="305.0" prefHeight="168.0" prefWidth="149.0" textFill="#def2f1" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
+      <Button fx:id="btnLoadCars" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
+      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="27.0" layoutY="305.0" prefHeight="168.0" prefWidth="149.0" wrapText="true" />
       <Label fx:id="lblNameError" layoutX="397.0" layoutY="337.0" prefHeight="17.0" prefWidth="184.0" />
       <Label fx:id="lblCostError" layoutX="397.0" layoutY="365.0" prefHeight="17.0" prefWidth="184.0" />
       <Button fx:id="btnRestoreFiles" layoutX="480.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnRestoreFiles" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Carparts" textFill="#def2f1" />
-      <Button fx:id="btnLoadUsers" layoutX="489.0" layoutY="88.0" mnemonicParsing="false" onAction="#switchToUserView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load users" textFill="#def2f1" />
+      <Button fx:id="btnLoadUsers" layoutX="499.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToUserView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load users" textFill="#def2f1" />
       <Button fx:id="btnRestoreUsers" layoutX="480.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnRestoreUsers" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Users" textFill="#def2f1" />
       <Button fx:id="btnRestoreCars" layoutX="480.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnRestoreCars" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Cars" textFill="#def2f1" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="414.0" prefHeight="2.0" prefWidth="33.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
