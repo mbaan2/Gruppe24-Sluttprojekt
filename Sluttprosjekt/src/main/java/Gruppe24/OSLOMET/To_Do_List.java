@@ -13,8 +13,16 @@
       8)      Fix example data                                            HIGH PRIORITY
       9)      "User" filter for superuser                                 MEDIUM PRIORITY
       10)     "Car" filter for user                                       MEDIUM PRIORITY
-      11)      Test with Netbeans and Eclipse                             HIGH PRIORITY
+      11)     Test with Netbeans and Eclipse                             HIGH PRIORITY
       12)     Add information about Netbeans and Eclipse to README        HIGH PRIORITY
+      ??)     Change flow in summarycontroller -> suggestion ->
+              name car first, build the car (also saves the car), and save
+              car to txt file                                             MEDIUM PRIORITY
+      ??)     Summary controller, adding warning if 
+              home is pressed car is reset.                               HIGH PRIORITY
+
+
+
       13)     Undo button per car                                         LOW PRIORITY
       14)     Option to edit a specific car                               LOW PRIORITY        Mark
 
