@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="userViewPane" prefHeight="434.0" prefWidth="925" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.UserCarView_Controller">
    <children>
-      <TableView fx:id="tableView" layoutX="188.0" layoutY="26.0" prefHeight="382.0" prefWidth="717.0" />
+      <TableView fx:id="tableView" layoutX="188.0" layoutY="26.0" prefHeight="353.0" prefWidth="717.0" />
       <Button fx:id="loadBtn" layoutX="27.0" layoutY="322.0" mnemonicParsing="false" onAction="#loadYourCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Load your cars!" textFill="#def2f1" />
       <Button layoutX="27.0" layoutY="352.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
       <Button layoutX="27.0" layoutY="382.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: WHITE; -fx-text-fill: #17252a;" text="Logout" textFill="#def2f1" />
@@ -22,5 +22,6 @@
       <TextField fx:id="filterText" layoutX="27.0" layoutY="167.0" />
       <Button layoutX="27.0" layoutY="195.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter" textFill="#def2f1" />
       <Button layoutX="27.0" layoutY="223.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset Filters" textFill="#def2f1" />
+      <Button fx:id="saveTable" layoutX="472.0" layoutY="382.0" mnemonicParsing="false" onAction="#saveYourTable" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Save this table" textFill="#def2f1" />
    </children>
 </AnchorPane>

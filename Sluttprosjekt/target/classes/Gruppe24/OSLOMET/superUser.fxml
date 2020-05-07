@@ -18,16 +18,16 @@
       </Label>
       <ChoiceBox fx:id="chbCategory" layoutX="224.0" layoutY="87.0" prefHeight="26.0" prefWidth="162.0" />
       <Button fx:id="loadBtn" layoutX="224.0" layoutY="118.0" mnemonicParsing="false" onAction="#btnLoadCategory" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Load Category" textFill="#def2f1" />
-      <VBox fx:id="vboxSelectedChoiceBox" alignment="CENTER" layoutX="5.0" layoutY="148.0" prefHeight="155.0" prefWidth="590.0" />
-      <Button fx:id="removeBtn" layoutX="224.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
-      <Button fx:id="editBtn" layoutX="224.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Edit" textFill="#def2f1" />
-      <Label layoutX="185.0" layoutY="338.0" text="Name:" />
-      <TextField fx:id="txtName" layoutX="224.0" layoutY="333.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
-      <Label layoutX="191.0" layoutY="366.0" text="Cost:" />
-      <TextField fx:id="txtCost" layoutX="224.0" layoutY="361.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
-      <Button fx:id="backBtn" layoutX="224.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
-      <Button fx:id="addBtn" layoutX="224.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
-      <Button fx:id="btnLoadCars" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
+      <VBox fx:id="vboxSelectedChoiceBox" alignment="CENTER" layoutX="5.0" layoutY="148.0" prefHeight="181.0" prefWidth="590.0" />
+      <Button fx:id="removeBtn" layoutX="224.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
+      <Button fx:id="editBtn" layoutX="224.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Edit" textFill="#def2f1" />
+      <Label layoutX="185.0" layoutY="366.0" text="Name:" />
+      <TextField fx:id="txtName" layoutX="224.0" layoutY="361.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
+      <Label layoutX="191.0" layoutY="394.0" text="Cost:" />
+      <TextField fx:id="txtCost" layoutX="224.0" layoutY="389.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
+      <Button fx:id="backBtn" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Log out" textFill="#def2f1" />
+      <Button fx:id="addBtn" layoutX="224.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
+      <Button fx:id="btnLoadCars" layoutX="499.0" layoutY="49.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Load all cars" textFill="#def2f1" />
       <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="27.0" layoutY="305.0" prefHeight="168.0" prefWidth="149.0" wrapText="true" />
       <Label fx:id="lblNameError" layoutX="397.0" layoutY="337.0" prefHeight="17.0" prefWidth="184.0" />
       <Label fx:id="lblCostError" layoutX="397.0" layoutY="365.0" prefHeight="17.0" prefWidth="184.0" />
@@ -40,7 +40,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
          <tooltip>
-            <Tooltip fx:id="superuserInfo" autoHide="true" text="These buttons are for restoring&#10;all the values in the program. &#10;&#10;Cars, Carparts and Users.">
+            <Tooltip fx:id="superuserInfo" autoHide="true" text="These buttons will restore the values in the program to factory settings. &#10;&#10;Cars, Carparts and Users." wrapText="true">
                <font>
                   <Font size="10.0" />
                </font>

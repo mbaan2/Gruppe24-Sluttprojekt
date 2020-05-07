@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -42,6 +43,9 @@ public class UserCarView_Controller implements Initializable {
 
     @FXML
     private Button loadBtn;
+
+    @FXML
+    private Button saveTable;
 
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
@@ -104,10 +108,10 @@ public class UserCarView_Controller implements Initializable {
         tvLabel.setText("");
 
         if(filteredText.equals("")) {
-            tvLabel.setText("You didnt enter anything..");
+            tvLabel.setText("You didn't enter anything.");
         }
         else if (filterType.equals("Search Filters")) {
-            tvLabel.setText("You didnt choose a filter.");
+            tvLabel.setText("You didn't choose a filter.");
         } else{
             filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
             tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
@@ -129,6 +133,27 @@ public class UserCarView_Controller implements Initializable {
         filterBox.getItems().addAll(choiceBoxList);
         filterBox.getItems().remove(choiceBoxList.get(1));
         filterBox.setValue(choiceBoxList.get(0));
+    }
+
+    @FXML
+    void saveYourTable(ActionEvent event) {
+        //IN PROGRESS
+        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+
+        String filteredText = filterText.getText();
+        String filterType = filterBox.getValue();
+
+        filteredList.clear();
+        tvLabel.setText("");
+
+
+        if (!filteredText.equals("") && !filterType.equals("Search Filters")){
+            filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
+            tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
+            tableView.setItems(filteredList);
+            tableView.refresh();
+        }
+
     }
 
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
