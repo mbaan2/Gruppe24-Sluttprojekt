@@ -46,10 +46,8 @@ public class ValidName{
             for (NewCar c : carList){
                 String username = c.getUser();
                 String carname = c.getName();
-                if (username == user){
-                    System.out.println("User " + username);
-                    if (carname == newCarName){
-                        System.out.println("Car " + carname);
+                if (username.equals(user)){
+                    if (carname.equals(newCarName)){
                         isAmatch = true;
                     }
                 }
