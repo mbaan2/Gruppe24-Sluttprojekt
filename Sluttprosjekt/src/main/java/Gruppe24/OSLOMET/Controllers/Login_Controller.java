@@ -44,9 +44,10 @@ public class Login_Controller implements Initializable {
     void forgotPassword(){
         try {
             App.setRoot("RetrievePassword");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -60,9 +61,10 @@ public class Login_Controller implements Initializable {
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             try {
                 App.setRoot("SuperUser");
-            }
-            catch (IOException e){
+            } catch (IOException e){
                 System.err.println(e.getMessage());
+            } catch (IllegalStateException e){
+                System.err.println("There is an error in loading the next screen, please contact your developer.");
             }
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
@@ -90,18 +92,20 @@ public class Login_Controller implements Initializable {
     void signUp() {
         try{
             App.setRoot("Signup");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
     private void login() {
         try{
             App.setRoot("WelcomeScreen");
-        }
-        catch (IOException e){
+        } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
