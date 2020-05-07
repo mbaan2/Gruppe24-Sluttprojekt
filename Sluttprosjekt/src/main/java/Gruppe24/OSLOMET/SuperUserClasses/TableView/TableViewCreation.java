@@ -287,7 +287,6 @@ public class TableViewCreation {
                 delete.getStyleClass().add("delete-button");
                 delete.setAlignment(Pos.CENTER);
                 delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv));
-                lbl.setText(car.getValue().getName() + " removed from the list");
 
                 ObservableValue<Button> btn = new ObservableValueBase<Button>(){
                     @Override
