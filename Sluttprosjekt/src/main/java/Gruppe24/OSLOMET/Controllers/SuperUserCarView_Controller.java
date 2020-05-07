@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SuperUserCarView_Controller implements Initializable {
 
@@ -39,13 +41,17 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        filterLbl.setText("Loading tableview...");
+        tableView.setVisible(false);
         addChoiceBoxItems();
-        createView.initializeTv(tableView);
 
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserViewPane.getScene().getWindow();
             stage.setWidth(1175);
             stage.setHeight(470);
+            createView.initializeTv(tableView);
+            tableView.setVisible(true);
+            executor.submit(setTableview);
             tableView.refresh();
         });
     }
@@ -83,6 +89,27 @@ public class SuperUserCarView_Controller implements Initializable {
             tableView.refresh();
         }
     }
+
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableview = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            filterLbl.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println(e.getMessage());
+        }
+        filterLbl.setText("Tableview loaded!");
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
 
     private void addChoiceBoxItems() {
         ObservableList<String> choiceBoxList = Filter.choiceBoxList();

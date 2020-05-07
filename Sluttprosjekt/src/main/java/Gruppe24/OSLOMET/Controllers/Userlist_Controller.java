@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Userlist_Controller implements Initializable {
 
@@ -135,14 +137,31 @@ public class Userlist_Controller implements Initializable {
         }
     }
 
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableview = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            lblUserList.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println(e.getMessage());
+        }
+        lblUserList.setText("Tableview loaded!");
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            Stage stage = (Stage) userListPane.getScene().getWindow();
-            stage.setHeight(470);
-            stage.setWidth(1000);
-        });
-
+        lblUserList.setText("Loading tableview...");
+        tableView.setVisible(false);
         addChkBoxItems();
         try {
             userList = ImportUser.readUser(StandardPaths.usersTXTPath);
@@ -168,7 +187,14 @@ public class Userlist_Controller implements Initializable {
             };
             return btn;
         });
+        Platform.runLater(() -> {
+            Stage stage = (Stage) userListPane.getScene().getWindow();
+            stage.setHeight(470);
+            stage.setWidth(1000);
+            tableView.setVisible(true);
+            tableView.setItems(userList);
+            executor.submit(setTableview);
+        });
 
-        tableView.setItems(userList);
     }
 }

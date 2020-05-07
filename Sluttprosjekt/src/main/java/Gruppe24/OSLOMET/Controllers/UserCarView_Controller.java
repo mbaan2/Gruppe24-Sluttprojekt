@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class UserCarView_Controller implements Initializable {
 
@@ -38,6 +40,9 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private ChoiceBox<String> filterBox;
 
+    @FXML
+    private Button loadBtn;
+
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
 
@@ -48,6 +53,7 @@ public class UserCarView_Controller implements Initializable {
             tableView.setVisible(false);
             tvLabel.setText("You dont have any saved cars!");
         } else {
+            executor.submit(setTableview);
             tableView.setVisible(true);
             Stage stage = (Stage) userViewPane.getScene().getWindow();
             stage.setWidth(925);
@@ -125,8 +131,31 @@ public class UserCarView_Controller implements Initializable {
         filterBox.setValue(choiceBoxList.get(0));
     }
 
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableview = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+            loadBtn.setVisible(false);
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            tvLabel.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println(e.getMessage());
+        }
+        tvLabel.setText("Tableview loaded!");
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadBtn.setVisible(true);
         addChoiceBoxItems();
         tableView.setVisible(false);
         showCars();
