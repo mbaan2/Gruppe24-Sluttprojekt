@@ -6,10 +6,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
-import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import Gruppe24.OSLOMET.FileTreatment.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,8 +16,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +41,16 @@ public class Summary_Controller implements Initializable {
     private Label lblCarComponents, carNameLbl, summaryLbl;
 
     List<NewCar> carList = new ArrayList<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) summaryPane.getScene().getWindow();
+            stage.setWidth(600);
+            stage.setHeight(470);
+        });
+        carNameLbl.setVisible(false);
+    }
 
     @FXML
     void btnBuildCar(ActionEvent event) {
@@ -143,16 +153,44 @@ public class Summary_Controller implements Initializable {
     @FXML
     void btnSaveCarToText(ActionEvent event) {
         txtCarName.setText("");
-        
-        FileSaverTxt fs = new FileSaverTxt();
-        try{
-            ObservableList<NewCar> temp = FXCollections.observableArrayList();
-            temp.add(App.car);
-            fs.testExisting(temp);
-            btnSaveCarToText.setVisible(false);
-            temp.removeAll();
-        } catch (IOException e){
-            summaryLbl.setText("You did not select a valid file.");
+        ObservableList<NewCar> outputList = FXCollections.observableArrayList();
+        outputList.add(App.car);
+        String username = App.car.getUser();
+        Path path = Paths.get(username + "sCars.txt");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Save your car to a txt file!");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to overwrite or append your current file? Or create a new file?" + "\n\nIf you choose 'New File' your new file will be named " + path.toString());
+        ButtonType newFile = new ButtonType("New File");
+        ButtonType append = new ButtonType("Append");
+        ButtonType overwrite = new ButtonType("Overwrite");
+        ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(newFile, append, overwrite, cancel);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if (result.get() == append) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.append(str, selectedFile, summaryLbl);
+                btnSaveCarToText.setVisible(false);
+                summaryLbl.setText("Car appended to file!");
+            } else if(result.get() == newFile) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.overwrite(str, selectedFile, summaryLbl);
+                btnSaveCarToText.setVisible(false);
+                summaryLbl.setText("New file created called " + path.toString() + " " + App.car.getName() + " was added to it.");
+            } else if(result.get() == overwrite) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.overwrite(str, selectedFile, summaryLbl);
+                btnSaveCarToText.setVisible(false);
+                summaryLbl.setText("You overwrote your current file with " + App.car.getName() + ".");
+            } else {
+                summaryLbl.setText("Process cancelled. File wasnt saved.");
+            }
         }
     }
 
@@ -288,15 +326,5 @@ public class Summary_Controller implements Initializable {
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            Stage stage = (Stage) summaryPane.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
-        });
-        carNameLbl.setVisible(false);
     }
 }

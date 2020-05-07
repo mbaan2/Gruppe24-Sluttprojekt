@@ -302,19 +302,20 @@ public class SuperUser_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
-
-        if(result.get() == yesBtn) {
-            SetFuel_Controller restoreFuel = new SetFuel_Controller();
-            restoreFuel.createFile();
-            SetWheels_Controller restoreWheels = new SetWheels_Controller();
-            restoreWheels.createFile();
-            SetColor_Controller restoreColor = new SetColor_Controller();
-            restoreColor.createFile();
-            SetAddons_Controller restoreAddon = new SetAddons_Controller();
-            restoreAddon.createFile();
-            superUserLbl.setText("Files are restored!");
-        } else {
-            superUserLbl.setText("Process cancelled, carparts were not restored.");
+        if(result.isPresent()) {
+            if (result.get() == yesBtn) {
+                SetFuel_Controller restoreFuel = new SetFuel_Controller();
+                restoreFuel.createFile();
+                SetWheels_Controller restoreWheels = new SetWheels_Controller();
+                restoreWheels.createFile();
+                SetColor_Controller restoreColor = new SetColor_Controller();
+                restoreColor.createFile();
+                SetAddons_Controller restoreAddon = new SetAddons_Controller();
+                restoreAddon.createFile();
+                superUserLbl.setText("Files are restored!");
+            } else {
+                superUserLbl.setText("Process cancelled, carparts were not restored.");
+            }
         }
     }
 
@@ -328,13 +329,14 @@ public class SuperUser_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
-
-        if(result.get() == yesBtn) {
-            SignUp_Controller restoreUser = new SignUp_Controller();
-            restoreUser.createFile();
-            superUserLbl.setText("Users are restored!");
-        } else {
-            superUserLbl.setText("Process cancelled, users were not restored.");
+        if(result.isPresent()) {
+            if (result.get() == yesBtn) {
+                SignUp_Controller restoreUser = new SignUp_Controller();
+                restoreUser.createFile();
+                superUserLbl.setText("Users are restored!");
+            } else {
+                superUserLbl.setText("Process cancelled, users were not restored.");
+            }
         }
     }
 
@@ -348,13 +350,14 @@ public class SuperUser_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
-
-        if(result.get() == yesBtn) {
-            Summary_Controller restoreCars = new Summary_Controller();
-            restoreCars.createFile();
-            superUserLbl.setText("Cars are restored!");
-        } else {
-            superUserLbl.setText("Process cancelled, cars were not restored.");
+        if(result.isPresent()) {
+            if (result.get() == yesBtn) {
+                Summary_Controller restoreCars = new Summary_Controller();
+                restoreCars.createFile();
+                superUserLbl.setText("Cars are restored!");
+            } else {
+                superUserLbl.setText("Process cancelled, cars were not restored.");
+            }
         }
     }
 
@@ -368,13 +371,14 @@ public class SuperUser_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
-
-        if(result.get() == yesBtn) {
-            Userlist_Controller restoreSecretQ = new Userlist_Controller();
-            restoreSecretQ.createFile();
-            superUserLbl.setText("Secret questions are restored!");
-        } else {
-            superUserLbl.setText("Process cancelled, secret questions were not restored.");
+        if(result.isPresent()) {
+            if (result.get() == yesBtn) {
+                Userlist_Controller restoreSecretQ = new Userlist_Controller();
+                restoreSecretQ.createFile();
+                superUserLbl.setText("Secret questions are restored!");
+            } else {
+                superUserLbl.setText("Process cancelled, secret questions were not restored.");
+            }
         }
     }
 

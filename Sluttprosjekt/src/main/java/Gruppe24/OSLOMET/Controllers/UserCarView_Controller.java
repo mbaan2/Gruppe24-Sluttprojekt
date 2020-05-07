@@ -4,9 +4,9 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
+import Gruppe24.OSLOMET.FileTreatment.FormatCar;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import javafx.application.Platform;
@@ -20,8 +20,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -46,7 +50,7 @@ public class UserCarView_Controller implements Initializable {
     private ChoiceBox<String> filterBox;
 
     @FXML
-    private Button saveTable;
+    private Button saveTable, backBtn, resetFilterBtn, filterBtn, logoutBtn;
 
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
@@ -122,14 +126,41 @@ public class UserCarView_Controller implements Initializable {
     }
 
     @FXML
-    void saveYourTable(ActionEvent event) {
+    void saveYourTable(ActionEvent event) throws IOException {
         ObservableList<NewCar> outputList = tableView.getItems();
-        FileSaverTxt fstxt = new FileSaverTxt();
-        try{
-            fstxt.testExisting(outputList);
-        }catch (IOException e){
-            e.printStackTrace();
-            Alerts.processFailAlert("Saving");
+        String username = App.car.getUser();
+        Path path = Paths.get(username + "sCars.txt");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Save your cars to a txt file!");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to overwrite your cars or append them to your list?" + "\n\nIf you choose 'New File' your new file will be named " + path.toString());
+        ButtonType newFile = new ButtonType("New File");
+        ButtonType append = new ButtonType("Append");
+        ButtonType overwrite = new ButtonType("Overwrite");
+        ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(newFile, append, overwrite, cancel);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if (result.get() == overwrite) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.overwrite(str, selectedFile, tvLabel);
+                tvLabel.setText("Cars overwritten to your current file called " + path.toString());
+            } else if (result.get() == append) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.append(str, selectedFile, tvLabel);
+                tvLabel.setText("Cars added to your current file called " + path.toString());
+            } else if(result.get() == newFile) {
+                File selectedFile = new File(String.valueOf(path));
+                String str = FormatCar.formatCar(outputList);
+                FileSaverTxt.overwrite(str, selectedFile, tvLabel);
+                tvLabel.setText("Cars saved to new file called " + path.toString());
+            } else {
+                tvLabel.setText("Process cancelled. File wasnt saved.");
+            }
         }
     }
 
@@ -148,7 +179,6 @@ public class UserCarView_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
         }
-        tvLabel.setText("Cars successfully loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;
@@ -157,7 +187,13 @@ public class UserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tvLabel.setText("Loading cars...");
         addChoiceBoxItems();
+        backBtn.setDisable(true);
+        logoutBtn.setDisable(true);
+        filterBtn.setDisable(true);
+        resetFilterBtn.setDisable(true);
+        saveTable.setVisible(false);
         tableView.setVisible(false);
         showCars();
         String username = App.car.getUser();
@@ -216,9 +252,20 @@ public class UserCarView_Controller implements Initializable {
             stage.setHeight(470);
             if(tableView.getItems().isEmpty()) {
                 tableView.setVisible(false);
+                saveTable.setVisible(true);
+                backBtn.setDisable(false);
+                logoutBtn.setDisable(false);
+                filterBtn.setDisable(false);
+                resetFilterBtn.setDisable(false);
                 tvLabel.setText("You dont have any saved cars!");
             } else {
                 tableView.setVisible(true);
+                tvLabel.setText("Cars successfully loaded!");
+                saveTable.setVisible(true);
+                backBtn.setDisable(false);
+                logoutBtn.setDisable(false);
+                filterBtn.setDisable(false);
+                resetFilterBtn.setDisable(false);
                 executor.submit(setTableview);
             }
         });

@@ -29,7 +29,7 @@ public class Alerts{
     public static Alert processFailAlert(String processName){
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setTitle(processName + " error");
-        error.setContentText("Fatal error");
+        error.setHeaderText("Fatal error");
         error.setContentText("An error has occurred in the " + processName.toLowerCase() + " process.\nContact your administrator.");
 
         return error;
@@ -38,7 +38,7 @@ public class Alerts{
     public static Alert processCancelled(String processName){
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setTitle(processName + " cancelled");
-        error.setContentText(processName + " cancelled");
+        error.setHeaderText(processName + " cancelled");
         error.setContentText("Your " + processName.toLowerCase() + " process was cancelled.");
 
         return error;
@@ -48,7 +48,7 @@ public class Alerts{
         Alert overrideORappend = new Alert(Alert.AlertType.CONFIRMATION);
         overrideORappend.setTitle("File already exists");
         overrideORappend.setHeaderText("You selected an existing file");
-        overrideORappend.setHeaderText("You selected an existing file.\nDo you want to override its contents or add to it?");
+        overrideORappend.setContentText("You selected an existing file.\nDo you want to override its contents or add to it?");
 
         return overrideORappend;
     }

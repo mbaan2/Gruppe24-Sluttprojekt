@@ -36,21 +36,31 @@ public class SuperUserCarView_Controller implements Initializable {
     @FXML
     private Label filterLbl;
 
+    @FXML
+    private Button filterBtn, backBtn, resetFilterBtn;
+
     TableViewCreation createView = new TableViewCreation();
     ObservableList<NewCar> carList = createView.carList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        filterLbl.setText("Loading cars...");
+        filterBtn.setDisable(true);
+        backBtn.setDisable(true);
+        resetFilterBtn.setDisable(true);
         tableView.setVisible(false);
+        filterLbl.setText("Loading cars...");
         addChoiceBoxItems();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserViewPane.getScene().getWindow();
-            stage.setWidth(1175);
-            stage.setHeight(470);
+            stage.setWidth(1210);
+            stage.setHeight(500);
             createView.initializeTv(tableView, filterLbl);
+            filterBtn.setDisable(false);
+            backBtn.setDisable(false);
+            resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
+            filterLbl.setText("Cars loaded!");
             executor.submit(setTableview);
             tableView.refresh();
         });
@@ -105,7 +115,6 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
         }
-        filterLbl.setText("Cars loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;

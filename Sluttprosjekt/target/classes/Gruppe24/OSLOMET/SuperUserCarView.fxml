@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="superUserViewPane" prefHeight="434" prefWidth="1175.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
+<AnchorPane fx:id="superUserViewPane" prefHeight="454.0" prefWidth="1190.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="187.0" layoutY="4.0" prefHeight="417.0" prefWidth="963.0">
+        <TableView fx:id="tableView" layoutX="188.0" layoutY="19.0" prefHeight="417.0" prefWidth="980.0">
 
         </TableView>
-        <TextField fx:id="filterText" layoutX="28.0" layoutY="333.0" prefHeight="25.0" prefWidth="150.0" />
-        <Button layoutX="28.0" layoutY="366.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
-        <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
+        <TextField fx:id="filterText" layoutX="28.0" layoutY="349.0" prefHeight="25.0" prefWidth="150.0" />
+        <Button fx:id="filterBtn" layoutX="28.0" layoutY="380.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
+        <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="318.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" layoutX="28.0" layoutY="133.0" prefHeight="154.0" prefWidth="150.0" textFill="#def2f1" wrapText="true">
             <font>
                 <Font size="18.0" />
             </font></Label>
-        <Button layoutX="28.0" layoutY="396.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
-        <Button layoutX="28.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+        <Button fx:id="resetFilterBtn" layoutX="28.0" layoutY="411.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
+        <Button fx:id="backBtn" layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     </children>
 </AnchorPane>
-

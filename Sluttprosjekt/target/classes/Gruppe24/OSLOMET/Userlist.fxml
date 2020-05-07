@@ -46,15 +46,15 @@
                 </TableColumn>
             </columns>
         </TableView>
-        <Button layoutX="29.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
-        <Button layoutX="29.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
+        <Button fx:id="backBtn" layoutX="29.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+        <Button fx:id="filterBtn" layoutX="29.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
         <TextField fx:id="filterTxt" layoutX="29.0" layoutY="284.0" prefHeight="25.0" prefWidth="139.0" />
         <ChoiceBox fx:id="choiceBox" layoutX="29.0" layoutY="253.0" prefHeight="25.0" prefWidth="139.0" />
         <Label fx:id="lblUserList" layoutX="29.0" layoutY="32.0" prefHeight="206.0" prefWidth="139.0" textFill="#def2f1" wrapText="true">
             <font>
                 <Font size="18.0" />
             </font></Label>
-        <Button layoutX="29.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnResetFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Reset filter" textFill="#def2f1" />
+        <Button fx:id="resetFilterBtn" layoutX="29.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnResetFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Reset filter" textFill="#def2f1" />
     </children>
 </AnchorPane>
 

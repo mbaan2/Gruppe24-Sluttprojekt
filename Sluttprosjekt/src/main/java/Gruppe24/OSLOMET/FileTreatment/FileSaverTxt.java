@@ -7,13 +7,14 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 
-public class FileSaverTxt{
+public class FileSaverTxt{/*
     public void testExisting(ObservableList<NewCar> carsToAdd) throws IOException{
         try {
             System.out.println("In try");
@@ -75,6 +76,29 @@ public class FileSaverTxt{
         } catch (Exception e){
             Alerts.processFailAlert("Saving");
             throw new IOException("Failed to write to this file");
+        }
+    }
+    */
+
+
+
+    public static void overwrite(String str, File selectedFile, Label lbl) {
+        try {
+            FileWriter fw = new FileWriter(selectedFile);
+            fw.write(str);
+            fw.close();
+        } catch (IOException e) {
+            lbl.setText(e.getMessage());
+        }
+    }
+
+    public static void append(String str, File selectedFile, Label lbl) {
+        try {
+            FileWriter fw = new FileWriter(selectedFile, true);
+            fw.write(str);
+            fw.close();
+        } catch (IOException e) {
+            lbl.setText(e.getMessage());
         }
     }
 }

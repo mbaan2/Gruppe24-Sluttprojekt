@@ -55,6 +55,9 @@ public class Userlist_Controller implements Initializable {
     @FXML
     private TableColumn<User, String> user, pw, location, gender, secretQ, secretQA;
 
+    @FXML
+    private Button filterBtn, backBtn, resetFilterBtn;
+
     ObservableList<String> choiceBoxOptions = FXCollections.observableArrayList();
     ObservableList<User> userList = FXCollections.observableArrayList();
     HashMap<String, String> userBase = new HashMap<>();
@@ -119,7 +122,12 @@ public class Userlist_Controller implements Initializable {
     void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
         userList.remove(user);
         userBase.remove(user.getUsername(), user.getPassword());
-        lblUserList.setText(user.getUsername() + " deleted.");
+        Path path = Paths.get(user.getUsername() + "sCars.txt");
+        if(!path.toString().isEmpty()) {
+            File selectedFile = new File(String.valueOf(path));
+            selectedFile.delete();
+        }
+        lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
         btnSaveChanges();
         tv.refresh();
     }
@@ -195,6 +203,9 @@ public class Userlist_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        filterBtn.setDisable(true);
+        backBtn.setDisable(true);
+        resetFilterBtn.setDisable(true);
         try {
             comboBoxList();
         } catch (IOException e) {
@@ -300,6 +311,9 @@ public class Userlist_Controller implements Initializable {
             Stage stage = (Stage) userListPane.getScene().getWindow();
             stage.setHeight(470);
             stage.setWidth(1000);
+            filterBtn.setDisable(false);
+            backBtn.setDisable(false);
+            resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
             tableView.setItems(userList);
             executor.submit(setTableView);
