@@ -1,22 +1,22 @@
 //TODO
 /*
-      3)      Double check the crashes and try/catches                    HIGH PRIORITY
-      3.5)    Removing all the System.err.messages and replace them
+      1)      Double check the crashes and try/catches                    HIGH PRIORITY
+        1.5)    Removing all the System.err.messages and replace them
               with feedback to the user                                   HIGH PRIORITY
-      11)     Creating our own exceptions classes                         HIGH PRIORITY
-
-      15)     Test with Netbeans and Eclipse                              HIGH PRIORITY
-      16)     Include text file talking about the
-              possible JUnit problem and how to fix                       HIGH PRIORITY
-      19)     ADD Button to restore original data in case of crash        MEDIUM PRIORITY
-      20)     Fix example data                                            HIGH PRIORITY
-      23)     Tableview on thread                                         HIGH PRIORITY
-      24)     Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
-      26)     Saving and resaving of a car check if car already exist?    HIGH PRIORITY
-      9)      Undo button per car                                         LOW PRIORITY
-      19)     Option to edit a specific car                               LOW PRIORITY        Mark
-
-      Question: Do we want to users also to show in a .txt file?
+      2)      Creating our own exceptions classes    |                     HIGH PRIORITY
+      3)      "Edit" car function fix (same name vs new name)
+        3.5)  Label showing name previously inserted by user
+      4)      Saving and resaving of a car check if car already exist?    HIGH PRIORITY
+      5)      ADD Button to restore original data in case of crash        MEDIUM PRIORITY
+      6)      Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
+      7)      Tableview on thread                                         HIGH PRIORITY
+      8)      Fix example data                                            HIGH PRIORITY
+      9)      "User" filter for superuser                                 MEDIUM PRIORITY
+      10)     "Car" filter for user                                       MEDIUM PRIORITY
+      11)      Test with Netbeans and Eclipse                             HIGH PRIORITY
+      12)     Add information about Netbeans and Eclipse to README        HIGH PRIORITY
+      13)     Undo button per car                                         LOW PRIORITY
+      14)     Option to edit a specific car                               LOW PRIORITY        Mark
 
 */
 
