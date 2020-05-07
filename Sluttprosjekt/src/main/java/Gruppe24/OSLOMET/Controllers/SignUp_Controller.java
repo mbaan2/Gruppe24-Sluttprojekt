@@ -96,15 +96,11 @@ public class SignUp_Controller implements Initializable {
         String username = "";
         if (ValidName.usernameTest(signupUsername.getText())){
             username = signupUsername.getText();
-        } else {
-            signupLbl.setText("Enter a valid username!");
         }
         String password = signupPassword.getText();
         String location = "";
         if (ValidName.locationTest(signupLocation.getText())){
             location = signupLocation.getText();
-        } else {
-            signupLbl.setText("Enter a valid location!");
         }
         String gender = "";
         String answer = answerTxt.getText();
@@ -126,7 +122,7 @@ public class SignUp_Controller implements Initializable {
             userList = ImportUser.readUser(StandardPaths.usersTXTPath);
             userBase = FileOpenerJobj.openFileHashMap();
 
-            //Writing only the username and the password to a hashmap for logging in.
+            //Writing only the username and the password to a hashmap for logging in unless it already exists in the register.
             if(!userBase.containsKey(username)) {
                 try {
                     userBase.put(newUser.getUsername(), newUser.getPassword());
@@ -141,8 +137,8 @@ public class SignUp_Controller implements Initializable {
                     usernameError.setText("Username already exists!");
             }
 
-            //Writing the list to a txt file for the user register
-            if(!userList.contains(newUser)) {
+            //Writing the list to a txt file for the user register unless it already exist in the register.
+            if (userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
                 try {
                     userList.add(newUser);
                     String str = FormatUser.formatUsers(userList);
@@ -156,13 +152,17 @@ public class SignUp_Controller implements Initializable {
                 }
             }
         } else {
-            if(username.isEmpty()) {
+            if(signupUsername.getText().isEmpty()) {
+                usernameError.setText("Enter a username!");
+            } else if(!ValidName.usernameTest(signupUsername.getText())) {
                 usernameError.setText("Enter a valid username!");
             }
             if(password.isEmpty()) {
                 passwordError.setText("Enter a password!");
             }
-            if(location.isEmpty()) {
+            if(signupLocation.getText().isEmpty()) {
+                locationError.setText("Enter a location!");
+            } else if(!ValidName.locationTest(signupLocation.getText())) {
                 locationError.setText("Enter a valid location!");
             }
             if(answer.isEmpty()) {
