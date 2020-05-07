@@ -146,6 +146,7 @@ public class UserCarView_Controller implements Initializable {
             tvLabel.setText("Error in fetching the table!");
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
+            tvLabel.setText("Error in fetching the table!");
         }
         tvLabel.setText("Tableview loaded!");
         Thread t = new Thread(runnable);

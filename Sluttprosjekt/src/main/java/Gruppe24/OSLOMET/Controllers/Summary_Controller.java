@@ -4,6 +4,7 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.DataValidation.Errors;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -104,10 +105,7 @@ public class Summary_Controller implements Initializable {
                     }
                 }catch (IOException e){
                     System.err.println(e.getMessage());
-                    Alert error = new Alert(Alert.AlertType.ERROR);
-                    error.setTitle("Car list error");
-                    error.setHeaderText("Could not load car list");
-                    error.setContentText("There is a problem with the car list file.\nContact your administrator.");
+
                 }
 
                 try{
@@ -118,10 +116,7 @@ public class Summary_Controller implements Initializable {
                     btnSaveCarToText.setVisible(true);
                 }catch (IOException e){
                     summaryLbl.setText(e.getMessage());
-                    Alert error = new Alert(Alert.AlertType.ERROR);
-                    error.setTitle("Car list error");
-                    error.setHeaderText("Could not save to car list");
-                    error.setContentText("There is a problem with the car list file.\nContact your administrator.");
+                    Errors.fileLoadAlert("Car list");
                 }
                 txtCarName.setDisable(false);
             } else {
@@ -148,15 +143,10 @@ public class Summary_Controller implements Initializable {
                 btnSaveCarToText.setVisible(true);
             }catch (IOException e){
                 summaryLbl.setText(e.getMessage());
-                Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setTitle("Car list error");
-                error.setHeaderText("Car list error");
-                error.setContentText("There is a problem with the car list file.\nContact your administrator.");
+                Errors.fileLoadAlert("Car list");
             }
         } else {
-            Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setContentText("Fatal error");
-            error.setContentText("An error has occurred in the car-naming process.\nContact your administrator.");
+            Errors.processFailAlert("Car-naming");
         }
 
     }
@@ -186,7 +176,9 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetFuel");
         } catch (IOException e){
             System.err.println(e.getMessage());
+            Errors.screenLoadAlert();
         } catch (IllegalStateException e){
+            Errors.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
@@ -202,7 +194,9 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetAddons");
         } catch (IOException e){
             System.err.println(e.getMessage());
+            Errors.screenLoadAlert();
         } catch (IllegalStateException e){
+            Errors.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
@@ -220,11 +214,14 @@ public class Summary_Controller implements Initializable {
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
             System.err.println(e.getMessage());
+            Errors.screenLoadAlert();
         } catch (IllegalStateException e){
             System.err.println("There is an error in loading the next screen, please contact your developer.");
+            Errors.screenLoadAlert();
         }
+        String username = App.car.getUser();
         App.startCarBuildingProcess();
-
+        App.car.setUser(username);
     }
 
     @FXML
@@ -232,8 +229,10 @@ public class Summary_Controller implements Initializable {
         try{
             App.setRoot("login");
         } catch (IOException e){
+            Errors.screenLoadAlert();
             System.err.println(e.getMessage());
         } catch (IllegalStateException e){
+            Errors.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
