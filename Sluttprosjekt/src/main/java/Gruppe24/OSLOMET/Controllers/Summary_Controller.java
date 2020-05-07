@@ -4,6 +4,7 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
@@ -66,32 +67,40 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     void btnNameCar(ActionEvent event) {
-        // We need a function here that test if the name already exist
         // If we have time it would be could to add a random name generator
-        String nameCar = txtCarName.getText();
-        if (!nameCar.equals("")) {
+        boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
+        boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
+        if (txtCarName.getText().equals("")) {
+            summaryLbl.setText("Please give the car a name");
+        } else if (!uniqueName){
+            summaryLbl.setText("A car with this name already exists.");
+            //Add possibility to override
+        } else if (!validName) {
+            summaryLbl.setText("Your car's name is invalid. Please try again.");
+        } else if(validName){
             App.car.setName(txtCarName.getText());
             btnNameCar.setDisable(true);
 
             List<NewCar> list = new ArrayList<>();
             try{
                 list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-            }
-            catch (IOException e){
+            }catch (IOException e){
                 System.err.println(e.getMessage());
             }
 
-            try {
+            try{
                 //TO SAVE THE INITIAL LIST
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
                 summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
                 btnSaveCarToText.setVisible(true);
-            } catch (IOException e) {
+            }catch (IOException e){
                 summaryLbl.setText(e.getMessage());
             }
-        } else{
-            summaryLbl.setText("Please give the car a name");
+        } else {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setContentText("Fatal error");
+            error.setContentText("An error has occurred in the car-naming process.\nContact your administrator.");
         }
 
     }

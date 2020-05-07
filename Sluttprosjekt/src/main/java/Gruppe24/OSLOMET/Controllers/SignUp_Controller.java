@@ -88,6 +88,7 @@ public class SignUp_Controller implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
+        secretQError.setText("");
         answerError.setText("");
         genderError.setText("");
 
