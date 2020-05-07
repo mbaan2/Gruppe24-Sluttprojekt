@@ -112,6 +112,7 @@ public class Login_Controller implements Initializable {
         loginBtn.setDefaultButton(true);
         superuserInfo.setShowDelay(Duration.millis(100.0));
         superuserInfo.setHideDelay(Duration.millis(200.0));
+        App.startCarBuildingProcess();
 
         //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
         //Code based on a comment from https://stackoverflow.com/a/59880899
