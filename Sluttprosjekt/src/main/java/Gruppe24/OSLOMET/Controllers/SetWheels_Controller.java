@@ -71,7 +71,7 @@ public class SetWheels_Controller implements Initializable {
         try {
             wheelOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(e.getMessage());
+            lblErrorWheels.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }
 
@@ -98,19 +98,11 @@ public class SetWheels_Controller implements Initializable {
     void backBtn() {
         try{
             App.setRoot("SetFuel");
-        } catch (LoadException e){
-            lblErrorWheels.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
-            lblErrorWheels.setText("An error has occurred, please contact the superUser.");
-        } catch (IllegalStateException e){
-            lblErrorWheels.setText("There is an error in loading the next screen, please contact your developer.");
+            lblErrorWheels.setText("An error has occurred, please contact the superUser");
         }
     }
 
-
-
-
-    //Only used for creating/setting the initial .jobj file
     public void setWheels(){
         Carparts wheelsBig = new Carparts("Big wheels", 5000);
         Carparts wheelsSmall = new Carparts("Small wheels", 0);

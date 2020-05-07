@@ -11,7 +11,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -47,6 +49,9 @@ public class SetAddons_Controller implements Initializable {
     @FXML
     private VBox addonsVbox;
 
+    @FXML
+    private Label lblErrorAddons;
+
     public void createButtons() {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
@@ -69,7 +74,7 @@ public class SetAddons_Controller implements Initializable {
         try {
             addOnOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(e.getMessage());
+            lblErrorAddons.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }
 
@@ -87,8 +92,12 @@ public class SetAddons_Controller implements Initializable {
 
         try{
             App.setRoot("Summary");
+        } catch (LoadException e){
+            lblErrorAddons.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorAddons.setText("An error has occurred, please contact the superUser.");
+        } catch (IllegalStateException e){
+            lblErrorAddons.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -96,9 +105,8 @@ public class SetAddons_Controller implements Initializable {
     void backBtn(){
         try{
             App.setRoot("SetColors");
-        }
-        catch (IOException e){
-            System.err.println(e.getMessage());
+        } catch (IOException e){
+            lblErrorAddons.setText("An error has occurred, please contact the superUser");
         }
     }
 

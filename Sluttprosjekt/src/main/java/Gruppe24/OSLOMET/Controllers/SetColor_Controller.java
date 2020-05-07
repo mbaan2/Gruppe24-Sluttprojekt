@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -47,6 +48,10 @@ public class SetColor_Controller implements Initializable {
     @FXML
     private VBox vboxColor;
 
+    @FXML
+    private Label lblErrorColor;
+
+
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(colorButtons, colorOptions, colorGroup);
         LoadingValuesOnScreen.returnVbox(colorButtons, vboxColor);
@@ -68,7 +73,7 @@ public class SetColor_Controller implements Initializable {
         try {
             colorOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(e.getMessage());
+            lblErrorColor.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }
 
@@ -79,12 +84,15 @@ public class SetColor_Controller implements Initializable {
                 App.car.setColor(colorOptions.get(i));
             }
         }
+
         try{
             App.setRoot("SetAddons");
         } catch (LoadException e){
-            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
+            lblErrorColor.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorColor.setText("An error has occurred, please contact the superUser.");
+        } catch (IllegalStateException e){
+            lblErrorColor.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -93,14 +101,10 @@ public class SetColor_Controller implements Initializable {
         try{
             App.setRoot("SetWheels");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorColor.setText("An error has occurred, please contact the superUser");
         }
     }
 
-
-
-
-    //Only used for creating/setting the initial .jobj file
     public void setColors(){
         Carparts red = new Carparts("Red", 5000);
         Carparts blue = new Carparts("Blue", 2500);

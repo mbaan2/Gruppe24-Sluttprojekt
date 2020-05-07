@@ -30,7 +30,7 @@ public class SetFuel_Controller implements Initializable {
     List<RadioButton> fuelButtons = new ArrayList<>();
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         //createFile();
         openFile();
         createButtons();
@@ -67,12 +67,12 @@ public class SetFuel_Controller implements Initializable {
         }
     }
 
-    public void openFile(){
+    public void openFile() {
         Path path = Paths.get(StandardPaths.fuelPath);
         try {
             fuelOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(e.getMessage());
+            lblErrorFuel.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }
 
@@ -96,18 +96,13 @@ public class SetFuel_Controller implements Initializable {
 
     @FXML
     void backBtn(){
-        //THESE TRY CATCHES STILL NEED TESTING
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
-            lblErrorFuel.setText("An error has occurred, please contact the super");
+            lblErrorFuel.setText("An error has occurred, please contact the superUser");
         }
     }
 
-
-
-
-    //Only used for creating/setting the initial .jobj file
     public void setFuel(){
         Carparts diesel = new Carparts("Diesel", 20_000);
         Carparts gasoline = new Carparts("Gasoline", 15_000);
