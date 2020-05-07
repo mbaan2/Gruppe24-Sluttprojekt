@@ -32,6 +32,12 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private Label tvLabel;
 
+    @FXML
+    private TextField filterText;
+
+    @FXML
+    private ChoiceBox<String> filterBox;
+
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
 
@@ -77,13 +83,51 @@ public class UserCarView_Controller implements Initializable {
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
             carList.addAll(list2);
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            tvLabel.setText("Something went wrong in loading of the cars. Try to contact a superuser to reset the saved cars file.");
         }
+    }
+
+    @FXML
+    void filterCars() {
+        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+
+        String filteredText = filterText.getText();
+        String filterType = filterBox.getValue();
+
+        filteredList.clear();
+        tvLabel.setText("");
+
+        if(filteredText.equals("")) {
+            tvLabel.setText("You didnt enter anything..");
+        }
+        else if (filterType.equals("Search Filters")) {
+            tvLabel.setText("You didnt choose a filter.");
+        } else{
+            filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
+            tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
+            tableView.setItems(filteredList);
+            tableView.refresh();
+        }
+    }
+
+    @FXML
+    private void resetFilter() {
+        filterText.setText("");
+        tvLabel.setText("Tableview reset.");
+        tableView.setItems(usersCarList);
+        filterBox.setValue("Search Filters");
+    }
+
+    private void addChoiceBoxItems() {
+        ObservableList<String> choiceBoxList = Filter.choiceBoxList();
+        filterBox.getItems().addAll(choiceBoxList);
+        filterBox.getItems().remove(choiceBoxList.get(1));
+        filterBox.setValue(choiceBoxList.get(0));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        addChoiceBoxItems();
         tableView.setVisible(false);
         showCars();
         String username = App.car.getUser();
