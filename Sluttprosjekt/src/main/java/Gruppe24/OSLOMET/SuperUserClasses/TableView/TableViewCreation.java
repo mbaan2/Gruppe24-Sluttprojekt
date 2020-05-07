@@ -267,7 +267,7 @@ public class TableViewCreation {
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
                         int finalJ = j;
                         unmatchedAddon.setOnAction(actionEvent ->
-                                deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
+                                deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv, lbl));
                         deprecatedAddonsList.getChildren().add(unmatchedAddon);
                     }
                 }
@@ -286,7 +286,7 @@ public class TableViewCreation {
                 delete.setText("Delete");
                 delete.getStyleClass().add("delete-button");
                 delete.setAlignment(Pos.CENTER);
-                delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv));
+                delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv, lbl));
 
                 ObservableValue<Button> btn = new ObservableValueBase<Button>(){
                     @Override
@@ -319,8 +319,9 @@ public class TableViewCreation {
         }
     }
 
-    private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv){
+    private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv, Label lbl){
         addonlist.remove(addon);
+        lbl.setText("Deprecated addon named " + addon.getName() + " removed from the car.");
         btnSaveChanges();
         tv.refresh();
     }
@@ -337,8 +338,9 @@ public class TableViewCreation {
         carList.addAll(list2);
     }
 
-    void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv){
+    void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv, Label lbl){
         carList.remove(car);
+        lbl.setText(car.getName() + " removed from the list.");
         btnSaveChanges();
         tv.refresh();
     }
