@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -46,6 +47,9 @@ public class SetFuel_Controller implements Initializable {
 
     @FXML
     private VBox vboxFuel;
+
+    @FXML
+    private Label lblErrorFuel;
 
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(fuelButtons, fuelOptions, fuelGroup);
@@ -82,9 +86,9 @@ public class SetFuel_Controller implements Initializable {
         try{
             App.setRoot("SetWheels");
         } catch (LoadException e){
-            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
+            lblErrorFuel.setText("Error in file, please contact superUSer to restore the system");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorFuel.setText("An error has occurred, please contact the super");
         }
     }
 
@@ -93,7 +97,7 @@ public class SetFuel_Controller implements Initializable {
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorFuel.setText("An error has occurred, please contact the super");
         }
     }
 

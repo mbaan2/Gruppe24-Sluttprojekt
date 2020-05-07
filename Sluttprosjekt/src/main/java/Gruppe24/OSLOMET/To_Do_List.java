@@ -4,6 +4,7 @@
       3.5)    Removing all the System.err.messages and replace them
               with feedback to the user                                   HIGH PRIORITY
       11)     Creating our own exceptions classes                         HIGH PRIORITY
+
       15)     Test with Netbeans and Eclipse                              HIGH PRIORITY
       16)     Include text file talking about the
               possible JUnit problem and how to fix                       HIGH PRIORITY
@@ -14,6 +15,9 @@
       26)     Saving and resaving of a car check if car already exist?    HIGH PRIORITY
       9)      Undo button per car                                         LOW PRIORITY
       19)     Option to edit a specific car                               LOW PRIORITY        Mark
+
+      Question: Do we want to users also to show in a .txt file?
+
 */
 
 
