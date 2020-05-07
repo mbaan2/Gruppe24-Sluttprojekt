@@ -22,9 +22,11 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             App.setRoot("SetFuel");
         } catch (LoadException e){
-            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
-        }catch (IOException e) {
+            System.err.println(e.getMessage() + "Error in file, please contact superUser to restore the system");
+        } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
 
     }
@@ -35,6 +37,8 @@ public class WelcomeScreen_Controller implements Initializable {
             App.setRoot("UserCarView");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -44,6 +48,8 @@ public class WelcomeScreen_Controller implements Initializable {
             App.setRoot("login");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 

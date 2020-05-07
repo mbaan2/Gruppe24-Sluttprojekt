@@ -121,6 +121,8 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetFuel");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -135,6 +137,8 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetAddons");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -151,6 +155,8 @@ public class Summary_Controller implements Initializable {
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
 
     }
@@ -161,6 +167,8 @@ public class Summary_Controller implements Initializable {
             App.setRoot("login");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 

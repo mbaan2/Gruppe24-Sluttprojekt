@@ -84,8 +84,6 @@ public class Login_Controller implements Initializable {
         } else if (!userBase.containsValue(passwordTxt.getText())) {
                 passwordError.setText("Wrong password");
             }
-
-
     }
 
     @FXML

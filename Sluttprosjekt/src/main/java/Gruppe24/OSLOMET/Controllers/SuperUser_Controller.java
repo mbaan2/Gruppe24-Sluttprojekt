@@ -319,6 +319,8 @@ public class SuperUser_Controller implements Initializable {
             App.setRoot("login");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -394,6 +396,8 @@ public class SuperUser_Controller implements Initializable {
             App.setRoot("SuperUserCarView");
         } catch (IOException e){
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -403,6 +407,8 @@ public class SuperUser_Controller implements Initializable {
             App.setRoot("Userlist");
         } catch (IOException e) {
             System.err.println(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 }

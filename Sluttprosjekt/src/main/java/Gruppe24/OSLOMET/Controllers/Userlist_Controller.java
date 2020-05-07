@@ -90,6 +90,8 @@ public class Userlist_Controller implements Initializable {
             App.setRoot("SuperUser");
         } catch (IOException e) {
             lblUserList.setText(e.getMessage());
+        } catch (IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
