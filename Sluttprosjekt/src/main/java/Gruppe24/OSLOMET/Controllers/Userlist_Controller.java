@@ -152,7 +152,7 @@ public class Userlist_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
         }
-        lblUserList.setText("Tableview loaded!");
+        lblUserList.setText("Users loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;
@@ -160,7 +160,7 @@ public class Userlist_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblUserList.setText("Loading tableview...");
+        lblUserList.setText("Loading users...");
         tableView.setVisible(false);
         addChkBoxItems();
         try {

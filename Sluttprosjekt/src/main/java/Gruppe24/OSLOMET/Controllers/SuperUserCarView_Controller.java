@@ -41,7 +41,7 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        filterLbl.setText("Loading tableview...");
+        filterLbl.setText("Loading cars...");
         tableView.setVisible(false);
         addChoiceBoxItems();
 
@@ -105,7 +105,7 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
         }
-        filterLbl.setText("Tableview loaded!");
+        filterLbl.setText("Cars loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;

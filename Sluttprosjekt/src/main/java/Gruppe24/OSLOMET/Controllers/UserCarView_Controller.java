@@ -7,6 +7,7 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
@@ -42,28 +43,10 @@ public class UserCarView_Controller implements Initializable {
     private ChoiceBox<String> filterBox;
 
     @FXML
-    private Button loadBtn;
-
-    @FXML
     private Button saveTable;
 
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
-
-    @FXML
-    void loadYourCars() {
-        tableView.setItems(usersCarList);
-        if(tableView.getItems().isEmpty()) {
-            tableView.setVisible(false);
-            tvLabel.setText("You dont have any saved cars!");
-        } else {
-            executor.submit(setTableview);
-            tableView.setVisible(true);
-            Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(925);
-            stage.setHeight(470);
-        }
-    }
 
     @FXML
     void goBack() {
@@ -160,7 +143,6 @@ public class UserCarView_Controller implements Initializable {
     public final Runnable setTableview = () -> {
         while (!Thread.currentThread().isInterrupted()) {
             tableView.getItems();
-            loadBtn.setVisible(false);
         }
     };
 
@@ -171,17 +153,16 @@ public class UserCarView_Controller implements Initializable {
             tvLabel.setText("Error in fetching the table!");
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
-            tvLabel.setText("Error in fetching the table!");
         }
-        tvLabel.setText("Tableview loaded!");
+        tvLabel.setText("Cars successfully loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;
     });
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadBtn.setVisible(true);
         addChoiceBoxItems();
         tableView.setVisible(false);
         showCars();
@@ -233,6 +214,21 @@ public class UserCarView_Controller implements Initializable {
                 }
             });
         }
+        tableView.setItems(usersCarList);
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) userViewPane.getScene().getWindow();
+            stage.setWidth(825);
+            stage.setHeight(470);
+            if(tableView.getItems().isEmpty()) {
+                tableView.setVisible(false);
+                tvLabel.setText("You dont have any saved cars!");
+            } else {
+                tableView.setVisible(true);
+                executor.submit(setTableview);
+            }
+        });
+
     }
 
 
