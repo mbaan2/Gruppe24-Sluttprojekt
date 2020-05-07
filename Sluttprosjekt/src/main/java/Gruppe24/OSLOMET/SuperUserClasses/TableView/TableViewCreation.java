@@ -7,6 +7,7 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
+import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,13 +26,16 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TableViewCreation {
     List<Carparts> addonSupUser = new ArrayList<>();
     public ObservableList<NewCar> carList = FXCollections.observableArrayList();
+    public HashMap<String, String> userBase = new HashMap<>();
 
-    public void initializeTv(TableView<NewCar> tv) {
+    public void initializeTv(TableView<NewCar> tv, Label lbl) {
+        userBase = FileOpenerJobj.openFileHashMap();
         openCars();
         int maxNrAddons = 0;
 
@@ -81,16 +85,37 @@ public class TableViewCreation {
 
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
             user.setCellFactory(TextFieldTableCell.forTableColumn());
-            user.setOnEditCommit(event -> event.getRowValue().setUser(event.getNewValue()));
+            user.setOnEditCommit(event -> {
+                if(userBase.containsKey(event.getNewValue())) {
+                    if(event.getRowValue().getUser().equals(event.getNewValue())) {
+                        lbl.setText("The car already has " + event.getNewValue() + " as a username.");
+                    } else {
+                        lbl.setText("User " + event.getRowValue().getUser() + " changed to " + event.getNewValue() + " for the car named " + event.getRowValue().getName() + ".");
+                        event.getRowValue().setUser(event.getNewValue());
+                    }
+                } else {
+                    lbl.setText("No user exists with that name.");
+                }
+                btnSaveChanges();
+                tv.refresh();
+            });
 
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
             name.setCellFactory(TextFieldTableCell.forTableColumn());
-            name.setOnEditCommit(event -> event.getRowValue().setName(event.getNewValue()));
+            name.setOnEditCommit(event -> {
+                if(event.getRowValue().getName().equals(event.getNewValue())) {
+                    lbl.setText("The car already has " + event.getNewValue() + " as a name");
+                } else {
+                    lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
+                    event.getRowValue().setName(event.getNewValue());
+                }
+                btnSaveChanges();
+            });
 
             ObservableList<String> fuelList = FXCollections.observableArrayList();
             List<Carparts> fuelOptions = new ArrayList<>();
             try {
-               fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
+                fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
             } catch (ClassNotFoundException | IOException e) {
                 System.err.println(e.getMessage());
             }
@@ -102,9 +127,14 @@ public class TableViewCreation {
             fuel.setOnEditCommit(event -> {
                 for(int j = 0; j < finalFuelOptions.size(); j++){
                     if(event.getNewValue().equals(finalFuelOptions.get(j).getName())) {
-                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getFuel().getCost());
-                        event.getRowValue().setFuel(finalFuelOptions.get(j));
-                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getFuel().getCost());
+                        if(event.getRowValue().getFuel().getName().equals(event.getNewValue())){
+                            lbl.setText("The car already has " + event.getNewValue() + " as fuel.");
+                        } else {
+                            lbl.setText("The fuel of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getFuel().getName() + " to " + event.getNewValue() + ".");
+                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getFuel().getCost());
+                            event.getRowValue().setFuel(finalFuelOptions.get(j));
+                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getFuel().getCost());
+                        }
                     }
                 }
                 btnSaveChanges();
@@ -127,9 +157,14 @@ public class TableViewCreation {
             wheels.setOnEditCommit(event -> {
                 for(int j = 0; j < finalWheelOptions.size(); j++){
                     if(event.getNewValue().equals(finalWheelOptions.get(j).getName())) {
-                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getWheels().getCost());
-                        event.getRowValue().setWheels(finalWheelOptions.get(j));
-                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getWheels().getCost());
+                        if(event.getRowValue().getWheels().getName().equals(event.getNewValue())) {
+                            lbl.setText("The car already has " + event.getNewValue() + ".");
+                        } else {
+                            lbl.setText("The wheels of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getWheels().getName() + " to " + event.getNewValue() + ".");
+                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getWheels().getCost());
+                            event.getRowValue().setWheels(finalWheelOptions.get(j));
+                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getWheels().getCost());
+                        }
                     }
                 }
                 btnSaveChanges();
@@ -151,9 +186,14 @@ public class TableViewCreation {
             color.setOnEditCommit(event -> {
                 for(int j = 0; j < finalColorOptions.size(); j++){
                     if(event.getNewValue().equals(finalColorOptions.get(j).getName())) {
-                        event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getColor().getCost());
-                        event.getRowValue().setColor(finalColorOptions.get(j));
-                        event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getColor().getCost());
+                        if(event.getRowValue().getColor().getName().equals(event.getNewValue())) {
+                            lbl.setText("The car already has " + event.getNewValue() + " color.");
+                        } else {
+                            lbl.setText("The color of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getColor().getName() + " to " + event.getNewValue() + ".");
+                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getColor().getCost());
+                            event.getRowValue().setColor(finalColorOptions.get(j));
+                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getColor().getCost());
+                        }
                     }
                 }
                 btnSaveChanges();
@@ -180,6 +220,7 @@ public class TableViewCreation {
                         if(newValue){
                             for(int k = 0; k < addonSupUser.size(); k++) {
                                 if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
+                                    lbl.setText(addonSupUser.get(k).getName() + " added to " + newcar.getName() + ".");
                                     newcar.getAddons().add(addonSupUser.get(k));
                                     newcar.setCost(newcar.getCost() + addonSupUser.get(k).getCost());
                                 }
@@ -187,6 +228,7 @@ public class TableViewCreation {
                         } else {
                             for(int k = 0; k < newcar.getAddons().size(); k++) {
                                 if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
+                                    lbl.setText(newcar.getAddons().getElement(k).getName() + " removed from " + newcar.getName() + ".");
                                     newcar.setCost(newcar.getCost() - newcar.getAddons().getElement(k).getCost());
                                     newcar.getAddons().remove(k);
                                 }
@@ -224,7 +266,7 @@ public class TableViewCreation {
                         Button unmatchedAddon = new Button();
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
                         int finalJ = j;
-                        unmatchedAddon.setOnAction(actionEvent -> 
+                        unmatchedAddon.setOnAction(actionEvent ->
                                 deleteDeprecatedAddon(actionEvent, car.getValue().getAddons().getElement(finalJ), car.getValue().addons, tv));
                         deprecatedAddonsList.getChildren().add(unmatchedAddon);
                     }
@@ -245,6 +287,7 @@ public class TableViewCreation {
                 delete.getStyleClass().add("delete-button");
                 delete.setAlignment(Pos.CENTER);
                 delete.setOnAction(actionEvent -> deleteCar(carList, car.getValue(), tv));
+                lbl.setText(car.getValue().getName() + " removed from the list");
 
                 ObservableValue<Button> btn = new ObservableValueBase<Button>(){
                     @Override
@@ -301,3 +344,4 @@ public class TableViewCreation {
         tv.refresh();
     }
 }
+

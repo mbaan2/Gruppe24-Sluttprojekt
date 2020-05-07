@@ -16,11 +16,12 @@
         <TextField fx:id="filterText" layoutX="28.0" layoutY="333.0" prefHeight="25.0" prefWidth="150.0" />
         <Button layoutX="28.0" layoutY="366.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
         <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="300.0" prefWidth="150.0" />
-        <Label fx:id="filterLbl" layoutX="28.0" layoutY="208.0" prefHeight="79.0" prefWidth="150.0" textFill="#def2f1" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
+        <Label fx:id="filterLbl" layoutX="28.0" layoutY="133.0" prefHeight="154.0" prefWidth="150.0" textFill="#def2f1" wrapText="true">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
         <Button layoutX="28.0" layoutY="396.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
-      <Button layoutX="28.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+        <Button layoutX="28.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     </children>
 </AnchorPane>
+

@@ -49,7 +49,7 @@ public class SuperUserCarView_Controller implements Initializable {
             Stage stage = (Stage) superUserViewPane.getScene().getWindow();
             stage.setWidth(1175);
             stage.setHeight(470);
-            createView.initializeTv(tableView);
+            createView.initializeTv(tableView, filterLbl);
             tableView.setVisible(true);
             executor.submit(setTableview);
             tableView.refresh();
