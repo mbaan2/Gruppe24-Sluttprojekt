@@ -43,10 +43,7 @@ public class SetFuel_Controller implements Initializable {
     }
 
     @FXML
-    private VBox fuelVbox;
-
-    @FXML
-    private VBox vboxFuel;
+    private VBox fuelVbox, vboxFuel;
 
     @FXML
     private Label lblErrorFuel;

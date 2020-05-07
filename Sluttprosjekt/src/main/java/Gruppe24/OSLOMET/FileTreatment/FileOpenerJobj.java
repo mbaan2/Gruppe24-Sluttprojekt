@@ -54,22 +54,16 @@ public class FileOpenerJobj {
         return userBase;
     }
 
-    public static ObservableList<NewCar> openCarsToObsL(String path) throws IOException {
-        ObservableList<NewCar> carList = FXCollections.observableArrayList();
-        ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
-        boolean moreObjects = true;
-
-        while (moreObjects) {
-            try {
-                NewCar aCar = (NewCar) is.readObject();
-                carList.add(aCar);
-            } catch (Exception e){
-                moreObjects = false;
-            }
+    public static List<String> openSecretQList() {
+        List<String> choiceBoxList = new ArrayList<>();
+        try (FileInputStream in = new FileInputStream(StandardPaths.secretQPath);
+             ObjectInputStream oin = new ObjectInputStream(in)) {
+            choiceBoxList = (List<String>) oin.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println(e.getMessage());
         }
-        return carList;
+        return choiceBoxList;
     }
-
 
     public static ArrayList<NewCar> openingCarArray(String path) throws IOException {
         ArrayList<NewCar> carList = new ArrayList<>();
@@ -86,5 +80,5 @@ public class FileOpenerJobj {
         }
         return carList;
     }
-
 }
+

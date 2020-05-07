@@ -32,25 +32,13 @@ public class Summary_Controller implements Initializable {
     private AnchorPane summaryPane;
 
     @FXML
-    private Button btnNameCar;
+    private Button btnNameCar, btnBuildCar, btnSaveCarToText;
 
     @FXML
     private TextField txtCarName;
 
     @FXML
-    private Button btnBuildCar;
-
-    @FXML
-    private Button btnSaveCarToText;
-
-    @FXML
-    private Label lblCarComponents;
-
-    @FXML
-    private Label carNameLbl;
-
-    @FXML
-    private Label summaryLbl;
+    private Label lblCarComponents, carNameLbl, summaryLbl;
 
     List<NewCar> carList = new ArrayList<>();
 

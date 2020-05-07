@@ -39,22 +39,23 @@ public class User implements Serializable {
         return secretQAnswer.getValue();
     }
 
-    private void setUsername(String username) {
+    public void setUsername(String username) {
         this.username.set(username);
     }
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password.set(password);
     }
-    private void setLocation(String location) {
+    public void setLocation(String location) {
         this.location.set(location);
     }
-    private void setGender(String gender) {
+    public void setGender(String gender) {
         this.gender.set(gender);
     }
-    private void setSecretQ(String secretQ) {
+    public void setSecretQ(String secretQ) {
         this.secretQ.set(secretQ);
     }
-    private void setSecretQAnswer(String secretQAnswer) {
+    public void setSecretQAnswer(String secretQAnswer) {
         this.secretQAnswer.set(secretQAnswer);
     }
 }
+

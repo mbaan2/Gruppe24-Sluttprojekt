@@ -44,10 +44,7 @@ public class SetAddons_Controller implements Initializable {
     }
 
     @FXML
-    private VBox vboxAddOns;
-
-    @FXML
-    private VBox addonsVbox;
+    private VBox vboxAddOns, addonsVbox;
 
     @FXML
     private Label lblErrorAddons;

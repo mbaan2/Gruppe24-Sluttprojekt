@@ -2,6 +2,8 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -58,4 +60,18 @@ public class FileSaverJobj {
             throw new IOException(e.getMessage());
         }
     }
+
+    public static void SaveSecretQList(List<String> choiceBoxList) throws IOException {
+        try {
+            FileOutputStream os = new FileOutputStream(StandardPaths.secretQPath);
+            ObjectOutputStream oos = new ObjectOutputStream(os);
+            oos.writeObject(choiceBoxList);
+            oos.flush();
+            oos.close();
+            os.close();
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
+    }
 }
+

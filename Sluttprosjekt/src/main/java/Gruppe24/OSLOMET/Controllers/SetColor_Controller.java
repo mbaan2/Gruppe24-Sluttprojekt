@@ -43,10 +43,7 @@ public class SetColor_Controller implements Initializable {
     }
 
     @FXML
-    private VBox colorVbox;
-
-    @FXML
-    private VBox vboxColor;
+    private VBox colorVbox, vboxColor;
 
     @FXML
     private Label lblErrorColor;

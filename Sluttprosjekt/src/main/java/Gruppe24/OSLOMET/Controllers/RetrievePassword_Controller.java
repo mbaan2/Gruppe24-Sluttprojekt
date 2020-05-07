@@ -27,37 +27,19 @@ public class RetrievePassword_Controller implements Initializable {
     private AnchorPane registerPane;
 
     @FXML
-    private TextField usernameTxt;
+    private TextField usernameTxt, answerTxt;
 
     @FXML
-    private TextField answerTxt;
+    private Label usernameError, answerLbl, answerError, choiceBoxError, usernameLbl;
 
     @FXML
-    private Label usernameError;
-
-    @FXML
-    private Label answerLbl;
-
-    @FXML
-    private Button passwordBtn;
-
-    @FXML
-    private Label answerError;
-
-    @FXML
-    private Label choiceBoxError;
+    private Button passwordBtn, nextBtn;
 
     @FXML
     private ChoiceBox<String> choiceBox;
 
     @FXML
     private TableView<User> tableView;
-
-    @FXML
-    private Button nextBtn;
-
-    @FXML
-    private Label usernameLbl;
 
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
     HashMap<String, String> userBase = FileOpenerJobj.openFileHashMap();
@@ -166,11 +148,8 @@ public class RetrievePassword_Controller implements Initializable {
     private void addChkBoxItems() {
         checkBoxList.removeAll();
         String checkBoxQuestion = "Select a question!";
-        String checkBoxQType = "Name of first pet?";
-        String checkBoxQType2 = "Mothers maiden name?";
-        String checkBoxQType3 = "Whos your daddy?";
-
-        checkBoxList.addAll(checkBoxQuestion, checkBoxQType, checkBoxQType2, checkBoxQType3);
+        checkBoxList.add(checkBoxQuestion);
+        checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
     }

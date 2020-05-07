@@ -62,49 +62,13 @@ public class SuperUser_Controller implements Initializable {
     private ChoiceBox<String> chbCategory;
 
     @FXML
-    private TextField txtName;
+    private TextField txtName, txtCost;
 
     @FXML
-    private TextField txtCost;
+    private Label superUserLbl, lblNameError, lblCostError;
 
     @FXML
-    private Label superUserLbl;
-
-    @FXML
-    private Label lblNameError;
-
-    @FXML
-    private Label lblCostError;
-
-    @FXML
-    private Button addBtn;
-
-    @FXML
-    private Button removeBtn;
-
-    @FXML
-    private Button editBtn;
-
-    @FXML
-    private Button backBtn;
-
-    @FXML
-    private Button btnLoadCars;
-
-    @FXML
-    private Button loadBtn;
-
-    @FXML
-    private Button btnRestoreFiles;
-
-    @FXML
-    private Button btnLoadUsers;
-
-    @FXML
-    private Button btnRestoreUsers;
-
-    @FXML
-    private Button btnRestoreCars;
+    private Button addBtn, removeBtn, editBtn, backBtn, btnLoadCars, loadBtn, btnRestoreCarparts, btnLoadUsers, btnRestoreUsers, btnRestoreCars, btnRestoreSecretQ;
 
     @FXML
     private Tooltip superuserInfo;
@@ -156,11 +120,12 @@ public class SuperUser_Controller implements Initializable {
         th.setDaemon(true);
         backBtn.setDisable(true);
         btnLoadCars.setDisable(true);
-        btnRestoreFiles.setDisable(true);
+        btnRestoreCarparts.setDisable(true);
         btnLoadUsers.setDisable(true);
         btnRestoreUsers.setDisable(true);
         btnRestoreCars.setDisable(true);
         loadBtn.setDisable(true);
+        btnRestoreSecretQ.setDisable(true);
         setDisableBtn();
         th.start();
     }
@@ -194,15 +159,18 @@ public class SuperUser_Controller implements Initializable {
         editBtn.setDisable(false);
         backBtn.setDisable(false);
         btnLoadCars.setDisable(false);
-        btnRestoreFiles.setDisable(false);
+        btnRestoreCarparts.setDisable(false);
         btnLoadUsers.setDisable(false);
         btnRestoreUsers.setDisable(false);
         btnRestoreCars.setDisable(false);
         loadBtn.setDisable(false);
+        btnRestoreSecretQ.setDisable(false);
     }
 
     @FXML
     void btnEdit(ActionEvent event) {
+        lblCostError.setText("");
+        lblNameError.setText("");
         superUserLbl.setText("Editing carpart...");
         String name = "";
         if (ValidName.carpartNameTest(txtName.getText())){
@@ -325,7 +293,7 @@ public class SuperUser_Controller implements Initializable {
     }
 
     @FXML
-    void btnRestoreFiles(ActionEvent event) {
+    void btnRestoreCarparts(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Users");
         alert.setHeaderText("");
@@ -387,6 +355,26 @@ public class SuperUser_Controller implements Initializable {
             superUserLbl.setText("Cars are restored!");
         } else {
             superUserLbl.setText("Process cancelled, cars were not restored.");
+        }
+    }
+
+    @FXML
+    void btnRestoreSecretQ(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Secret Questions");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore the secret questions for the userlist?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.get() == yesBtn) {
+            Userlist_Controller restoreSecretQ = new Userlist_Controller();
+            restoreSecretQ.createFile();
+            superUserLbl.setText("Secret questions are restored!");
+        } else {
+            superUserLbl.setText("Process cancelled, secret questions were not restored.");
         }
     }
 

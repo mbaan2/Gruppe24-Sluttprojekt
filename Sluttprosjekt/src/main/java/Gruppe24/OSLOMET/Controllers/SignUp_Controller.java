@@ -18,9 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -34,46 +32,13 @@ public class SignUp_Controller implements Initializable {
     private AnchorPane signupPane;
 
     @FXML
-    private PasswordField signupPassword;
+    private RadioButton checkMale, checkFemale, checkOther;
 
     @FXML
-    private TextField signupUsername;
+    private TextField signupLocation, answerTxt, signupUsername, signupPassword;
 
     @FXML
-    private RadioButton checkMale;
-
-    @FXML
-    private RadioButton checkFemale;
-
-    @FXML
-    private RadioButton checkOther;
-
-    @FXML
-    private TextField signupLocation;
-
-    @FXML
-    private TextField answerTxt;
-
-    @FXML
-    private Label usernameError;
-
-    @FXML
-    private Label passwordError;
-
-    @FXML
-    private Label locationError;
-
-    @FXML
-    private Label secretQError;
-
-    @FXML
-    private Label answerError;
-
-    @FXML
-    private Label genderError;
-
-    @FXML
-    private Label signupLbl;
+    private Label usernameError, passwordError, locationError, secretQError, answerError, genderError, signupLbl;
 
     @FXML
     private ChoiceBox<String> choiceBox;
@@ -134,7 +99,7 @@ public class SignUp_Controller implements Initializable {
                     alert.setContentText(e.getMessage());
                 }
             } else {
-                    usernameError.setText("Username already exists!");
+                usernameError.setText("Username already exists!");
             }
 
             //Writing the list to a txt file for the user register unless it already exist in the register.
@@ -180,11 +145,9 @@ public class SignUp_Controller implements Initializable {
     private void addChkBoxItems() {
         checkBoxList.removeAll();
         String checkBoxQuestion = "Select a question!";
-        String checkBoxQType = "Name of first pet?";
-        String checkBoxQType2 = "Mothers maiden name?";
-        String checkBoxQType3 = "Who's your daddy?";
 
-        checkBoxList.addAll(checkBoxQuestion, checkBoxQType, checkBoxQType2, checkBoxQType3);
+        checkBoxList.add(checkBoxQuestion);
+        checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
     }
@@ -240,3 +203,4 @@ public class SignUp_Controller implements Initializable {
         });
     }
 }
+

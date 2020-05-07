@@ -42,10 +42,7 @@ public class SetWheels_Controller implements Initializable {
     }
 
     @FXML
-    private VBox vboxWheels;
-
-    @FXML
-    private VBox wheelsVbox;
+    private VBox vboxWheels, wheelsVbox;
 
     @FXML
     private Label lblErrorWheels;
