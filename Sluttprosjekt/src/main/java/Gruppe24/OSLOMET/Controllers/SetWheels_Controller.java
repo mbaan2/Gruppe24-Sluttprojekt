@@ -17,6 +17,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -45,6 +46,9 @@ public class SetWheels_Controller implements Initializable {
 
     @FXML
     private VBox wheelsVbox;
+
+    @FXML
+    private Label lblErrorWheels;
 
     public void createButtons(){
         LoadingValuesOnScreen.creatingList(wheelButtons, wheelOptions, wheelGroup);
@@ -78,12 +82,15 @@ public class SetWheels_Controller implements Initializable {
                 App.car.setWheels(wheelOptions.get(i));
             }
         }
+
         try{
             App.setRoot("SetColors");
-        } catch (LoadException e) {
-            System.err.println(e.getMessage() + "Error in file, please contact superUSer to restore the system");
-        } catch(IOException e){
-            System.err.println(e.getMessage());
+        } catch (LoadException e){
+            lblErrorWheels.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
+        } catch (IOException e){
+            lblErrorWheels.setText("An error has occurred, please contact the superUser.");
+        } catch (IllegalStateException e){
+            lblErrorWheels.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -91,8 +98,12 @@ public class SetWheels_Controller implements Initializable {
     void backBtn() {
         try{
             App.setRoot("SetFuel");
+        } catch (LoadException e){
+            lblErrorWheels.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorWheels.setText("An error has occurred, please contact the superUser.");
+        } catch (IllegalStateException e){
+            lblErrorWheels.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 

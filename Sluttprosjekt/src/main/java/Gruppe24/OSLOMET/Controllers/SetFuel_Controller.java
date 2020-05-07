@@ -86,18 +86,17 @@ public class SetFuel_Controller implements Initializable {
         try{
             App.setRoot("SetWheels");
         } catch (LoadException e){
-            lblErrorFuel.setText("Error in one of the Carpart files, please contact the superUSer to restore the system.");
+            lblErrorFuel.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
-            lblErrorFuel.setText("An error has occurred, please contact the super.");
+            lblErrorFuel.setText("An error has occurred, please contact the superUser.");
         } catch (IllegalStateException e){
             lblErrorFuel.setText("There is an error in loading the next screen, please contact your developer.");
-        } catch (NullPointerException e){
-            lblErrorFuel.setText("The next screen wasn't found, please contact your developer.");
         }
     }
 
     @FXML
     void backBtn(){
+        //THESE TRY CATCHES STILL NEED TESTING
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
