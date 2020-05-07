@@ -98,6 +98,12 @@ public class SetColor_Controller implements Initializable {
 
     @FXML
     void backBtn() {
+        for(int i = 0; i<colorOptions.size();i++){
+            if(colorButtons.get(i).isSelected()){
+                App.car.setColor(colorOptions.get(i));
+            }
+        }
+
         try{
             App.setRoot("SetWheels");
         } catch (IOException e){

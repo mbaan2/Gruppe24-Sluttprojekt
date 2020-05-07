@@ -103,6 +103,16 @@ public class SetAddons_Controller implements Initializable {
 
     @FXML
     void backBtn(){
+        CarCategory addons = new CarCategory("addons");
+        addons.clear();
+
+        for(int i = 0; i < addOnOptions.size(); i++){
+            if(addOnButtons.get(i).isSelected()){
+                addons.add(addOnOptions.get(i));
+            }
+        }
+        App.car.setAddons(addons);
+
         try{
             App.setRoot("SetColors");
         } catch (IOException e){

@@ -83,6 +83,7 @@ public class SetFuel_Controller implements Initializable {
                 App.car.setFuel(fuelOptions.get(i));
             }
         }
+
         try{
             App.setRoot("SetWheels");
         } catch (LoadException e){
@@ -96,6 +97,12 @@ public class SetFuel_Controller implements Initializable {
 
     @FXML
     void backBtn(){
+        for(int i = 0; i<fuelOptions.size();i++){
+            if(fuelButtons.get(i).isSelected()){
+                App.car.setFuel(fuelOptions.get(i));
+            }
+        }
+
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
