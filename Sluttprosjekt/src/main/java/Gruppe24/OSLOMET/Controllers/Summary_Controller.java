@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Summary_Controller implements Initializable {
@@ -71,12 +72,48 @@ public class Summary_Controller implements Initializable {
         boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
 
-        //SOMETHING IS WRONG, WILL CHECK SOON
         if (txtCarName.getText().equals("")) {
             summaryLbl.setText("Please give the car a name");
         } else if (!uniqueName){
-            summaryLbl.setText("A car with this name already exists.");
-            //Add possibility to override
+            summaryLbl.setText("");
+            //Adds possibility to override
+            Alert overrideAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            overrideAlert.setTitle("Override alert!");
+            overrideAlert.setContentText("You have already saved a car with this name.\nWould you like to override it?");
+            txtCarName.setDisable(true);
+            ButtonType override = new ButtonType("Override");
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            overrideAlert.getButtonTypes().setAll(override, cancel);
+            Optional<ButtonType> choice = overrideAlert.showAndWait();
+
+            if (choice.get() == override){
+                App.car.setName(txtCarName.getText());
+                btnNameCar.setDisable(true);
+
+                //CHANGE HERE (delete old car)
+                List<NewCar> list = new ArrayList<>();
+                try{
+                    list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+                }catch (IOException e){
+                    System.err.println(e.getMessage());
+                    Alert error = new Alert(Alert.AlertType.ERROR);
+                    error.setTitle("Car list error");
+                    error.setHeaderText("Car list error");
+                    error.setContentText("There is a problem with the car list file.\nContact your administrator.");
+                }
+
+                try{
+                    //TO SAVE THE INITIAL LIST
+                    FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
+                    FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
+                    summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
+                    btnSaveCarToText.setVisible(true);
+                }catch (IOException e){
+                    summaryLbl.setText(e.getMessage());
+                }
+                txtCarName.setDisable(false);
+            }
         } else if (!validName) {
             summaryLbl.setText("Your car's name is invalid. Please try again.");
         } else if(validName){
@@ -98,6 +135,10 @@ public class Summary_Controller implements Initializable {
                 btnSaveCarToText.setVisible(true);
             }catch (IOException e){
                 summaryLbl.setText(e.getMessage());
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setTitle("Car list error");
+                error.setHeaderText("Car list error");
+                error.setContentText("There is a problem with the car list file.\nContact your administrator.");
             }
         } else {
             Alert error = new Alert(Alert.AlertType.ERROR);
