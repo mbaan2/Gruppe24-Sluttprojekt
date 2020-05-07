@@ -4,7 +4,9 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import javafx.application.Platform;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -120,23 +123,14 @@ public class UserCarView_Controller implements Initializable {
 
     @FXML
     void saveYourTable(ActionEvent event) {
-        //IN PROGRESS
-        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
-
-        String filteredText = filterText.getText();
-        String filterType = filterBox.getValue();
-
-        filteredList.clear();
-        tvLabel.setText("");
-
-
-        if (!filteredText.equals("") && !filterType.equals("Search Filters")){
-            filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
-            tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
-            tableView.setItems(filteredList);
-            tableView.refresh();
+        ObservableList<NewCar> outputList = tableView.getItems();
+        FileSaverTxt fstxt = new FileSaverTxt();
+        try{
+            fstxt.testExisting(outputList);
+        }catch (IOException e){
+            e.printStackTrace();
+            Alerts.processFailAlert("Saving");
         }
-
     }
 
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates

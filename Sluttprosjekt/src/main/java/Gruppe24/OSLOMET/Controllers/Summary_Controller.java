@@ -4,13 +4,15 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.DataValidation.Errors;
+import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -92,7 +94,6 @@ public class Summary_Controller implements Initializable {
                 App.car.setName(txtCarName.getText());
                 btnNameCar.setDisable(true);
 
-                //CHANGE HERE (delete old car)
                 List<NewCar> list = new ArrayList<>();
                 try{
                     list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
@@ -116,7 +117,7 @@ public class Summary_Controller implements Initializable {
                     btnSaveCarToText.setVisible(true);
                 }catch (IOException e){
                     summaryLbl.setText(e.getMessage());
-                    Errors.fileLoadAlert("Car list");
+                    Alerts.fileLoadAlert("Car list");
                 }
                 txtCarName.setDisable(false);
             } else {
@@ -139,14 +140,14 @@ public class Summary_Controller implements Initializable {
                 //TO SAVE THE INITIAL LIST
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
+                summaryLbl.setText(App.car.getName() + " has been added to the list.");
                 btnSaveCarToText.setVisible(true);
             }catch (IOException e){
                 summaryLbl.setText(e.getMessage());
-                Errors.fileLoadAlert("Car list");
+                Alerts.fileLoadAlert("Car list");
             }
         } else {
-            Errors.processFailAlert("Car-naming");
+            Alerts.processFailAlert("Car-naming");
         }
 
     }
@@ -157,9 +158,12 @@ public class Summary_Controller implements Initializable {
         
         FileSaverTxt fs = new FileSaverTxt();
         try{
-            fs.saveTxtFile(App.car);
+            ObservableList<NewCar> temp = FXCollections.observableArrayList();
+            temp.add(App.car);
+            fs.testExisting(temp);
             btnSaveCarToText.setVisible(false);
-        }catch (IOException e){
+            temp.removeAll();
+        } catch (IOException e){
             summaryLbl.setText("You did not select a valid file.");
         }
     }
@@ -176,9 +180,9 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetFuel");
         } catch (IOException e){
             System.err.println(e.getMessage());
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
         } catch (IllegalStateException e){
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
@@ -194,9 +198,9 @@ public class Summary_Controller implements Initializable {
             App.setRoot("SetAddons");
         } catch (IOException e){
             System.err.println(e.getMessage());
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
         } catch (IllegalStateException e){
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
@@ -214,10 +218,10 @@ public class Summary_Controller implements Initializable {
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
             System.err.println(e.getMessage());
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
         } catch (IllegalStateException e){
             System.err.println("There is an error in loading the next screen, please contact your developer.");
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
         }
         String username = App.car.getUser();
         App.startCarBuildingProcess();
@@ -229,10 +233,10 @@ public class Summary_Controller implements Initializable {
         try{
             App.setRoot("login");
         } catch (IOException e){
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
             System.err.println(e.getMessage());
         } catch (IllegalStateException e){
-            Errors.screenLoadAlert();
+            Alerts.screenLoadAlert();
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }

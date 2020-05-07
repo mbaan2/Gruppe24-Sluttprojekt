@@ -1,9 +1,14 @@
 package Gruppe24.OSLOMET.FileTreatment;
 
+import Gruppe24.OSLOMET.DataValidation.Alerts;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 public class FileChooserTxt{
     public static File fileChooserTxt(String initialFileName){
@@ -13,16 +18,8 @@ public class FileChooserTxt{
         fc.setInitialFileName(initialFileName);
         fc.setInitialDirectory(new File(currentDir));
 
-        int i = SaveOrLoad.showAlert();
-        if (i==2){
-            File selectedFile = fc.showOpenDialog(null);
-            return selectedFile;
-        } else if (i==1){
-            File selectedFile = fc.showSaveDialog(null);
-            return selectedFile;
-        } else {
-            System.err.println("You did not select a valid file");
-            return null;
-        }
+        File selectedFile = fc.showOpenDialog(null);
+
+        return selectedFile;
     }
 }
