@@ -43,7 +43,7 @@ public class SuperUser_Controller implements Initializable {
         loadChoiceBoxStrings();
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserPane.getScene().getWindow();
-            stage.setWidth(650);
+            stage.setWidth(620);
             stage.setHeight(550);
         });
         superuserInfo.setShowDelay(Duration.millis(100.0));
