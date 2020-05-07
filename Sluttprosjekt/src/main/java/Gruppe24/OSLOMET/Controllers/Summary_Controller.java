@@ -70,6 +70,8 @@ public class Summary_Controller implements Initializable {
         // If we have time it would be could to add a random name generator
         boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
+
+        //SOMETHING IS WRONG, WILL CHECK SOON
         if (txtCarName.getText().equals("")) {
             summaryLbl.setText("Please give the car a name");
         } else if (!uniqueName){
