@@ -187,12 +187,13 @@ public class UserCarView_Controller implements Initializable {
         resetFilterBtn.setDisable(true);
         saveTable.setVisible(false);
         tableView.setVisible(false);
+        createView.initializeTv(tableView, tvLabel, false);
+
 
         Platform.runLater(() -> {
             Stage stage = (Stage) userViewPane.getScene().getWindow();
             stage.setWidth(1210);
             stage.setHeight(500);
-            createView.initializeTv(tableView, tvLabel);
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
@@ -205,6 +206,12 @@ public class UserCarView_Controller implements Initializable {
             usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
             tableView.setItems(usersCarList);
             tableView.getColumns().remove(tableView.getColumns().size()-1);
+            /*tableView.getColumns().get(
+                    tableView.getColumns().size()-2).getColumns().get(
+                            tableView.getColumns().get(tableView.getColumns().size()-1).getColumns().size()
+            ).forEach(Button button -> );
+
+             */
         });
     }
 }

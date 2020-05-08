@@ -33,7 +33,7 @@ public class TableViewCreation {
     public ObservableList<NewCar> carList = FXCollections.observableArrayList();
     public HashMap<String, String> userBase = new HashMap<>();
 
-    public void initializeTv(TableView<NewCar> tv, Label lbl) {
+    public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser) {
         userBase = FileOpenerJobj.openFileHashMap();
         openCars();
         int maxNrAddons = 0;
@@ -263,6 +263,9 @@ public class TableViewCreation {
                     }
                     if (!hasMatch){
                         Button unmatchedAddon = new Button();
+                        if(!tableviewSuperUser){
+                            unmatchedAddon.setDisable(true);
+                        }
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
                         int finalJ = j;
                         unmatchedAddon.setOnAction(actionEvent ->

@@ -50,12 +50,12 @@ public class SuperUserCarView_Controller implements Initializable {
         tableView.setVisible(false);
         filterLbl.setText("Loading cars...");
         addChoiceBoxItems();
+        createView.initializeTv(tableView, filterLbl, true);
 
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserViewPane.getScene().getWindow();
             stage.setWidth(1210);
             stage.setHeight(500);
-            createView.initializeTv(tableView, filterLbl);
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
