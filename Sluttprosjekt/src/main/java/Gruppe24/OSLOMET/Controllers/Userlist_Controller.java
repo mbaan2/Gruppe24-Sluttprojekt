@@ -166,7 +166,6 @@ public class Userlist_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println(e.getMessage());
         }
-        lblUserList.setText("Users loaded!");
         Thread t = new Thread(runnable);
         t.setDaemon(true);
         return t;
@@ -222,6 +221,7 @@ public class Userlist_Controller implements Initializable {
             } else {
                 lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
                 user.getRowValue().setUsername(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
@@ -232,6 +232,7 @@ public class Userlist_Controller implements Initializable {
             } else {
                 lblUserList.setText("The password for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getPassword() + " to " + user.getNewValue() + ".");
                 user.getRowValue().setPassword(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
@@ -242,6 +243,7 @@ public class Userlist_Controller implements Initializable {
             } else {
                 lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
                 user.getRowValue().setLocation(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
@@ -252,6 +254,7 @@ public class Userlist_Controller implements Initializable {
             } else {
                 lblUserList.setText("The gender for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getGender() + " to " + user.getNewValue() + ".");
                 user.getRowValue().setGender(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
@@ -264,15 +267,18 @@ public class Userlist_Controller implements Initializable {
             } else {
                 lblUserList.setText("The secret question for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getSecretQ() + " to " + user.getNewValue());
                 user.getRowValue().setSecretQ(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
+        secretQA.setCellFactory(TextFieldTableCell.forTableColumn());
         secretQA.setOnEditCommit(user -> {
             if(user.getRowValue().getSecretQAnswer().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that answer.");
             } else {
                 lblUserList.setText("The secret questions answer for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getSecretQAnswer() + " to " + user.getNewValue() + ".");
                 user.getRowValue().setSecretQAnswer(user.getNewValue());
+                btnSaveChanges();
             }
             tableView.refresh();
         });
@@ -295,6 +301,7 @@ public class Userlist_Controller implements Initializable {
             };
             return btn;
         });
+        tableView.setItems(userList);
         Platform.runLater(() -> {
             Stage stage = (Stage) userListPane.getScene().getWindow();
             stage.setHeight(470);
@@ -303,9 +310,9 @@ public class Userlist_Controller implements Initializable {
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
-            tableView.setItems(userList);
+            lblUserList.setText("Users loaded!");
             executor.submit(setTableView);
+            tableView.refresh();
         });
-
     }
 }

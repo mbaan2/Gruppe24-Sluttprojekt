@@ -44,13 +44,13 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        createView.initializeTv(tableView, filterLbl, true);
         filterBtn.setDisable(true);
         backBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
         tableView.setVisible(false);
         filterLbl.setText("Loading cars...");
         addChoiceBoxItems();
-        createView.initializeTv(tableView, filterLbl, true);
 
         Platform.runLater(() -> {
             Stage stage = (Stage) superUserViewPane.getScene().getWindow();
