@@ -3,6 +3,8 @@ package Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.FormatUser;
@@ -13,6 +15,7 @@ import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ public class CreateJobjFiles {
         setCars();
         try {
             FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
-        } catch (IOException e) {
+        } catch (OpenFileException e) {
             System.err.println(e.getLocalizedMessage());
         }
     }
@@ -109,7 +112,7 @@ public class CreateJobjFiles {
         Path filsti = Paths.get(StandardPaths.colorPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, colorOptions);
-        } catch (IOException ex) {
+        } catch (SaveFileException ex) {
             ex.printStackTrace();
         }
     }
@@ -129,7 +132,7 @@ public class CreateJobjFiles {
         Path filsti = Paths.get(StandardPaths.wheelPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
-        } catch (IOException ex) {
+        } catch (SaveFileException ex) {
             ex.printStackTrace();
         }
     }
@@ -149,7 +152,7 @@ public class CreateJobjFiles {
         Path filsti = Paths.get(StandardPaths.fuelPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
-        } catch (IOException ex) {
+        } catch (SaveFileException ex) {
             ex.printStackTrace();
         }
     }
@@ -169,7 +172,7 @@ public class CreateJobjFiles {
         Path filsti = Paths.get(StandardPaths.addonPath);
         try {
             FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
-        } catch (IOException ex) {
+        } catch (SaveFileException ex) {
             ex.printStackTrace();
         }
     }
@@ -200,7 +203,7 @@ public class CreateJobjFiles {
         }
     }
 
-    public void createSecretQ() throws IOException {
+    public void createSecretQ() throws FileAlreadyExistsException{
         String checkBoxQType = "Name of first pet?";
         String checkBoxQType2 = "Mothers maiden name?";
         String checkBoxQType3 = "Whos your daddy?";

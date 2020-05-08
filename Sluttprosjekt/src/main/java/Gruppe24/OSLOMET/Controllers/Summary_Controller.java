@@ -6,6 +6,8 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import Gruppe24.OSLOMET.FileTreatment.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -108,12 +110,15 @@ public class Summary_Controller implements Initializable {
                 }
 
                 try{
-                    //TO SAVE THE INITIAL LIST
+                    //SAVES THE INITIAL LIST
                     FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                     FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
                     summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
                     btnSaveCarToText.setVisible(true);
-                }catch (IOException e){
+                } catch (OpenFileException e){
+                    summaryLbl.setText("Could not open file");
+                    Alerts.fileLoadAlert("Car list");
+                } catch (IOException e){
                     summaryLbl.setText(e.getMessage());
                     Alerts.fileLoadAlert("Car list");
                 }
@@ -140,7 +145,11 @@ public class Summary_Controller implements Initializable {
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
                 summaryLbl.setText(App.car.getName() + " has been added to the list.");
                 btnSaveCarToText.setVisible(true);
-            }catch (IOException e){
+            } catch (OpenFileException e){
+                summaryLbl.setText("Could not open file");
+                e.printStackTrace();
+                Alerts.fileLoadAlert("Car list");
+            } catch (IOException e){
                 summaryLbl.setText(e.getMessage());
                 Alerts.fileLoadAlert("Car list");
             }
@@ -201,12 +210,12 @@ public class Summary_Controller implements Initializable {
         btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetFuel");
+        } catch (ScreenNotFoundException | IllegalStateException e){
+            Alerts.screenLoadAlert();
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
         } catch (IOException e){
             System.err.println(e.getMessage());
             Alerts.screenLoadAlert();
-        } catch (IllegalStateException e){
-            Alerts.screenLoadAlert();
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -219,12 +228,12 @@ public class Summary_Controller implements Initializable {
         btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetAddons");
+        } catch (ScreenNotFoundException | IllegalStateException e){
+            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            Alerts.screenLoadAlert();
         } catch (IOException e){
             System.err.println(e.getMessage());
             Alerts.screenLoadAlert();
-        } catch (IllegalStateException e){
-            Alerts.screenLoadAlert();
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -254,11 +263,11 @@ public class Summary_Controller implements Initializable {
                     String username = App.car.getUser();
                     App.startCarBuildingProcess();
                     App.car.setUser(username);
+                } catch (ScreenNotFoundException | IllegalStateException e) {
+                    System.err.println("There is an error in loading the next screen, please contact your developer.");
+                    Alerts.screenLoadAlert();
                 } catch (IOException e) {
                     System.err.println(e.getMessage());
-                    Alerts.screenLoadAlert();
-                } catch (IllegalStateException e) {
-                    System.err.println("There is an error in loading the next screen, please contact your developer.");
                     Alerts.screenLoadAlert();
                 }
             } else {
@@ -271,12 +280,12 @@ public class Summary_Controller implements Initializable {
     void logoutBtn(ActionEvent event){
         try{
             App.setRoot("login");
-        } catch (IOException e){
-            Alerts.screenLoadAlert();
-            System.err.println(e.getMessage());
-        } catch (IllegalStateException e){
-            Alerts.screenLoadAlert();
+        } catch (ScreenNotFoundException | IllegalStateException e){
             System.err.println("There is an error in loading the next screen, please contact your developer.");
+            Alerts.screenLoadAlert();
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+            Alerts.screenLoadAlert();
         }
     }
 }

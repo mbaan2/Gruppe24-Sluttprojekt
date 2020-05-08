@@ -1,6 +1,7 @@
 package Gruppe24.OSLOMET.DataValidation;
 
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.User;

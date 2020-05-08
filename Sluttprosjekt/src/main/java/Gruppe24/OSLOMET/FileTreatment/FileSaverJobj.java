@@ -2,40 +2,46 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
 public class FileSaverJobj {
-    public static void SaveCarCategory(Path path, List<Carparts> list) throws IOException {
+    public static void SaveCarCategory(Path path, List<Carparts> list) throws SaveFileException {
         try {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);
             out.writeObject(list);
-        } catch (SaveFileException e) {
+        } catch (IOException e) {
             throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");
         }
     }
 
-    public static void SavingCarArray(String path, List<NewCar> carList) throws IOException {
-        ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
-        os1.writeObject(carList.get(0));
-        os1.close();
+    public static void SavingCarArray(String path, List<NewCar> carList) throws OpenFileException {
+        try{
+            ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
+            os1.writeObject(carList.get(0));
+            os1.close();
 
-        for(int i = 1; i < carList.size(); i++){
-            ObjectOutputStream os2 = new ObjectOutputStream(new FileOutputStream(path, true)) {
-                protected void writeStreamHeader() throws IOException {
-                    reset();
-                }
-            };
-            os2.writeObject(carList.get(i));
-            //NOT SURE IF WE HAVE TO CLOSE IT SO THIS IS SOMETHING WE NEED TO TEST!
-            os2.close();
+            for (int i = 1; i < carList.size(); i++){
+                ObjectOutputStream os2 = new ObjectOutputStream(new FileOutputStream(path, true)){
+                    protected void writeStreamHeader() throws IOException{
+                        reset();
+                    }
+                };
+                os2.writeObject(carList.get(i));
+                //NOT SURE IF WE HAVE TO CLOSE IT SO THIS IS SOMETHING WE NEED TO TEST!
+                os2.close();
+            }
+        } catch (IOException e){
+            throw new OpenFileException("Problems with loading file, please close the program and start over. If this happens again contact the developer.");
         }
     }
 
@@ -49,7 +55,7 @@ public class FileSaverJobj {
         os.close();
     }
 
-    public static void SaveUser(HashMap<String, String> userList) throws FileNotFoundException, IOException {
+    public static void SaveUser(HashMap<String, String> userList) throws FileNotFoundException {
         try {
             FileOutputStream os = new FileOutputStream(StandardPaths.usersJOBJPath);
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -58,11 +64,11 @@ public class FileSaverJobj {
             oos.close();
             os.close();
         } catch (IOException e) {
-            throw new IOException(e.getMessage());
+            throw new FileNotFoundException(e.getMessage());
         }
     }
 
-    public static void SaveSecretQList(List<String> choiceBoxList) throws IOException {
+    public static void SaveSecretQList(List<String> choiceBoxList) throws FileAlreadyExistsException{
         try {
             FileOutputStream os = new FileOutputStream(StandardPaths.secretQPath);
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -71,7 +77,7 @@ public class FileSaverJobj {
             oos.close();
             os.close();
         } catch (IOException e) {
-            throw new IOException(e.getMessage());
+            throw new FileAlreadyExistsException(e.getMessage());
         }
     }
 }

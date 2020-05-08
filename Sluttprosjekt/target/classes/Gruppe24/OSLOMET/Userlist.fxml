@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userListPane" prefHeight="434.0" prefWidth="1000.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Userlist_Controller">
+<AnchorPane fx:id="userListPane" prefHeight="470.0" prefWidth="1000.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Userlist_Controller">
     <children>
         <TableView fx:id="tableView" layoutX="212.0" layoutY="33.0" prefHeight="369.0" prefWidth="715.0">
             <columns>
