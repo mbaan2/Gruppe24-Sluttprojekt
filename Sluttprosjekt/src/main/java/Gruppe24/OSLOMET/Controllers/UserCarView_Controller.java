@@ -66,6 +66,7 @@ public class UserCarView_Controller implements Initializable {
         } catch (IllegalStateException e) {
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
+        executor.shutdownNow();
     }
 
     @FXML
