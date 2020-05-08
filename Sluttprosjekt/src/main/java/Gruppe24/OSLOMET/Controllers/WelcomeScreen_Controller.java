@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -16,6 +18,20 @@ public class WelcomeScreen_Controller implements Initializable {
 
     @FXML
     private VBox welcomeVbox;
+
+    @FXML
+    private ComboBox<String> comboAllCars;
+
+    @FXML
+    private Label lblFeedbackChangeCar;
+
+    @FXML
+    private Label lblErrorWelcomeScreen;
+
+    @FXML
+    void btnLoadCar(ActionEvent event) {
+
+    }
 
     @FXML
     void btnStartBuilding(ActionEvent event) {
@@ -31,7 +47,7 @@ public class WelcomeScreen_Controller implements Initializable {
     }
 
     @FXML
-    void btnLoadCars(ActionEvent event) {
+    void btnToTableView(ActionEvent event) {
         try {
             App.setRoot("UserCarView");
         } catch (IOException e) {
