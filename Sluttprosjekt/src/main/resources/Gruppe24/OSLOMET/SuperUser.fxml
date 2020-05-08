@@ -14,7 +14,7 @@
       </Label>
       <Button layoutX="198.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnBackToLogin" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Logout" textFill="#def2f1" />
       <Button layoutX="198.0" layoutY="280.0" mnemonicParsing="false" onAction="#switchToCarView" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Load Cars" textFill="#def2f1" />
-      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="176.0" layoutY="149.0" prefHeight="55.0" prefWidth="150.0" wrapText="true" />
+      <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="176.0" layoutY="125.0" prefHeight="121.0" prefWidth="150.0" wrapText="true" />
       <Button layoutX="198.0" layoutY="250.0" mnemonicParsing="false" onAction="#switchToUserView" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Load Users" textFill="#def2f1" />
       <Button layoutX="198.0" layoutY="310.0" mnemonicParsing="false" onAction="#switchToCarpartView" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Load Carparts" textFill="#def2f1" />
       <Button layoutX="198.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToFileRestoration" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="File Restoration" textFill="#def2f1" />

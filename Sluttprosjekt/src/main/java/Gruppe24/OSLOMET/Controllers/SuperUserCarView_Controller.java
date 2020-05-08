@@ -2,6 +2,8 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.TableViewCreation;
 import javafx.application.Platform;
@@ -15,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,7 +43,7 @@ public class SuperUserCarView_Controller implements Initializable {
     private Button filterBtn, backBtn, resetFilterBtn;
 
     TableViewCreation createView = new TableViewCreation();
-    ObservableList<NewCar> carList = createView.carList;
+    ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,9 +81,22 @@ public class SuperUserCarView_Controller implements Initializable {
         executor.shutdownNow();
     }
 
+    void openCars() {
+        carList.clear();
+
+        ArrayList<NewCar> list2 = new ArrayList<>();
+        try{
+            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+        carList.addAll(list2);
+    }
+
     @FXML
-    void filterCars() {
+    void filterCars() throws IOException {
         ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+        openCars();
 
         String filteredText = filterText.getText();
         String filterType = filterBox.getValue();
@@ -131,7 +147,7 @@ public class SuperUserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         filterLbl.setText("Tableview reset.");
-        tableView.setItems(carList);
+        createView.initializeTv(tableView, filterLbl, true);
         filterBox.setValue("Search Filters");
     }
 

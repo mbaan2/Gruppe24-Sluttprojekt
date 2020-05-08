@@ -106,6 +106,9 @@ public class UserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         tvLabel.setText("Tableview reset.");
+        usersCarList.clear();
+        createView.initializeTv(tableView, tvLabel, false);
+        usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
         tableView.setItems(usersCarList);
         filterBox.setValue("Search Filters");
     }

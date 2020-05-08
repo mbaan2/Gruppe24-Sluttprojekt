@@ -5,19 +5,32 @@ import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
-import Gruppe24.OSLOMET.SuperUserClasses.TableView.TableViewCreation;
+import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.ImportUser;
 import Gruppe24.OSLOMET.UserLogin.User;
+import Gruppe24.OSLOMET.UserLogin.WriteUser;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -43,14 +56,16 @@ public class Userlist_Controller implements Initializable {
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
 
-    TableViewCreation createView = new TableViewCreation();
     ObservableList<String> choiceBoxOptions = FXCollections.observableArrayList();
     ObservableList<User> userList = FXCollections.observableArrayList();
+    HashMap<String, String> userBase = new HashMap<>();
+    ObservableList<String> secretQObsList = FXCollections.observableArrayList();
+    List<String> secretQList = new ArrayList<>();
 
     @FXML
-    void btnFilter() throws IOException {
+    void btnFilter() {
         ObservableList<User> filteredList = FXCollections.observableArrayList();
-        userList = ImportUser.readUser(StandardPaths.usersTXTPath);
+
         String filteredText = filterTxt.getText();
         String filterType = choiceBox.getValue();
 
@@ -103,6 +118,38 @@ public class Userlist_Controller implements Initializable {
         choiceBox.setValue(chBoxFilter);
     }
 
+    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
+        userList.remove(user);
+        userBase.remove(user.getUsername(), user.getPassword());
+        Path path = Paths.get(user.getUsername() + "sCars.txt");
+        if(!path.toString().isEmpty()) {
+            File selectedFile = new File(String.valueOf(path));
+            selectedFile.delete();
+        }
+        lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
+        btnSaveChanges();
+        tv.refresh();
+    }
+
+    private void btnSaveChanges() {
+        List<User> newList = new ArrayList<>(userList);
+        try {
+            String str = FormatUser.formatUsers(newList);
+            Path path = Paths.get(StandardPaths.usersTXTPath);
+            File selectedFile = new File(String.valueOf(path));
+            WriteUser.writeString(selectedFile, str);
+        } catch (IOException e) {
+            lblUserList.setText(e.getLocalizedMessage());
+        }
+
+        HashMap<String, String> newMap = new HashMap<>(userBase);
+        try {
+            FileSaverJobj.SaveUser(newMap);
+        } catch (IOException e) {
+            lblUserList.setText(e.getLocalizedMessage());
+        }
+    }
+
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
     public final Runnable setTableView = () -> {
         while (!Thread.currentThread().isInterrupted()) {
@@ -123,7 +170,7 @@ public class Userlist_Controller implements Initializable {
         return t;
     });
 
-    public static ObservableList<String> genderList() {
+    public ObservableList<String> genderList() {
         ObservableList<String> secretQList = FXCollections.observableArrayList();
 
         String gender = "Male";
@@ -145,7 +192,6 @@ public class Userlist_Controller implements Initializable {
         filterBtn.setDisable(true);
         backBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
-        tableView.setVisible(false);
         try {
             comboBoxList();
         } catch (IOException e) {
@@ -155,15 +201,132 @@ public class Userlist_Controller implements Initializable {
             alert.setHeaderText("");
         }
         lblUserList.setText("Loading users...");
-        try {
-            createView.initializeUserTv(tableView, lblUserList);
-        } catch (IOException e) {
-            lblUserList.setText(e.getMessage());
-        }
-        addChkBoxItems();
 
+        tableView.setVisible(false);
         tableView.setEditable(true);
 
+        addChkBoxItems();
+
+        try {
+            userList = ImportUser.readUser(StandardPaths.usersTXTPath);
+        } catch (IOException e) {
+            lblUserList.setText(e.getLocalizedMessage());
+        }
+        userBase = FileOpenerJobj.openFileHashMap();
+
+        TableColumn<User, String> username = new TableColumn<>("Username");
+        tableView.getColumns().add(username);
+        username.setMinWidth(100);
+        TableColumn<User, String> pw = new TableColumn<>("Password");
+        tableView.getColumns().add(pw);
+        pw.setMinWidth(100);
+        TableColumn<User, String> location = new TableColumn<>("Location");
+        tableView.getColumns().add(location);
+        location.setMinWidth(100);
+        TableColumn<User, String> gender = new TableColumn<>("Gender");
+        tableView.getColumns().add(gender);
+        gender.setMinWidth(60);
+        TableColumn<User, String> secretQ = new TableColumn<>("Secret Question");
+        tableView.getColumns().add(secretQ);
+        secretQ.setMinWidth(170);
+        TableColumn<User, String> secretQA = new TableColumn<>("Secret Question \n      Answer");
+        tableView.getColumns().add(secretQA);
+        secretQA.setMinWidth(75);
+
+        username.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getUsername()));
+        username.setCellFactory(TextFieldTableCell.forTableColumn());
+        username.setOnEditCommit(user -> {
+            if(user.getRowValue().getUsername().equals(user.getNewValue()) && userBase.containsKey(user.getRowValue().getUsername())) {
+                lblUserList.setText("That username is already in use.");
+            } else {
+                lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
+                user.getRowValue().setUsername(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+        pw.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getPassword()));
+        pw.setCellFactory(TextFieldTableCell.forTableColumn());
+        pw.setOnEditCommit(user -> {
+            if(user.getRowValue().getPassword().equals(user.getNewValue())) {
+                lblUserList.setText("The user already has that password.");
+            } else {
+                lblUserList.setText("The password for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getPassword() + " to " + user.getNewValue() + ".");
+                user.getRowValue().setPassword(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+        location.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getLocation()));
+        location.setCellFactory(TextFieldTableCell.forTableColumn());
+        location.setOnEditCommit(user -> {
+            if(user.getRowValue().getLocation().equals(user.getNewValue())) {
+                lblUserList.setText("The user already has that location.");
+            } else {
+                lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
+                user.getRowValue().setLocation(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+        gender.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getGender()));
+        gender.setCellFactory(ComboBoxTableCell.forTableColumn(genderList()));
+        gender.setOnEditCommit(user -> {
+            if(user.getRowValue().getGender().equals(user.getNewValue())) {
+                lblUserList.setText("The user already has that gender.");
+            } else {
+                lblUserList.setText("The gender for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getGender() + " to " + user.getNewValue() + ".");
+                user.getRowValue().setGender(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+        secretQList = FileOpenerJobj.openSecretQList();
+        secretQObsList.addAll(secretQList);
+        secretQ.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQ()));
+        secretQ.setCellFactory(ComboBoxTableCell.forTableColumn(secretQObsList));
+        secretQ.setOnEditCommit(user -> {
+            if(user.getRowValue().getSecretQ().equals(user.getNewValue())) {
+                lblUserList.setText("The user already has that secret question.");
+            } else {
+                lblUserList.setText("The secret question for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getSecretQ() + " to " + user.getNewValue());
+                user.getRowValue().setSecretQ(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+        secretQA.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQAnswer()));
+        secretQA.setCellFactory(TextFieldTableCell.forTableColumn());
+        secretQA.setOnEditCommit(user -> {
+            if(user.getRowValue().getSecretQAnswer().equals(user.getNewValue())) {
+                lblUserList.setText("The user already has that answer.");
+            } else {
+                lblUserList.setText("The secret questions answer for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getSecretQAnswer() + " to " + user.getNewValue() + ".");
+                user.getRowValue().setSecretQAnswer(user.getNewValue());
+                btnSaveChanges();
+            }
+            tableView.refresh();
+        });
+
+        TableColumn<User, Button> deleteBtn = new TableColumn<>();
+        tableView.getColumns().add(deleteBtn);
+
+        deleteBtn.setCellValueFactory(user -> {
+            Button delete = new Button();
+            delete.setText("Delete");
+            delete.getStyleClass().add("delete-button");
+            delete.setAlignment(Pos.CENTER);
+            delete.setOnAction(event -> deleteUser(userList, user.getValue(), userBase, tableView));
+
+            ObservableValue<Button> btn = new ObservableValueBase<Button>() {
+                @Override
+                public Button getValue() {
+                    return delete;
+                }
+            };
+            return btn;
+        });
+        tableView.setItems(userList);
         Platform.runLater(() -> {
             Stage stage = (Stage) userListPane.getScene().getWindow();
             stage.setHeight(470);

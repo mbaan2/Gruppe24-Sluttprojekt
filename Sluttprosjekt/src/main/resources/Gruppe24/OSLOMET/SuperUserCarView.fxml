@@ -18,7 +18,7 @@
         <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="290.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" alignment="TOP_LEFT" layoutX="28.0" layoutY="19.0" prefHeight="266.0" prefWidth="150.0" textFill="#def2f1" wrapText="true">
             <font>
-                <Font size="12.0" />
+                <Font size="16.0" />
             </font></Label>
         <Button fx:id="resetFilterBtn" layoutX="28.0" layoutY="380.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
         <Button fx:id="backBtn" layoutX="28.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
