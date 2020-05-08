@@ -185,7 +185,7 @@ public class UserCarView_Controller implements Initializable {
 
         Platform.runLater(() -> {
             Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(1210);
+            stage.setWidth(1081);
             stage.setHeight(500);
             filterBtn.setDisable(false);
             backBtn.setDisable(false);

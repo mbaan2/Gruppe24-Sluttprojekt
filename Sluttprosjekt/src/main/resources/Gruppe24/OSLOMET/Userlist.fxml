@@ -12,49 +12,17 @@
 
 <AnchorPane fx:id="userListPane" prefHeight="470.0" prefWidth="1000.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Userlist_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="212.0" layoutY="33.0" prefHeight="369.0" prefWidth="715.0">
-            <columns>
-                <TableColumn fx:id="user" prefWidth="89.0" text="Username">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="Username" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="pw" prefWidth="97.0" text="Password">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="Password" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="location" prefWidth="101.0" text="Location">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="Location" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="gender" prefWidth="89.0" text="Gender">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="Gender" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="secretQ" prefWidth="150.0" text="Secret Question">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="SecretQ" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="secretQA" prefWidth="119.0" text="Question Answer">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="SecretQAnswer" />
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
+        <TableView fx:id="tableView" layoutX="212.0" layoutY="33.0" prefHeight="369.0" prefWidth="715.0" />
         <Button fx:id="backBtn" layoutX="29.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
         <Button fx:id="filterBtn" layoutX="29.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
         <TextField fx:id="filterTxt" layoutX="29.0" layoutY="284.0" prefHeight="25.0" prefWidth="139.0" />
         <ChoiceBox fx:id="choiceBox" layoutX="29.0" layoutY="253.0" prefHeight="25.0" prefWidth="139.0" />
         <Label fx:id="lblUserList" layoutX="29.0" layoutY="32.0" prefHeight="206.0" prefWidth="139.0" textFill="#def2f1" wrapText="true">
             <font>
-                <Font size="18.0" />
+                <Font size="12.0" />
             </font></Label>
         <Button fx:id="resetFilterBtn" layoutX="29.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnResetFilter" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #17252a;" text="Reset filter" textFill="#def2f1" />
     </children>
 </AnchorPane>
+
 
