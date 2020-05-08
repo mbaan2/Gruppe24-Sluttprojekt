@@ -4,14 +4,8 @@
         1.5)    Removing all the System.err.messages and replace them
               with feedback to the user                                   HIGH PRIORITY
       2)      Creating our own exceptions classes    |                    HIGH PRIORITY
-      3)      "Edit" car function fix (same name vs new name)             done?
-        3.5)  Label showing name previously inserted by user              done?
-      4)      Saving and resaving of a car check if car already exist?    done?
-      5)      ADD Button to restore original data in case of crash        done?
       6)      Fuck up binary and see if it works (reset all binary files) HIGH PRIORITY
       8)      Fix example data                                            HIGH PRIORITY
-      9)      "User" filter for superuser                                 MEDIUM PRIORITY
-      10)     "Car" filter for user                                       MEDIUM PRIORITY
       11)     Test with Netbeans and Eclipse                              HIGH PRIORITY
       12)     Add information about Netbeans and Eclipse to README        HIGH PRIORITY
       13)     Change txt.file so that cost would be in a different column MEDIUM PRIORITY
@@ -22,6 +16,15 @@
               home is pressed car is reset.                               HIGH PRIORITY
       ??)     Suggestion: superUser is getting to crowded lets split it
               up in several controllers???                                NOT YET DISCUSSED
+
+
+
+      3)      "Edit" car function fix (same name vs new name)             done?
+        3.5)  Label showing name previously inserted by user              done?
+      4)      Saving and resaving of a car check if car already exist?    done?
+      5)      ADD Button to restore original data in case of crash        done?
+      9)      "User" filter for superuser                                 done?
+      10)     "Car" filter for user                                       done?
 
 
       13)     Undo button per car                                         LOW PRIORITY
