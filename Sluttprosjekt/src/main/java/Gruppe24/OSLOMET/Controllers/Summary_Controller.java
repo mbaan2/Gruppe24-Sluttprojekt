@@ -6,6 +6,7 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import Gruppe24.OSLOMET.FileTreatment.*;
@@ -70,7 +71,7 @@ public class Summary_Controller implements Initializable {
     }
 
     @FXML
-    void btnNameCar(ActionEvent event) {
+    void btnNameCar(ActionEvent event) throws InvalidNameException {
         // If we have time it would be could to add a random name generator
         boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
