@@ -60,6 +60,8 @@ public class SetWheels_Controller implements Initializable {
                     break;
                 }
             }
+            wheelButtons.get(0).setSelected(true);
+            lblErrorWheels.setText("Your previous selected wheels are not available, please contact the superUser or select a new set of wheels.");
         }
     }
 

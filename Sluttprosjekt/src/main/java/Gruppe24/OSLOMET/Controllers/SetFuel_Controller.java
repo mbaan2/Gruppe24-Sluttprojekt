@@ -61,6 +61,8 @@ public class SetFuel_Controller implements Initializable {
                     break;
                 }
             }
+            fuelButtons.get(0).setSelected(true);
+            lblErrorFuel.setText("Your previous selected fuel is not available, please contact the superUser or select a new fuel system.");
         }
     }
 

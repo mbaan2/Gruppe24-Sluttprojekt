@@ -62,6 +62,8 @@ public class SetColor_Controller implements Initializable {
                     break;
                 }
             }
+            colorButtons.get(0).setSelected(true);
+            lblErrorColor.setText("Your previous selected color is not available, please contact the superUser or select a new color.");
         }
     }
 
