@@ -56,15 +56,18 @@ public class SetColor_Controller implements Initializable {
         if(App.car.color == null) {
             colorButtons.get(0).setSelected(true);
         } else{
+            boolean selected = false;
             for(int i=0; i <colorOptions.size();i++){
                 if(App.car.getColor().getName().equals(colorOptions.get(i).getName())){
+                    selected = true;
                     colorButtons.get(i).setSelected(true);
                     break;
                 }
-                //test
             }
-            colorButtons.get(0).setSelected(true);
-            lblErrorColor.setText("Your previous selected color is not available, please contact the superUser or select a new color.");
+            if(!selected) {
+                colorButtons.get(0).setSelected(true);
+                lblErrorColor.setText("Your previous selected color is not available, please contact the superUser or select a new color.");
+            }
         }
     }
 

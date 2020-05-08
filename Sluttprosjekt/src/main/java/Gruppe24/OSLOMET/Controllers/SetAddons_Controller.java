@@ -73,18 +73,23 @@ public class SetAddons_Controller implements Initializable {
     }
 
     public void depricatedAddonsCheck(){
-        for (int i = 0; i < App.car.getAddons().size(); i++) {
-            boolean selected = false;
-            for (int j = 0; j < addOnOptions.size(); j++) {
-                if(App.car.getAddons().getElement(i).getName().equals(addOnOptions.get(j).getName())){
-                    selected = true;
+        try {
+            for (int i = 0; i < App.car.getAddons().size(); i++) {
+                boolean selected = false;
+                for (int j = 0; j < addOnOptions.size(); j++) {
+                    if (App.car.getAddons().getElement(i).getName().equals(addOnOptions.get(j).getName())) {
+                        selected = true;
+                    }
+                }
+                if (!selected) {
+                    lblErrorAddons.setText("Your cars contain depricated addon(s), please contact your superUser");
+                    btnToSummary.setDisable(true);
+                    break;
                 }
             }
-            if(!selected){
-                lblErrorAddons.setText("Your cars contain depricated addon(s), please contact your superUser");
-                btnToSummary.setDisable(true);
-                break;
-            }
+        }
+        catch (Exception e){
+
         }
 
     }

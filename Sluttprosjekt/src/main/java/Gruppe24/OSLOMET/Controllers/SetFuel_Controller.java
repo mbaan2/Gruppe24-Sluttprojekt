@@ -55,14 +55,18 @@ public class SetFuel_Controller implements Initializable {
         if(App.car.fuel == null) {
             fuelButtons.get(0).setSelected(true);
         } else{
+            boolean selected = false;
             for(int i=0; i <fuelOptions.size();i++){
                 if(App.car.getFuel().getName().equals(fuelOptions.get(i).getName())){
+                    selected = true;
                     fuelButtons.get(i).setSelected(true);
                     break;
                 }
             }
-            fuelButtons.get(0).setSelected(true);
-            lblErrorFuel.setText("Your previous selected fuel is not available, please contact the superUser or select a new fuel system.");
+            if(!selected) {
+                fuelButtons.get(0).setSelected(true);
+                lblErrorFuel.setText("Your previous selected fuel is not available, please contact the superUser or select a new fuel system.");
+            }
         }
     }
 

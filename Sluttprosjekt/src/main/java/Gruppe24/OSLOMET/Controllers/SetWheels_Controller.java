@@ -54,14 +54,18 @@ public class SetWheels_Controller implements Initializable {
         if(App.car.wheels == null) {
             wheelButtons.get(0).setSelected(true);
         } else{
+            boolean selected = false;
             for(int i=0; i <wheelOptions.size();i++){
                 if(App.car.getWheels().getName().equals(wheelOptions.get(i).getName())){
+                    selected = true;
                     wheelButtons.get(i).setSelected(true);
                     break;
                 }
             }
-            wheelButtons.get(0).setSelected(true);
-            lblErrorWheels.setText("Your previous selected wheels are not available, please contact the superUser or select a new set of wheels.");
+            if(!selected) {
+                wheelButtons.get(0).setSelected(true);
+                lblErrorWheels.setText("Your previous selected wheels are not available, please contact the superUser or select a new set of wheels.");
+            }
         }
     }
 
