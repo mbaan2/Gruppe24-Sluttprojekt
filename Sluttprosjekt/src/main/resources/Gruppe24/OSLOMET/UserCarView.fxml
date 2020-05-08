@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,5 +22,17 @@
       <Button fx:id="filterBtn" layoutX="27.0" layoutY="195.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter" textFill="#def2f1" />
       <Button fx:id="resetFilterBtn" layoutX="27.0" layoutY="223.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset Filters" textFill="#def2f1" />
       <Button fx:id="saveTable" layoutX="27.0" layoutY="344.0" mnemonicParsing="false" onAction="#saveYourTable" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Save this table" textFill="#def2f1" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="272.0" prefHeight="47.0" prefWidth="46.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <tooltip>
+            <Tooltip fx:id="superuserInfo" autoHide="true" text="Your table will be saved to the Car Txt Files directory.&#10;It will be named after your username + sCars.txt" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>

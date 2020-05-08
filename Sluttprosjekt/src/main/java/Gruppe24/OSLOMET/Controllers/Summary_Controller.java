@@ -19,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -42,8 +44,6 @@ public class Summary_Controller implements Initializable {
 
     @FXML
     private Label lblCarComponents, carNameLbl, summaryLbl;
-
-    List<NewCar> carList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -237,12 +237,6 @@ public class Summary_Controller implements Initializable {
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
     void btnToWelcomeScreen(ActionEvent event) {
-        txtCarName.setVisible(false);
-        btnNameCar.setVisible(false);
-        btnBuildCar.setLayoutX(318.0);
-        btnBuildCar.setDisable(false);
-        btnSaveCarToText.setVisible(false);
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Return to homepage");
         alert.setHeaderText("");
@@ -259,6 +253,10 @@ public class Summary_Controller implements Initializable {
                     String username = App.car.getUser();
                     App.startCarBuildingProcess();
                     App.car.setUser(username);
+                    txtCarName.setVisible(false);
+                    btnNameCar.setVisible(false);
+                    btnBuildCar.setDisable(false);
+                    btnSaveCarToText.setVisible(false);
                 } catch (ScreenNotFoundException | IllegalStateException e) {
                     System.err.println("There is an error in loading the next screen, please contact your developer.");
                     Alerts.screenLoadAlert();

@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,7 +55,9 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private Button saveTable, backBtn, resetFilterBtn, filterBtn;
 
-    ObservableList<NewCar> carList = FXCollections.observableArrayList();
+    @FXML
+    private Tooltip superuserInfo;
+
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
 
     @FXML
@@ -178,6 +181,8 @@ public class UserCarView_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvLabel.setText("Loading cars...");
         addChoiceBoxItems();
+        superuserInfo.setShowDelay(Duration.millis(50));
+        superuserInfo.setHideDelay(Duration.millis(1000));
         backBtn.setDisable(true);
         filterBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
