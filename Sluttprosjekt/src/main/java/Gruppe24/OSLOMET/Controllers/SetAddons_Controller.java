@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -31,9 +32,12 @@ public class SetAddons_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblErrorAddons.setText("");
+
         //createFile();
         openFile();
         createButtons();
+        depricatedAddonsCheck();
 
 
         Platform.runLater(() -> {
@@ -49,6 +53,9 @@ public class SetAddons_Controller implements Initializable {
     @FXML
     private Label lblErrorAddons;
 
+    @FXML
+    private Button btnToSummary;
+
     public void createButtons() {
         LoadingValuesOnScreen.creatingList(addOnButtons, addOnOptions);
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
@@ -63,15 +70,25 @@ public class SetAddons_Controller implements Initializable {
                 }
             }
         }
+    }
 
-        for(int i =0; i < App.car.getAddons().size(); i++){
-            for(int j=0; j<addOnOptions.size(); i++){
-                
+    public void depricatedAddonsCheck(){
+        for (int i = 0; i < App.car.getAddons().size(); i++) {
+            boolean selected = false;
+            for (int j = 0; j < addOnOptions.size(); j++) {
+                if(App.car.getAddons().getElement(i).getName().equals(addOnOptions.get(j).getName())){
+                    selected = true;
+                }
+            }
+            if(!selected){
+                lblErrorAddons.setText("Your cars contain depricated addon(s), please contact your superUser");
+                btnToSummary.setDisable(true);
+                break;
             }
         }
 
-
     }
+
 
     public void openFile(){
         Path path = Paths.get(StandardPaths.addonPath);
