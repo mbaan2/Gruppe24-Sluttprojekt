@@ -88,7 +88,7 @@ public class SetWheels_Controller implements Initializable {
 
         try{
             App.setRoot("SetColors");
-        } catch (LoadException e){
+        } catch (LoadException e) {
             lblErrorWheels.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
             lblErrorWheels.setText("An error has occurred, please contact the superUser.");

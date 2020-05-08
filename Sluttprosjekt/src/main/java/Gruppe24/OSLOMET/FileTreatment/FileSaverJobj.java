@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import javafx.collections.ObservableList;
 
 import java.io.*;
@@ -16,8 +17,8 @@ public class FileSaverJobj {
             OutputStream os = Files.newOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(os);
             out.writeObject(list);
-        } catch (IOException e) {
-            throw new IOException(e.getMessage());
+        } catch (SaveFileException e) {
+            throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");
         }
     }
 

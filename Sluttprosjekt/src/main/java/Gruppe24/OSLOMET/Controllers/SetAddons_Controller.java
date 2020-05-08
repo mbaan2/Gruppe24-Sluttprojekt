@@ -99,7 +99,7 @@ public class SetAddons_Controller implements Initializable {
         Path path = Paths.get(StandardPaths.addonPath);
         try {
             addOnOptions = FileOpenerJobj.openFile(path);
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             lblErrorAddons.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }

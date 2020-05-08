@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileOpenerJobj {
-    public static List<Carparts> openFile(Path path) throws ClassNotFoundException, IOException {
+    public static List<Carparts> openFile(Path path) throws IOException, ClassNotFoundException {
         List<Carparts> carParts = new ArrayList<>();
 
         try (   InputStream in = Files.newInputStream(path);
@@ -20,9 +20,9 @@ public class FileOpenerJobj {
         {
             carParts = (List<Carparts>) oin.readObject();
         } catch (ClassNotFoundException e) {
-            throw new ClassNotFoundException();
+            throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
         } catch (IOException e){
-            throw new IOException();
+            throw new IOException("Corrupted file please contact the superUser for a reset.");
         }
         return carParts;
     }
