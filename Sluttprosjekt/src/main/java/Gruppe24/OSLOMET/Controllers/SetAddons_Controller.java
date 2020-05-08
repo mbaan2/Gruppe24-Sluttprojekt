@@ -54,8 +54,7 @@ public class SetAddons_Controller implements Initializable {
         LoadingValuesOnScreen.returnVbox(addOnButtons, vboxAddOns);
         if(App.car.getAddons() == null){
             addOnButtons.get(0).setSelected(false);
-        }
-        if (App.car.addons != null) {
+        } else {
             for (int i = 0; i < addOnOptions.size(); i++) {
                 for (int j = 0; j < App.car.getAddons().size(); j++) {
                     if (App.car.getAddons().getElement(j).getName().equals(addOnOptions.get(i).getName())) {
@@ -64,6 +63,14 @@ public class SetAddons_Controller implements Initializable {
                 }
             }
         }
+
+        for(int i =0; i < App.car.getAddons().size(); i++){
+            for(int j=0; j<addOnOptions.size(); i++){
+                
+            }
+        }
+
+
     }
 
     public void openFile(){

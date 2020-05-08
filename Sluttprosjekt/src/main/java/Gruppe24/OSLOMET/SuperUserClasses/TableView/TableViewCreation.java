@@ -332,7 +332,7 @@ public class TableViewCreation {
         try{
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            e.getMessage();
+            System.err.println(e.getMessage());
         }
         carList.addAll(list2);
     }
