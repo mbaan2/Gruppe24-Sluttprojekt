@@ -127,11 +127,10 @@ public class UserCarView_Controller implements Initializable {
         alert.setTitle("Save your cars to a txt file!");
         alert.setHeaderText("");
         alert.setContentText("Do you want to overwrite your cars or append them to your list?" + "\n\nIf you choose 'New File' your new file will be named " + username + "sCars.txt");
-        ButtonType newFile = new ButtonType("New File");
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(newFile, append, overwrite, cancel);
+        alert.getButtonTypes().setAll(append, overwrite, cancel);
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent()) {
@@ -143,10 +142,6 @@ public class UserCarView_Controller implements Initializable {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.append(str, selectedFile, tvLabel, username);
-            } else if (result.get() == newFile) {
-                File selectedFile = new File(String.valueOf(path));
-                String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.newFile(str, selectedFile, tvLabel, username);
             } else {
                 tvLabel.setText("Process cancelled. File wasnt saved.");
             }

@@ -184,11 +184,6 @@ public class Summary_Controller implements Initializable {
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.append(str, selectedFile, summaryLbl, username);
                 btnSaveCarToText.setVisible(false);
-            } else if(result.get() == newFile) {
-                File selectedFile = new File(String.valueOf(path));
-                String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.newFile(str, selectedFile, summaryLbl, username);
-                btnSaveCarToText.setVisible(false);
             } else if(result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
