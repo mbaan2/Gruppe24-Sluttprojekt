@@ -9,6 +9,7 @@ import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
 import Gruppe24.OSLOMET.FileTreatment.FormatCar;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
+import Gruppe24.OSLOMET.SuperUserClasses.TableView.TableViewCreation;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValueBase;
@@ -31,6 +32,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class UserCarView_Controller implements Initializable {
 
@@ -59,9 +61,9 @@ public class UserCarView_Controller implements Initializable {
     void goBack() {
         try {
             App.setRoot("WelcomeScreen");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e.getMessage());
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }
     }
@@ -70,20 +72,10 @@ public class UserCarView_Controller implements Initializable {
     void logout() {
         try {
             App.setRoot("Login");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e.getMessage());
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             System.err.println("There is an error in loading the next screen, please contact your developer.");
-        }
-    }
-
-    void showCars() {
-        ArrayList<NewCar> list2;
-        try {
-            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-            carList.addAll(list2);
-        } catch (IOException e){
-            tvLabel.setText("Something went wrong in loading of the cars. Try to contact a superuser to reset the saved cars file.");
         }
     }
 
@@ -97,12 +89,11 @@ public class UserCarView_Controller implements Initializable {
         filteredList.clear();
         tvLabel.setText("");
 
-        if(filteredText.equals("")) {
+        if (filteredText.equals("")) {
             tvLabel.setText("You didn't enter anything.");
-        }
-        else if (filterType.equals("Search Filters")) {
+        } else if (filterType.equals("Search Filters")) {
             tvLabel.setText("You didn't choose a filter.");
-        } else{
+        } else {
             filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
             tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
@@ -142,7 +133,7 @@ public class UserCarView_Controller implements Initializable {
         alert.getButtonTypes().setAll(newFile, append, overwrite, cancel);
         Optional<ButtonType> result = alert.showAndWait();
 
-        if(result.isPresent()) {
+        if (result.isPresent()) {
             if (result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
@@ -153,7 +144,7 @@ public class UserCarView_Controller implements Initializable {
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.append(str, selectedFile, tvLabel);
                 tvLabel.setText("Cars added to your current file called " + path.toString());
-            } else if(result.get() == newFile) {
+            } else if (result.get() == newFile) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.overwrite(str, selectedFile, tvLabel);
@@ -184,6 +175,7 @@ public class UserCarView_Controller implements Initializable {
         return t;
     });
 
+    TableViewCreation createView = new TableViewCreation();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -195,105 +187,23 @@ public class UserCarView_Controller implements Initializable {
         resetFilterBtn.setDisable(true);
         saveTable.setVisible(false);
         tableView.setVisible(false);
-        showCars();
-        String username = App.car.getUser();
-        usersCarList =  Filter.usernameFilter(username, carList);
-        int maxAntallAddons = maxAddons();
-        fillEmptyAddons();
-        //IMPORTANT: IF WE MAKE CHANGES TO THE LIST THAN WE SHOULD ALSO REMOVE ALL THE EMPTY ADDONES!
-
-        //Setting of all the colums
-        TableColumn<NewCar, String> user = new TableColumn<>("User");
-        tableView.getColumns().add(user);
-        TableColumn<NewCar, String> name = new TableColumn<>("Name");
-        tableView.getColumns().add(name);
-        TableColumn<NewCar, String> fuel = new TableColumn<>("Fuel");
-        tableView.getColumns().add(fuel);
-        TableColumn<NewCar, String> wheels = new TableColumn<>("Wheels");
-        tableView.getColumns().add(wheels);
-        TableColumn<NewCar, String> color = new TableColumn<>("Color");
-        tableView.getColumns().add(color);
-        TableColumn<NewCar, String> addon = new TableColumn<>("Addons");
-        tableView.getColumns().add(addon);
-
-        for(int i = 0; i < maxAntallAddons; i ++) {
-            TableColumn<NewCar, String> tc = new TableColumn<>("Addon " + (i + 1));
-            addon.getColumns().add(tc);
-        }
-        TableColumn<NewCar, Integer> totalprice = new TableColumn<>("Totalprice");
-        tableView.getColumns().add(totalprice);
-
-
-        //Loading of the data into the tableview
-        for (int i = 0; i < usersCarList.size(); i++) {
-            user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
-            name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
-            fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName()));
-            wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName()));
-            color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName()));
-
-            for (int j = 0; j < maxAntallAddons; j++) {
-                int finalJ = j;
-                TableColumn<NewCar, String> tc = (TableColumn<NewCar, String>) addon.getColumns().get(j);
-                tc.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getAddons().getElement(finalJ).getName()));
-            }
-            totalprice.setCellValueFactory(car -> new ObservableValueBase<Integer>(){
-                @Override
-                public Integer getValue(){
-                    return car.getValue().getCost();
-                }
-            });
-        }
-        tableView.setItems(usersCarList);
 
         Platform.runLater(() -> {
             Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(825);
-            stage.setHeight(470);
-            if(tableView.getItems().isEmpty()) {
-                tableView.setVisible(false);
-                saveTable.setVisible(true);
-                backBtn.setDisable(false);
-                logoutBtn.setDisable(false);
-                filterBtn.setDisable(false);
-                resetFilterBtn.setDisable(false);
-                tvLabel.setText("You dont have any saved cars!");
-            } else {
-                tableView.setVisible(true);
-                tvLabel.setText("Cars successfully loaded!");
-                saveTable.setVisible(true);
-                backBtn.setDisable(false);
-                logoutBtn.setDisable(false);
-                filterBtn.setDisable(false);
-                resetFilterBtn.setDisable(false);
-                executor.submit(setTableview);
-            }
+            stage.setWidth(1210);
+            stage.setHeight(500);
+            createView.initializeTv(tableView, tvLabel);
+            filterBtn.setDisable(false);
+            backBtn.setDisable(false);
+            resetFilterBtn.setDisable(false);
+            tableView.setVisible(true);
+            tvLabel.setText("Cars loaded!");
+            executor.submit(setTableview);
+            tableView.refresh();
+            tableView.setEditable(false);
+            usersCarList.removeAll();
+            usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
+            tableView.setItems(usersCarList);
         });
-
-    }
-
-
-    private int maxAddons(){
-        int antall = 0;
-        for(int i = 0 ; i< usersCarList.size(); i++){
-            for(int j = 1; j< (usersCarList.get(i).getAddons().size() + 1); j++){
-                if(j > antall){
-                    antall = j;
-                }
-            }
-        }
-        return antall;
-    }
-
-    private  void fillEmptyAddons(){
-        int maxAntall = maxAddons();
-        for(int i = 0 ; i< usersCarList.size(); i++){
-            for(int j = 0; j < maxAntall; j++){
-                if(j >= usersCarList.get(i).getAddons().size()){
-                    Car emptyAddon = new Carparts("", 0);
-                    usersCarList.get(i).getAddons().add(emptyAddon);
-                }
-            }
-        }
     }
 }
