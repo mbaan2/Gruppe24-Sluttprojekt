@@ -4,6 +4,8 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.DataValidation.ValidPrice;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidPriceException;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.*;
 import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
@@ -154,7 +156,7 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     @FXML
-    void btnEdit(ActionEvent event) {
+    void btnEdit(ActionEvent event) throws InvalidNameException {
         lblCostError.setText("");
         lblNameError.setText("");
         superUserLbl.setText("Editing carpart...");
@@ -173,7 +175,7 @@ public class SuperUserCarparts_Controller implements Initializable {
                 lblCostError.setText("Enter a price above 0!");
                 superUserLbl.setText("");
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | InvalidPriceException e) {
             lblCostError.setText("Enter a number!");
             superUserLbl.setText("");
         }
@@ -222,7 +224,7 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     @FXML
-    void btnAdd(ActionEvent event) {
+    void btnAdd(ActionEvent event) throws InvalidNameException {
         superUserLbl.setText("Adding carpart...");
         String name = "";
         if (ValidName.carpartNameTest(txtName.getText())){
@@ -239,7 +241,7 @@ public class SuperUserCarparts_Controller implements Initializable {
                 lblCostError.setText("Enter a price above 0!");
                 superUserLbl.setText("");
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | InvalidPriceException e) {
             lblCostError.setText("Enter a number!");
             superUserLbl.setText("");
         }

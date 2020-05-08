@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET.DataValidation;
 
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ValidNameTest{
 
     @Test
-    void locationTest(){
+    void locationTest() throws InvalidNameException {
         assertTrue(ValidName.locationTest("Aaa"));
         assertTrue(ValidName.locationTest("Aa Aa Aa"));
         assertTrue(ValidName.locationTest("Åå Åå"));
@@ -28,7 +29,7 @@ class ValidNameTest{
     }
 
     @Test
-    void usernameTest(){
+    void usernameTest() throws InvalidNameException {
         assertTrue(ValidName.usernameTest("Aaa"));
         assertTrue(ValidName.usernameTest("aaa"));
         assertTrue(ValidName.usernameTest("Åå_Åå"));
@@ -47,7 +48,7 @@ class ValidNameTest{
     }
 
     @Test
-    void carpartNameTest(){
+    void carpartNameTest() throws InvalidNameException {
         assertTrue(ValidName.carpartNameTest("GPS"));
         assertTrue(ValidName.carpartNameTest("GPS1"));
         assertTrue(ValidName.carpartNameTest("GPS1.0"));

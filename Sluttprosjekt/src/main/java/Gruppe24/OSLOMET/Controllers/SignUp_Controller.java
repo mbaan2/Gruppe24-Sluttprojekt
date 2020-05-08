@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
@@ -49,7 +50,7 @@ public class SignUp_Controller implements Initializable {
     public HashMap<String, String> userBase = new HashMap<>();
 
     @FXML
-    void signUp(ActionEvent event) throws IOException {
+    void signUp(ActionEvent event) throws IOException, InvalidNameException {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
