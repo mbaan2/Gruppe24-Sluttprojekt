@@ -16,13 +16,46 @@ Wheels:	Big wheels(5000kr)
 Color:	Black(0kr)
 
 User:	123
-Name:	GreatCar
+Name:	lafiesta
+Cost:	(31500kr)
+Fuel:	Gasoline(15000kr)
+Wheels:	Big wheels(5000kr)
+Color:	Black(0kr)
+Addon:	Spoiler(4000kr)
+Addon:	Subwoofer(7500kr)
+
+User:	123
+Name:	test
 Cost:	(36500kr)
+Fuel:	Gasoline(15000kr)
+Wheels:	Big wheels(5000kr)
+Color:	Black(0kr)
+Addon:	GPS(5000kr)
+Addon:	Spoiler(4000kr)
+
+User:	123
+Name:	Testcar
+Cost:	(25000kr)
+Fuel:	Diesel(20000kr)
+Wheels:	Small wheels(0kr)
+Color:	Red(5000kr)
+
+User:	123
+Name:	BestCar
+Cost:	(41500kr)
 Fuel:	Diesel(20000kr)
 Wheels:	Medium wheels(2500kr)
 Color:	Blue(2500kr)
+Addon:	GPS(5000kr)
 Addon:	Spoiler(4000kr)
 Addon:	Subwoofer(7500kr)
+
+User:	123
+Name:	Brrrap
+Cost:	(20000kr)
+Fuel:	Gasoline(15000kr)
+Wheels:	Big wheels(5000kr)
+Color:	Black(0kr)
 
 User:	123
 Name:	lafiesta
@@ -41,7 +74,6 @@ Wheels:	Big wheels(5000kr)
 Color:	Black(0kr)
 Addon:	GPS(5000kr)
 Addon:	Spoiler(4000kr)
-Addon:	Subwoofer(7500kr)
 
 User:	123
 Name:	Testcar
