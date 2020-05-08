@@ -25,12 +25,16 @@ public class ValidName {
 
     public static boolean usernameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
+        Regex adminReg = new Regex ("admin");
         boolean valid;
         if(name.matches(reg.getPattern())){
             valid = true;
+        } else if (name.matches(adminReg.toString())){
+            valid = false;
+            throw new InvalidNameException("Username admin is reserved.");
         } else {
             valid = false;
-            throw new InvalidNameException("Your username is invalid");
+            throw new InvalidNameException("Your username contains invalid characters.");
         }
         return valid;
     }

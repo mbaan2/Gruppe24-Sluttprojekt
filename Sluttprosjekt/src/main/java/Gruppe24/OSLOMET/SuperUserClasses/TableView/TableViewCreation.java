@@ -21,6 +21,8 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -263,7 +265,15 @@ public class TableViewCreation {
                     }
                     if (!hasMatch){
                         Button unmatchedAddon = new Button();
+                        Tooltip deleteInfo = new Tooltip("Pressing this button will delete the addon.\nThis action cannot be undone.");
+                        unmatchedAddon.setDisable(false);
+                        deleteInfo.setWrapText(true);
+                        deleteInfo.setShowDelay(Duration.millis(5));
+                        deleteInfo.setStyle("&#10#10");
+                        unmatchedAddon.setTooltip(deleteInfo);
+
                         if(!tableviewSuperUser){
+                            deleteInfo.hide();
                             unmatchedAddon.setDisable(true);
                         }
                         unmatchedAddon.setText(car.getValue().getAddons().getElement(j).getName());
