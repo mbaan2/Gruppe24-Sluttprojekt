@@ -204,6 +204,7 @@ public class UserCarView_Controller implements Initializable {
             usersCarList.removeAll();
             usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
             tableView.setItems(usersCarList);
+            tableView.getColumns().remove(tableView.getColumns().size()-1);
         });
     }
 }
