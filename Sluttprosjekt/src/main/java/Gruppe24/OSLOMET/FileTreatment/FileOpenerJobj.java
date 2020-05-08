@@ -2,6 +2,8 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
@@ -12,17 +14,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FileOpenerJobj {
-    public static List<Carparts> openFile(Path path) throws ClassNotFoundException, IOException {
+    public static List<Carparts> openFile(Path path) throws IOException, ClassNotFoundException {
         List<Carparts> carParts = new ArrayList<>();
 
         try (   InputStream in = Files.newInputStream(path);
                 ObjectInputStream oin = new ObjectInputStream(in))
         {
             carParts = (List<Carparts>) oin.readObject();
-        } catch (ClassNotFoundException e) {
-            throw new ClassNotFoundException();
-        } catch (IOException e){
-            throw new IOException();
+        } catch (OpenFileException e) {
+            throw new OpenFileException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
+        } catch (ScreenNotFoundException e){
+            throw new ScreenNotFoundException("Corrupted file please contact the superUser for a reset.");
         }
         return carParts;
     }

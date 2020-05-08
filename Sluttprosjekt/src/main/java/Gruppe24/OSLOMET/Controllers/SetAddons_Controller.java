@@ -3,6 +3,8 @@ package Gruppe24.OSLOMET.Controllers;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
@@ -99,7 +101,7 @@ public class SetAddons_Controller implements Initializable {
         Path path = Paths.get(StandardPaths.addonPath);
         try {
             addOnOptions = FileOpenerJobj.openFile(path);
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (OpenFileException | ScreenNotFoundException e) {
             lblErrorAddons.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
         }
     }
