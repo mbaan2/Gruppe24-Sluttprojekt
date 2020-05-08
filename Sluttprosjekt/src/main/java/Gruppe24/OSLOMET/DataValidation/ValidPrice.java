@@ -1,11 +1,16 @@
 package Gruppe24.OSLOMET.DataValidation;
 
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidPriceException;
+
 public class ValidPrice{
-    public static boolean priceTest(int price){
+    public static boolean priceTest(int price) throws InvalidPriceException{
+        boolean valid;
         if (price >= 0){
-            return true;
+            valid = true;
+            throw new InvalidPriceException("You have entered an invalid price");
         } else {
-            return false;
+            valid = false;
         }
+        return valid;
     }
 }

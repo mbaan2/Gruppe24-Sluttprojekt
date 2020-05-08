@@ -1,42 +1,50 @@
 package Gruppe24.OSLOMET.DataValidation;
 
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.scene.control.Alert;
 import kotlin.text.Regex;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ValidName{
-    public static boolean locationTest(String name){
+public class ValidName {
+    public static boolean locationTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆ][a-zøåæ]+([ ]([A-ZØÅÆ][a-zøåæ]+))*");
+        boolean valid;
         if(name.matches(reg.getPattern())){
-            return true;
+            valid = true;
         } else {
-            return false;
+            valid = false;
+            throw new InvalidNameException("Your location is invalid");
         }
+        return valid;
     }
 
-    public static boolean usernameTest(String name){
+    public static boolean usernameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
+        boolean valid;
         if(name.matches(reg.getPattern())){
-            return true;
+            valid = true;
         } else {
-            return false;
+            valid = false;
+            throw new InvalidNameException("Your username is invalid");
         }
+        return valid;
     }
 
-    public static boolean carpartNameTest(String name){
+    public static boolean carpartNameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆa-zøåæ0-9._]+([ ]([A-ZØÅÆa-zøåæ0-9._]+))*");
+        boolean valid;
         if(name.matches(reg.getPattern())){
-            return true;
+            valid = true;
         } else {
-            return false;
+            valid = false;
+            throw new InvalidNameException("Your carpart name is invalid");
         }
+        return valid;
     }
 
     public static boolean uniqueCarNameTest(String newCarName, String user){
@@ -64,12 +72,15 @@ public class ValidName{
         }
     }
 
-    public static boolean carNameTest(boolean unique, String newCarName){
+    public static boolean carNameTest(boolean unique, String newCarName) throws InvalidNameException{
+        boolean valid;
         if (unique){
             boolean isValid = ValidName.carpartNameTest(newCarName);
-            return isValid;
+            valid = isValid;
         }else{
-            return false;
+            valid = false;
+            throw new InvalidNameException("Your car name is invalid");
         }
+        return valid;
     }
 }

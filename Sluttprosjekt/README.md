@@ -1,3 +1,8 @@
+Thank you for trusting us to write this programme.
+Here are some extra tips.
+
+ERROR HANDLING
+
 If encountering error:
 
 "Error occured during initialization of boot layer
@@ -11,3 +16,11 @@ Go to src/test/java,
 right click on the "java" directory,
 click on "Mark directory as" and 
 select "Test Sources Root"
+
+
+
+
+SUPERUSER ACCESS
+
+User: admin
+Password: admin
