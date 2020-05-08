@@ -189,18 +189,6 @@ public class Userlist_Controller implements Initializable {
         FileSaverJobj.SaveSecretQList(comboBoxList);
     }
 
-    public void createFile() throws IOException {
-        String checkBoxQType = "Name of first pet?";
-        String checkBoxQType2 = "Mothers maiden name?";
-        String checkBoxQType3 = "Whos your daddy?";
-
-        secretQList.add(checkBoxQType);
-        secretQList.add(checkBoxQType2);
-        secretQList.add(checkBoxQType3);
-
-        FileSaverJobj.SaveSecretQList(secretQList);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         filterBtn.setDisable(true);

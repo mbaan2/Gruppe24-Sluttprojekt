@@ -120,12 +120,12 @@ public class UserCarView_Controller implements Initializable {
     void saveYourTable(ActionEvent event) throws IOException {
         ObservableList<NewCar> outputList = tableView.getItems();
         String username = App.car.getUser();
-        Path path = Paths.get(username + "sCars.txt");
+        Path path = Paths.get("./Car Txt Files/" + username + "sCars.txt");
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save your cars to a txt file!");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to overwrite your cars or append them to your list?" + "\n\nIf you choose 'New File' your new file will be named " + path.toString());
+        alert.setContentText("Do you want to overwrite your cars or append them to your list?" + "\n\nIf you choose 'New File' your new file will be named " + username + "sCars.txt");
         ButtonType newFile = new ButtonType("New File");
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
@@ -137,23 +137,21 @@ public class UserCarView_Controller implements Initializable {
             if (result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, tvLabel);
-                tvLabel.setText("Cars overwritten to your current file called " + path.toString());
+                FileSaverTxt.overwrite(str, selectedFile, tvLabel, username);
             } else if (result.get() == append) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.append(str, selectedFile, tvLabel);
-                tvLabel.setText("Cars added to your current file called " + path.toString());
+                FileSaverTxt.append(str, selectedFile, tvLabel, username);
             } else if (result.get() == newFile) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, tvLabel);
-                tvLabel.setText("Cars saved to new file called " + path.toString());
+                FileSaverTxt.newFile(str, selectedFile, tvLabel, username);
             } else {
                 tvLabel.setText("Process cancelled. File wasnt saved.");
             }
         }
     }
+
 
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
     public final Runnable setTableview = () -> {

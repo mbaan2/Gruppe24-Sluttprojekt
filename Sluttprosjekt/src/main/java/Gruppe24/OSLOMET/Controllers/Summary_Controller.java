@@ -156,12 +156,12 @@ public class Summary_Controller implements Initializable {
         ObservableList<NewCar> outputList = FXCollections.observableArrayList();
         outputList.add(App.car);
         String username = App.car.getUser();
-        Path path = Paths.get(username + "sCars.txt");
+        Path path = Paths.get("./Car Txt Files/" + username + "sCars.txt");
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save your car to a txt file!");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to overwrite or append your current file? Or create a new file?" + "\n\nIf you choose 'New File' your new file will be named " + path.toString());
+        alert.setContentText("Do you want to overwrite or append your current file? Or create a new file?" + "\n\nIf you choose 'New File' your new file will be named " + username + "sCars.txt");
         ButtonType newFile = new ButtonType("New File");
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
@@ -173,21 +173,18 @@ public class Summary_Controller implements Initializable {
             if (result.get() == append) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.append(str, selectedFile, summaryLbl);
+                FileSaverTxt.append(str, selectedFile, summaryLbl, username);
                 btnSaveCarToText.setVisible(false);
-                summaryLbl.setText("Car appended to file!");
             } else if(result.get() == newFile) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, summaryLbl);
+                FileSaverTxt.newFile(str, selectedFile, summaryLbl, username);
                 btnSaveCarToText.setVisible(false);
-                summaryLbl.setText("New file created called " + path.toString() + " " + App.car.getName() + " was added to it.");
             } else if(result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, summaryLbl);
+                FileSaverTxt.overwrite(str, selectedFile, summaryLbl, username);
                 btnSaveCarToText.setVisible(false);
-                summaryLbl.setText("You overwrote your current file with " + App.car.getName() + ".");
             } else {
                 summaryLbl.setText("Process cancelled. File wasnt saved.");
             }
@@ -240,18 +237,34 @@ public class Summary_Controller implements Initializable {
         btnBuildCar.setLayoutX(318.0);
         btnBuildCar.setDisable(false);
         btnSaveCarToText.setVisible(false);
-        try{
-            App.setRoot("WelcomeScreen");
-        } catch (IOException e){
-            System.err.println(e.getMessage());
-            Alerts.screenLoadAlert();
-        } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
-            Alerts.screenLoadAlert();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Return to homepage");
+        alert.setHeaderText("");
+        alert.setContentText("Returning to the homepage, this will reset your current car.\nRemember to save it if you haven't already!");
+        ButtonType returnHome = new ButtonType("Go to home");
+        ButtonType cancel  = new ButtonType("Cancel");
+        alert.getButtonTypes().addAll(returnHome, cancel);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if(result.get() == returnHome) {
+                try {
+                    App.setRoot("WelcomeScreen");
+                    String username = App.car.getUser();
+                    App.startCarBuildingProcess();
+                    App.car.setUser(username);
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                    Alerts.screenLoadAlert();
+                } catch (IllegalStateException e) {
+                    System.err.println("There is an error in loading the next screen, please contact your developer.");
+                    Alerts.screenLoadAlert();
+                }
+            } else {
+                summaryLbl.setText("Process cancelled, staying in the summary page.");
+            }
         }
-        String username = App.car.getUser();
-        App.startCarBuildingProcess();
-        App.car.setUser(username);
     }
 
     @FXML

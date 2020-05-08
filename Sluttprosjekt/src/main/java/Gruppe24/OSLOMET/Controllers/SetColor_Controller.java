@@ -109,28 +109,4 @@ public class SetColor_Controller implements Initializable {
             lblErrorColor.setText("An error has occurred, please contact the superUser");
         }
     }
-
-    public void setColors(){
-        Carparts red = new Carparts("Red", 5000);
-        Carparts blue = new Carparts("Blue", 2500);
-        Carparts yellow = new Carparts("Yellow", 2500);
-        Carparts black = new Carparts("Black", 0);
-        Carparts green = new Carparts("Green", 3500);
-
-        colorOptions.add(black);
-        colorOptions.add(green);
-        colorOptions.add(red);
-        colorOptions.add(blue);
-        colorOptions.add(yellow);
-    }
-
-    public void createFile(){
-        setColors();
-        Path filsti = Paths.get(StandardPaths.colorPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, colorOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 }

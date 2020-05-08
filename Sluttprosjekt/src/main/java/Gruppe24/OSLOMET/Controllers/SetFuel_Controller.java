@@ -108,24 +108,4 @@ public class SetFuel_Controller implements Initializable {
             lblErrorFuel.setText("An error has occurred, please contact the superUser");
         }
     }
-
-    public void setFuel(){
-        Carparts diesel = new Carparts("Diesel", 20_000);
-        Carparts gasoline = new Carparts("Gasoline", 15_000);
-        Carparts electric = new Carparts("Electric", 35_000);
-
-        fuelOptions.add(gasoline);
-        fuelOptions.add(diesel);
-        fuelOptions.add(electric);
-    }
-
-    public void createFile(){
-        setFuel();
-        Path filsti = Paths.get(StandardPaths.fuelPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 }

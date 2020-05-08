@@ -10,6 +10,7 @@ import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadCategory;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.RemoveCarpart;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.SaveCarparts;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.LoadingValuesThread;
+import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -304,14 +305,14 @@ public class SuperUser_Controller implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
-                SetFuel_Controller restoreFuel = new SetFuel_Controller();
-                restoreFuel.createFile();
-                SetWheels_Controller restoreWheels = new SetWheels_Controller();
-                restoreWheels.createFile();
-                SetColor_Controller restoreColor = new SetColor_Controller();
-                restoreColor.createFile();
-                SetAddons_Controller restoreAddon = new SetAddons_Controller();
-                restoreAddon.createFile();
+                CreateJobjFiles restoreFuel = new CreateJobjFiles();
+                restoreFuel.createFuel();
+                CreateJobjFiles restoreWheels = new CreateJobjFiles();
+                restoreWheels.createWheels();
+                CreateJobjFiles restoreColor = new CreateJobjFiles();
+                restoreColor.createColors();
+                CreateJobjFiles restoreAddon = new CreateJobjFiles();
+                restoreAddon.createAddons();
                 superUserLbl.setText("Files are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, carparts were not restored.");
@@ -331,8 +332,8 @@ public class SuperUser_Controller implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
-                SignUp_Controller restoreUser = new SignUp_Controller();
-                restoreUser.createFile();
+                CreateJobjFiles restoreUser = new CreateJobjFiles();
+                restoreUser.createUser();
                 superUserLbl.setText("Users are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, users were not restored.");
@@ -352,8 +353,8 @@ public class SuperUser_Controller implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
-                Summary_Controller restoreCars = new Summary_Controller();
-                restoreCars.createFile();
+                CreateJobjFiles restoreCars = new CreateJobjFiles();
+                restoreCars.createCars();
                 superUserLbl.setText("Cars are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, cars were not restored.");
@@ -373,8 +374,8 @@ public class SuperUser_Controller implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
-                Userlist_Controller restoreSecretQ = new Userlist_Controller();
-                restoreSecretQ.createFile();
+                CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
+                restoreSecretQ.createSecretQ();
                 superUserLbl.setText("Secret questions are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, secret questions were not restored.");

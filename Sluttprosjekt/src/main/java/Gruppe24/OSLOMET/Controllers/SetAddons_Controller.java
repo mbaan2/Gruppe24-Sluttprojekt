@@ -140,28 +140,4 @@ public class SetAddons_Controller implements Initializable {
             lblErrorAddons.setText("An error has occurred, please contact the superUser");
         }
     }
-
-
-
-
-    //Only used for creating/setting the initial .jobj file
-    public void setAddOns(){
-        Carparts addOneGPS = new Carparts("GPS", 5000);
-        Carparts spoiler = new Carparts("Spoiler", 4000);
-        Carparts subwoofer = new Carparts("Subwoofer", 7500);
-
-        addOnOptions.add(addOneGPS);
-        addOnOptions.add(spoiler);
-        addOnOptions.add(subwoofer);
-    }
-
-    public void createFile(){
-        setAddOns();
-        Path filsti = Paths.get(StandardPaths.addonPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 }

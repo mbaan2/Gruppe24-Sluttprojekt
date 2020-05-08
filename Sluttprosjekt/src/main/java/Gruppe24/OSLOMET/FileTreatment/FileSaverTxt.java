@@ -82,23 +82,37 @@ public class FileSaverTxt{/*
 
 
 
-    public static void overwrite(String str, File selectedFile, Label lbl) {
+    public static void overwrite(String str, File selectedFile, Label lbl, String username) {
         try {
             FileWriter fw = new FileWriter(selectedFile);
             fw.write(str);
             fw.close();
+            lbl.setText("Car(s) overwritten to your current file called "  + username + "sCars.txt");
         } catch (IOException e) {
             lbl.setText(e.getMessage());
         }
     }
 
-    public static void append(String str, File selectedFile, Label lbl) {
+    public static void append(String str, File selectedFile, Label lbl, String username) {
         try {
             FileWriter fw = new FileWriter(selectedFile, true);
             fw.write(str);
             fw.close();
+            lbl.setText("Car(s) added to your current file called "  + username + "sCars.txt");
+        } catch (IOException e) {
+            lbl.setText(e.getMessage());
+        }
+    }
+
+    public static void newFile(String str, File selectedFile, Label lbl, String username) {
+        try {
+            FileWriter fw = new FileWriter(selectedFile);
+            fw.write(str);
+            fw.close();
+            lbl.setText("Car(s) saved to new file called "  + username + "sCars.txt" + " placed in the Car Txt Files folder.");
         } catch (IOException e) {
             lbl.setText(e.getMessage());
         }
     }
 }
+

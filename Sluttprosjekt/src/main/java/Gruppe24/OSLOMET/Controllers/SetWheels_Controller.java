@@ -107,24 +107,4 @@ public class SetWheels_Controller implements Initializable {
             lblErrorWheels.setText("An error has occurred, please contact the superUser");
         }
     }
-
-    public void setWheels(){
-        Carparts wheelsBig = new Carparts("Big wheels", 5000);
-        Carparts wheelsSmall = new Carparts("Small wheels", 0);
-        Carparts wheelsMedium = new Carparts("Medium wheels", 2500);
-
-        wheelOptions.add(wheelsBig);
-        wheelOptions.add(wheelsMedium);
-        wheelOptions.add(wheelsSmall);
-    }
-
-    public void createFile(){
-        setWheels();
-        Path filsti = Paths.get(StandardPaths.wheelPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 }
