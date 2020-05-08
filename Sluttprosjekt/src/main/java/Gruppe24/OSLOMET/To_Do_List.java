@@ -20,7 +20,8 @@
               car to txt file                                             MEDIUM PRIORITY
       ??)     Summary controller, adding warning if 
               home is pressed car is reset.                               HIGH PRIORITY
-
+      ??)     Suggestion: superUser is getting to crowded lets split it
+              up in several controllers???                                NOT YET DISCUSSED
 
 
       13)     Undo button per car                                         LOW PRIORITY
