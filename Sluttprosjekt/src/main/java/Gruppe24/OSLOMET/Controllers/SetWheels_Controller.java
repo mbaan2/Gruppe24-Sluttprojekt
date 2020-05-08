@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.*;
+import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
@@ -88,7 +89,7 @@ public class SetWheels_Controller implements Initializable {
 
         try{
             App.setRoot("SetColors");
-        } catch (LoadException e){
+        } catch (ScreenNotFoundException e) {
             lblErrorWheels.setText("Error in one of the Carpart files, please contact the superUser to restore the system.");
         } catch (IOException e){
             lblErrorWheels.setText("An error has occurred, please contact the superUser.");
