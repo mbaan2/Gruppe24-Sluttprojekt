@@ -52,7 +52,7 @@ public class UserCarView_Controller implements Initializable {
     private ChoiceBox<String> filterBox;
 
     @FXML
-    private Button saveTable, backBtn, resetFilterBtn, filterBtn, logoutBtn;
+    private Button saveTable, backBtn, resetFilterBtn, filterBtn;
 
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
@@ -182,10 +182,9 @@ public class UserCarView_Controller implements Initializable {
         tvLabel.setText("Loading cars...");
         addChoiceBoxItems();
         backBtn.setDisable(true);
-        logoutBtn.setDisable(true);
         filterBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
-        saveTable.setVisible(false);
+        saveTable.setDisable(true);
         tableView.setVisible(false);
         createView.initializeTv(tableView, tvLabel, false);
 
@@ -197,6 +196,7 @@ public class UserCarView_Controller implements Initializable {
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
+            saveTable.setDisable(false);
             tableView.setVisible(true);
             tvLabel.setText("Cars loaded!");
             executor.submit(setTableview);
