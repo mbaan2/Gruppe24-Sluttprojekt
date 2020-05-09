@@ -39,7 +39,7 @@ public class SuperUser_Controller implements Initializable {
         try {
             App.setRoot("SuperUserFileRestoration");
         } catch (IOException e) {
-            superUserLbl.setText(e.getMessage());
+            superUserLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e) {
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
@@ -50,7 +50,7 @@ public class SuperUser_Controller implements Initializable {
         try {
             App.setRoot("SuperUserCarparts");
         } catch (IOException e) {
-            superUserLbl.setText(e.getMessage());
+            superUserLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e) {
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
@@ -61,7 +61,7 @@ public class SuperUser_Controller implements Initializable {
         try {
             App.setRoot("Login");
         } catch (IOException e){
-            superUserLbl.setText(e.getMessage());
+            superUserLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
@@ -72,7 +72,7 @@ public class SuperUser_Controller implements Initializable {
         try {
             App.setRoot("SuperUserCarView");
         } catch (IOException e){
-            superUserLbl.setText(e.getMessage());
+            superUserLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
@@ -83,7 +83,7 @@ public class SuperUser_Controller implements Initializable {
         try {
             App.setRoot("Userlist");
         } catch (IOException e) {
-            superUserLbl.setText(e.getMessage());
+            superUserLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }

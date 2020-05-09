@@ -39,7 +39,8 @@ public class TableViewCreation {
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-            System.err.println("errorr");
+
+            e.printStackTrace();
         }
         openCars();
         int maxNrAddons = 0;

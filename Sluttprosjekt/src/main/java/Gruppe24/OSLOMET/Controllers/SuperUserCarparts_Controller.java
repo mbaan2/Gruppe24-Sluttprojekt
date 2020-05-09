@@ -79,11 +79,11 @@ public class SuperUserCarparts_Controller implements Initializable {
         String fuelCHB = "Fuel type";
         String wheelsCHB = "Wheels";
         String colorCHB = "Color";
-        String addOnesCHB = "Addons";
+        String addOnsCHB = "Add-ons";
 
         ObservableList<String> choiceboxStrings = FXCollections.observableArrayList();
         choiceboxStrings.removeAll();
-        choiceboxStrings.addAll(chooseValue, fuelCHB, wheelsCHB, colorCHB, addOnesCHB);
+        choiceboxStrings.addAll(chooseValue, fuelCHB, wheelsCHB, colorCHB, addOnsCHB);
 
         chbCategory.getItems().addAll(choiceboxStrings);
         chbCategory.setValue(chooseValue);
@@ -113,7 +113,7 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     public void loadCategory(){
-        carCategory = LoadCategory.loadCategory(chbCategory.getValue());
+        carCategory = LoadCategory.loadCategory(chbCategory.getValue(), superUserLbl);
         createButtonsThread();
     }
 
@@ -131,7 +131,7 @@ public class SuperUserCarparts_Controller implements Initializable {
 
     private void threadFailed(WorkerStateEvent event) {
         var e = event.getSource().getException();
-        superUserLbl.setText(e.getMessage());
+        superUserLbl.setText("An error has occurred. Please contact your developer.\n" + e);
     }
 
     private void threadDone(WorkerStateEvent event) {
@@ -252,7 +252,7 @@ public class SuperUserCarparts_Controller implements Initializable {
         }
 
         if(!name.isEmpty() && cost != -1) {
-            List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
+            List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue(), superUserLbl);
             Carparts newCarPart = new Carparts(name, cost);
 
             if (containsName(specificCategory, name)) {
@@ -275,7 +275,7 @@ public class SuperUserCarparts_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            System.err.println("An error has occurred. Please contact your developer.");
         } catch (IllegalStateException e){
             System.err.println("There is an error in loading the next screen, please contact your developer.");
         }

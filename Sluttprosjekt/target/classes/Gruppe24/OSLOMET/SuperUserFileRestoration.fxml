@@ -12,7 +12,7 @@
     <Button layoutX="98.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreCarparts" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Carparts" textFill="#def2f1" />
     <Button layoutX="98.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreSecretQ" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore SecretQ" textFill="#def2f1" />
     <Button layoutX="98.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
-    <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="46.0" layoutY="72.0" prefHeight="47.0" prefWidth="208.0" text="File Restoration" textAlignment="CENTER" textFill="#def2f1">
+    <Label fx:id="superUserLbl" alignment="CENTER" layoutX="46.0" layoutY="35.0" prefHeight="103.0" prefWidth="208.0" text="File Restoration" textAlignment="CENTER" textFill="#def2f1" wrapText="true">
       <font>
          <Font size="30.0" />
       </font></Label>
