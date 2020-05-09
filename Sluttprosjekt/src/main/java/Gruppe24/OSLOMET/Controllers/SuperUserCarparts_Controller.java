@@ -8,7 +8,6 @@ import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidPriceException;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories.*;
-import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,13 +20,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SuperUserCarparts_Controller implements Initializable {
@@ -161,27 +158,26 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     @FXML
-    void btnEdit(ActionEvent event) throws InvalidNameException {
+    void btnEdit(ActionEvent event) {
         lblCostError.setText("");
         lblNameError.setText("");
         superUserLbl.setText("Editing carpart...");
         String name = "";
-        if (ValidName.carpartNameTest(txtName.getText())){
+        try {
+            ValidName.carpartNameTest(txtName.getText());
             name = txtName.getText();
-        } else {
+        } catch (InvalidNameException e) {
             lblNameError.setText("Enter a valid carpart name!");
+            superUserLbl.setText("");
         }
+
         String costString = txtCost.getText();
         int cost = -1;
         try {
-            if (ValidPrice.priceTest(Integer.parseInt(costString))){
-                cost = Integer.parseInt(costString);
-            } else {
-                lblCostError.setText("Enter a price above 0!");
-                superUserLbl.setText("");
-            }
+            ValidPrice.priceTest(Integer.parseInt(costString));
+            cost = Integer.parseInt(costString);
         } catch (NumberFormatException | InvalidPriceException e) {
-            lblCostError.setText("Enter a number!");
+            lblCostError.setText("Enter a valid cost!");
             superUserLbl.setText("");
         }
         int amountSelected = 0;
@@ -201,8 +197,13 @@ public class SuperUserCarparts_Controller implements Initializable {
                 SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
                 loadCategory();
             }
-        } else if(name.isEmpty()) {
+        }
+        if(name.isEmpty()) {
             lblNameError.setText("Enter a name!");
+            superUserLbl.setText("");
+        }
+        if(cost == -1) {
+            lblCostError.setText("Enter a cost!");
             superUserLbl.setText("");
         }
     }
@@ -229,27 +230,26 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     @FXML
-    void btnAdd(ActionEvent event) throws InvalidNameException {
+    void btnAdd(ActionEvent event){
         superUserLbl.setText("Adding carpart...");
         String name = "";
-        if (ValidName.carpartNameTest(txtName.getText())){
+        try {
+            ValidName.carpartNameTest(txtName.getText());
             name = txtName.getText();
-        } else {
+        } catch (InvalidNameException e) {
             lblNameError.setText("Enter a valid carpart name!");
+            superUserLbl.setText("");
         }
+
         String costString = txtCost.getText();
         int cost = -1;
         try {
-            if (ValidPrice.priceTest(Integer.parseInt(costString))){
-                cost = Integer.parseInt(costString);
-            } else {
-                lblCostError.setText("Enter a price above 0!");
+            ValidPrice.priceTest(Integer.parseInt(costString));
+            cost = Integer.parseInt(costString);
+            } catch (NumberFormatException | InvalidPriceException e) {
+                lblCostError.setText("Enter a valid price!");
                 superUserLbl.setText("");
             }
-        } catch (NumberFormatException | InvalidPriceException e) {
-            lblCostError.setText("Enter a number!");
-            superUserLbl.setText("");
-        }
 
         if(!name.isEmpty() && cost != -1) {
             List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue(), superUserLbl);
@@ -267,6 +267,9 @@ public class SuperUserCarparts_Controller implements Initializable {
         } else if(name.isEmpty()) {
             lblNameError.setText("Enter a valid name!");
             superUserLbl.setText("");
+        } else if(cost == -1) {
+            lblCostError.setText("Enter a cost!");
+            superUserLbl.setText("");
         }
     }
 
@@ -275,9 +278,9 @@ public class SuperUserCarparts_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e){
-            System.err.println("An error has occurred. Please contact your developer.");
+            superUserLbl.setText("An error has occurred. Please contact your developer.");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 

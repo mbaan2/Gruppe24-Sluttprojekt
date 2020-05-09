@@ -8,6 +8,8 @@ public class CarCategory implements Car, Serializable {
     String name;
     List<Car> carpartsList = new ArrayList<>();
 
+    final static long serialVersionUID = 1;
+
     public CarCategory(String name) {
         super();
         this.name = name;
