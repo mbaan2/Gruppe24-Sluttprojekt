@@ -55,7 +55,7 @@ public class ValidName {
     }
 
     public static boolean uniqueCarNameTest(String newCarName, String user)throws IOException {
-        boolean isAmatch = false;
+        boolean isUnique = true;
 
         try{
             ArrayList<NewCar> carList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
@@ -65,14 +65,14 @@ public class ValidName {
                 String carname = newCar.getName();
                 if (username.equals(user)){
                     if (carname.equals(newCarName)){
-                        isAmatch = true;
+                        isUnique = false;
                     }
                 }
             }
         }catch (IOException e){
             throw new IOException("An error has occurred while opening the cars file, please contact your superUser to restore this file");
         }
-        return isAmatch;
+        return isUnique;
     }
 
     public static boolean carNameTest(String newCarName) throws InvalidNameException{
