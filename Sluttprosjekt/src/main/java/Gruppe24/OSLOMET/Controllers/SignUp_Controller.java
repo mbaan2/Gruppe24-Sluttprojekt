@@ -54,22 +54,24 @@ public class SignUp_Controller implements Initializable {
 
 
         String username = "";
-        try {
-            if (ValidName.usernameTest(signupUsername.getText())){
-                username = signupUsername.getText();
+        if(!signupUsername.getText().isEmpty()) {
+            try {
+                if (ValidName.usernameTest(signupUsername.getText())) {
+                    username = signupUsername.getText();
+                }
+            } catch (InvalidNameException e) {
+                usernameError.setText(e.getMessage());
             }
-        } catch (InvalidNameException e) {
-            usernameError.setText("Enter a valid username!");
         }
-
         String password = signupPassword.getText();
         String location = "";
-        try {
-            if (ValidName.locationTest(signupLocation.getText())) {
+        if(!signupLocation.getText().isEmpty()) {
+            try {
+                ValidName.locationTest(signupLocation.getText());
                 location = signupLocation.getText();
+            } catch (InvalidNameException e) {
+                locationError.setText(e.getMessage());
             }
-        } catch (InvalidNameException e) {
-            locationError.setText("Enter a valid location!");
         }
         String gender = "";
         String answer = answerTxt.getText();
@@ -126,28 +128,12 @@ public class SignUp_Controller implements Initializable {
             if(signupUsername.getText().isEmpty()) {
                 usernameError.setText("Enter a username!");
             }
-            try {
-                if (!ValidName.usernameTest(signupUsername.getText())) {
-                usernameError.setText("Enter a valid username!");
-                }
-            } catch (InvalidNameException e) {
-                usernameError.setText("Enter a valid username!");
-            }
-
-            if(password.isEmpty()) {
+            if(signupPassword.getText().isEmpty()) {
                 passwordError.setText("Enter a password!");
             }
             if(signupLocation.getText().isEmpty()) {
                 locationError.setText("Enter a location!");
             }
-            try {
-                if(!ValidName.locationTest(signupLocation.getText())) {
-                    locationError.setText("Enter a valid location!");
-                }
-            } catch (InvalidNameException e) {
-                locationError.setText("Enter a valid location!");
-            }
-
             if(answer.isEmpty()) {
                 answerError.setText("Enter an answer!");
             }

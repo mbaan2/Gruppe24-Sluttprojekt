@@ -173,12 +173,12 @@ public class CreateJobjFiles {
     }
 
     public void setUser() {
-        User user = new User("Aaa", "aaa", "aaa", "Other", "Whos your daddy?", "aaa");
+        User user = new User("Ana", "feijoada", "Oslo", "Other", "Whos your daddy?", "Someone");
         User user1 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
-        User user2 = new User("123", "123", "Oslo", "Male", "Whos your daddy`?", "123");
-        User user3 = new User("Bbb", "bbb", "bbb", "Other", "Whos your daddy?", "bbb");
+        User user2 = new User("Idiot", "idiotproof", "Location", "Male", "Mothers maiden name?", "Idiota");
+        User user3 = new User("Mark", "kapsalon", "Oslo", "Male", "Name of first pet?", "Dog");
         User user4 = new User("admin", "admin", "adminland", "Other", "Mothers maiden name?", "admin");
-        User user5 = new User("Bruker", "passord", "Nowhere", "Other", "Name of first pet?", "Katt");
+        User user5 = new User("Bruker", "passord", "Nowhere", "Female", "Name of first pet?", "Katt");
 
         userList.add(user);
         userList.add(user1);
