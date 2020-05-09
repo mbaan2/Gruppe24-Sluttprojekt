@@ -1,0 +1,19 @@
+User:	Mark
+Name:	GreatCar
+Cost:		36500
+Fuel:	Diesel	20000
+Wheels:	Medium wheels	2500
+Color:	Blue	2500
+Addon:	Spoiler	4000
+Addon:	Subwoofer	7500
+
+User:	Mark
+Name:	123
+Cost:		39000
+Fuel:	Diesel	20000
+Wheels:	Medium wheels	2500
+Color:	Black	0
+Addon:	Spoiler	4000
+Addon:	Subwoofer	7500
+Addon:	GPS	5000
+
