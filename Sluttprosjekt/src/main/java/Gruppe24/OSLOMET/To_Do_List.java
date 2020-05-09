@@ -14,6 +14,13 @@
       8)      Fix example data                                            HIGH PRIORITY
       11)     Test with Netbeans and Eclipse                              HIGH PRIORITY
       12)     Add information about Netbeans and Eclipse to README        HIGH PRIORITY
+      ??)     Values changed in the tableview are not check if they are
+              valid or not. need adding check for this in editOnCommit    HIGH PRIORITY
+      ??)     Add price to combobox in tabelview????
+      ??)     if combobox is selected it stays there eventhough through filtering there isnt a car anymore
+
+
+
 
 */
 
