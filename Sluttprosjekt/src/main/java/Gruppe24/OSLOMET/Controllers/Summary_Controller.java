@@ -50,9 +50,13 @@ public class Summary_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
-            Stage stage = (Stage) summaryPane.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) summaryPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorSummary.setText("Error in setting the proper width and height, resize the window manually.");
+            }
         });
         btnSaveCarToText.setVisible(false);
     }
