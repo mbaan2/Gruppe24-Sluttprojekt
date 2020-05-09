@@ -12,7 +12,7 @@ public class SaveCarparts {
     final static String fuelCHB = "Fuel type";
     final static String wheelsCHB = "Wheels";
     final static String colorCHB = "Color";
-    final static String addOnesCHB = "Addons";
+    final static String addOnsCHB = "Add-ons";
 
     public static void saveChanges(List<Carparts> carCategory, String value){
         switch (value) {
@@ -43,7 +43,7 @@ public class SaveCarparts {
                 }
                 break;
             }
-            case addOnesCHB: {
+            case addOnsCHB: {
                 Path filsti = Paths.get(StandardPaths.addonPath);
                 try {
                     FileSaverJobj.SaveCarCategory(filsti, carCategory);
