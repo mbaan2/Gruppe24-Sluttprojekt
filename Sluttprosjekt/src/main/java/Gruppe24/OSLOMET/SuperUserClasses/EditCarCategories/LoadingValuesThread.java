@@ -22,7 +22,9 @@ public class LoadingValuesThread extends Task<List<CheckBox>> {
             Thread.sleep(1000);
         } catch (Exception e) {
             Alert failed = new Alert(Alert.AlertType.ERROR);
-            failed.setContentText("Could not load the list!");
+            failed.setHeaderText("");
+            failed.setTitle("Thread failed.");
+            failed.setContentText("Thread interrupted, list not loaded!");
             Thread.currentThread().interrupt();
         }
         return LoadingValuesOnScreen.creatingList(selectedCategoryButtons, carCategory);
