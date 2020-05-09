@@ -4,9 +4,9 @@
 
 /*
 Directory Controllers
-- Login_Controller:
+- Login_Controller (DONE):
     * DONE All the send to buttons need to be checked
-    * Opening of files (hashmap) needs try/catch ore tested for right feedback
+    * DONE Opening of files (hashmap) needs try/catch ore tested for right feedback
 
 - RetrievePassword_Controller:
     * First has to be made final

@@ -69,11 +69,11 @@ public class WelcomeScreen_Controller implements Initializable {
             try {
                 App.setRoot("SetFuel");
             } catch (LoadException e){
-                System.err.println(e.getMessage() + "Error in file, please contact superUser to restore the system");
+                lblErrorWelcomeScreen.setText("Error in the fuel file, please contact superUser to restore the system");
             } catch (IOException e) {
-                e.printStackTrace();
+                lblErrorWelcomeScreen.setText("An error has occurred, please contact your developer");
             } catch (IllegalStateException e){
-                System.err.println("There is an error in loading the next screen, please contact your developer.");
+                lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
             }
 
         } else {
@@ -86,11 +86,11 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             App.setRoot("SetFuel");
         } catch (LoadException e){
-            System.err.println(e.getMessage() + "Error in file, please contact superUser to restore the system");
+            lblErrorWelcomeScreen.setText("Error in the fuel file, please contact superUser to restore the system");
         } catch (IOException e) {
-            e.printStackTrace();
+            lblErrorWelcomeScreen.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -99,9 +99,9 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             App.setRoot("UserCarView");
         } catch (IOException e) {
-            e.printStackTrace();
+            lblErrorWelcomeScreen.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -110,9 +110,9 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             App.setRoot("login");
         } catch (IOException e) {
-            e.printStackTrace();
+            lblErrorWelcomeScreen.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -120,7 +120,7 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             newList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorWelcomeScreen.setText("An error has occurred while loading your cars, please contact the superUser to restore the files.");
         }
         for(NewCar newCar : newList){
             if(newCar.getUser().equals(App.car.getUser())){
