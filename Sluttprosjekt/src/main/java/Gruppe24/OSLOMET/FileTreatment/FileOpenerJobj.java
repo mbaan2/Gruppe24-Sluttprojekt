@@ -41,15 +41,15 @@ public class FileOpenerJobj {
     }
 
 
-    public static HashMap<String, String> openFileHashMap(){
+    public static HashMap<String, String> openFileHashMap() throws IOException, ClassNotFoundException {
         HashMap<String, String> userBase = null;
         try (FileInputStream in = new FileInputStream(StandardPaths.usersJOBJPath);
              ObjectInputStream oin = new ObjectInputStream(in)) {
             userBase = (HashMap) oin.readObject();
             in.close();
             oin.close();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ClassNotFoundException();
         }
         return userBase;
     }

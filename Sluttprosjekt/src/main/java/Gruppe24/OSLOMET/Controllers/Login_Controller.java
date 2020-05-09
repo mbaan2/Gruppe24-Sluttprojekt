@@ -27,7 +27,7 @@ public class Login_Controller implements Initializable {
     private TextField usernameTxt;
 
     @FXML
-    private Label usernameError, passwordError;
+    private Label usernameError, passwordError, lblErrorLogin;
 
     @FXML
     private Button loginBtn;
@@ -42,9 +42,9 @@ public class Login_Controller implements Initializable {
         try {
             App.setRoot("RetrievePassword");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorLogin.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -53,15 +53,19 @@ public class Login_Controller implements Initializable {
         passwordError.setText("");
         usernameError.setText("");
 
-        userBase = FileOpenerJobj.openFileHashMap();
+        try{
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            lblErrorLogin.setText("The user file couldn't be opened, please contact the superUser to restore the files");
+        }
 
         if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
             try {
                 App.setRoot("SuperUser");
             } catch (IOException e){
-                System.err.println(e.getMessage());
+                lblErrorLogin.setText("An error has occurred, please contact your developer");
             } catch (IllegalStateException e){
-                System.err.println("There is an error in loading the next screen, please contact your developer.");
+                lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
             }
         } else if(userBase.containsKey(usernameTxt.getText())){
             if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
@@ -88,9 +92,9 @@ public class Login_Controller implements Initializable {
         try{
             App.setRoot("Signup");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorLogin.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
@@ -98,9 +102,9 @@ public class Login_Controller implements Initializable {
         try{
             App.setRoot("WelcomeScreen");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            lblErrorLogin.setText("An error has occurred, please contact your developer");
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 
