@@ -58,27 +58,33 @@ public class Summary_Controller implements Initializable {
     }
 
     @FXML
-    void btnBuildCar(ActionEvent event) throws InvalidNameException {
-        btnNameCar(event);
+    void btnBuildCar(ActionEvent event) {
+        try{
+            btnNameCar(event);
+            String ut = App.car.toString();
 
-        String ut = App.car.toString();
+            int totalCost = App.car.totalCost();
+            App.car.setCost(totalCost);
+            summaryLbl.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
 
-        int totalCost = App.car.totalCost();
-        App.car.setCost(totalCost);
-        summaryLbl.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
-
-        btnSaveCarToText.setVisible(true);
+            btnSaveCarToText.setVisible(true);
+        } catch (InvalidNameException e){
+            lblErrorSummary.setText(e.getMessage());
+        }
     }
 
     void btnNameCar(ActionEvent event) throws InvalidNameException {
-        // If we have time it would be could to add a random name generator
-        boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
-        boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
+        /* Throws InvalidNameException*/
+        ValidName.carNameTest(txtCarName.getText());
+        boolean unique = true;
 
-        if (txtCarName.getText().equals("")) {
-            lblErrorSummary.setText("Please give the car a name");
-        } else if (!uniqueName){
-            lblErrorSummary.setText("");
+        try{
+            unique = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
+        } catch (IOException e){
+            lblErrorSummary.setText(e.getMessage());
+        }
+
+        if(!unique){
             Alert overrideAlert = new Alert(Alert.AlertType.CONFIRMATION);
             overrideAlert.setTitle("Override alert!");
             overrideAlert.setContentText("You have already saved a car with this name.\nWould you like to override it?");
@@ -113,28 +119,15 @@ public class Summary_Controller implements Initializable {
                     lblErrorSummary.setText("Car is added to the list. You named it " + App.car.getName());
                     btnSaveCarToText.setVisible(true);
                 } catch (OpenFileException e){
-                    lblErrorSummary.setText("Could not open file");
-                    Alerts.fileLoadAlert("Car list");
+                    lblErrorSummary.setText("Error in opening the car file, please contact the superUser to restore the files");
                 } catch (IOException e){
                     lblErrorSummary.setText("An error occurred while saving the file, please contact the developer.");
-                    Alerts.fileLoadAlert("Car list");
                 }
             }
-        } else if (!validName) {
-            summaryLbl.setText("Your car's name is invalid. Please try again.");
-        } else if(validName){
+        } else{
             App.car.setName(txtCarName.getText());
 
-            List<NewCar> list = new ArrayList<>();
             try{
-                list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-            }catch (IOException e){
-                lblErrorSummary.setText("An error occurred while opening the cars file, please contact your developer to restore the files.");
-            }
-
-            try{
-                //TO SAVE THE INITIAL LIST
-                FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
                 lblErrorSummary.setText(App.car.getName() + " has been added to the list.");
                 btnSaveCarToText.setVisible(true);
@@ -144,10 +137,7 @@ public class Summary_Controller implements Initializable {
                 Alerts.fileLoadAlert("Car list");
             } catch (IOException e){
                 lblErrorSummary.setText("An error has occurred please contact the developer.");
-                Alerts.fileLoadAlert("Car list");
             }
-        } else {
-            Alerts.processFailAlert("Car-naming");
         }
 
     }

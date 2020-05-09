@@ -18,7 +18,7 @@ public class ValidName {
             valid = true;
         } else {
             valid = false;
-            throw new InvalidNameException("Your location is invalid");
+            throw new InvalidNameException("Enter a valid location!");
         }
         return valid;
     }
@@ -34,57 +34,56 @@ public class ValidName {
             throw new InvalidNameException("Username admin is reserved.");
         } else {
             valid = false;
-            throw new InvalidNameException("Your username contains invalid characters.");
+            throw new InvalidNameException("Enter a valid username!");
         }
         return valid;
     }
 
     public static boolean carpartNameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆa-zøåæ0-9._]+([ ]([A-ZØÅÆa-zøåæ0-9._]+))*");
-        boolean valid;
+        boolean valid = false;
+        if(name.equals("")){
+            throw new InvalidNameException("Please insert a name");
+        }
+
         if(name.matches(reg.getPattern())){
             valid = true;
         } else {
-            valid = false;
             throw new InvalidNameException("Your carpart name is invalid");
         }
         return valid;
     }
 
-    public static boolean uniqueCarNameTest(String newCarName, String user){
+    public static boolean uniqueCarNameTest(String newCarName, String user)throws IOException {
+        boolean isAmatch = false;
+
         try{
             ArrayList<NewCar> carList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-            boolean isAmatch = false;
 
-            for (NewCar c : carList){
-                String username = c.getUser();
-                String carname = c.getName();
+            for (NewCar newCar : carList){
+                String username = newCar.getUser();
+                String carname = newCar.getName();
                 if (username.equals(user)){
                     if (carname.equals(newCarName)){
                         isAmatch = true;
                     }
                 }
             }
-            return !isAmatch;
-
         }catch (IOException e){
-            e.printStackTrace();
-            Alert carListProblem = new Alert(Alert.AlertType.ERROR);
-            carListProblem.setHeaderText("Program encountered a fatal error.");
-            carListProblem.setContentText("Your list of cars is corrupted.\nContact administrator.");
-            return false;
+            throw new IOException("An error has occurred while opening the cars file, please contact your superUser to restore this file");
         }
+        return isAmatch;
     }
 
-    public static boolean carNameTest(boolean unique, String newCarName) throws InvalidNameException{
+    public static boolean carNameTest(String newCarName) throws InvalidNameException{
         boolean valid;
-        if (unique){
-            boolean isValid = ValidName.carpartNameTest(newCarName);
-            valid = isValid;
-        }else{
-            valid = false;
-            throw new InvalidNameException("Your car name is invalid");
+        try{
+            ValidName.carpartNameTest(newCarName);
+            valid = true;
+        } catch (InvalidNameException e){
+            throw new InvalidNameException(e.getMessage());
         }
+
         return valid;
     }
 }
