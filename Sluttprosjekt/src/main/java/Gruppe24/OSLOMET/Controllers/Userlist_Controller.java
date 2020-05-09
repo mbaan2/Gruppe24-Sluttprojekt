@@ -61,7 +61,6 @@ public class Userlist_Controller implements Initializable {
     @FXML
     void btnFilter() {
         ObservableList<User> filteredList = FXCollections.observableArrayList();
-        userList1.addAll(userList);
         String filteredText = filterTxt.getText();
         String filterType = choiceBox.getValue();
 
@@ -85,7 +84,6 @@ public class Userlist_Controller implements Initializable {
     void btnResetFilter() throws IOException, ClassNotFoundException {
         filterTxt.setText("");
         lblUserList.setText("TableView reset.");
-        userList1.addAll(userList);
         tableView.setItems(userList1);
         choiceBox.setValue("Select a filter!");
     }
