@@ -1,6 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.DataValidation.ValidName;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -235,12 +237,22 @@ public class Userlist_Controller implements Initializable {
         username.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getUsername()));
         username.setCellFactory(TextFieldTableCell.forTableColumn());
         username.setOnEditCommit(user -> {
-            if(user.getRowValue().getUsername().equals(user.getNewValue()) && userBase.containsKey(user.getRowValue().getUsername())) {
+            if(userBase.containsKey(user.getNewValue())) {
                 lblUserList.setText("That username is already in use.");
             } else {
-                lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
-                user.getRowValue().setUsername(user.getNewValue());
-                btnSaveChanges();
+                String username1 = user.getRowValue().getUsername();
+                String password1 = user.getRowValue().getPassword();
+                try {
+                    if(ValidName.usernameTest(user.getNewValue())) {
+                        lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
+                        user.getRowValue().setUsername(user.getNewValue());
+                        userBase.put(user.getNewValue(), user.getRowValue().getPassword());
+                        userBase.remove(username1, password1);
+                        btnSaveChanges();
+                    }
+                } catch (InvalidNameException e) {
+                    lblUserList.setText("Enter a valid username!");
+                }
             }
             tableView.refresh();
         });
@@ -262,9 +274,15 @@ public class Userlist_Controller implements Initializable {
             if(user.getRowValue().getLocation().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that location.");
             } else {
-                lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
-                user.getRowValue().setLocation(user.getNewValue());
-                btnSaveChanges();
+                try {
+                    if(ValidName.locationTest(user.getNewValue())) {
+                        lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
+                        user.getRowValue().setLocation(user.getNewValue());
+                        btnSaveChanges();
+                    }
+                } catch (InvalidNameException e) {
+                    lblUserList.setText("You didnt enter a valid location!");
+                }
             }
             tableView.refresh();
         });
@@ -297,12 +315,15 @@ public class Userlist_Controller implements Initializable {
                 CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
                 try {
                     restoreSecretQ.createSecretQ();
+                    secretQ.setEditable(true);
+                    notEditable.close();
                 } catch (SaveFileException e1) {
                     Alert fail = new Alert(Alert.AlertType.INFORMATION);
                     fail.setHeaderText("Failed to save file.");
                     fail.setTitle("Saving failed.");
                     fail.setContentText("There was an error saving the file. You will now see your users, but will not be allowed to edit their questions.");
                     secretQ.setEditable(false);
+                    notEditable.close();
                 }
             } else {
                 secretQ.setEditable(false);
@@ -356,7 +377,9 @@ public class Userlist_Controller implements Initializable {
             };
             return btn;
         });
+
         tableView.setItems(userList1);
+
         Platform.runLater(() -> {
             try{
                 Stage stage = (Stage) userListPane.getScene().getWindow();
