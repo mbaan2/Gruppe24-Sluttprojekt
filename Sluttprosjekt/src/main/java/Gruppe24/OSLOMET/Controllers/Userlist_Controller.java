@@ -191,7 +191,7 @@ public class Userlist_Controller implements Initializable {
         } catch (IOException | ClassNotFoundException e) {
             lblUserList.setText("Couldn't find the file to load the options for the combobox. Restore it through the button in the superuser homepage.");
         }
-        lblUserList.setText("Loading users...");
+        lblSecondaryUserList.setText("Loading users...");
 
         tableView.setVisible(false);
         tableView.setEditable(true);
@@ -355,20 +355,39 @@ public class Userlist_Controller implements Initializable {
         });
         tableView.setItems(userList1);
         Platform.runLater(() -> {
-            try {
+            try{
                 Stage stage = (Stage) userListPane.getScene().getWindow();
                 stage.setHeight(470);
                 stage.setWidth(1000);
-            } catch (ExceptionInInitializerError e) {
+            }catch (ExceptionInInitializerError e){
                 lblUserList.setText("Error in setting the proper width and height, resize the window manually.");
             }
-            filterBtn.setDisable(false);
             backBtn.setDisable(false);
-            resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
-            lblUserList.setText("Users loaded!");
-            executor.submit(setTableView);
-            tableView.refresh();
+            if (lblUserList.getText().isEmpty()){
+                lblUserList.setText("Users loaded!");
+                executor.submit(setTableView);
+                tableView.refresh();
+                filterBtn.setDisable(false);
+                resetFilterBtn.setDisable(false);
+                choiceBox.setDisable(false);
+                filterTxt.setDisable(false);
+                lblSecondaryUserList.setText("");
+            } else if (lblUserList.getText().equals("Error in setting the proper width and height, resize the window manually.")){
+                lblSecondaryUserList.setText("Users loaded!");
+                executor.submit(setTableView);
+                tableView.refresh();
+                filterBtn.setDisable(false);
+                resetFilterBtn.setDisable(false);
+                choiceBox.setDisable(false);
+                filterTxt.setDisable(false);
+                lblUserList.setText("Users loaded!");
+            } else {
+                lblSecondaryUserList.setText("");
+                choiceBox.setDisable(true);
+                filterTxt.setDisable(true);
+                tableView.setDisable(true);
+            }
         });
     }
 }
