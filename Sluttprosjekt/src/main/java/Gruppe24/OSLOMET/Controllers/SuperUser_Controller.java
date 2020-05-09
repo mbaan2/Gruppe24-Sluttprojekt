@@ -22,9 +22,14 @@ public class SuperUser_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
-            Stage stage = (Stage) superUserPane.getScene().getWindow();
-            stage.setWidth(500);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) superUserPane.getScene().getWindow();
+                stage.setWidth(500);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
 
     }

@@ -181,9 +181,14 @@ public class UserCarView_Controller implements Initializable {
 
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) userViewPane.getScene().getWindow();
-            stage.setWidth(1081);
-            stage.setHeight(500);
+            try {
+                Stage stage = (Stage) userViewPane.getScene().getWindow();
+                stage.setWidth(1081);
+                stage.setHeight(500);
+            } catch (ExceptionInInitializerError e) {
+                tvLabel.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);

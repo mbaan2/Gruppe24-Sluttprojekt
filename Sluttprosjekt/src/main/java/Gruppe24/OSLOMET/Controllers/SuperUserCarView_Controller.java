@@ -56,9 +56,14 @@ public class SuperUserCarView_Controller implements Initializable {
         addChoiceBoxItems();
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) superUserViewPane.getScene().getWindow();
-            stage.setWidth(1210);
-            stage.setHeight(500);
+            try {
+                Stage stage = (Stage) superUserViewPane.getScene().getWindow();
+                stage.setWidth(1210);
+                stage.setHeight(500);
+            } catch (ExceptionInInitializerError e) {
+                filterLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);

@@ -15,8 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +29,7 @@ public class RetrievePassword_Controller implements Initializable {
     private TextField usernameTxt, answerTxt;
 
     @FXML
-    private Label usernameError, answerLbl, answerError, choiceBoxError, usernameLbl;
+    private Label usernameError, answerLbl, answerError, choiceBoxError, usernameLbl, retrieveLbl;
 
     @FXML
     private Button passwordBtn, nextBtn;
@@ -53,7 +51,7 @@ public class RetrievePassword_Controller implements Initializable {
         try {
             userList = FileOpenerJobj.openUserList();
         } catch (IOException | ClassNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("File not found");
             alert.setContentText(e.getMessage());
         }
@@ -178,9 +176,14 @@ public class RetrievePassword_Controller implements Initializable {
 
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) registerPane.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) registerPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                retrieveLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 }

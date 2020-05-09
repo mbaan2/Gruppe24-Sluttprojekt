@@ -43,9 +43,14 @@ public class SuperUserCarparts_Controller implements Initializable {
         chbCategory.getSelectionModel().selectedItemProperty().addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> setDisableBtn());
         loadChoiceBoxStrings();
         Platform.runLater(() -> {
-            Stage stage = (Stage) carpartsPane.getScene().getWindow();
-            stage.setWidth(620);
-            stage.setHeight(550);
+            try {
+                Stage stage = (Stage) carpartsPane.getScene().getWindow();
+                stage.setWidth(620);
+                stage.setHeight(550);
+            } catch (ExceptionInInitializerError e) {
+                superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 

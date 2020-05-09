@@ -7,7 +7,6 @@ import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.UserLogin.User;
 
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,16 +46,19 @@ public class FileSaverJobj {
     }
 
     public static void addingOnlyOneCarObject (String path, NewCar carObject) throws IOException {
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path, true)) {
-            protected void writeStreamHeader() throws IOException {
-                reset();
-            }
-        };
-        os.writeObject(carObject);
-        os.close();
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path, true)) {
+                protected void writeStreamHeader() throws IOException {
+                    reset();
+                }
+            };
+            os.writeObject(carObject);
+            os.close();
+        } catch (IOException e) {
+            throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");        }
     }
 
-    public static void SaveUser(HashMap<String, String> userList) throws FileNotFoundException {
+    public static void SaveUser(HashMap<String, String> userList) throws SaveFileException {
         try {
             FileOutputStream os = new FileOutputStream(StandardPaths.usersJOBJPath);
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -65,7 +67,7 @@ public class FileSaverJobj {
             oos.close();
             os.close();
         } catch (IOException e) {
-            throw new FileNotFoundException(e.getMessage());
+            throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");
         }
     }
 
@@ -79,7 +81,7 @@ public class FileSaverJobj {
         }
     }
 
-    public static void SaveSecretQList(List<String> choiceBoxList) throws FileAlreadyExistsException{
+    public static void SaveSecretQList(List<String> choiceBoxList) throws SaveFileException{
         try {
             FileOutputStream os = new FileOutputStream(StandardPaths.secretQPath);
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -88,7 +90,7 @@ public class FileSaverJobj {
             oos.close();
             os.close();
         } catch (IOException e) {
-            throw new FileAlreadyExistsException(e.getMessage());
+            throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");
         }
     }
 }
