@@ -73,17 +73,6 @@ public class UserCarView_Controller implements Initializable {
     }
 
     @FXML
-    void logout() {
-        try {
-            App.setRoot("Login");
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        } catch (IllegalStateException e) {
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
-        }
-    }
-
-    @FXML
     void filterCars() {
         ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
 
