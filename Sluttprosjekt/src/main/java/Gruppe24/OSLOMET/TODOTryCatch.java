@@ -5,9 +5,6 @@
 /*
 Directory Controllers
 - Login_Controller (DONE):
-    * DONE All the send to buttons need to be checked
-    * DONE Opening of files (hashmap) needs try/catch ore tested for right feedback
-
 - RetrievePassword_Controller:
     * First has to be made final
     * First txt file has to be changed to jobj
@@ -15,8 +12,7 @@ Directory Controllers
     * Buttons to antoher screen need testing
     * Checking of corrext feedback
 
-- SET(Addons,Color,Fuel,Wheels):
-    * These should be fine but needs a final check
+- SET(Addons,Color,Fuel,Wheels) DONE:
 
 - SignUp_Controller
     * First has to be made final
@@ -52,9 +48,7 @@ Directory Controllers
     * Opening files needs testing
     * Thread needs testing
 
-- WelcomeScreen_Controller (DONE)
-    * DONE Buttons to other screen needs testing
-    * DONE Opening files need testing
+- WelcomeScreen_Controller (DONE):
  */
 
 /* DataValidation Directory

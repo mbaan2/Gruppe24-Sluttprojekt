@@ -82,7 +82,7 @@ public class SetAddons_Controller implements Initializable {
                     }
                 }
                 if (!selected) {
-                    lblErrorAddons.setText("Your cars contain depricated addon(s), please contact your superUser");
+                    lblErrorAddons.setText("Your cars contains depricated addon(s), please contact your superUser");
                     btnToSummary.setDisable(true);
                     break;
                 }
@@ -100,7 +100,7 @@ public class SetAddons_Controller implements Initializable {
         try {
             addOnOptions = FileOpenerJobj.openFile(path);
         } catch (IOException | ClassNotFoundException e) {
-            lblErrorAddons.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
+            lblErrorAddons.setText("An error occurred while your were in the program. Contact superUser to reset the carparts files");
         }
     }
 

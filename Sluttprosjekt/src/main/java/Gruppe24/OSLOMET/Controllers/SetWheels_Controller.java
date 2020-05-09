@@ -74,7 +74,7 @@ public class SetWheels_Controller implements Initializable {
         try {
             wheelOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            lblErrorWheels.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
+            lblErrorWheels.setText("An error occurred while your were in the program. Contact superUser to reset the carparts files");
         }
     }
 

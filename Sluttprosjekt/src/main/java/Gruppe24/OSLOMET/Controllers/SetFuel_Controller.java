@@ -75,7 +75,7 @@ public class SetFuel_Controller implements Initializable {
         try {
             fuelOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            lblErrorFuel.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
+            lblErrorFuel.setText("An error occurred while your were in the program. Contact superUser to reset the carparts files");
         }
     }
 

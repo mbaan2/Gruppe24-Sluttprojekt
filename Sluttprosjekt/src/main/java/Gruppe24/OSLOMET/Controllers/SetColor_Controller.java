@@ -76,7 +76,7 @@ public class SetColor_Controller implements Initializable {
         try {
             colorOptions = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            lblErrorColor.setText("An error occurred while your were in the program. Contact superUser to reset carpart files");
+            lblErrorColor.setText("An error occurred while your were in the program. Contact superUser to reset the carparts files");
         }
     }
 
