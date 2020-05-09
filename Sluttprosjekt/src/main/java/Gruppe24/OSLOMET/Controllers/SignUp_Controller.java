@@ -163,9 +163,9 @@ public class SignUp_Controller implements Initializable {
         try {
             App.setRoot("login");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            signupLblError.setText(e.getMessage());
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            signupLblError.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 

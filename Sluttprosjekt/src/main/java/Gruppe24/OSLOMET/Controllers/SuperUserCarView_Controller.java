@@ -79,9 +79,9 @@ public class SuperUserCarView_Controller implements Initializable {
         try {
             App.setRoot("superUser");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            filterLbl.setText(e.getMessage());
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            filterLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
         executor.shutdownNow();
     }
@@ -93,7 +93,7 @@ public class SuperUserCarView_Controller implements Initializable {
         try{
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            filterLbl.setText("Error in opening the list of cars, tableview will be empty.");
         }
         carList.addAll(list2);
     }
