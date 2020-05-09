@@ -1,14 +1,9 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.Car.CarCategory;
-import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
-import Gruppe24.OSLOMET.DataValidation.Alerts;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
-import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
-import Gruppe24.OSLOMET.ExceptionClasses.ScreenNotFoundException;
 import Gruppe24.OSLOMET.FileTreatment.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,11 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.fxml.LoadException;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -101,9 +94,12 @@ public class Summary_Controller implements Initializable {
 
             if (choice.get() == override){
                 overwriteCar();
+            } else if (choice.get() == cancel) {
+                txtCarName.setDisable(false);
             }
         } else{
             saveCar();
+            txtCarName.setDisable(true);
         }
     }
 
@@ -158,12 +154,11 @@ public class Summary_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save your car to a txt file!");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to overwrite or append your current file? Or create a new file?" + "\n\nIf you choose 'New File' your new file will be named " + username + "sCars.txt");
-        ButtonType newFile = new ButtonType("New File");
+        alert.setContentText("Do you want to overwrite or append your current file?" + "\n\nEither option creates a new file in case you dont have one. Your new file will be named   "  + username + "sCars.txt and it will be placed in the folder called 'Car Txt Files'.");
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(newFile, append, overwrite, cancel);
+        alert.getButtonTypes().setAll(append, overwrite, cancel);
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent()) {
