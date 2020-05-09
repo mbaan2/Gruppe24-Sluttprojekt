@@ -1,8 +1,10 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.application.Platform;
@@ -24,10 +26,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -47,6 +46,9 @@ public class Userlist_Controller implements Initializable {
 
     @FXML
     private Label lblUserList;
+
+    @FXML
+    private Label lblSecondaryUserList;
 
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
@@ -93,7 +95,7 @@ public class Userlist_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e) {
-            lblUserList.setText(e.getMessage());
+            lblUserList.setText("Program encountered an error. Please contact your developer.");
         } catch (IllegalStateException e){
             lblUserList.setText("There is an error in loading the next screen.");
         }
@@ -200,12 +202,12 @@ public class Userlist_Controller implements Initializable {
             userList = FileOpenerJobj.openUserList();
             userList1.addAll(userList);
         } catch (IOException | ClassNotFoundException e) {
-            lblUserList.setText("Couldnt find the file to open the userlist. Restore it through the button in the superuser homepage.");
+            lblUserList.setText("Could not to open the user list file. Restore it through the button in the superuser homepage.");
         }
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-            lblUserList.setText("Couldnt find the file to open the userlist. Restore it through the button in the superuser homepage.");
+            lblUserList.setText("Could not find the user list file. Restore it through the button in the superuser homepage.");
         }
 
         TableColumn<User, String> username = new TableColumn<>("Username");
@@ -277,10 +279,35 @@ public class Userlist_Controller implements Initializable {
         });
         try {
             secretQList = FileOpenerJobj.openSecretQList();
+            secretQ.setEditable(true);
         } catch (IOException e) {
-            lblUserList.setText("Encountered an IO Exception, something is wrong with the file.");
+            Alert notEditable = new Alert(Alert.AlertType.WARNING);
+            notEditable.setTitle("Error loading secret questions");
+            notEditable.setHeaderText("Could not load your secret questions file.");
+            notEditable.setHeight(300);
+            notEditable.setContentText("Press \"Restore\" to reset your questions file to factory settings. \nPress \"OK\" to continue. This will disable the edition of user questions.");
+            ButtonType ok = new ButtonType("OK");
+            ButtonType restore = new ButtonType("Restore");
+            notEditable.getButtonTypes().setAll(ok, restore);
+            Optional<ButtonType> choice = notEditable.showAndWait();
+            if (choice.get() == restore){
+                CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
+                try {
+                    restoreSecretQ.createSecretQ();
+                } catch (SaveFileException e1) {
+                    Alert fail = new Alert(Alert.AlertType.INFORMATION);
+                    fail.setHeaderText("Failed to save file.");
+                    fail.setTitle("Saving failed.");
+                    fail.setContentText("There was an error saving the file. You will now see your users, but will not be allowed to edit their questions.");
+                    secretQ.setEditable(false);
+                }
+            } else {
+                secretQ.setEditable(false);
+                notEditable.close();
+            }
         } catch (ClassNotFoundException e) {
-            lblUserList.setText("Class not found when trying to load secret questions.");
+            lblUserList.setText("Class not found when loading secret questions.");
+            secretQ.setEditable(false);
         }
         secretQObsList.addAll(secretQList);
         secretQ.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQ()));

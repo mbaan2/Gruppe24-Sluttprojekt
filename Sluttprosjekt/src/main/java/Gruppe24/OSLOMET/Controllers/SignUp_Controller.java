@@ -105,7 +105,7 @@ public class SignUp_Controller implements Initializable {
                     FileSaverJobj.SaveUser(userBase);
                     signupLbl.setText("User created!");
                 } catch (IOException e) {
-                    signupLblError.setText("Encountered an IO Exception, try restoring the files in the superuser.");
+                    signupLblError.setText("Encountered an error. Contact your administrator for file restoration.");
                 }
             } else {
                 usernameError.setText("Username already exists!");
@@ -152,7 +152,7 @@ public class SignUp_Controller implements Initializable {
         try {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         } catch (IOException | ClassNotFoundException e) {
-            signupLbl.setText("Encountered an IO Exception, try restoring the files in the superuser.");
+            signupLbl.setText("Encountered an error. Contact your administrator for file restoration.");
         }
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
