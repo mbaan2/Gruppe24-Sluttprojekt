@@ -17,9 +17,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
-
 
 public class RetrievePassword_Controller implements Initializable {
 
@@ -44,15 +45,14 @@ public class RetrievePassword_Controller implements Initializable {
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
     HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-    ObservableList<User> userList = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
 
 
     @FXML
     void nextButton(ActionEvent event) {
         try {
-            Path path = Paths.get(StandardPaths.usersTXTPath);
-            userList = ImportUser.readUser(path.toString());
-        } catch (IOException e) {
+            userList = FileOpenerJobj.openUserList();
+        } catch (IOException | ClassNotFoundException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("File not found");
             alert.setContentText(e.getMessage());
@@ -90,9 +90,8 @@ public class RetrievePassword_Controller implements Initializable {
     @FXML
     void retrievePwBtn(ActionEvent event) {
         try {
-            Path path = Paths.get(StandardPaths.usersTXTPath);
-            userList = ImportUser.readUser(path.toString());
-        } catch (IOException e) {
+            userList = FileOpenerJobj.openUserList();
+        } catch (IOException | ClassNotFoundException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("File not found!");
             alert.setContentText(e.getMessage());

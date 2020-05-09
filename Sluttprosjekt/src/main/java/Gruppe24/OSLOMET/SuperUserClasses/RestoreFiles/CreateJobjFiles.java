@@ -7,13 +7,8 @@ import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import Gruppe24.OSLOMET.UserLogin.FormatUser;
 import Gruppe24.OSLOMET.UserLogin.User;
-import Gruppe24.OSLOMET.UserLogin.WriteUser;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
@@ -28,7 +23,7 @@ public class CreateJobjFiles {
     List<Carparts> wheelOptions = new ArrayList<>();
     List<Carparts> fuelOptions = new ArrayList<>();
     List<Carparts> addOnOptions = new ArrayList<>();
-    ObservableList<User> userList = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
     HashMap<String, String> userBase = new HashMap<>();
     List<String> secretQList = new ArrayList<>();
 
@@ -178,26 +173,32 @@ public class CreateJobjFiles {
     }
 
     public void setUser() {
-        User newUser = new User("123", "123", "Oslo", "Male", "Whos your daddy?", "123");
-        User newUser2 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
-        User newUser3 = new User("234", "234", "Oslo", "Male", "Name of first pet?", "234");
-        User newUser4 = new User("Aaa", "aaa", "aaa", "Other", "Whos your daddy?", "aaa");
+        User user = new User("Aaa", "aaa", "aaa", "Other", "Whos your daddy?", "aaa");
+        User user1 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
+        User user2 = new User("123", "123", "Oslo", "Male", "Whos your daddy`?", "123");
+        User user3 = new User("Bbb", "bbb", "bbb", "Other", "Whos your daddy?", "bbb");
+        User user4 = new User("admin", "admin", "adminland", "Other", "Mothers maiden name?", "admin");
+        User user5 = new User("Bruker", "passord", "Nowhere", "Other", "Name of first pet?", "Katt");
 
-        userList.addAll(newUser, newUser2, newUser3, newUser4);
-        userBase.put(newUser.getUsername(), newUser.getPassword());
-        userBase.put(newUser2.getUsername(), newUser2.getPassword());
-        userBase.put(newUser3.getUsername(), newUser3.getPassword());
-        userBase.put(newUser4.getUsername(), newUser4.getPassword());
+        userList.add(user);
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        userList.add(user4);
+        userList.add(user5);
+        userBase.put(user.getUsername(), user.getPassword());
+        userBase.put(user1.getUsername(), user1.getPassword());
+        userBase.put(user2.getUsername(), user2.getPassword());
+        userBase.put(user3.getUsername(), user3.getPassword());
+        userBase.put(user4.getUsername(), user4.getPassword());
+        userBase.put(user5.getUsername(), user5.getPassword());
     }
 
     public void createUser() {
         setUser();
         try{
             FileSaverJobj.SaveUser(userBase);
-            String str = FormatUser.formatUsers(userList);
-            Path path = Paths.get(StandardPaths.usersTXTPath);
-            File selectedFile = new File(String.valueOf(path));
-            WriteUser.writeString(selectedFile, str);
+            FileSaverJobj.SaveUserList(userList);
         } catch (IOException e) {
             e.printStackTrace();
         }

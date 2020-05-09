@@ -1,61 +1,62 @@
 package Gruppe24.OSLOMET.UserLogin;
 
-import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private SimpleStringProperty username;
-    private SimpleStringProperty password;
-    private SimpleStringProperty location;
-    private SimpleStringProperty gender;
-    private SimpleStringProperty secretQ;
-    private SimpleStringProperty secretQAnswer;
+    final static long serialVersionUID = 8703765919721615923L;
+
+    private String username;
+    private String password;
+    private String location;
+    private String gender;
+    private String secretQ;
+    private String secretQAnswer;
 
     public User(String username, String password, String location, String gender, String secretQ, String secretQuestion) {
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
-        this.location = new SimpleStringProperty(location);
-        this.gender = new SimpleStringProperty(gender);
-        this.secretQ = new SimpleStringProperty(secretQ);
-        this.secretQAnswer = new SimpleStringProperty(secretQuestion);
+        this.username = username;
+        this.password = password;
+        this.location = location;
+        this.gender = gender;
+        this.secretQ = secretQ;
+        this.secretQAnswer = secretQuestion;
     }
 
     public String getUsername() {
-        return username.getValue();
+        return username;
     }
     public String getPassword() {
-        return password.getValue();
+        return password;
     }
     public String getLocation() {
-        return location.getValue();
+        return location;
     }
     public String getGender() {
-        return gender.getValue();
+        return gender;
     }
     public String getSecretQ() {
-        return secretQ.getValue();
+        return secretQ;
     }
     public String getSecretQAnswer() {
-        return secretQAnswer.getValue();
+        return secretQAnswer;
     }
 
     public void setUsername(String username) {
-        this.username.set(username);
+        this.username = username;
     }
     public void setPassword(String password) {
-        this.password.set(password);
+        this.password = password;
     }
     public void setLocation(String location) {
-        this.location.set(location);
+        this.location = location;
     }
     public void setGender(String gender) {
-        this.gender.set(gender);
+        this.gender = gender;
     }
     public void setSecretQ(String secretQ) {
-        this.secretQ.set(secretQ);
+        this.secretQ = secretQ;
     }
     public void setSecretQAnswer(String secretQAnswer) {
-        this.secretQAnswer.set(secretQAnswer);
+        this.secretQAnswer = secretQAnswer;
     }
 }
 

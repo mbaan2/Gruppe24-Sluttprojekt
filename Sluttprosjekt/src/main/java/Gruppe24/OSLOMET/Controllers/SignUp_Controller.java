@@ -5,11 +5,7 @@ import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import Gruppe24.OSLOMET.UserLogin.FormatUser;
-import Gruppe24.OSLOMET.UserLogin.ImportUser;
 import Gruppe24.OSLOMET.UserLogin.User;
-import Gruppe24.OSLOMET.UserLogin.WriteUser;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,12 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SignUp_Controller implements Initializable {
@@ -46,11 +40,11 @@ public class SignUp_Controller implements Initializable {
 
     final ToggleGroup toggleGroup = new ToggleGroup();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-    public ObservableList<User> userList = FXCollections.observableArrayList();
+    public List<User> userList;
     public HashMap<String, String> userBase = new HashMap<>();
 
     @FXML
-    void signUp(ActionEvent event) throws IOException, InvalidNameException {
+    void signUp(ActionEvent event) throws IOException, InvalidNameException, ClassNotFoundException {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
@@ -60,13 +54,22 @@ public class SignUp_Controller implements Initializable {
 
 
         String username = "";
-        if (ValidName.usernameTest(signupUsername.getText())){
-            username = signupUsername.getText();
+        try {
+            if (ValidName.usernameTest(signupUsername.getText())){
+                username = signupUsername.getText();
+            }
+        } catch (InvalidNameException e) {
+            usernameError.setText("Enter a valid username!");
         }
+
         String password = signupPassword.getText();
         String location = "";
-        if (ValidName.locationTest(signupLocation.getText())){
-            location = signupLocation.getText();
+        try {
+            if (ValidName.locationTest(signupLocation.getText())) {
+                location = signupLocation.getText();
+            }
+        } catch (InvalidNameException e) {
+            locationError.setText("Enter a valid location!");
         }
         String gender = "";
         String answer = answerTxt.getText();
@@ -85,12 +88,12 @@ public class SignUp_Controller implements Initializable {
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
             User newUser = new User(username, password, location, gender, secretQ, answer);
 
-            userList = ImportUser.readUser(StandardPaths.usersTXTPath);
+            userList = FileOpenerJobj.openUserList();
 
             try {
                 userBase = FileOpenerJobj.openFileHashMap();
             } catch (IOException | ClassNotFoundException e){
-                System.err.println("error");
+                signupLbl.setText(e.getLocalizedMessage());
             }
 
             //Writing only the username and the password to a hashmap for logging in unless it already exists in the register.
@@ -112,10 +115,7 @@ public class SignUp_Controller implements Initializable {
             if (userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
                 try {
                     userList.add(newUser);
-                    String str = FormatUser.formatUsers(userList);
-                    Path path = Paths.get(StandardPaths.usersTXTPath);
-                    File selectedFile = new File(String.valueOf(path));
-                    WriteUser.writeString(selectedFile, str);
+                    FileSaverJobj.SaveUserList(userList);
                 } catch (IOException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText(e.getMessage());
@@ -125,17 +125,29 @@ public class SignUp_Controller implements Initializable {
         } else {
             if(signupUsername.getText().isEmpty()) {
                 usernameError.setText("Enter a username!");
-            } else if(!ValidName.usernameTest(signupUsername.getText())) {
+            }
+            try {
+                if (!ValidName.usernameTest(signupUsername.getText())) {
+                usernameError.setText("Enter a valid username!");
+                }
+            } catch (InvalidNameException e) {
                 usernameError.setText("Enter a valid username!");
             }
+
             if(password.isEmpty()) {
                 passwordError.setText("Enter a password!");
             }
             if(signupLocation.getText().isEmpty()) {
                 locationError.setText("Enter a location!");
-            } else if(!ValidName.locationTest(signupLocation.getText())) {
+            }
+            try {
+                if(!ValidName.locationTest(signupLocation.getText())) {
+                    locationError.setText("Enter a valid location!");
+                }
+            } catch (InvalidNameException e) {
                 locationError.setText("Enter a valid location!");
             }
+
             if(answer.isEmpty()) {
                 answerError.setText("Enter an answer!");
             }

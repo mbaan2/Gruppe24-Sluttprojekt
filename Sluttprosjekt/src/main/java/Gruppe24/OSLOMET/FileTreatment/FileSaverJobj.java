@@ -4,12 +4,13 @@ import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
-import javafx.collections.ObservableList;
+import Gruppe24.OSLOMET.UserLogin.User;
 
 import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
@@ -65,6 +66,16 @@ public class FileSaverJobj {
             os.close();
         } catch (IOException e) {
             throw new FileNotFoundException(e.getMessage());
+        }
+    }
+
+    public static void SaveUserList(List<User> userList) throws SaveFileException {
+        try {
+            OutputStream os = Files.newOutputStream(Paths.get(StandardPaths.userListJOBJPath));
+            ObjectOutputStream out = new ObjectOutputStream(os);
+            out.writeObject(userList);
+        } catch (IOException e) {
+            throw new SaveFileException("Problems with saving, please close the program and start over. If this happens again contact the developer.");
         }
     }
 

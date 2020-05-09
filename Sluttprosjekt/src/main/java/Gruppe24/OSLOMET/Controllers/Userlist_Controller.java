@@ -3,12 +3,8 @@ package Gruppe24.OSLOMET.Controllers;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
-import Gruppe24.OSLOMET.UserLogin.FormatUser;
-import Gruppe24.OSLOMET.UserLogin.ImportUser;
 import Gruppe24.OSLOMET.UserLogin.User;
-import Gruppe24.OSLOMET.UserLogin.WriteUser;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +19,6 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +52,8 @@ public class Userlist_Controller implements Initializable {
     private Button filterBtn, backBtn, resetFilterBtn;
 
     ObservableList<String> choiceBoxOptions = FXCollections.observableArrayList();
-    ObservableList<User> userList = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
+    ObservableList<User> userList1 = FXCollections.observableArrayList();
     HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> secretQObsList = FXCollections.observableArrayList();
     List<String> secretQList = new ArrayList<>();
@@ -65,7 +61,7 @@ public class Userlist_Controller implements Initializable {
     @FXML
     void btnFilter() {
         ObservableList<User> filteredList = FXCollections.observableArrayList();
-
+        userList1.addAll(userList);
         String filteredText = filterTxt.getText();
         String filterType = choiceBox.getValue();
 
@@ -78,7 +74,7 @@ public class Userlist_Controller implements Initializable {
         else if(filterType.equals("Select a filter!")) {
             lblUserList.setText("You didnt choose a filter!");
         } else {
-            filteredList = Filter.filterUser(filterType, filteredText, userList, filteredList);
+            filteredList = Filter.filterUser(filterType, filteredText, userList1, filteredList);
             lblUserList.setText(Filter.filterUserFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
             tableView.refresh();
@@ -86,10 +82,11 @@ public class Userlist_Controller implements Initializable {
     }
 
     @FXML
-    void btnResetFilter() {
+    void btnResetFilter() throws IOException, ClassNotFoundException {
         filterTxt.setText("");
         lblUserList.setText("TableView reset.");
-        tableView.setItems(userList);
+        userList1.addAll(userList);
+        tableView.setItems(userList1);
         choiceBox.setValue("Select a filter!");
     }
 
@@ -132,12 +129,9 @@ public class Userlist_Controller implements Initializable {
     }
 
     private void btnSaveChanges() {
-        List<User> newList = new ArrayList<>(userList);
+        List<User> newList = new ArrayList<>(userList1);
         try {
-            String str = FormatUser.formatUsers(newList);
-            Path path = Paths.get(StandardPaths.usersTXTPath);
-            File selectedFile = new File(String.valueOf(path));
-            WriteUser.writeString(selectedFile, str);
+            FileSaverJobj.SaveUserList(newList);
         } catch (IOException e) {
             lblUserList.setText(e.getLocalizedMessage());
         }
@@ -208,8 +202,9 @@ public class Userlist_Controller implements Initializable {
         addChkBoxItems();
 
         try {
-            userList = ImportUser.readUser(StandardPaths.usersTXTPath);
-        } catch (IOException e) {
+            userList = FileOpenerJobj.openUserList();
+            userList1.addAll(userList);
+        } catch (IOException | ClassNotFoundException e) {
             lblUserList.setText(e.getLocalizedMessage());
         }
         try {
@@ -320,7 +315,7 @@ public class Userlist_Controller implements Initializable {
             delete.setText("Delete");
             delete.getStyleClass().add("delete-button");
             delete.setAlignment(Pos.CENTER);
-            delete.setOnAction(event -> deleteUser(userList, user.getValue(), userBase, tableView));
+            delete.setOnAction(event -> deleteUser(userList1, user.getValue(), userBase, tableView));
 
             ObservableValue<Button> btn = new ObservableValueBase<Button>() {
                 @Override
@@ -330,7 +325,7 @@ public class Userlist_Controller implements Initializable {
             };
             return btn;
         });
-        tableView.setItems(userList);
+        tableView.setItems(userList1);
         Platform.runLater(() -> {
             Stage stage = (Stage) userListPane.getScene().getWindow();
             stage.setHeight(470);
