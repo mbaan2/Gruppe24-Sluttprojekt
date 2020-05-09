@@ -34,9 +34,14 @@ public class WelcomeScreen_Controller implements Initializable {
         loadCarNames();
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) welcomeVbox.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) welcomeVbox.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorWelcomeScreen.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 

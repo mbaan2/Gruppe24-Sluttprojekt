@@ -36,9 +36,14 @@ public class SetColor_Controller implements Initializable {
         createButtons();
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) colorVbox.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) colorVbox.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorColor.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 

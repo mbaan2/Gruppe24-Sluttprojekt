@@ -117,9 +117,14 @@ public class Login_Controller implements Initializable {
         //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
         //Code based on a comment from https://stackoverflow.com/a/59880899
         Platform.runLater(() -> {
-            Stage stage = (Stage) loginPane.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) loginPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorLogin.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 }

@@ -41,9 +41,14 @@ public class SetAddons_Controller implements Initializable {
 
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) addonsVbox.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) addonsVbox.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorAddons.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 

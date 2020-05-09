@@ -1,6 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -30,9 +32,13 @@ public class SuperUserFileRestoration_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
-            Stage stage = (Stage) fileRestorationPane.getScene().getWindow();
-            stage.setWidth(300);
-            stage.setHeight(473);
+            try {
+                Stage stage = (Stage) fileRestorationPane.getScene().getWindow();
+                stage.setWidth(300);
+                stage.setHeight(473);
+            } catch (ExceptionInInitializerError e) {
+                superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
         });
         superuserInfo.setShowDelay(Duration.millis(100.0));
         superuserInfo.setHideDelay(Duration.millis(200.0));
@@ -51,13 +57,29 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreFuel = new CreateJobjFiles();
-                restoreFuel.createFuel();
+                try {
+                    restoreFuel.createFuel();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
                 CreateJobjFiles restoreWheels = new CreateJobjFiles();
-                restoreWheels.createWheels();
+                try {
+                    restoreWheels.createWheels();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
                 CreateJobjFiles restoreColor = new CreateJobjFiles();
-                restoreColor.createColors();
+                try {
+                    restoreColor.createColors();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
                 CreateJobjFiles restoreAddon = new CreateJobjFiles();
-                restoreAddon.createAddons();
+                try {
+                    restoreAddon.createAddons();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
                 superUserLbl.setText("Files are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, carparts were not restored.");
@@ -78,8 +100,12 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreUser = new CreateJobjFiles();
-                restoreUser.createUser();
-                superUserLbl.setText("Users are restored!");
+                try {
+                    restoreUser.createUser();
+                    superUserLbl.setText("Users are restored!");
+                } catch (SaveFileException e) {
+                 superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
             } else {
                 superUserLbl.setText("Process cancelled, users were not restored.");
             }
@@ -99,8 +125,13 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreCars = new CreateJobjFiles();
-                restoreCars.createCars();
-                superUserLbl.setText("Cars are restored!");
+                try {
+                    restoreCars.createCars();
+                    superUserLbl.setText("Cars are restored!");
+                } catch (OpenFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
+
             } else {
                 superUserLbl.setText("Process cancelled, cars were not restored.");
             }
@@ -108,7 +139,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
     }
 
     @FXML
-    void btnRestoreSecretQ(ActionEvent event) throws IOException {
+    void btnRestoreSecretQ(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Secret Questions");
         alert.setHeaderText("");
@@ -120,8 +151,12 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
-                restoreSecretQ.createSecretQ();
-                superUserLbl.setText("Secret questions are restored!");
+                try {
+                    restoreSecretQ.createSecretQ();
+                    superUserLbl.setText("Secret questions are restored!");
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                }
             } else {
                 superUserLbl.setText("Process cancelled, secret questions were not restored.");
             }
@@ -133,9 +168,9 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+           superUserLbl.setText(e.getMessage());
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
     }
 }

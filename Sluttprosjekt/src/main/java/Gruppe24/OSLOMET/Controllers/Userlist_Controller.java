@@ -327,9 +327,13 @@ public class Userlist_Controller implements Initializable {
         });
         tableView.setItems(userList1);
         Platform.runLater(() -> {
-            Stage stage = (Stage) userListPane.getScene().getWindow();
-            stage.setHeight(470);
-            stage.setWidth(1000);
+            try {
+                Stage stage = (Stage) userListPane.getScene().getWindow();
+                stage.setHeight(470);
+                stage.setWidth(1000);
+            } catch (ExceptionInInitializerError e) {
+                lblUserList.setText("Error in setting the proper width and height, resize the window manually.");
+            }
             filterBtn.setDisable(false);
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);

@@ -8,9 +8,6 @@ import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.User;
-
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,13 +24,9 @@ public class CreateJobjFiles {
     HashMap<String, String> userBase = new HashMap<>();
     List<String> secretQList = new ArrayList<>();
 
-    public void createCars() {
+    public void createCars() throws OpenFileException {
         setCars();
-        try {
-            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
-        } catch (OpenFileException e) {
-            System.err.println(e.getLocalizedMessage());
-        }
+        FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
     }
 
     public void setCars() {
@@ -42,7 +35,7 @@ public class CreateJobjFiles {
         NewCar car3 = new NewCar();
         NewCar car4 = new NewCar();
 
-        car1.setUser("123");
+        car1.setUser("Mark");
         car1.setName("GreatCar");
         car1.setFuel(new Carparts("Diesel", 20000));
         car1.setWheels(new Carparts("Medium wheels", 2500));
@@ -52,7 +45,7 @@ public class CreateJobjFiles {
         addons.add(new Carparts("Subwoofer", 7500));
         car1.setAddons(addons);
 
-        car2.setUser("123");
+        car2.setUser("Mark");
         car2.setName("BestCar");
         car2.setFuel(new Carparts("Gasoline", 15000));
         car2.setWheels(new Carparts("Big wheels", 5000));
@@ -63,7 +56,7 @@ public class CreateJobjFiles {
         addons2.add(new Carparts("GPS", 5000));
         car2.setAddons(addons2);
 
-        car3.setUser("234");
+        car3.setUser("Ana");
         car3.setName("ZoomZoom");
         car3.setFuel(new Carparts("Electric", 35000));
         car3.setWheels(new Carparts("Medium wheels", 2500));
@@ -73,7 +66,7 @@ public class CreateJobjFiles {
         addons3.add(new Carparts("GPS", 5000));
         car3.setAddons(addons3);
 
-        car4.setUser("Aaa");
+        car4.setUser("Ana");
         car4.setName("ChooChoo");
         car4.setFuel(new Carparts("Electric", 35000));
         car4.setWheels(new Carparts("Small wheels", 2500));
@@ -102,14 +95,10 @@ public class CreateJobjFiles {
         colorOptions.add(yellow);
     }
 
-    public void createColors(){
+    public void createColors() throws SaveFileException{
         setColors();
         Path filsti = Paths.get(StandardPaths.colorPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, colorOptions);
-        } catch (SaveFileException ex) {
-            ex.printStackTrace();
-        }
+        FileSaverJobj.SaveCarCategory(filsti, colorOptions);
     }
 
     public void setWheels(){
@@ -122,14 +111,10 @@ public class CreateJobjFiles {
         wheelOptions.add(wheelsSmall);
     }
 
-    public void createWheels(){
+    public void createWheels() throws SaveFileException{
         setWheels();
         Path filsti = Paths.get(StandardPaths.wheelPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
-        } catch (SaveFileException ex) {
-            ex.printStackTrace();
-        }
+        FileSaverJobj.SaveCarCategory(filsti, wheelOptions);
     }
 
     public void setFuel(){
@@ -142,14 +127,10 @@ public class CreateJobjFiles {
         fuelOptions.add(electric);
     }
 
-    public void createFuel(){
+    public void createFuel() throws SaveFileException{
         setFuel();
         Path filsti = Paths.get(StandardPaths.fuelPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
-        } catch (SaveFileException ex) {
-            ex.printStackTrace();
-        }
+        FileSaverJobj.SaveCarCategory(filsti, fuelOptions);
     }
 
     public void setAddOns(){
@@ -162,14 +143,10 @@ public class CreateJobjFiles {
         addOnOptions.add(subwoofer);
     }
 
-    public void createAddons(){
+    public void createAddons() throws SaveFileException{
         setAddOns();
         Path filsti = Paths.get(StandardPaths.addonPath);
-        try {
-            FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
-        } catch (SaveFileException ex) {
-            ex.printStackTrace();
-        }
+        FileSaverJobj.SaveCarCategory(filsti, addOnOptions);
     }
 
     public void setUser() {
@@ -194,17 +171,13 @@ public class CreateJobjFiles {
         userBase.put(user5.getUsername(), user5.getPassword());
     }
 
-    public void createUser() {
+    public void createUser() throws SaveFileException {
         setUser();
-        try{
             FileSaverJobj.SaveUser(userBase);
             FileSaverJobj.SaveUserList(userList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void createSecretQ() throws FileAlreadyExistsException{
+    public void createSecretQ() throws SaveFileException {
         String checkBoxQType = "Name of first pet?";
         String checkBoxQType2 = "Mothers maiden name?";
         String checkBoxQType3 = "Whos your daddy?";

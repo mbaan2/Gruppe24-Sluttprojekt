@@ -33,7 +33,7 @@ public class SignUp_Controller implements Initializable {
     private TextField signupLocation, answerTxt, signupUsername, signupPassword;
 
     @FXML
-    private Label usernameError, passwordError, locationError, secretQError, answerError, genderError, signupLbl;
+    private Label usernameError, passwordError, locationError, secretQError, answerError, genderError, signupLbl, signupLblError;
 
     @FXML
     private ChoiceBox<String> choiceBox;
@@ -175,9 +175,14 @@ public class SignUp_Controller implements Initializable {
         checkMale.setToggleGroup(toggleGroup);
 
         Platform.runLater(() -> {
-            Stage stage = (Stage) signupPane.getScene().getWindow();
-            stage.setWidth(600);
-            stage.setHeight(470);
+            try {
+                Stage stage = (Stage) signupPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                signupLblError.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
         });
     }
 }
