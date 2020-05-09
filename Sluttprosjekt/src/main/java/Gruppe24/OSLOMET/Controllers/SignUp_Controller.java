@@ -86,7 +86,12 @@ public class SignUp_Controller implements Initializable {
             User newUser = new User(username, password, location, gender, secretQ, answer);
 
             userList = ImportUser.readUser(StandardPaths.usersTXTPath);
-            userBase = FileOpenerJobj.openFileHashMap();
+
+            try {
+                userBase = FileOpenerJobj.openFileHashMap();
+            } catch (IOException | ClassNotFoundException e){
+                System.err.println("error");
+            }
 
             //Writing only the username and the password to a hashmap for logging in unless it already exists in the register.
             if(!userBase.containsKey(username)) {

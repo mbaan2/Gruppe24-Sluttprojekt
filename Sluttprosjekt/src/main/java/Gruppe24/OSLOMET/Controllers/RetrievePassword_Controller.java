@@ -42,9 +42,10 @@ public class RetrievePassword_Controller implements Initializable {
     private TableView<User> tableView;
 
     EditUserRegisterTV newUserTable = new EditUserRegisterTV();
-    HashMap<String, String> userBase = FileOpenerJobj.openFileHashMap();
+    HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
     ObservableList<User> userList = FXCollections.observableArrayList();
+
 
     @FXML
     void nextButton(ActionEvent event) {
@@ -165,6 +166,12 @@ public class RetrievePassword_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            System.err.println("error");
+        }
+
         addChkBoxItems();
         setNotVisible();
         newUserTable.attachTableView(tableView);

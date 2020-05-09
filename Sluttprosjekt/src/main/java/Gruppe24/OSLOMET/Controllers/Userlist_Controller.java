@@ -212,7 +212,11 @@ public class Userlist_Controller implements Initializable {
         } catch (IOException e) {
             lblUserList.setText(e.getLocalizedMessage());
         }
-        userBase = FileOpenerJobj.openFileHashMap();
+        try {
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            System.err.println("error");
+        }
 
         TableColumn<User, String> username = new TableColumn<>("Username");
         tableView.getColumns().add(username);

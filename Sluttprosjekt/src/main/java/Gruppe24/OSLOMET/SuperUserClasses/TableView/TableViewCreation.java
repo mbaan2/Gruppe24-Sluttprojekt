@@ -35,8 +35,12 @@ public class TableViewCreation {
     public ObservableList<NewCar> carList = FXCollections.observableArrayList();
     public HashMap<String, String> userBase = new HashMap<>();
 
-    public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser) {
-        userBase = FileOpenerJobj.openFileHashMap();
+    public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser){
+        try {
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            System.err.println("errorr");
+        }
         openCars();
         int maxNrAddons = 0;
 
