@@ -72,7 +72,7 @@ public class FileOpenerJobj {
         return choiceBoxList;
     }
 
-    public static ArrayList<NewCar> openingCarArray(String path) throws IOException, ClassNotFoundException {
+    public static ArrayList<NewCar> openingCarArray(String path) throws IOException {
         ArrayList<NewCar> carList = new ArrayList<>();
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
         boolean moreObjects = true;
@@ -81,12 +81,8 @@ public class FileOpenerJobj {
             try {
                 NewCar aCar = (NewCar) is.readObject();
                 carList.add(aCar);
-            } catch (IOException e){
+            } catch (Exception e){
                 moreObjects = false;
-                throw new OpenFileException("Corrupted file please contact the superUser for a reset.");
-            } catch (ClassNotFoundException e) {
-                moreObjects = false;
-                throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
             }
         }
         return carList;

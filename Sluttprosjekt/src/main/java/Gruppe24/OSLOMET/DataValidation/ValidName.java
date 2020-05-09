@@ -54,7 +54,7 @@ public class ValidName {
         return valid;
     }
 
-    public static boolean uniqueCarNameTest(String newCarName, String user)throws IOException {
+    public static boolean uniqueCarNameTest(String newCarName, String user) throws IOException, ClassNotFoundException {
         boolean isUnique = true;
 
         try{

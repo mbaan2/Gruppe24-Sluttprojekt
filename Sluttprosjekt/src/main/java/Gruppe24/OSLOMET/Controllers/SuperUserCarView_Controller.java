@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -47,12 +48,12 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        filterLbl.setText("Loading cars...");
         createView.initializeTv(tableView, filterLbl, true);
         filterBtn.setDisable(true);
         backBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
         tableView.setVisible(false);
-        filterLbl.setText("Loading cars...");
         addChoiceBoxItems();
 
         Platform.runLater(() -> {
@@ -68,7 +69,51 @@ public class SuperUserCarView_Controller implements Initializable {
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
-            filterLbl.setText("Cars loaded!");
+            if(filterLbl.getText().equals("Loading cars...")) {
+                filterLbl.setText("Cars loaded!");
+            } else if(filterLbl.getText().equals("Could not load user base.")) {
+                filterLbl.setText("Cars loaded however the userbase isnt loaded. This affects the rest of the program so full functionality will be restored when you restore users.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(filterLbl.getText().equals("Could not load add-ons.")){
+                filterLbl.setText("Cars loaded however addons all show up as deprecated, full functionality will be restored when you restore the addons.jobj file.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(filterLbl.getText().equals("Could not load fuel.")) {
+                filterLbl.setText("Cars loaded however fuel options arent loaded, full functionality will be restored when you restore the fuel.jobj file.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(filterLbl.getText().equals("Could not load wheels.")) {
+                filterLbl.setText("Cars loaded however wheel options arent loaded, full functionality will be restored when you restore the wheels.jobj file.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(filterLbl.getText().equals("Could not load colors.")) {
+                filterLbl.setText("Cars loaded however colors arent loaded, full functionality will be restored when you restore the color.jobj file.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(filterLbl.getText().equals("Could not load the carlist.")) {
+                filterLbl.setText("Cars arent loaded, there is an issue with the cars.jobj file. Restore it to restore functionality to the page.");
+                tableView.setVisible(false);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            }
             executor.submit(setTableview);
             tableView.refresh();
         });

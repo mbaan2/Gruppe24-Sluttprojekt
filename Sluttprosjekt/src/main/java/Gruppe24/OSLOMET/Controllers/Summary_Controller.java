@@ -84,8 +84,8 @@ public class Summary_Controller implements Initializable {
 
         try{
             unique = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
-        } catch (IOException e){
-            throw new IOException (e.getMessage());
+        } catch (IOException | ClassNotFoundException e){
+            throw new IOException ("Couldnt load the car file to check if the carname is unique. Contact a superuser to reset files.");
         }
 
         if(!unique){

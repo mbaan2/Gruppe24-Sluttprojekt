@@ -35,13 +35,10 @@ public class TableViewCreation {
     public ObservableList<NewCar> carList = FXCollections.observableArrayList();
     public HashMap<String, String> userBase = new HashMap<>();
 
-    public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser){
-        //TODO Check if it's necessary to add this to reset the lbl
-        //lbl.setText("");
+    public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser) {
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-            //TODO Check this
             lbl.setText("Could not load user base.");
         }
         openCars(lbl);
@@ -51,7 +48,6 @@ public class TableViewCreation {
             openFile(lbl);
             maxNrAddons = addonSupUser.size();
         } catch (IOException e) {
-            //TODO Change this
             lbl.setText("Could not load add-ons.");
         }
 
@@ -126,8 +122,7 @@ public class TableViewCreation {
             try {
                 fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
             } catch (ClassNotFoundException | IOException e) {
-                //TODO Check this
-                lbl.setText("Could not load fuels.");
+                lbl.setText("Could not load fuel.");
             }
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
@@ -157,7 +152,6 @@ public class TableViewCreation {
             try {
                 wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
             } catch (ClassNotFoundException | IOException e) {
-                //TODO Check this
                 lbl.setText("Could not load wheels.");
             }
             wheelOptions.forEach(car -> wheelList.add(car.getName()));
@@ -187,7 +181,6 @@ public class TableViewCreation {
             try {
                 colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
             } catch (ClassNotFoundException | IOException e) {
-                //TODO Check this
                 lbl.setText("Could not load colors.");
             }
             colorOptions.forEach(car -> colorList.add(car.getName()));
@@ -328,7 +321,7 @@ public class TableViewCreation {
         try {
             addonSupUser = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            lbl.setText("Could not load add-on file.");
+            lbl.setText("Could not load add-ons.");
         }
     }
 
@@ -338,7 +331,6 @@ public class TableViewCreation {
         try {
             FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
         } catch (IOException e){
-            //TODO Check this is working okay
             lbl.setText("Could not save changes to car.");
         }
     }
@@ -357,8 +349,7 @@ public class TableViewCreation {
         try{
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            //TODO Check if this is okay
-            lbl.setText("Could not load cars file.");
+            lbl.setText("Could not load the carlist.");
         }
         carList.addAll(list2);
     }
