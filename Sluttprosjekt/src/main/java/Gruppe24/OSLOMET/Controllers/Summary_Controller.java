@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -37,13 +38,14 @@ public class Summary_Controller implements Initializable {
     private AnchorPane summaryPane;
 
     @FXML
-    private Button btnNameCar, btnBuildCar, btnSaveCarToText;
+    private Label lblErrorSummary, summaryLbl;
+
+    @FXML
+    private Button btnBuildCar , btnSaveCarToText;
 
     @FXML
     private TextField txtCarName;
 
-    @FXML
-    private Label lblCarComponents, carNameLbl, summaryLbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,35 +54,31 @@ public class Summary_Controller implements Initializable {
             stage.setWidth(600);
             stage.setHeight(470);
         });
-        carNameLbl.setVisible(false);
+        btnSaveCarToText.setVisible(false);
     }
 
     @FXML
-    void btnBuildCar(ActionEvent event) {
+    void btnBuildCar(ActionEvent event) throws InvalidNameException {
+        btnNameCar(event);
+
         String ut = App.car.toString();
 
         int totalCost = App.car.totalCost();
         App.car.setCost(totalCost);
-        lblCarComponents.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
+        summaryLbl.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
 
-        btnBuildCar.setDisable(true);
-        btnBuildCar.setLayoutX(130.0);
-        carNameLbl.setVisible(true);
-        btnNameCar.setVisible(true);
-        txtCarName.setVisible(true);
+        btnSaveCarToText.setVisible(true);
     }
 
-    @FXML
     void btnNameCar(ActionEvent event) throws InvalidNameException {
         // If we have time it would be could to add a random name generator
         boolean uniqueName = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         boolean validName = ValidName.carNameTest(uniqueName, txtCarName.getText());
 
         if (txtCarName.getText().equals("")) {
-            summaryLbl.setText("Please give the car a name");
+            lblErrorSummary.setText("Please give the car a name");
         } else if (!uniqueName){
-            summaryLbl.setText("");
-            //Adds possibility to override
+            lblErrorSummary.setText("");
             Alert overrideAlert = new Alert(Alert.AlertType.CONFIRMATION);
             overrideAlert.setTitle("Override alert!");
             overrideAlert.setContentText("You have already saved a car with this name.\nWould you like to override it?");
@@ -93,7 +91,6 @@ public class Summary_Controller implements Initializable {
 
             if (choice.get() == override){
                 App.car.setName(txtCarName.getText());
-                btnNameCar.setDisable(true);
 
                 List<NewCar> list = new ArrayList<>();
                 try{
@@ -106,52 +103,47 @@ public class Summary_Controller implements Initializable {
                         }
                     }
                 }catch (IOException e){
-                    System.err.println(e.getMessage());
-
+                    lblErrorSummary.setText("An error occurred while opening the Car file. Please contact the superUser to restore the file.");
                 }
 
                 try{
                     //SAVES THE INITIAL LIST
                     FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                     FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                    summaryLbl.setText("Car is added to the list. You named it " + App.car.getName());
+                    lblErrorSummary.setText("Car is added to the list. You named it " + App.car.getName());
                     btnSaveCarToText.setVisible(true);
                 } catch (OpenFileException e){
-                    summaryLbl.setText("Could not open file");
+                    lblErrorSummary.setText("Could not open file");
                     Alerts.fileLoadAlert("Car list");
                 } catch (IOException e){
-                    summaryLbl.setText(e.getMessage());
+                    lblErrorSummary.setText("An error occurred while saving the file, please contact the developer.");
                     Alerts.fileLoadAlert("Car list");
                 }
-                txtCarName.setDisable(false);
-            } else {
-                txtCarName.setDisable(false);
             }
         } else if (!validName) {
             summaryLbl.setText("Your car's name is invalid. Please try again.");
         } else if(validName){
             App.car.setName(txtCarName.getText());
-            btnNameCar.setDisable(true);
 
             List<NewCar> list = new ArrayList<>();
             try{
                 list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
             }catch (IOException e){
-                System.err.println(e.getMessage());
+                lblErrorSummary.setText("An error occurred while opening the cars file, please contact your developer to restore the files.");
             }
 
             try{
                 //TO SAVE THE INITIAL LIST
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
                 FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                summaryLbl.setText(App.car.getName() + " has been added to the list.");
+                lblErrorSummary.setText(App.car.getName() + " has been added to the list.");
                 btnSaveCarToText.setVisible(true);
             } catch (OpenFileException e){
-                summaryLbl.setText("Could not open file");
+                lblErrorSummary.setText("Could not open file");
                 e.printStackTrace();
                 Alerts.fileLoadAlert("Car list");
             } catch (IOException e){
-                summaryLbl.setText(e.getMessage());
+                lblErrorSummary.setText("An error has occurred please contact the developer.");
                 Alerts.fileLoadAlert("Car list");
             }
         } else {
@@ -198,29 +190,7 @@ public class Summary_Controller implements Initializable {
 
 
     @FXML
-    void btnToFuel(ActionEvent event) {
-        txtCarName.setVisible(false);
-        btnNameCar.setVisible(false);
-        btnBuildCar.setLayoutX(259.0);
-        btnBuildCar.setDisable(false);
-        btnSaveCarToText.setVisible(false);
-        try{
-            App.setRoot("SetFuel");
-        } catch (ScreenNotFoundException | IllegalStateException e){
-            Alerts.screenLoadAlert();
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
-        } catch (IOException e){
-            System.err.println(e.getMessage());
-            Alerts.screenLoadAlert();
-        }
-    }
-
-    @FXML
     void backBtn() {
-        txtCarName.setVisible(false);
-        btnNameCar.setVisible(false);
-        btnBuildCar.setLayoutX(259.0);
-        btnBuildCar.setDisable(false);
         btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetAddons");
@@ -254,7 +224,6 @@ public class Summary_Controller implements Initializable {
                     App.startCarBuildingProcess();
                     App.car.setUser(username);
                     txtCarName.setVisible(false);
-                    btnNameCar.setVisible(false);
                     btnBuildCar.setDisable(false);
                     btnSaveCarToText.setVisible(false);
                 } catch (ScreenNotFoundException | IllegalStateException e) {
@@ -274,12 +243,10 @@ public class Summary_Controller implements Initializable {
     void logoutBtn(ActionEvent event){
         try{
             App.setRoot("login");
-        } catch (ScreenNotFoundException | IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
-            Alerts.screenLoadAlert();
+        } catch (IllegalStateException e){
+            lblErrorSummary.setText("There is an error in loading the next screen, please contact your developer.");
         } catch (IOException e){
-            System.err.println(e.getMessage());
-            Alerts.screenLoadAlert();
+            lblErrorSummary.setText("An error has occurred, please contact your developer.");
         }
     }
 }

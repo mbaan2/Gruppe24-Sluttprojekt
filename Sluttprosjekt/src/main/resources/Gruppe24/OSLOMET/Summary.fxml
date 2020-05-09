@@ -5,23 +5,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="summaryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="600.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.Summary_Controller">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="87.0" layoutY="35.0" prefHeight="269.0" prefWidth="427.0">
+      <Label fx:id="carNameLbl" layoutX="190.0" layoutY="14.0" text="Enter car name:" textFill="#def2f1">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+      <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="88.0" layoutY="61.0" prefHeight="312.0" prefWidth="422.0" spacing="10.0">
          <children>
-            <Label fx:id="lblCarComponents" contentDisplay="CENTER" textFill="#17252a" />
+            <TextField fx:id="txtCarName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Give the car a name:" />
+            <Button fx:id="btnBuildCar" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build and Save the car" textFill="#def2f1" />
+            <Label fx:id="summaryLbl" alignment="CENTER" prefHeight="227.0" prefWidth="400.0" textAlignment="CENTER" wrapText="true" />
          </children>
       </VBox>
-      <Button layoutX="514.0" layoutY="35.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
+      <Button layoutX="525.0" layoutY="375.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
       <Button layoutX="25.0" layoutY="373.0" onAction="#btnToWelcomeScreen" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
-      <Button layoutX="259.0" layoutY="373.0" onAction="#btnToFuel" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #17252a;" text="Change car" textFill="#def2f1" />
-      <Button fx:id="btnBuildCar" layoutX="259.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build the car" textFill="#def2f1" />
-      <TextField fx:id="txtCarName" layoutX="225.0" layoutY="324.0" prefHeight="25.0" prefWidth="151.0" promptText="Give your car a name" visible="false" />
-      <Button fx:id="btnNameCar" layoutX="387.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnNameCar" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #17252a;" text="Save the car" textFill="#def2f1" visible="false" />
-      <Button fx:id="btnSaveCarToText" layoutX="470.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnSaveCarToText" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #17252a;" text="Save to own file" textFill="#def2f1" visible="false" />
+      <Button fx:id="btnSaveCarToText" layoutX="233.0" layoutY="374.0" onAction="#btnSaveCarToText" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: #17252a;" text="Save car to a txt file" textFill="#def2f1" />
       <Button contentDisplay="CENTER" graphicTextGap="0.0" layoutX="25.0" layoutY="324.0" onAction="#backBtn" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
-      <Label fx:id="carNameLbl" layoutX="225.0" layoutY="306.0" text="Enter car name:" />
-      <Label fx:id="summaryLbl" layoutX="387.0" layoutY="355.0" prefHeight="66.0" prefWidth="194.0" wrapText="true" />
+      <Label fx:id="lblErrorSummary" layoutX="285.0" layoutY="411.0" />
    </children>
 </AnchorPane>
