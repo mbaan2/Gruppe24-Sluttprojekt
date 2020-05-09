@@ -194,7 +194,7 @@ public class SuperUserCarparts_Controller implements Initializable {
                 superUserLbl.setText("Nothing is selected!");
             } else {
                 EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
-                SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
                 loadCategory();
             }
         }
@@ -224,7 +224,7 @@ public class SuperUserCarparts_Controller implements Initializable {
             superUserLbl.setText("Nothing is selected");
         } else{
             RemoveCarpart.remove(carCategory, selectedCategoryButtons);
-            SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+            SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
             loadCategory();
         }
     }
@@ -257,7 +257,7 @@ public class SuperUserCarparts_Controller implements Initializable {
 
             if (containsName(specificCategory, name)) {
                 carCategory.add(newCarPart);
-                SaveCarparts.saveChanges(carCategory, chbCategory.getValue());
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
                 loadCategory();
                 txtName.setText("");
                 txtCost.setText("");

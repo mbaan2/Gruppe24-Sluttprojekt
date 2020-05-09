@@ -36,20 +36,23 @@ public class TableViewCreation {
     public HashMap<String, String> userBase = new HashMap<>();
 
     public void initializeTv(TableView<NewCar> tv, Label lbl, Boolean tableviewSuperUser){
+        //TODO Check if it's necessary to add this to reset the lbl
+        //lbl.setText("");
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-
-            e.printStackTrace();
+            //TODO Check this
+            lbl.setText("Could not load user base.");
         }
-        openCars();
+        openCars(lbl);
         int maxNrAddons = 0;
 
         try {
-            openFile();
+            openFile(lbl);
             maxNrAddons = addonSupUser.size();
         } catch (IOException e) {
-            e.printStackTrace();
+            //TODO Change this
+            lbl.setText("Could not load add-ons.");
         }
 
         //Setting of all the colums
@@ -102,7 +105,7 @@ public class TableViewCreation {
                 } else {
                     lbl.setText("No user exists with that name.");
                 }
-                btnSaveChanges();
+                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -115,7 +118,7 @@ public class TableViewCreation {
                     lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
                     event.getRowValue().setName(event.getNewValue());
                 }
-                btnSaveChanges();
+                btnSaveChanges(lbl);
             });
 
             ObservableList<String> fuelList = FXCollections.observableArrayList();
@@ -123,7 +126,8 @@ public class TableViewCreation {
             try {
                 fuelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.fuelPath));
             } catch (ClassNotFoundException | IOException e) {
-                System.err.println(e.getMessage());
+                //TODO Check this
+                lbl.setText("Could not load fuels.");
             }
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
@@ -143,7 +147,7 @@ public class TableViewCreation {
                         }
                     }
                 }
-                btnSaveChanges();
+                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -153,7 +157,8 @@ public class TableViewCreation {
             try {
                 wheelOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.wheelPath));
             } catch (ClassNotFoundException | IOException e) {
-                System.err.println(e.getMessage());
+                //TODO Check this
+                lbl.setText("Could not load wheels.");
             }
             wheelOptions.forEach(car -> wheelList.add(car.getName()));
 
@@ -173,7 +178,7 @@ public class TableViewCreation {
                         }
                     }
                 }
-                btnSaveChanges();
+                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -182,7 +187,8 @@ public class TableViewCreation {
             try {
                 colorOptions = FileOpenerJobj.openFile(Paths.get(StandardPaths.colorPath));
             } catch (ClassNotFoundException | IOException e) {
-                System.err.println(e.getMessage());
+                //TODO Check this
+                lbl.setText("Could not load colors.");
             }
             colorOptions.forEach(car -> colorList.add(car.getName()));
 
@@ -202,7 +208,7 @@ public class TableViewCreation {
                         }
                     }
                 }
-                btnSaveChanges();
+                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -240,7 +246,7 @@ public class TableViewCreation {
                                 }
                             }
                         }
-                        btnSaveChanges();
+                        btnSaveChanges(lbl);
                         tv.refresh();
                     });
                     return booleanProp;
@@ -317,40 +323,42 @@ public class TableViewCreation {
         tv.setItems(carList);
     }
 
-    public void openFile() throws IOException{
+    public void openFile(Label lbl) throws IOException{
         Path path = Paths.get(StandardPaths.addonPath);
         try {
             addonSupUser = FileOpenerJobj.openFile(path);
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(e.getMessage());
+            lbl.setText("Could not load add-on file.");
         }
     }
 
-    private void btnSaveChanges(){
+    private void btnSaveChanges(Label lbl){
         List<NewCar> newList = new ArrayList<>();
         newList.addAll(carList);
         try {
             FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            //TODO Check this is working okay
+            lbl.setText("Could not save changes to car.");
         }
     }
 
     private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv, Label lbl){
         addonlist.remove(addon);
         lbl.setText("Deprecated addon named " + addon.getName() + " removed from the car.");
-        btnSaveChanges();
+        btnSaveChanges(lbl);
         tv.refresh();
     }
 
-    void openCars() {
+    void openCars(Label lbl) {
         carList.clear();
 
         ArrayList<NewCar> list2 = new ArrayList<>();
         try{
             list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            //TODO Check if this is okay
+            lbl.setText("Could not load cars file.");
         }
         carList.addAll(list2);
     }
@@ -358,7 +366,7 @@ public class TableViewCreation {
     void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv, Label lbl){
         carList.remove(car);
         lbl.setText(car.getName() + " removed from the list.");
-        btnSaveChanges();
+        btnSaveChanges(lbl);
         tv.refresh();
     }
 }

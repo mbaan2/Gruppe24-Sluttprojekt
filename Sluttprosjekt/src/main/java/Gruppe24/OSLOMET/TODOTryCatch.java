@@ -81,22 +81,27 @@ Directory Controllers
     * file treatment maybe the should trow exceptions, not sure, please test. DONE
 
 - LoadingValuesThread
-    * is already fine i think, please check
+    * is already fine i think, please check             SEEMS FINE TO ME?
 
 - RemoveCarpoarts
     * done
 
 - SaveCarparts
-    * file treatment maybe the should trow exceptions, not sure, please test.
+    * file treatment maybe the should trow exceptions, not sure, please test.   ADDED INFO ON THE LABEL. MAGICALLY FIXES ITSELF, SO SEEMS FINE
 
 - CreateJobjFiles
-    * file treatment maybe the should trow exceptions, not sure, please test.
+    * file treatment maybe the should trow exceptions, not sure, please test.   DIDN'T FIND ANYTHING ELSE TO CHANGE
 
 - Filter
     * done
 
 - TableViewCreation
     * Needs lots of attention. i think an error could be anywhere so needs a good check
+        - delete user.jobj after logging into user. IO Exception when loading table, but still loads. Cars get saved to user just right
+        - go through all the TODOs
+
+
+
  */
 
 /* UserLogin Directory
