@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FileOpenerJobj {
     public static List<Carparts> openFile(Path path) throws IOException, ClassNotFoundException {
-        List<Carparts> carParts = new ArrayList<>();
+        List<Carparts> carParts;
 
         try (   InputStream in = Files.newInputStream(path);
                 ObjectInputStream oin = new ObjectInputStream(in))
@@ -29,20 +29,6 @@ public class FileOpenerJobj {
         return carParts;
     }
 
-    public static NewCar openFileArray(Path path) {
-        NewCar car = new NewCar();
-
-        try (   InputStream in = Files.newInputStream(path);
-                ObjectInputStream oin = new ObjectInputStream(in))
-        {
-            car = (NewCar) oin.readObject();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-        return car;
-    }
-
-
     public static HashMap<String, String> openFileHashMap() throws IOException, ClassNotFoundException {
         HashMap<String, String> userBase = null;
         try (FileInputStream in = new FileInputStream(StandardPaths.usersJOBJPath);
@@ -51,7 +37,9 @@ public class FileOpenerJobj {
             in.close();
             oin.close();
         } catch (ClassNotFoundException e) {
-            throw new ClassNotFoundException();
+            throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
+        } catch (IOException e) {
+            throw new OpenFileException("Corrupted file please contact the superUser for a reset.");
         }
         return userBase;
     }
@@ -64,7 +52,9 @@ public class FileOpenerJobj {
             in.close();
             oin.close();
         } catch (ClassNotFoundException e) {
-            throw new ClassNotFoundException();
+            throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
+        } catch (IOException e) {
+            throw new OpenFileException("Corrupted file please contact the superUser for a reset.");
         }
         return userList;
     }
@@ -74,13 +64,15 @@ public class FileOpenerJobj {
         try (FileInputStream in = new FileInputStream(StandardPaths.secretQPath);
              ObjectInputStream oin = new ObjectInputStream(in)) {
             choiceBoxList = (List<String>) oin.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new OpenFileException(e.getMessage());
+        } catch (IOException e) {
+            throw new OpenFileException("Corrupted file please contact the superUser for a reset.");
+        } catch (ClassNotFoundException e) {
+            throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
         }
         return choiceBoxList;
     }
 
-    public static ArrayList<NewCar> openingCarArray(String path) throws IOException {
+    public static ArrayList<NewCar> openingCarArray(String path) throws IOException, ClassNotFoundException {
         ArrayList<NewCar> carList = new ArrayList<>();
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
         boolean moreObjects = true;
@@ -89,8 +81,12 @@ public class FileOpenerJobj {
             try {
                 NewCar aCar = (NewCar) is.readObject();
                 carList.add(aCar);
-            } catch (Exception e){
+            } catch (IOException e){
                 moreObjects = false;
+                throw new OpenFileException("Corrupted file please contact the superUser for a reset.");
+            } catch (ClassNotFoundException e) {
+                moreObjects = false;
+                throw new ClassNotFoundException("The file that is trying to be opened has not been properly saved. Please contact the developer.");
             }
         }
         return carList;

@@ -37,7 +37,6 @@ public class FileSaverJobj {
                     }
                 };
                 os2.writeObject(carList.get(i));
-                //NOT SURE IF WE HAVE TO CLOSE IT SO THIS IS SOMETHING WE NEED TO TEST!
                 os2.close();
             }
         } catch (IOException e){
