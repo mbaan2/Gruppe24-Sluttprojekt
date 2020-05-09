@@ -65,9 +65,9 @@ public class UserCarView_Controller implements Initializable {
         try {
             App.setRoot("WelcomeScreen");
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            tvLabel.setText(e.getMessage());
         } catch (IllegalStateException e) {
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            tvLabel.setText("There is an error in loading the next screen, please contact your developer.");
         }
         executor.shutdownNow();
     }
