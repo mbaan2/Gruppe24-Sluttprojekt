@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -46,10 +47,10 @@ public class WelcomeScreen_Controller implements Initializable {
     private ComboBox<String> comboAllCars;
 
     @FXML
-    private Label lblFeedbackChangeCar;
+    private Label lblFeedbackChangeCar, lblErrorWelcomeScreen;
 
     @FXML
-    private Label lblErrorWelcomeScreen;
+    private Button btnStartBuilding, btnLoadCar, btnToTableView;
 
     @FXML
     void btnLoadCar(ActionEvent event) {
@@ -121,6 +122,9 @@ public class WelcomeScreen_Controller implements Initializable {
             newList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
             lblErrorWelcomeScreen.setText("An error has occurred while loading your cars, please contact the superUser to restore the file.");
+            btnStartBuilding.setDisable(true);
+            btnLoadCar.setDisable(true);
+            btnToTableView.setDisable(true);
         }
         for(NewCar newCar : newList){
             if(newCar.getUser().equals(App.car.getUser())){
