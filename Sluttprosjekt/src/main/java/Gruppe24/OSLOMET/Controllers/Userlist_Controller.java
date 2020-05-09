@@ -97,7 +97,7 @@ public class Userlist_Controller implements Initializable {
         } catch (IOException e) {
             lblUserList.setText(e.getMessage());
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            lblUserList.setText("There is an error in loading the next screen.");
         }
         executor.shutdownNow();
     }
@@ -133,14 +133,14 @@ public class Userlist_Controller implements Initializable {
         try {
             FileSaverJobj.SaveUserList(newList);
         } catch (IOException e) {
-            lblUserList.setText(e.getLocalizedMessage());
+            lblUserList.setText("Couldnt save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
 
         HashMap<String, String> newMap = new HashMap<>(userBase);
         try {
             FileSaverJobj.SaveUser(newMap);
         } catch (IOException e) {
-            lblUserList.setText(e.getLocalizedMessage());
+            lblUserList.setText("Couldnt save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
     }
 
@@ -202,12 +202,12 @@ public class Userlist_Controller implements Initializable {
             userList = FileOpenerJobj.openUserList();
             userList1.addAll(userList);
         } catch (IOException | ClassNotFoundException e) {
-            lblUserList.setText(e.getLocalizedMessage());
+            lblUserList.setText("Couldnt find the file to open the userlist. Restore it through the button in the superuser homepage.");
         }
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-            System.err.println("error");
+            lblUserList.setText("Couldnt find the file to open the userlist. Restore it through the button in the superuser homepage.");
         }
 
         TableColumn<User, String> username = new TableColumn<>("Username");
