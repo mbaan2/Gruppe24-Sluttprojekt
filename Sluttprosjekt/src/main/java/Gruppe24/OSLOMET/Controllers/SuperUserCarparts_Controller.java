@@ -34,6 +34,8 @@ public class SuperUserCarparts_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         //Disabling the buttons on load
         setDisableBtn();
         //Disabling the buttons when changing the value of the choicebox - so that you cant add/edit/remove carparts to/from the wrong carcategory.
@@ -52,6 +54,9 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     private LoadingValuesThread task;
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private AnchorPane carpartsPane;

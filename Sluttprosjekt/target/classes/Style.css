@@ -6,9 +6,14 @@
 
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color:  #3aafa9;
+}
+
 .set-check-box {
     -fx-padding: 15px;
     -fx-min-width: 100px;
+    -fx-wrap-text: true;
 }
 
 .set-radiobutton {
