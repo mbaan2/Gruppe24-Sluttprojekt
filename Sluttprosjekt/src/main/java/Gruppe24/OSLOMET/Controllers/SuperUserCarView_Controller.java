@@ -160,6 +160,7 @@ public class SuperUserCarView_Controller implements Initializable {
         else if (filterType.equals("Search Filters")) {
             filterLbl.setText("You didnt choose a filter.");
         } else{
+            tableView.getItems().clear();
             filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
             filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
@@ -197,9 +198,10 @@ public class SuperUserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         filterLbl.setText("Tableview reset.");
-        createView.initializeTv(tableView, filterLbl, true);
+        tableView.getItems().clear();
+        openCars();
+        tableView.setItems(carList);
         filterBox.setValue("Search Filters");
+        tableView.refresh();
     }
-
-
 }
