@@ -175,7 +175,7 @@ public class Userlist_Controller implements Initializable {
         return secretQList;
     }
 
-    public static void comboBoxList() throws IOException {
+    public static void comboBoxList() throws IOException, ClassNotFoundException {
         List<String> comboBoxList;
         comboBoxList = FileOpenerJobj.openSecretQList();
         FileSaverJobj.SaveSecretQList(comboBoxList);
@@ -188,11 +188,8 @@ public class Userlist_Controller implements Initializable {
         resetFilterBtn.setDisable(true);
         try {
             comboBoxList();
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("File not found.");
-            alert.setContentText("Couldn't find the file to load the options for the combobox. Restore it through the button in the superuser homepage.");
-            alert.setHeaderText("");
+        } catch (IOException | ClassNotFoundException e) {
+            lblUserList.setText("Couldn't find the file to load the options for the combobox. Restore it through the button in the superuser homepage.");
         }
         lblUserList.setText("Loading users...");
 
@@ -280,7 +277,13 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
-        secretQList = FileOpenerJobj.openSecretQList();
+        try {
+            secretQList = FileOpenerJobj.openSecretQList();
+        } catch (IOException e) {
+            lblUserList.setText("Encountered an IO Exception, something is wrong with the file.");
+        } catch (ClassNotFoundException e) {
+            lblUserList.setText("Class not found when trying to load secret questions.");
+        }
         secretQObsList.addAll(secretQList);
         secretQ.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQ()));
         secretQ.setCellFactory(ComboBoxTableCell.forTableColumn(secretQObsList));
