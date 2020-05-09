@@ -52,9 +52,9 @@ Directory Controllers
     * Opening files needs testing
     * Thread needs testing
 
-- WelcomeScreen_Controller
-    * Buttons to other screen needs testing
-    * Opening files need testing
+- WelcomeScreen_Controller (DONE)
+    * DONE Buttons to other screen needs testing
+    * DONE Opening files need testing
  */
 
 /* DataValidation Directory

@@ -120,7 +120,7 @@ public class WelcomeScreen_Controller implements Initializable {
         try {
             newList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
         } catch (IOException e){
-            lblErrorWelcomeScreen.setText("An error has occurred while loading your cars, please contact the superUser to restore the files.");
+            lblErrorWelcomeScreen.setText("An error has occurred while loading your cars, please contact the superUser to restore the file.");
         }
         for(NewCar newCar : newList){
             if(newCar.getUser().equals(App.car.getUser())){
