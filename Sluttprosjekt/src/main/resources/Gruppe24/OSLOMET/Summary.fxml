@@ -16,7 +16,7 @@
       <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="88.0" layoutY="61.0" prefHeight="312.0" prefWidth="422.0" spacing="10.0">
          <children>
             <TextField fx:id="txtCarName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Give the car a name:" />
-            <Button fx:id="btnBuildCar" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build and Save the car" textFill="#def2f1" />
+            <Button fx:id="btnBuildCar" mnemonicParsing="false" onAction="#btnBuildCar" style="-fx-background-color: #17252a;" text="Build and save to account" textFill="#def2f1" />
             <Label fx:id="summaryLbl" alignment="CENTER" prefHeight="227.0" prefWidth="400.0" textAlignment="CENTER" wrapText="true" />
          </children>
       </VBox>
