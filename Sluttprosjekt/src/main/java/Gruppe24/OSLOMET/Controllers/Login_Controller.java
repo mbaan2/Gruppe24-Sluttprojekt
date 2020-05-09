@@ -55,36 +55,35 @@ public class Login_Controller implements Initializable {
 
         try{
             userBase = FileOpenerJobj.openFileHashMap();
+            if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
+                try {
+                    App.setRoot("SuperUser");
+                } catch (IOException e){
+                    lblErrorLogin.setText("An error has occurred, please contact your developer");
+                } catch (IllegalStateException e){
+                    lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
+                }
+            } else if(userBase.containsKey(usernameTxt.getText())){
+                if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
+                    App.car.setUser(usernameTxt.getText());
+                    login();
+                }
+            }
+
+            //Feedback to the user
+            if (usernameTxt.getText().isEmpty()) {
+                usernameError.setText("Enter a username");
+            } else if(!userBase.containsKey(usernameTxt.getText())) {
+                usernameError.setText("Wrong username");
+            }
+            if (passwordTxt.getText().isEmpty()) {
+                passwordError.setText("Enter a password");
+            } else if (!userBase.containsValue(passwordTxt.getText())) {
+                passwordError.setText("Wrong password");
+            }
         } catch (IOException | ClassNotFoundException e){
             lblErrorLogin.setText("The user file couldn't be opened, please contact the superUser to restore the files");
         }
-
-        if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
-            try {
-                App.setRoot("SuperUser");
-            } catch (IOException e){
-                lblErrorLogin.setText("An error has occurred, please contact your developer");
-            } catch (IllegalStateException e){
-                lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
-            }
-        } else if(userBase.containsKey(usernameTxt.getText())){
-            if(userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
-                App.car.setUser(usernameTxt.getText());
-                login();
-            }
-        }
-
-        //Feedback to the user
-        if (usernameTxt.getText().isEmpty()) {
-                usernameError.setText("Enter a username");
-        } else if(!userBase.containsKey(usernameTxt.getText())) {
-                usernameError.setText("Wrong username");
-        }
-        if (passwordTxt.getText().isEmpty()) {
-                passwordError.setText("Enter a password");
-        } else if (!userBase.containsValue(passwordTxt.getText())) {
-                passwordError.setText("Wrong password");
-            }
     }
 
     @FXML
