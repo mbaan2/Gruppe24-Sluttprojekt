@@ -1,6 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
@@ -51,9 +53,7 @@ public class RetrievePassword_Controller implements Initializable {
         try {
             userList = FileOpenerJobj.openUserList();
         } catch (IOException | ClassNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("File not found");
-            alert.setContentText(e.getMessage());
+            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
         }
 
         for (User user : userList) {
@@ -90,9 +90,7 @@ public class RetrievePassword_Controller implements Initializable {
         try {
             userList = FileOpenerJobj.openUserList();
         } catch (IOException | ClassNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText("File not found!");
-            alert.setContentText(e.getMessage());
+            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
         }
 
         for (User user : userList) {
@@ -136,9 +134,9 @@ public class RetrievePassword_Controller implements Initializable {
         try {
             App.setRoot("login");
         } catch (IOException e){
-            System.err.println(e.getMessage());
+            retrieveLbl.setText(e.getMessage());
         } catch (IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
+            retrieveLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
 
     }
@@ -147,7 +145,12 @@ public class RetrievePassword_Controller implements Initializable {
         checkBoxList.removeAll();
         String checkBoxQuestion = "Select a question!";
         checkBoxList.add(checkBoxQuestion);
-        checkBoxList.addAll(FileOpenerJobj.openSecretQList());
+        try {
+            checkBoxList.addAll(FileOpenerJobj.openSecretQList());
+        } catch (IOException | ClassNotFoundException e) {
+            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+        }
+
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
     }
@@ -166,7 +169,7 @@ public class RetrievePassword_Controller implements Initializable {
         try {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
-            System.err.println("error");
+            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
         }
 
         addChkBoxItems();

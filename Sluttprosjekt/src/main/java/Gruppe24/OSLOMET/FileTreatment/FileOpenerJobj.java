@@ -2,6 +2,7 @@ package Gruppe24.OSLOMET.FileTreatment;
 
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,13 +69,13 @@ public class FileOpenerJobj {
         return userList;
     }
 
-    public static List<String> openSecretQList() {
+    public static List<String> openSecretQList() throws IOException, ClassNotFoundException {
         List<String> choiceBoxList = new ArrayList<>();
         try (FileInputStream in = new FileInputStream(StandardPaths.secretQPath);
              ObjectInputStream oin = new ObjectInputStream(in)) {
             choiceBoxList = (List<String>) oin.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println(e.getMessage());
+            throw new OpenFileException(e.getMessage());
         }
         return choiceBoxList;
     }
