@@ -44,6 +44,7 @@ public class CreateJobjFiles {
         addons.add(new Carparts("Spoiler", 4000));
         addons.add(new Carparts("Subwoofer", 7500));
         car1.setAddons(addons);
+        car1.setCost(car1.getCost());
 
         car2.setUser("Mark");
         car2.setName("BestCar");
@@ -55,6 +56,7 @@ public class CreateJobjFiles {
         addons2.add(new Carparts("Subwoofer", 7500));
         addons2.add(new Carparts("GPS", 5000));
         car2.setAddons(addons2);
+        car2.setCost(car2.getCost());
 
         car3.setUser("Ana");
         car3.setName("ZoomZoom");
@@ -65,6 +67,7 @@ public class CreateJobjFiles {
         addons3.add(new Carparts("Spoiler", 4000));
         addons3.add(new Carparts("GPS", 5000));
         car3.setAddons(addons3);
+        car3.setCost(car3.getCost());
 
         car4.setUser("Ana");
         car4.setName("ChooChoo");
@@ -74,6 +77,7 @@ public class CreateJobjFiles {
         CarCategory addons4 = new CarCategory("Addons");
         addons4.add(new Carparts("Subwoofer", 7500));
         car4.setAddons(addons4);
+        car4.setCost(car4.getCost());
 
         carList.add(car1);
         carList.add(car2);

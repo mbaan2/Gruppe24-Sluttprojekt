@@ -6,6 +6,8 @@ public class Carparts implements Car, Serializable {
     String name;
     int cost;
 
+    final static long serialVersionUID = 1;
+
     public Carparts(String name, int cost) {
         this.name = name;
         this.cost = cost;

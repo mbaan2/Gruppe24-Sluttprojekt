@@ -3,7 +3,7 @@ package Gruppe24.OSLOMET.UserLogin;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    final static long serialVersionUID = 8703765919721615923L;
+    final static long serialVersionUID = 1;
 
     private String username;
     private String password;

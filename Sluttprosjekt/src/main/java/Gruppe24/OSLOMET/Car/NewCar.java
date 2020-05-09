@@ -13,6 +13,8 @@ public class NewCar implements Serializable {
     public CarCategory addons;
     public int cost;
 
+    final static long serialVersionUID = 1;
+
 
     //GETTER AND SETTER METHODS
     public String getUser() {
@@ -28,6 +30,10 @@ public class NewCar implements Serializable {
         this.name = name;
     }
     public int getCost() {
+        cost = getFuel().getCost() + getWheels().getCost() + getColor().getCost();
+        for(int i = 0; i < getAddons().size(); i++) {
+            cost += getAddons().getElement(i).getCost();
+        }
         return cost;
     }
     public void setCost(int cost){
@@ -63,19 +69,6 @@ public class NewCar implements Serializable {
             totalcost += App.car.getAddons().getElement(i).getCost();
         }
         return totalcost;
-    }
-
-    public String savableData(){
-        String ut = "User: " + "\t" + App.car.getUser() + "\t" + App.car.getName() +"\t Cost: " + totalCost() + "\t" + "FEATURES:" + "\t";
-        ut += App.car.getFuel().getName() +"\t"+ App.car.getFuel().getCost() + "\t";
-        ut += App.car.getWheels().getName() +"\t"+ App.car.getWheels().getCost() + "\t";
-        ut += App.car.getColor().getName() +"\t"+ App.car.getColor().getCost() + "\t";
-        for(int i = 0; i< App.car.getAddons().size(); i++) {
-            ut += App.car.getAddons().getElement(i).getName() + "\t" + App.car.getAddons().getElement(i).getCost() + "\t";
-        }
-        ut += "\n";
-
-        return ut;
     }
 
     @Override
