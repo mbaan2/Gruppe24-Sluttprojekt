@@ -34,8 +34,8 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         Platform.runLater(() -> {
             try {
                 Stage stage = (Stage) fileRestorationPane.getScene().getWindow();
-                stage.setWidth(300);
-                stage.setHeight(473);
+                stage.setWidth(500);
+                stage.setHeight(470);
             } catch (ExceptionInInitializerError e) {
                 superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
             }
@@ -80,7 +80,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                 } catch (SaveFileException e) {
                     superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
                 }
-                superUserLbl.setText("Files are restored!");
+                superUserLbl.setText("Carparts are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, carparts were not restored.");
             }

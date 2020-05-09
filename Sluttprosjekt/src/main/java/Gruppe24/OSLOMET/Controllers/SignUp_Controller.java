@@ -152,6 +152,7 @@ public class SignUp_Controller implements Initializable {
         try {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         } catch (IOException | ClassNotFoundException e) {
+            choiceBox.setDisable(true);
             signupLbl.setText("Encountered an error. Contact your administrator for file restoration.");
         }
         choiceBox.getItems().addAll(checkBoxList);
@@ -171,6 +172,7 @@ public class SignUp_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBox.setDisable(false);
         addChkBoxItems();
         checkOther.setToggleGroup(toggleGroup);
         checkFemale.setToggleGroup(toggleGroup);

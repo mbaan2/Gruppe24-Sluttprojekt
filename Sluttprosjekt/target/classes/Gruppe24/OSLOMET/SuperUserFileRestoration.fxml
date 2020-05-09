@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="fileRestorationPane" minHeight="300.0" minWidth="100.0" prefHeight="473.0" prefWidth="300.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserFileRestoration_Controller">
-    <Button layoutX="98.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnRestoreUsers" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Users" textFill="#def2f1" />
-    <Button layoutX="98.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnRestoreCars" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Cars" textFill="#def2f1" />
-    <Button layoutX="98.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreCarparts" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Carparts" textFill="#def2f1" />
-    <Button layoutX="98.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreSecretQ" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore SecretQ" textFill="#def2f1" />
-    <Button layoutX="98.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
-    <Label fx:id="superUserLbl" alignment="CENTER" layoutX="46.0" layoutY="25.0" prefHeight="134.0" prefWidth="208.0" text="File Restoration" textAlignment="CENTER" textFill="#def2f1" wrapText="true">
+<AnchorPane fx:id="fileRestorationPane" minHeight="300.0" minWidth="100.0" prefHeight="470.0" prefWidth="500.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserFileRestoration_Controller">
+    <Button layoutX="198.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnRestoreUsers" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Users" textFill="#def2f1" />
+    <Button layoutX="198.0" layoutY="310.0" mnemonicParsing="false" onAction="#btnRestoreCars" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Cars" textFill="#def2f1" />
+    <Button layoutX="198.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnRestoreCarparts" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore Carparts" textFill="#def2f1" />
+    <Button layoutX="198.0" layoutY="250.0" mnemonicParsing="false" onAction="#btnRestoreSecretQ" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Restore SecretQ" textFill="#def2f1" />
+    <Button layoutX="198.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+    <Label fx:id="superUserLbl" alignment="CENTER" layoutX="45.0" layoutY="43.0" prefHeight="122.0" prefWidth="412.0" text="File Restoration" textAlignment="CENTER" textFill="#def2f1" wrapText="true">
       <font>
          <Font size="30.0" />
       </font></Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="159.0" prefHeight="47.0" prefWidth="46.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="189.0" prefHeight="47.0" prefWidth="46.0" style="-fx-border-color: #17252a; -fx-border-radius: 500; -fx-border-width: 3;" text="?" textAlignment="CENTER" textFill="#17252a">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>

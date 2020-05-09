@@ -94,6 +94,7 @@ public class Userlist_Controller implements Initializable {
     void btnBack() {
         try {
             App.setRoot("SuperUser");
+            lblSecondaryUserList.setText("");
         } catch (IOException e) {
             lblUserList.setText("Program encountered an error. Please contact your developer.");
         } catch (IllegalStateException e){
@@ -133,14 +134,14 @@ public class Userlist_Controller implements Initializable {
         try {
             FileSaverJobj.SaveUserList(newList);
         } catch (IOException e) {
-            lblUserList.setText("Couldnt save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
+            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
 
         HashMap<String, String> newMap = new HashMap<>(userBase);
         try {
             FileSaverJobj.SaveUser(newMap);
         } catch (IOException e) {
-            lblUserList.setText("Couldnt save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
+            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
     }
 
@@ -183,15 +184,17 @@ public class Userlist_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblSecondaryUserList.setText("");
+        lblSecondaryUserList.setVisible(false);
         filterBtn.setDisable(true);
         backBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
         try {
             comboBoxList();
         } catch (IOException | ClassNotFoundException e) {
-            lblUserList.setText("Couldn't find the file to load the options for the combobox. Restore it through the button in the superuser homepage.");
+            lblSecondaryUserList.setText("Question editing is disabled. Could not find secret questions file. Restore it through the button in the superuser homepage.");
         }
-        lblSecondaryUserList.setText("Loading users...");
+        lblUserList.setText("Loading users...");
 
         tableView.setVisible(false);
         tableView.setEditable(true);
@@ -285,7 +288,7 @@ public class Userlist_Controller implements Initializable {
             notEditable.setTitle("Error loading secret questions");
             notEditable.setHeaderText("Could not load your secret questions file.");
             notEditable.setHeight(300);
-            notEditable.setContentText("Press \"Restore\" to reset your questions file to factory settings. \nPress \"OK\" to continue. This will disable the edition of user questions.");
+            notEditable.setContentText("Press \"Restore\" to reset your questions file to factory settings. \nPress \"OK\" to continue. This will disable the editing of user questions.");
             ButtonType ok = new ButtonType("OK");
             ButtonType restore = new ButtonType("Restore");
             notEditable.getButtonTypes().setAll(ok, restore);
@@ -364,7 +367,8 @@ public class Userlist_Controller implements Initializable {
             }
             backBtn.setDisable(false);
             tableView.setVisible(true);
-            if (lblUserList.getText().isEmpty()){
+            lblSecondaryUserList.setVisible(true);
+            if (lblUserList.getText().equals("Loading users...")){
                 lblUserList.setText("Users loaded!");
                 executor.submit(setTableView);
                 tableView.refresh();
@@ -372,7 +376,6 @@ public class Userlist_Controller implements Initializable {
                 resetFilterBtn.setDisable(false);
                 choiceBox.setDisable(false);
                 filterTxt.setDisable(false);
-                lblSecondaryUserList.setText("");
             } else if (lblUserList.getText().equals("Error in setting the proper width and height, resize the window manually.")){
                 lblSecondaryUserList.setText("Users loaded!");
                 executor.submit(setTableView);

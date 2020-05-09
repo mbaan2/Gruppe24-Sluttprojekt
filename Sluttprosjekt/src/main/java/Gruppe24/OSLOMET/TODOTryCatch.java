@@ -78,7 +78,7 @@ Directory Controllers
 
 /* SuperUser directory
 - LoadCategory
-    * file treatment maybe the should trow exceptions, not sure, please test.
+    * file treatment maybe the should trow exceptions, not sure, please test. DONE
 
 - LoadingValuesThread
     * is already fine i think, please check
