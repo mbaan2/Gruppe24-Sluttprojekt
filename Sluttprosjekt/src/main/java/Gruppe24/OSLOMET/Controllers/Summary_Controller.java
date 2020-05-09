@@ -68,12 +68,12 @@ public class Summary_Controller implements Initializable {
             summaryLbl.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
 
             btnSaveCarToText.setVisible(true);
-        } catch (InvalidNameException e){
+        } catch (InvalidNameException | IOException e){
             lblErrorSummary.setText(e.getMessage());
         }
     }
 
-    void btnNameCar(ActionEvent event) throws InvalidNameException {
+    void btnNameCar(ActionEvent event) throws InvalidNameException, IOException {
         /* Throws InvalidNameException*/
         ValidName.carNameTest(txtCarName.getText());
         boolean unique = true;
@@ -81,7 +81,7 @@ public class Summary_Controller implements Initializable {
         try{
             unique = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         } catch (IOException e){
-            lblErrorSummary.setText(e.getMessage());
+            throw new IOException (e.getMessage());
         }
 
         if(!unique){
@@ -96,48 +96,49 @@ public class Summary_Controller implements Initializable {
             Optional<ButtonType> choice = overrideAlert.showAndWait();
 
             if (choice.get() == override){
-                App.car.setName(txtCarName.getText());
-
-                List<NewCar> list = new ArrayList<>();
-                try{
-                    list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-                    for (int i=0; i<list.size(); i++){
-                        if(list.get(i).getUser().equals(App.car.getUser())){
-                            if(list.get(i).getName().equals(App.car.getName())){
-                                list.remove(i);
-                            }
-                        }
-                    }
-                }catch (IOException e){
-                    lblErrorSummary.setText("An error occurred while opening the Car file. Please contact the superUser to restore the file.");
-                }
-
-                try{
-                    //SAVES THE INITIAL LIST
-                    FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
-                    FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                    lblErrorSummary.setText("Car is added to the list. You named it " + App.car.getName());
-                    btnSaveCarToText.setVisible(true);
-                } catch (OpenFileException e){
-                    lblErrorSummary.setText("Error in opening the car file, please contact the superUser to restore the files");
-                } catch (IOException e){
-                    lblErrorSummary.setText("An error occurred while saving the file, please contact the developer.");
-                }
+                overwriteCar();
             }
         } else{
-            App.car.setName(txtCarName.getText());
+            saveCar();
+        }
+    }
 
-            try{
-                FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
-                lblErrorSummary.setText(App.car.getName() + " has been added to the list.");
-                btnSaveCarToText.setVisible(true);
-            } catch (OpenFileException e){
-                lblErrorSummary.setText("Could not open file");
-                e.printStackTrace();
-                Alerts.fileLoadAlert("Car list");
-            } catch (IOException e){
-                lblErrorSummary.setText("An error has occurred please contact the developer.");
+    public void saveCar(){
+        App.car.setName(txtCarName.getText());
+
+        try{
+            FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
+            lblErrorSummary.setText(App.car.getName() + " has been added to the list.");
+            btnSaveCarToText.setVisible(true);
+        } catch (IOException e){
+            lblErrorSummary.setText("An error has occurred please contact the developer.");
+        }
+
+    }
+
+    public void overwriteCar(){
+        App.car.setName(txtCarName.getText());List<NewCar> list = new ArrayList<>();
+        try{
+            list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+            for (int i=0; i<list.size(); i++){
+                if(list.get(i).getUser().equals(App.car.getUser())){
+                    if(list.get(i).getName().equals(App.car.getName())){
+                        list.remove(i);
+                    }
+                }
             }
+        }catch (IOException e){
+            lblErrorSummary.setText("An error occurred while opening the Car file. Please contact the superUser to restore the file.");
+        }
+
+        try{
+            //SAVES THE INITIAL LIST
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);
+            FileSaverJobj.addingOnlyOneCarObject(StandardPaths.carsPath, App.car);
+            lblErrorSummary.setText("Car is added to your account. You named it " + App.car.getName());
+            btnSaveCarToText.setVisible(true);
+        } catch (IOException e){
+            lblErrorSummary.setText("An error occurred while saving the file, please contact the developer.");
         }
 
     }
@@ -166,12 +167,10 @@ public class Summary_Controller implements Initializable {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.append(str, selectedFile, summaryLbl, username);
-                btnSaveCarToText.setVisible(false);
             } else if(result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
                 FileSaverTxt.overwrite(str, selectedFile, summaryLbl, username);
-                btnSaveCarToText.setVisible(false);
             } else {
                 summaryLbl.setText("Process cancelled. File wasnt saved.");
             }
@@ -184,12 +183,10 @@ public class Summary_Controller implements Initializable {
         btnSaveCarToText.setVisible(false);
         try{
             App.setRoot("SetAddons");
-        } catch (ScreenNotFoundException | IllegalStateException e){
-            System.err.println("There is an error in loading the next screen, please contact your developer.");
-            Alerts.screenLoadAlert();
+        } catch (IllegalStateException e){
+            lblErrorSummary.setText("There is an error in loading the next screen, please contact your developer.");
         } catch (IOException e){
-            System.err.println(e.getMessage());
-            Alerts.screenLoadAlert();
+            lblErrorSummary.setText("An error has occurred, please contact your developer.");
         }
     }
 
@@ -216,15 +213,13 @@ public class Summary_Controller implements Initializable {
                     txtCarName.setVisible(false);
                     btnBuildCar.setDisable(false);
                     btnSaveCarToText.setVisible(false);
-                } catch (ScreenNotFoundException | IllegalStateException e) {
-                    System.err.println("There is an error in loading the next screen, please contact your developer.");
-                    Alerts.screenLoadAlert();
+                } catch (IllegalStateException e) {
+                    lblErrorSummary.setText("There is an error in loading the next screen, please contact your developer.");
                 } catch (IOException e) {
-                    System.err.println(e.getMessage());
-                    Alerts.screenLoadAlert();
+                   lblErrorSummary.setText("An error has occurred please contact your developer.");
                 }
             } else {
-                summaryLbl.setText("Process cancelled, staying in the summary page.");
+                lblErrorSummary.setText("Process cancelled, staying in the summary page.");
             }
         }
     }

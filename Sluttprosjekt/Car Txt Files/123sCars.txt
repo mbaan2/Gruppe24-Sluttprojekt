@@ -82,3 +82,10 @@ Fuel:	Diesel(20000kr)
 Wheels:	Small wheels(0kr)
 Color:	Red(5000kr)
 
+User:	123
+Name:	123
+Cost:		20000
+Fuel:	Gasoline	15000
+Wheels:	Big wheels	5000
+Color:	Black	0
+
