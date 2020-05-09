@@ -20,10 +20,7 @@ Directory Controllers
     * Buttons needs to be tested
 
 - Summary_Controller
-    * When last changes are made:
-    * Saving needs checking (both jobj and txt)
-    * Buttons to other screen need testing
-    * System.err. to feedback to user on label
+    * Done but needs checking and testing
 
 - SuperUSer_Controller
     * Button to other screen need testing
