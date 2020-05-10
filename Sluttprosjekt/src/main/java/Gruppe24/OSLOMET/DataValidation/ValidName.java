@@ -14,6 +14,11 @@ public class ValidName {
     public static void locationTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆ][a-zøåæ]+([ ]([A-ZØÅÆ][a-zøåæ]+))*");
         if(name.matches(reg.getPattern())){
+            if (name.matches(".{1,25}")){
+                /*name is correct*/
+            } else {
+                throw new InvalidNameException("Your location name is too long!");
+            }
         } else {
             throw new InvalidNameException("Enter a valid location!");
         }
@@ -35,7 +40,11 @@ public class ValidName {
         if (name.matches("admin")){
             throw new InvalidNameException("Username admin is reserved.");
         } else if(name.matches(reg.getPattern())){
-            /*name is correct */
+            if (name.matches(".{1,20}")){
+                /*name is correct */
+            } else {
+                throw new InvalidNameException("Your username is too long!");
+            }
         } else {
             throw new InvalidNameException("Enter a valid username!");
         }
@@ -58,9 +67,13 @@ public class ValidName {
         }
 
         if(name.matches(reg.getPattern())){
-            valid = true;
+            if (name.matches(".{1,25}")){
+                valid = true;
+            }else{
+                throw new InvalidNameException("Name is too long");
+            }
         } else {
-            throw new InvalidNameException("Your carpart name is invalid");
+            throw new InvalidNameException("Name is invalid");
         }
         return valid;
     }
