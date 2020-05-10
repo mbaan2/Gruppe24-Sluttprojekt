@@ -44,9 +44,11 @@ public class TableViewCreation {
         } catch (IOException | ClassNotFoundException e){
             lbl.setText("Could not load user base.");
         }
+        // Opening the cars.jobj file.
         openCars(lbl);
-        int maxNrAddons = 0;
 
+        // Opening the addons.jobj file.
+        int maxNrAddons = 0;
         openFile(lbl);
         maxNrAddons = addonSupUser.size();
 
@@ -81,6 +83,7 @@ public class TableViewCreation {
         TableColumn<NewCar, String> addon = new TableColumn<>("Add-ons");
         tv.getColumns().add(addon);
 
+        // Setting the addons columns depending on max amount of addons in the list.
         for(int i = 0; i < maxNrAddons; i++) {
             TableColumn<NewCar, CheckBox> tc = new TableColumn<>(addonSupUser.get(i).getName());
             tc.setText(addonSupUser.get(i).getName());
@@ -89,6 +92,8 @@ public class TableViewCreation {
         }
 
         tv.setEditable(true);
+
+        //Setting the deprecated addons column which will contain the out of sale addons that some users cars might have.
         TableColumn<NewCar, HBox> deprecatedAddon = new TableColumn<>("Out-of-sale");
         addon.getColumns().add(deprecatedAddon);
         TableColumn<NewCar, Integer> price = new TableColumn<>("Total price");
@@ -99,10 +104,13 @@ public class TableViewCreation {
         //Loading of the data into the tableview
         for (int i = 0; i < carList.size(); i++) {
 
+            // Setting the username columns data and how editing works for it.
             user.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getUser()));
             user.setCellFactory(TextFieldTableCell.forTableColumn());
             user.setOnEditCommit(event -> {
+                // The username will only be changed if the user exists (aka the userbase contains the key).
                 if(userBase.containsKey(event.getNewValue())) {
+                    // If the car that is being edited already has that username it will show up in the label.
                     if(event.getRowValue().getUser().equals(event.getNewValue())) {
                         lbl.setText("The car already has " + event.getNewValue() + " as a username.");
                     } else {
@@ -116,14 +124,17 @@ public class TableViewCreation {
                 tv.refresh();
             });
 
+            // Setting the carname columns data and how editing works for it.
             name.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getName()));
             name.setCellFactory(TextFieldTableCell.forTableColumn());
             name.setOnEditCommit(event -> {
                 if(event.getRowValue().getName().equals(event.getNewValue())) {
+                    // If the chosen option is the same as the previous value it will let the user know in the label.
                     lbl.setText("The car already has " + event.getNewValue() + " as a name");
                 } else {
                     try{
                         ValidName.carNameTest(event.getNewValue());
+                        // If the carname that is being entered is valid it will be updated.
                         lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
                         event.getRowValue().setName(event.getNewValue());
                     } catch (InvalidNameException e){
@@ -133,6 +144,7 @@ public class TableViewCreation {
                 btnSaveChanges(lbl);
             });
 
+            // Loading the fuel from the fuel.jobj file.
             ObservableList<String> fuelList = FXCollections.observableArrayList();
             List<Carparts> fuelOptions = new ArrayList<>();
             try {
@@ -142,12 +154,15 @@ public class TableViewCreation {
             }
             fuelOptions.forEach(car -> fuelList.add(car.getName()));
 
+            // Setting the fuel columns data and how editing works for it.
             fuel.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getFuel().getName() + " (" + car.getValue().getFuel().getCost() + "kr)"));
+            // Adding a combobox with the values of the fuel.jobj file to the column.
             fuel.setCellFactory(ComboBoxTableCell.forTableColumn(fuelList));
             List<Carparts> finalFuelOptions = fuelOptions;
             fuel.setOnEditCommit(event -> {
                 for(int j = 0; j < finalFuelOptions.size(); j++){
                     if(event.getNewValue().equals(finalFuelOptions.get(j).getName())) {
+                        // If the chosen option is the same as the previous value it will let the user know in the label.
                         if(event.getRowValue().getFuel().getName().equals(event.getNewValue())){
                             lbl.setText("The car already has " + event.getNewValue() + " as fuel.");
                         } else {
@@ -169,13 +184,15 @@ public class TableViewCreation {
                 lbl.setText("Could not load wheels.");
             }
             wheelOptions.forEach(car -> wheelList.add(car.getName()));
-
+            //Setting the wheels columns data and how editing works for it.
             wheels.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getWheels().getName() + " (" + car.getValue().getWheels().getCost() + "kr)"));
+            // Adding a combobox with the values of the wheels.jobj file to the column.
             wheels.setCellFactory(ComboBoxTableCell.forTableColumn(wheelList));
             List<Carparts> finalWheelOptions = wheelOptions;
             wheels.setOnEditCommit(event -> {
                 for(int j = 0; j < finalWheelOptions.size(); j++){
                     if(event.getNewValue().equals(finalWheelOptions.get(j).getName())) {
+                        // If the chosen option is the same as the previous value it will let the user know in the label.
                         if(event.getRowValue().getWheels().getName().equals(event.getNewValue())) {
                             lbl.setText("The car already has " + event.getNewValue() + ".");
                         } else {
@@ -197,12 +214,15 @@ public class TableViewCreation {
             }
             colorOptions.forEach(car -> colorList.add(car.getName()));
 
+            //Setting the color columns data and how editing works for it.
             color.setCellValueFactory(car -> new SimpleStringProperty(car.getValue().getColor().getName() + " (" + car.getValue().getColor().getCost() + "kr)"));
+            // Adding a combobox with the values of the wheels.jobj file to the column.
             color.setCellFactory(ComboBoxTableCell.forTableColumn(colorList));
             List<Carparts> finalColorOptions = colorOptions;
             color.setOnEditCommit(event -> {
                 for(int j = 0; j < finalColorOptions.size(); j++){
                     if(event.getNewValue().equals(finalColorOptions.get(j).getName())) {
+                        // If the chosen option is the same as the previous value it will let the user know in the label.
                         if(event.getRowValue().getColor().getName().equals(event.getNewValue())) {
                             lbl.setText("The car already has " + event.getNewValue() + " color.");
                         } else {
@@ -218,6 +238,8 @@ public class TableViewCreation {
             });
 
 
+            // Setting the data in the addons columns depending on how many addons there are - and adding checkboxes to the columns.
+            // If the checkboxes are checked or unchecked it will update the car in realtime and save it to the cars.jobj file.
             for (int j = 0; j < maxNrAddons; j++) {
                 //TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
@@ -262,6 +284,7 @@ public class TableViewCreation {
                 });
             }
 
+            //Setting the data for the deprecated addons column. If the addons in the cars arent a part of the addons.jobj file it will be counted as a deprecated addon.
             deprecatedAddon.setCellValueFactory(car -> {
                 List<String> availableAddOns = new ArrayList<>();
                 for (Car c : addonSupUser){
@@ -277,6 +300,7 @@ public class TableViewCreation {
                             hasMatch = true;
                         }
                     }
+                    // If the addon isnt found in the addons.jobj list it gets added to deprecated addons here.
                     if (!hasMatch){
                         Button unmatchedAddon = new Button();
                         Tooltip deleteInfo = new Tooltip("Pressing this button will delete the addon.\nThis action cannot be undone.");
@@ -286,6 +310,7 @@ public class TableViewCreation {
                         deleteInfo.setStyle("&#10#10");
                         unmatchedAddon.setTooltip(deleteInfo);
 
+                        // Disabling the deprecated buttons for the users car tableview.
                         if(!tableviewSuperUser){
                             deleteInfo.hide();
                             unmatchedAddon.setDisable(true);
@@ -300,6 +325,7 @@ public class TableViewCreation {
                 return new SimpleObjectProperty<HBox>(deprecatedAddonsList);
             });
 
+            // Setting the data to the totalprice column. It also gets edited in realtime if the user edits the car.
             price.setCellValueFactory(car -> new ObservableValueBase<Integer>(){
                 @Override
                 public Integer getValue(){
@@ -307,6 +333,8 @@ public class TableViewCreation {
                 }
             });
 
+            // Adding the delete button to delete cars in the tableview, it also saves the cars.jobj file without the removed car.
+            // The removing from the list happens in another method further down in the class.
             deleteBtn.setCellValueFactory(car -> {
                 Button delete = new Button();
                 delete.setText("Delete");
@@ -335,6 +363,7 @@ public class TableViewCreation {
         }
     }
 
+    // The method to save changes to the cars.jobj file.
     private void btnSaveChanges(Label lbl){
         List<NewCar> newList = new ArrayList<>();
         newList.addAll(carList);
@@ -345,6 +374,7 @@ public class TableViewCreation {
         }
     }
 
+    // The method for deleting deprecated addons from a car when clicking the deprecated addons button.
     private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv, Label lbl){
         addonlist.remove(addon);
         lbl.setText("Deprecated addon named " + addon.getName() + " removed from the car.");
@@ -364,6 +394,7 @@ public class TableViewCreation {
         carList.addAll(list2);
     }
 
+    // The method for deleting the car from the cars.jobj file.
     void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv, Label lbl){
         carList.remove(car);
         lbl.setText(car.getName() + " removed from the list.");
