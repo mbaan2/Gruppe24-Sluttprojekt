@@ -50,19 +50,19 @@ class ValidNameTest{
 
     @Test
     void carpartNameTest() throws InvalidNameException {
-        assertTrue(ValidName.carpartNameTest("GPS"));
-        assertTrue(ValidName.carpartNameTest("GPS1"));
-        assertTrue(ValidName.carpartNameTest("GPS1.0"));
-        assertTrue(ValidName.carpartNameTest("GPS 1.0"));
-        assertTrue(ValidName.carpartNameTest("GPS 1_0"));
-        assertTrue(ValidName.carpartNameTest("Subwoofer"));
-        assertTrue(ValidName.carpartNameTest("Subwøøfer ver. 1.0.3"));
-        assertTrue(ValidName.carpartNameTest("Sub VERS 1.3_245"));
-        assertTrue(ValidName.carpartNameTest("gps"));
+        assertTrue(ValidName.carNameTest("GPS"));
+        assertTrue(ValidName.carNameTest("GPS1"));
+        assertTrue(ValidName.carNameTest("GPS1.0"));
+        assertTrue(ValidName.carNameTest("GPS 1.0"));
+        assertTrue(ValidName.carNameTest("GPS 1_0"));
+        assertTrue(ValidName.carNameTest("Subwoofer"));
+        assertTrue(ValidName.carNameTest("Subwøøfer ver. 1.0.3"));
+        assertTrue(ValidName.carNameTest("Sub VERS 1.3_245"));
+        assertTrue(ValidName.carNameTest("gps"));
 
-        assertFalse(ValidName.carpartNameTest(" GPS"));
-        assertFalse(ValidName.carpartNameTest(" "));
-        assertFalse(ValidName.carpartNameTest("Âa"));
-        assertFalse(ValidName.carpartNameTest("@a"));
+        assertFalse(ValidName.carNameTest(" GPS"));
+        assertFalse(ValidName.carNameTest(" "));
+        assertFalse(ValidName.carNameTest("Âa"));
+        assertFalse(ValidName.carNameTest("@a"));
     }
 }

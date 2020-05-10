@@ -24,10 +24,10 @@ public class ValidName {
 
     public static boolean validLocation(String name) throws InvalidNameException {
         try {
-            validLocation(name);
+            locationTest(name);
             return true;
         } catch (InvalidNameException e){
-            throw new InvalidNameException(e.getMessage());
+            return false;
         }
     }
 
@@ -37,13 +37,14 @@ public class ValidName {
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
         if (name.matches("admin")){
             throw new InvalidNameException("Username admin is reserved.");
-        } else if(name.matches(reg.getPattern())) {
+        }
+
+        if(!name.matches(reg.getPattern())) {
+            throw new InvalidNameException("Enter a valid username!");
+        } else {
             if (!name.matches(".{1,20}")) {
                 throw new InvalidNameException("Your username is too long!");
             }
-
-        } else {
-                throw new InvalidNameException("Enter a valid username!");
         }
     }
 
@@ -52,27 +53,24 @@ public class ValidName {
             usernameTest(name);
             return true;
         } catch (InvalidNameException e){
-            throw new InvalidNameException(e.getMessage());
+            return false;
         }
     }
 
-    public static boolean carpartNameTest(String name) throws InvalidNameException{
+    public static void carpartNameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆa-zøåæ0-9._]+([ ]([A-ZØÅÆa-zøåæ0-9._]+))*");
-        boolean valid = false;
         if(name.equals("")){
             throw new InvalidNameException("Please insert a name");
         }
 
         if(name.matches(reg.getPattern())){
             if (name.matches(".{1,25}")){
-                valid = true;
             } else{
                 throw new InvalidNameException("Name is too long");
             }
         } else {
             throw new InvalidNameException("Name is invalid");
         }
-        return valid;
     }
 
     public static boolean uniqueCarNameTest(String newCarName, String user) throws IOException, ClassNotFoundException {
@@ -97,14 +95,11 @@ public class ValidName {
     }
 
     public static boolean carNameTest(String newCarName) throws InvalidNameException{
-        boolean valid;
         try{
             ValidName.carpartNameTest(newCarName);
-            valid = true;
+            return true;
         } catch (InvalidNameException e){
-            throw new InvalidNameException(e.getMessage());
+            return false;
         }
-
-        return valid;
     }
 }

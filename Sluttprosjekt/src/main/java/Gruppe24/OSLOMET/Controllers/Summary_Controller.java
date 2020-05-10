@@ -67,7 +67,7 @@ public class Summary_Controller implements Initializable {
 
     void btnNameCar(ActionEvent event) throws InvalidNameException, IOException {
         /* Throws InvalidNameException*/
-        ValidName.carNameTest(txtCarName.getText());
+        ValidName.carpartNameTest(txtCarName.getText());
 
         boolean unique;
 
