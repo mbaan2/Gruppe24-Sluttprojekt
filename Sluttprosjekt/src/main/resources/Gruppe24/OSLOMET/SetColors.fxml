@@ -16,7 +16,7 @@
          </font></Label>
       <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3aafa9;">
          <content>
-            <StackPane prefHeight="196.0" prefWidth="557.0">
+            <StackPane prefHeight="190.0" prefWidth="557.0">
                <children>
                   <VBox fx:id="vboxColor" alignment="CENTER" prefHeight="198.0" prefWidth="557.0" />
                </children>
