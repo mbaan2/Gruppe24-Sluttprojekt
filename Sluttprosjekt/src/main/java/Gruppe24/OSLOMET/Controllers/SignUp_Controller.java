@@ -171,7 +171,7 @@ public class SignUp_Controller implements Initializable {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         } catch (IOException | ClassNotFoundException e) {
             choiceBox.setDisable(true);
-            signupLbl.setText("Encountered an error. Contact your administrator for file restoration.");
+            signupLbl.setText(e.getMessage());
         }
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
@@ -182,7 +182,7 @@ public class SignUp_Controller implements Initializable {
         try {
             App.setRoot("login");
         } catch (IOException e){
-            signupLblError.setText(e.getMessage());
+            signupLblError.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e){
             signupLblError.setText("There is an error in loading the next screen, please contact your developer.");
         }
