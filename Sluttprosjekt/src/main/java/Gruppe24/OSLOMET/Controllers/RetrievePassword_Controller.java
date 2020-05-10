@@ -40,6 +40,7 @@ public class RetrievePassword_Controller implements Initializable {
         setNotVisible();
         newUserTable.attachTableView(tableView);
         tableView.setVisible(false);
+        choiceBox.setDisable(true);
 
         Platform.runLater(() -> {
             try {
@@ -80,6 +81,7 @@ public class RetrievePassword_Controller implements Initializable {
                 String secretQ = user.getSecretQ();
 
                 if (username.trim().equals(usernameTxt.getText())) {
+                    retrieveLbl.setText("");
                     usernameError.setText("");
                     answerError.setText("");
                     choiceBoxError.setText("");
@@ -95,6 +97,7 @@ public class RetrievePassword_Controller implements Initializable {
                     usernameLbl.setLayoutY(139);
                     usernameError.setLayoutY(160);
                     usernameTxt.setLayoutY(156);
+                    choiceBox.getStyleClass().add("retrieve-box");
                 }
                 if (usernameTxt.getText().equals("")) {
                     usernameError.setText("Enter a username!");
@@ -109,6 +112,7 @@ public class RetrievePassword_Controller implements Initializable {
 
     @FXML
     void retrievePwBtn(ActionEvent event) {
+        retrieveLbl.setText("");
         try {
             userList = FileOpenerJobj.openUserList();
 
@@ -120,7 +124,7 @@ public class RetrievePassword_Controller implements Initializable {
                 String secretQ = user.getSecretQ();
                 String questionAnswer = user.getSecretQAnswer();
 
-                if (choiceBox.getValue().equals(secretQ)) {
+                if (choiceBox.getValue().equals(secretQ) && usernameTxt.getText().equals(username)) {
                     choiceBoxError.setText("");
                     User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
                     if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
@@ -136,13 +140,13 @@ public class RetrievePassword_Controller implements Initializable {
                         setNotVisible();
                         return;
                     }
-                } else {
-                    choiceBoxError.setText("Wrong secret question!");
-                }
-                if (answerTxt.getText().isEmpty()) {
-                    answerError.setText("Enter an answer!");
-                } else if (!questionAnswer.trim().equals(answerTxt.getText())) {
-                    answerError.setText("Wrong answer!");
+                    if (answerTxt.getText().isEmpty()) {
+                        answerError.setText("Enter an answer!");
+                        return;
+                    } else if (!questionAnswer.trim().equals(answerTxt.getText())) {
+                        answerError.setText("Wrong answer!");
+                        return;
+                    }
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
