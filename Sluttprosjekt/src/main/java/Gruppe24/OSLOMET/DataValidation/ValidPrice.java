@@ -14,7 +14,7 @@ public class ValidPrice{
             priceTest(price);
             return true;
         } catch (InvalidPriceException e){
-            throw new InvalidPriceException(e.getMessage());
+            return false;
         }
     }
 }
