@@ -44,6 +44,8 @@ public class UserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        superuserInfo.setShowDelay(Duration.millis(100.0));
+        superuserInfo.setHideDelay(Duration.millis(200.0));
         Platform.runLater(() -> {
             try {
                 Stage stage = (Stage) userViewPane.getScene().getWindow();
