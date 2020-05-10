@@ -188,8 +188,9 @@ public class UserCarView_Controller implements Initializable {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save your cars to a txt file!");
-        alert.setHeaderText("");
-        alert.setContentText("Do you want to overwrite your cars or append them to your list?" + "\n\nEither option creates a new file in case you dont have one. Your new file will be named " + username + "sCars.txt");
+        alert.setHeaderText("Do you want to overwrite your list or append cars to it?");
+        alert.setContentText("Your cars will be saved to " + username + "sCars.txt\nMake sure your file is closed before saving.\nEither option creates a new file, in case you do not have one.");
+        alert.setHeight(200);
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);

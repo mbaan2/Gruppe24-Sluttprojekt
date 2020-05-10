@@ -23,6 +23,34 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class RetrievePassword_Controller implements Initializable {
+    EditUserRegisterTV newUserTable = new EditUserRegisterTV();
+    HashMap<String, String> userBase = new HashMap<>();
+    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            retrieveLbl.setText(e.getMessage());
+        }
+
+        addChkBoxItems();
+        setNotVisible();
+        newUserTable.attachTableView(tableView);
+        tableView.setVisible(false);
+
+        Platform.runLater(() -> {
+            try {
+                Stage stage = (Stage) registerPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                retrieveLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+        });
+    }
 
     @FXML
     private AnchorPane registerPane;
@@ -42,46 +70,40 @@ public class RetrievePassword_Controller implements Initializable {
     @FXML
     private TableView<User> tableView;
 
-    EditUserRegisterTV newUserTable = new EditUserRegisterTV();
-    HashMap<String, String> userBase = new HashMap<>();
-    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-    List<User> userList = new ArrayList<>();
-
-
     @FXML
     void nextButton(ActionEvent event) {
         try {
             userList = FileOpenerJobj.openUserList();
+
+            for (User user : userList) {
+                String username = user.getUsername();
+                String secretQ = user.getSecretQ();
+
+                if (username.trim().equals(usernameTxt.getText())) {
+                    usernameError.setText("");
+                    answerError.setText("");
+                    choiceBoxError.setText("");
+                    newUserTable.resetTableView();
+                    choiceBox.setVisible(true);
+                    answerLbl.setVisible(true);
+                    answerTxt.setVisible(true);
+                    answerTxt.setText("");
+                    passwordBtn.setVisible(true);
+                    choiceBox.setValue(secretQ);
+                    newUserTable.setNotVisible(tableView);
+                    nextBtn.setLayoutY(192);
+                    usernameLbl.setLayoutY(139);
+                    usernameError.setLayoutY(160);
+                    usernameTxt.setLayoutY(156);
+                }
+                if (usernameTxt.getText().equals("")) {
+                    usernameError.setText("Enter a username!");
+                } else if (!userBase.containsKey(usernameTxt.getText())) {
+                    usernameError.setText("Username doesn't exist!");
+                }
+            }
         } catch (IOException | ClassNotFoundException e) {
-            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
-        }
-
-        for (User user : userList) {
-            String username = user.getUsername();
-            String secretQ = user.getSecretQ();
-
-            if (username.trim().equals(usernameTxt.getText())) {
-                usernameError.setText("");
-                answerError.setText("");
-                choiceBoxError.setText("");
-                newUserTable.resetTableView();
-                choiceBox.setVisible(true);
-                answerLbl.setVisible(true);
-                answerTxt.setVisible(true);
-                answerTxt.setText("");
-                passwordBtn.setVisible(true);
-                choiceBox.setValue(secretQ);
-                newUserTable.setNotVisible(tableView);
-                nextBtn.setLayoutY(192);
-                usernameLbl.setLayoutY(139);
-                usernameError.setLayoutY(160);
-                usernameTxt.setLayoutY(156);
-            }
-            if (usernameTxt.getText().equals("")) {
-                usernameError.setText("Enter a username!");
-            } else if (!userBase.containsKey(usernameTxt.getText())) {
-                usernameError.setText("Username doesn't exist!");
-            }
+            retrieveLbl.setText(e.getMessage());
         }
     }
 
@@ -89,56 +111,54 @@ public class RetrievePassword_Controller implements Initializable {
     void retrievePwBtn(ActionEvent event) {
         try {
             userList = FileOpenerJobj.openUserList();
-        } catch (IOException | ClassNotFoundException e) {
-            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
-        }
 
-        for (User user : userList) {
-            String username = user.getUsername();
-            String password = user.getPassword();
-            String location = user.getLocation();
-            String gender = user.getGender();
-            String secretQ = user.getSecretQ();
-            String questionAnswer = user.getSecretQAnswer();
+            for (User user : userList) {
+                String username = user.getUsername();
+                String password = user.getPassword();
+                String location = user.getLocation();
+                String gender = user.getGender();
+                String secretQ = user.getSecretQ();
+                String questionAnswer = user.getSecretQAnswer();
 
-            if (choiceBox.getValue().equals(secretQ)) {
-                choiceBoxError.setText("");
-                User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
-                if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
+                if (choiceBox.getValue().equals(secretQ)) {
                     choiceBoxError.setText("");
-                    answerError.setText("");
-                    // Adding values to the tableview
-                    newUserTable.addElement(newUser);
-                    newUserTable.setVisible(tableView);
-                    nextBtn.setLayoutY(268);
-                    usernameTxt.setLayoutY(239);
-                    usernameLbl.setLayoutY(221);
-                    usernameError.setLayoutY(244);
-                    setNotVisible();
-                    return;
+                    User newUser = new User(username, password, location, gender, secretQ, questionAnswer);
+                    if (username.trim().equals(usernameTxt.getText()) && questionAnswer.trim().equals(answerTxt.getText())) {
+                        choiceBoxError.setText("");
+                        answerError.setText("");
+                        // Adding values to the tableview
+                        newUserTable.addElement(newUser);
+                        newUserTable.setVisible(tableView);
+                        nextBtn.setLayoutY(268);
+                        usernameTxt.setLayoutY(239);
+                        usernameLbl.setLayoutY(221);
+                        usernameError.setLayoutY(244);
+                        setNotVisible();
+                        return;
+                    }
+                } else {
+                    choiceBoxError.setText("Wrong secret question!");
                 }
-            } else {
-                choiceBoxError.setText("Wrong secret question!");
+                if (answerTxt.getText().isEmpty()) {
+                    answerError.setText("Enter an answer!");
+                } else if (!questionAnswer.trim().equals(answerTxt.getText())) {
+                    answerError.setText("Wrong answer!");
+                }
             }
-            if (answerTxt.getText().isEmpty()) {
-                answerError.setText("Enter an answer!");
-            } else if (!questionAnswer.trim().equals(answerTxt.getText())) {
-                answerError.setText("Wrong answer!");
-            }
+        } catch (IOException | ClassNotFoundException e) {
+            retrieveLbl.setText(e.getMessage());
         }
     }
-
 
     @FXML
     void loginBtn() {
         try {
             App.setRoot("login");
         } catch (IOException e){
-            retrieveLbl.setText(e.getMessage());
+            retrieveLbl.setText("An error has occurred, please contact your developer.");
         } catch (IllegalStateException e){
             retrieveLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
-
     }
 
     private void addChkBoxItems() {
@@ -147,12 +167,11 @@ public class RetrievePassword_Controller implements Initializable {
         checkBoxList.add(checkBoxQuestion);
         try {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
+            choiceBox.getItems().addAll(checkBoxList);
+            choiceBox.setValue(checkBoxQuestion);
         } catch (IOException | ClassNotFoundException e) {
-            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+            retrieveLbl.setText(e.getMessage());
         }
-
-        choiceBox.getItems().addAll(checkBoxList);
-        choiceBox.setValue(checkBoxQuestion);
     }
 
     private void setNotVisible() {
@@ -162,31 +181,5 @@ public class RetrievePassword_Controller implements Initializable {
         passwordBtn.setVisible(false);
         answerTxt.setText("");
         usernameTxt.setText("");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            userBase = FileOpenerJobj.openFileHashMap();
-        } catch (IOException | ClassNotFoundException e){
-            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
-        }
-
-        addChkBoxItems();
-        setNotVisible();
-        newUserTable.attachTableView(tableView);
-        tableView.setVisible(false);
-
-
-        Platform.runLater(() -> {
-            try {
-                Stage stage = (Stage) registerPane.getScene().getWindow();
-                stage.setWidth(600);
-                stage.setHeight(470);
-            } catch (ExceptionInInitializerError e) {
-                retrieveLbl.setText("Error in setting the proper width and height, resize the window manually.");
-            }
-
-        });
     }
 }
