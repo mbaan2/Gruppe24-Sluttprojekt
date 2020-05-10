@@ -19,8 +19,7 @@ Directory Controllers
     * Filetreatment needs to be checked
     * Buttons needs to be tested
 
-- Summary_Controller
-    * Done but needs checking and testing
+- Summary_Controller (DONE)
 
 - SuperUSer_Controller
     * Button to other screen need testing
@@ -34,11 +33,7 @@ Directory Controllers
     * Creating file needs testing?
     * Buttons to other screens need testing
 
-- UserCarView
-    * Saving file needs testing
-    * Thread needs testing
-    * Loading file needs testing
-    * Buttons to other screens need testing
+- UserCarView (DONE)
 
 - Userlist_Controller
     * Buttons to other screen need testing
