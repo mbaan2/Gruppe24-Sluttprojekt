@@ -22,6 +22,29 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SignUp_Controller implements Initializable {
+    final ToggleGroup toggleGroup = new ToggleGroup();
+    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
+    List<User> userList;
+    HashMap<String, String> userBase = new HashMap<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBox.setDisable(false);
+        addChkBoxItems();
+        checkOther.setToggleGroup(toggleGroup);
+        checkFemale.setToggleGroup(toggleGroup);
+        checkMale.setToggleGroup(toggleGroup);
+
+        Platform.runLater(() -> {
+            try {
+                Stage stage = (Stage) signupPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                signupLblError.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+        });
+    }
 
     @FXML
     private AnchorPane signupPane;
@@ -38,20 +61,14 @@ public class SignUp_Controller implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox;
 
-    final ToggleGroup toggleGroup = new ToggleGroup();
-    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-    public List<User> userList;
-    public HashMap<String, String> userBase = new HashMap<>();
-
     @FXML
-    void signUp(ActionEvent event) throws IOException, InvalidNameException, ClassNotFoundException {
+    void signUp(ActionEvent event) {
         passwordError.setText("");
         usernameError.setText("");
         locationError.setText("");
         secretQError.setText("");
         answerError.setText("");
         genderError.setText("");
-
 
         String username = "";
         if(!signupUsername.getText().isEmpty()) {
@@ -63,7 +80,9 @@ public class SignUp_Controller implements Initializable {
                 usernameError.setText(e.getMessage());
             }
         }
+
         String password = signupPassword.getText();
+
         String location = "";
         if(!signupLocation.getText().isEmpty()) {
             try {
@@ -73,24 +92,26 @@ public class SignUp_Controller implements Initializable {
                 locationError.setText(e.getMessage());
             }
         }
+
         String gender = "";
         String answer = answerTxt.getText();
         String secretQ = choiceBox.getValue();
 
         if(checkFemale.isSelected()) {
             gender = "Female";
-        }
-        if(checkMale.isSelected()) {
+        } else if(checkMale.isSelected()) {
             gender = "Male";
-        }
-        if(checkOther.isSelected()) {
+        } else if(checkOther.isSelected()) {
             gender = "Other";
         }
 
         if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
             User newUser = new User(username, password, location, gender, secretQ, answer);
-
-            userList = FileOpenerJobj.openUserList();
+            try {
+                userList = FileOpenerJobj.openUserList();
+            } catch (IOException | ClassNotFoundException e){
+                signupLblError.setText(e.getMessage());
+            }
 
             try {
                 userBase = FileOpenerJobj.openFileHashMap();
@@ -105,7 +126,7 @@ public class SignUp_Controller implements Initializable {
                     FileSaverJobj.SaveUser(userBase);
                     signupLbl.setText("User created!");
                 } catch (IOException e) {
-                    signupLblError.setText("Encountered an error. Contact your administrator for file restoration.");
+                    signupLblError.setText(e.getMessage());
                 }
             } else {
                 usernameError.setText("Username already exists!");
@@ -117,9 +138,7 @@ public class SignUp_Controller implements Initializable {
                     userList.add(newUser);
                     FileSaverJobj.SaveUserList(userList);
                 } catch (IOException e) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText(e.getMessage());
-                    alert.setHeaderText("File not found");
+                    signupLblError.setText(e.getMessage());
                 }
             }
         } else {
@@ -168,26 +187,6 @@ public class SignUp_Controller implements Initializable {
         } catch (IllegalStateException e){
             signupLblError.setText("There is an error in loading the next screen, please contact your developer.");
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBox.setDisable(false);
-        addChkBoxItems();
-        checkOther.setToggleGroup(toggleGroup);
-        checkFemale.setToggleGroup(toggleGroup);
-        checkMale.setToggleGroup(toggleGroup);
-
-        Platform.runLater(() -> {
-            try {
-                Stage stage = (Stage) signupPane.getScene().getWindow();
-                stage.setWidth(600);
-                stage.setHeight(470);
-            } catch (ExceptionInInitializerError e) {
-                signupLblError.setText("Error in setting the proper width and height, resize the window manually.");
-            }
-
-        });
     }
 }
 
