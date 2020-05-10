@@ -34,7 +34,7 @@ public class Summary_Controller implements Initializable {
     private Label lblErrorSummary, summaryLbl;
 
     @FXML
-    private Button btnBuildCar , btnSaveCarToText;
+    private Button btnSaveCarToText;
 
     @FXML
     private TextField txtCarName;
@@ -68,7 +68,6 @@ public class Summary_Controller implements Initializable {
     void btnNameCar(ActionEvent event) throws InvalidNameException, IOException {
         /* Throws InvalidNameException*/
         ValidName.carNameTest(txtCarName.getText());
-
 
         boolean unique;
 
@@ -110,7 +109,6 @@ public class Summary_Controller implements Initializable {
         } catch (IOException e){
             lblErrorSummary.setText("An error has occurred please contact the developer.");
         }
-
     }
 
     public void overwriteCar(){
@@ -127,7 +125,7 @@ public class Summary_Controller implements Initializable {
                     }
                 }
             }
-        }catch (IOException e){
+        } catch (IOException e){
             lblErrorSummary.setText("An error occurred while opening the Car file. Please contact the superUser to restore the file.");
         }
 
@@ -141,7 +139,6 @@ public class Summary_Controller implements Initializable {
         } catch (IOException e){
             lblErrorSummary.setText("An error occurred while saving the file, please contact the developer.");
         }
-
     }
 
     @FXML
@@ -177,7 +174,6 @@ public class Summary_Controller implements Initializable {
         }
     }
 
-
     @FXML
     void backBtn() {
         btnSaveCarToText.setVisible(false);
@@ -190,37 +186,42 @@ public class Summary_Controller implements Initializable {
         }
     }
 
-
     //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
     void btnToWelcomeScreen(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Return to homepage");
-        alert.setHeaderText("");
-        alert.setContentText("Returning to the homepage, this will reset your current car.\nRemember to save it if you haven't already!");
-        ButtonType returnHome = new ButtonType("Go to home");
-        ButtonType cancel  = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(returnHome, cancel);
-        Optional<ButtonType> result = alert.showAndWait();
+        if(txtCarName.isDisable()){
+            backToWelcomeScreen();
+        } else {
+            /*If car hasnt been saved yet: */
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Return to homepage");
+            alert.setHeaderText("");
+            alert.setContentText("Returning to the homepage, this will reset your current car.\nRemember to save it if you haven't already!");
+            ButtonType returnHome = new ButtonType("Go to home");
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(returnHome, cancel);
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if(result.isPresent()) {
-            if(result.get() == returnHome) {
-                try {
-                    App.setRoot("WelcomeScreen");
-                    String username = App.car.getUser();
-                    App.startCarBuildingProcess();
-                    App.car.setUser(username);
-                    txtCarName.setVisible(false);
-                    btnBuildCar.setDisable(false);
-                    btnSaveCarToText.setVisible(false);
-                } catch (IllegalStateException e) {
-                    lblErrorSummary.setText("There is an error in loading the next screen, please contact your developer.");
-                } catch (IOException e) {
-                   lblErrorSummary.setText("An error has occurred please contact your developer.");
+            if (result.isPresent()) {
+                if (result.get() == returnHome) {
+                    backToWelcomeScreen();
+                } else {
+                    lblErrorSummary.setText("Process cancelled, staying in the summary page.");
                 }
-            } else {
-                lblErrorSummary.setText("Process cancelled, staying in the summary page.");
             }
+        }
+    }
+
+    public void backToWelcomeScreen(){
+        try {
+            App.setRoot("WelcomeScreen");
+            String username = App.car.getUser();
+            App.startCarBuildingProcess();
+            App.car.setUser(username);
+        } catch (IllegalStateException e) {
+            lblErrorSummary.setText("There is an error in loading the next screen, please contact your developer.");
+        } catch (IOException e) {
+            lblErrorSummary.setText("An error has occurred please contact your developer.");
         }
     }
 

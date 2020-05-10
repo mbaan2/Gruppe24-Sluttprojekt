@@ -25,25 +25,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class SuperUserCarView_Controller implements Initializable {
-
-    @FXML
-    private AnchorPane superUserViewPane;
-
-    @FXML
-    private TableView<NewCar> tableView;
-
-    @FXML
-    private ChoiceBox<String> filterBox;
-
-    @FXML
-    private TextField filterText;
-
-    @FXML
-    private Label filterLbl;
-
-    @FXML
-    private Button filterBtn, backBtn, resetFilterBtn;
-
     TableViewCreation createView = new TableViewCreation();
     ObservableList<NewCar> carList = FXCollections.observableArrayList();
 
@@ -119,6 +100,24 @@ public class SuperUserCarView_Controller implements Initializable {
             tableView.refresh();
         });
     }
+
+    @FXML
+    private AnchorPane superUserViewPane;
+
+    @FXML
+    private TableView<NewCar> tableView;
+
+    @FXML
+    private ChoiceBox<String> filterBox;
+
+    @FXML
+    private TextField filterText;
+
+    @FXML
+    private Label filterLbl;
+
+    @FXML
+    private Button filterBtn, backBtn, resetFilterBtn;
 
     @FXML
     void btnBack(ActionEvent event) {

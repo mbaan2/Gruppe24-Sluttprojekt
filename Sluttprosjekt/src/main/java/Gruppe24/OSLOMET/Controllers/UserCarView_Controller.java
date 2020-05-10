@@ -36,6 +36,47 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class UserCarView_Controller implements Initializable {
+    ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tvLabel.setText("Loading cars...");
+        addChoiceBoxItems();
+        superuserInfo.setShowDelay(Duration.millis(50));
+        superuserInfo.setHideDelay(Duration.millis(1000));
+        backBtn.setDisable(true);
+        filterBtn.setDisable(true);
+        resetFilterBtn.setDisable(true);
+        saveTable.setDisable(true);
+        tableView.setVisible(false);
+        createView.initializeTv(tableView, tvLabel, false);
+
+
+        Platform.runLater(() -> {
+            try {
+                Stage stage = (Stage) userViewPane.getScene().getWindow();
+                stage.setWidth(1081);
+                stage.setHeight(500);
+            } catch (ExceptionInInitializerError e) {
+                tvLabel.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
+            filterBtn.setDisable(false);
+            backBtn.setDisable(false);
+            resetFilterBtn.setDisable(false);
+            saveTable.setDisable(false);
+            tableView.setVisible(true);
+            tvLabel.setText("Cars loaded!");
+            executor.submit(setTableview);
+            tableView.refresh();
+            tableView.setEditable(false);
+            usersCarList.removeAll();
+            usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
+            tableView.setItems(usersCarList);
+            tableView.getColumns().remove(tableView.getColumns().size()-1);
+        });
+    }
+
 
     @FXML
     private AnchorPane userViewPane;
@@ -58,14 +99,12 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private Tooltip superuserInfo;
 
-    ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
-
     @FXML
     void goBack() {
         try {
             App.setRoot("WelcomeScreen");
         } catch (IOException e) {
-            tvLabel.setText(e.getMessage());
+            tvLabel.setText("An error has occurred please contact your developer.");
         } catch (IllegalStateException e) {
             tvLabel.setText("There is an error in loading the next screen, please contact your developer.");
         }
@@ -165,49 +204,4 @@ public class UserCarView_Controller implements Initializable {
     });
 
     TableViewCreation createView = new TableViewCreation();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvLabel.setText("Loading cars...");
-        addChoiceBoxItems();
-        superuserInfo.setShowDelay(Duration.millis(50));
-        superuserInfo.setHideDelay(Duration.millis(1000));
-        backBtn.setDisable(true);
-        filterBtn.setDisable(true);
-        resetFilterBtn.setDisable(true);
-        saveTable.setDisable(true);
-        tableView.setVisible(false);
-        createView.initializeTv(tableView, tvLabel, false);
-
-
-        Platform.runLater(() -> {
-            try {
-                Stage stage = (Stage) userViewPane.getScene().getWindow();
-                stage.setWidth(1081);
-                stage.setHeight(500);
-            } catch (ExceptionInInitializerError e) {
-                tvLabel.setText("Error in setting the proper width and height, resize the window manually.");
-            }
-
-            filterBtn.setDisable(false);
-            backBtn.setDisable(false);
-            resetFilterBtn.setDisable(false);
-            saveTable.setDisable(false);
-            tableView.setVisible(true);
-            tvLabel.setText("Cars loaded!");
-            executor.submit(setTableview);
-            tableView.refresh();
-            tableView.setEditable(false);
-            usersCarList.removeAll();
-            usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
-            tableView.setItems(usersCarList);
-            tableView.getColumns().remove(tableView.getColumns().size()-1);
-            /*tableView.getColumns().get(
-                    tableView.getColumns().size()-2).getColumns().get(
-                            tableView.getColumns().get(tableView.getColumns().size()-1).getColumns().size()
-            ).forEach(Button button -> );
-
-             */
-        });
-    }
 }
