@@ -241,7 +241,6 @@ public class TableViewCreation {
             // Setting the data in the addons columns depending on how many addons there are - and adding checkboxes to the columns.
             // If the checkboxes are checked or unchecked it will update the car in realtime and save it to the cars.jobj file.
             for (int j = 0; j < maxNrAddons; j++) {
-                //TableColumn<NewCar, CheckBox> tc = (TableColumn<NewCar, CheckBox>) addon.getColumns().get(j);
                 int finalJ = j;
                 // Based on: https://o7planning.org/en/11079/javafx-tableview-tutorial
                 TableColumn<NewCar, Boolean> tc = (TableColumn<NewCar, Boolean>) addon.getColumns().get(j);
