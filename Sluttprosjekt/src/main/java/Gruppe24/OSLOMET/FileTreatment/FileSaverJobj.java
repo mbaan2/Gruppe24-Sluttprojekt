@@ -24,7 +24,7 @@ public class FileSaverJobj {
         }
     }
 
-    public static void SavingCarArray(String path, List<NewCar> carList) throws OpenFileException {
+    public static void SavingCarArray(String path, List<NewCar> carList) throws SaveFileException {
         try{
             ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
             os1.writeObject(carList.get(0));
@@ -40,7 +40,7 @@ public class FileSaverJobj {
                 os2.close();
             }
         } catch (IOException e){
-            throw new OpenFileException("Problems with loading file, please close the program and start over. If this happens again contact the developer.");
+            throw new SaveFileException("Problems with loading file, please close the program and start over. If this happens again contact the developer.");
         }
     }
 

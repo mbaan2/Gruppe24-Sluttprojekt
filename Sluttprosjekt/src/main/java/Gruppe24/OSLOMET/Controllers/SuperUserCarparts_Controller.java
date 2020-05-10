@@ -117,10 +117,10 @@ public class SuperUserCarparts_Controller implements Initializable {
     public void loadCategory(){
         try {
             carCategory = LoadCategory.loadCategory(chbCategory.getValue());
+            createButtonsThread();
         } catch (ClassNotFoundException | IOException e){
             superUserLbl.setText(e.getMessage());
         }
-        createButtonsThread();
     }
 
     public void createButtonsThread(){
@@ -176,7 +176,7 @@ public class SuperUserCarparts_Controller implements Initializable {
             ValidName.carpartNameTest(txtName.getText());
             name = txtName.getText();
         } catch (InvalidNameException e) {
-            lblNameError.setText("Enter a valid carpart name!");
+            lblNameError.setText(e.getMessage());
             superUserLbl.setText("");
         }
 
@@ -186,7 +186,7 @@ public class SuperUserCarparts_Controller implements Initializable {
             ValidPrice.priceTest(Integer.parseInt(costString));
             cost = Integer.parseInt(costString);
         } catch (NumberFormatException | InvalidPriceException e) {
-            lblCostError.setText("Enter a valid cost!");
+            lblCostError.setText(e.getMessage());
             superUserLbl.setText("");
         }
         int amountSelected = 0;

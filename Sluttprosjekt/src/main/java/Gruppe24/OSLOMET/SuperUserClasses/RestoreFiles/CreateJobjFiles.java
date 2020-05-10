@@ -24,7 +24,7 @@ public class CreateJobjFiles {
     HashMap<String, String> userBase = new HashMap<>();
     List<String> secretQList = new ArrayList<>();
 
-    public void createCars() throws OpenFileException {
+    public void createCars() throws SaveFileException {
         setCars();
         FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
     }

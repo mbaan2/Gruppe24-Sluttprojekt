@@ -61,4 +61,14 @@ public class SaveCarparts {
         }
     }
 
-}
+    public static void saving(List<Carparts> carCategory, Path filsti) throws IOException {
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, carCategory);
+        } catch (IOException e){
+            throw new IOException(e.getMessage());
+        }
+
+    }
+
+
+    }
