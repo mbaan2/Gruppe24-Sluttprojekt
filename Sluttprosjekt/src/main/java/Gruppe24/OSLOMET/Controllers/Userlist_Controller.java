@@ -181,7 +181,7 @@ public class Userlist_Controller implements Initializable {
                 CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
                 try {
                     restoreSecretQ.createSecretQ();
-                    secretQ.setEditable(true);
+                    secretQ.setEditable(false);
                     notEditable.close();
                 } catch (SaveFileException e1) {
                     Alert fail = new Alert(Alert.AlertType.INFORMATION);
@@ -193,11 +193,10 @@ public class Userlist_Controller implements Initializable {
                 }
             } else {
                 secretQ.setEditable(false);
-                notEditable.close();
             }
         } catch (ClassNotFoundException e) {
             lblUserList.setText("Class not found when loading secret questions.");
-            secretQ.setEditable(false);
+            //secretQ.setEditable(false);
         }
         secretQObsList.addAll(secretQList);
         // Setting the data for the secret question and how editing works for that column.
@@ -343,7 +342,7 @@ public class Userlist_Controller implements Initializable {
     }
 
     @FXML
-    void btnResetFilter() throws IOException, ClassNotFoundException {
+    void btnResetFilter() {
         filterTxt.setText("");
         lblUserList.setText("TableView reset.");
         tableView.setItems(userList1);
@@ -363,6 +362,7 @@ public class Userlist_Controller implements Initializable {
         executor.shutdownNow();
     }
 
+    // Adding strings to the filter choicebox
     private void addChkBoxItems() {
         choiceBoxOptions.removeAll();
         String chBoxFilter = "Select a filter!";
@@ -376,6 +376,7 @@ public class Userlist_Controller implements Initializable {
         choiceBox.setValue(chBoxFilter);
     }
 
+    // The method for deleting the user - it will delete it from both the users.jobj and the userlist.jobj file.
     void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
         userList.remove(user);
         userBase.remove(user.getUsername(), user.getPassword());
@@ -389,6 +390,7 @@ public class Userlist_Controller implements Initializable {
         tv.refresh();
     }
 
+    // The method to save the changes when editing / deleting users. It will save the updated or removed user to both users.jobj and userlist.jobj.
     private void btnSaveChanges() {
         List<User> newList = new ArrayList<>(userList1);
         try {
@@ -425,6 +427,7 @@ public class Userlist_Controller implements Initializable {
         return t;
     });
 
+    // The values for the combobox in the gender column.
     public ObservableList<String> genderList() {
         ObservableList<String> secretQList = FXCollections.observableArrayList();
 
@@ -436,6 +439,7 @@ public class Userlist_Controller implements Initializable {
         return secretQList;
     }
 
+    // Making sure the secretq.jobj list will always be the same value.
     public static void comboBoxList() throws IOException, ClassNotFoundException {
         List<String> comboBoxList;
         comboBoxList = FileOpenerJobj.openSecretQList();
