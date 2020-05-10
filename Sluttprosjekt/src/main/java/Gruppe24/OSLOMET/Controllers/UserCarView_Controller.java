@@ -55,6 +55,9 @@ public class UserCarView_Controller implements Initializable {
         createView.initializeTv(tableView, tvLabel, false);
         addChoiceBoxItems();
 
+        /*Setting labels based on tabelview creation
+          Some adoption are made here since it uses the same table as the superuser but
+           the user isnt allowed the same functionality */
         if(tvLabel.getText().equals("Loading cars...")) {
             tvLabel.setText("Cars loaded!");
         } else if(tvLabel.getText().equals("Could not load user base.")) {
@@ -88,6 +91,8 @@ public class UserCarView_Controller implements Initializable {
         usersCarList.removeAll();
         usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
         tableView.setItems(usersCarList);
+        
+        /*Removing the delete column */
         tableView.getColumns().remove(tableView.getColumns().size()-1);
     }
 
