@@ -222,8 +222,8 @@ public class SuperUserCarparts_Controller implements Initializable {
             ValidPrice.priceTest(Integer.parseInt(costString));
             cost = Integer.parseInt(costString);
         } catch (NumberFormatException | InvalidPriceException e) {
-                lblCostError.setText("Enter a valid price!");
-                superUserLbl.setText("");
+            lblCostError.setText("Enter a valid price!");
+            superUserLbl.setText("");
         }
 
         if(!name.isEmpty() && cost != -1) {
@@ -249,7 +249,6 @@ public class SuperUserCarparts_Controller implements Initializable {
                 lblNameError.setText("Enter a valid name!");
                 superUserLbl.setText("");
             }
-
             if(cost == -1) {
                 lblCostError.setText("Enter a cost!");
                 superUserLbl.setText("");

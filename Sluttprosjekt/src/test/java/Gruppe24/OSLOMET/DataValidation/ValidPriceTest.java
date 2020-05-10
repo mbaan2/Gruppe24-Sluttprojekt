@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ValidPriceTest{
     @Test
     void priceTest() throws InvalidPriceException {
-        assertTrue(ValidPrice.priceTest(1));
-        assertTrue(ValidPrice.priceTest(100));
-        assertTrue(ValidPrice.priceTest(100000));
-        assertTrue(ValidPrice.priceTest(10000000));
+        assertTrue(ValidPrice.validPrice(1));
+        assertTrue(ValidPrice.validPrice(100));
+        assertTrue(ValidPrice.validPrice(100000));
+        assertTrue(ValidPrice.validPrice(10000000));
 
-        assertFalse(ValidPrice.priceTest(-0));
-        assertFalse(ValidPrice.priceTest(-1));
-        assertFalse(ValidPrice.priceTest(0));
-        assertFalse(ValidPrice.priceTest(-900));
+        assertFalse(ValidPrice.validPrice(-0));
+        assertFalse(ValidPrice.validPrice(-1));
+        assertFalse(ValidPrice.validPrice(0));
+        assertFalse(ValidPrice.validPrice(-900));
     }
 }
