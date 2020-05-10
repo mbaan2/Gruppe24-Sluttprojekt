@@ -34,156 +34,6 @@ import java.util.concurrent.Executors;
 
 public class Userlist_Controller implements Initializable {
 
-    @FXML
-    private AnchorPane userListPane;
-
-    @FXML
-    private TableView<User> tableView;
-
-    @FXML
-    private ChoiceBox<String> choiceBox;
-
-    @FXML
-    private TextField filterTxt;
-
-    @FXML
-    private Label lblUserList;
-
-    @FXML
-    private Label lblSecondaryUserList;
-
-    @FXML
-    private Button filterBtn, backBtn, resetFilterBtn;
-
-    ObservableList<String> choiceBoxOptions = FXCollections.observableArrayList();
-    List<User> userList = new ArrayList<>();
-    ObservableList<User> userList1 = FXCollections.observableArrayList();
-    HashMap<String, String> userBase = new HashMap<>();
-    ObservableList<String> secretQObsList = FXCollections.observableArrayList();
-    List<String> secretQList = new ArrayList<>();
-
-    @FXML
-    void btnFilter() {
-        ObservableList<User> filteredList = FXCollections.observableArrayList();
-        String filteredText = filterTxt.getText();
-        String filterType = choiceBox.getValue();
-
-        filteredList.clear();
-        lblUserList.setText("");
-
-        if(filteredText.equals("")) {
-            lblUserList.setText("You didnt enter anything!");
-        }
-        else if(filterType.equals("Select a filter!")) {
-            lblUserList.setText("You didnt choose a filter!");
-        } else {
-            filteredList = Filter.filterUser(filterType, filteredText, userList1, filteredList);
-            lblUserList.setText(Filter.filterUserFeedback(filterType, filteredList));
-            tableView.setItems(filteredList);
-            tableView.refresh();
-        }
-    }
-
-    @FXML
-    void btnResetFilter() throws IOException, ClassNotFoundException {
-        filterTxt.setText("");
-        lblUserList.setText("TableView reset.");
-        tableView.setItems(userList1);
-        choiceBox.setValue("Select a filter!");
-    }
-
-    @FXML
-    void btnBack() {
-        try {
-            App.setRoot("SuperUser");
-            lblSecondaryUserList.setText("");
-        } catch (IOException e) {
-            lblUserList.setText("Program encountered an error. Please contact your developer.");
-        } catch (IllegalStateException e){
-            lblUserList.setText("There is an error in loading the next screen.");
-        }
-        executor.shutdownNow();
-    }
-
-    private void addChkBoxItems() {
-        choiceBoxOptions.removeAll();
-        String chBoxFilter = "Select a filter!";
-        String chBoxType = "Username";
-        String chBoxType2 = "Location";
-        String chBoxType3 = "Gender";
-        String chBoxType4 = "Secret Question";
-
-        choiceBoxOptions.addAll(chBoxFilter, chBoxType, chBoxType2, chBoxType3, chBoxType4);
-        choiceBox.getItems().addAll(choiceBoxOptions);
-        choiceBox.setValue(chBoxFilter);
-    }
-
-    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
-        userList.remove(user);
-        userBase.remove(user.getUsername(), user.getPassword());
-        Path path = Paths.get(user.getUsername() + "sCars.txt");
-        if(!path.toString().isEmpty()) {
-            File selectedFile = new File(String.valueOf(path));
-            selectedFile.delete();
-        }
-        lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
-        btnSaveChanges();
-        tv.refresh();
-    }
-
-    private void btnSaveChanges() {
-        List<User> newList = new ArrayList<>(userList1);
-        try {
-            FileSaverJobj.SaveUserList(newList);
-        } catch (IOException e) {
-            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
-        }
-
-        HashMap<String, String> newMap = new HashMap<>(userBase);
-        try {
-            FileSaverJobj.SaveUser(newMap);
-        } catch (IOException e) {
-            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
-        }
-    }
-
-    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
-    public final Runnable setTableView = () -> {
-        while (!Thread.currentThread().isInterrupted()) {
-            tableView.getItems();
-        }
-    };
-
-    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            lblUserList.setText("Error in fetching the table!");
-        } catch (IllegalStateException e) {
-            System.err.println(e.getMessage());
-        }
-        Thread t = new Thread(runnable);
-        t.setDaemon(true);
-        return t;
-    });
-
-    public ObservableList<String> genderList() {
-        ObservableList<String> secretQList = FXCollections.observableArrayList();
-
-        String gender = "Male";
-        String gender2 = "Female";
-        String gender3 = "Other";
-
-        secretQList.addAll(gender, gender2, gender3);
-        return secretQList;
-    }
-
-    public static void comboBoxList() throws IOException, ClassNotFoundException {
-        List<String> comboBoxList;
-        comboBoxList = FileOpenerJobj.openSecretQList();
-        FileSaverJobj.SaveSecretQList(comboBoxList);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblSecondaryUserList.setText("");
@@ -244,11 +94,11 @@ public class Userlist_Controller implements Initializable {
                 String password1 = user.getRowValue().getPassword();
                 try {
                     ValidName.usernameTest(user.getNewValue());
-                        lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
-                        user.getRowValue().setUsername(user.getNewValue());
-                        userBase.put(user.getNewValue(), user.getRowValue().getPassword());
-                        userBase.remove(username1, password1);
-                        btnSaveChanges();
+                    lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
+                    user.getRowValue().setUsername(user.getNewValue());
+                    userBase.put(user.getNewValue(), user.getRowValue().getPassword());
+                    userBase.remove(username1, password1);
+                    btnSaveChanges();
                 } catch (InvalidNameException e) {
                     lblUserList.setText("Enter a valid username!");
                 }
@@ -413,5 +263,155 @@ public class Userlist_Controller implements Initializable {
                 tableView.setDisable(true);
             }
         });
+    }
+
+    @FXML
+    private AnchorPane userListPane;
+
+    @FXML
+    private TableView<User> tableView;
+
+    @FXML
+    private ChoiceBox<String> choiceBox;
+
+    @FXML
+    private TextField filterTxt;
+
+    @FXML
+    private Label lblUserList;
+
+    @FXML
+    private Label lblSecondaryUserList;
+
+    @FXML
+    private Button filterBtn, backBtn, resetFilterBtn;
+
+    ObservableList<String> choiceBoxOptions = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
+    ObservableList<User> userList1 = FXCollections.observableArrayList();
+    HashMap<String, String> userBase = new HashMap<>();
+    ObservableList<String> secretQObsList = FXCollections.observableArrayList();
+    List<String> secretQList = new ArrayList<>();
+
+    @FXML
+    void btnFilter() {
+        ObservableList<User> filteredList = FXCollections.observableArrayList();
+        String filteredText = filterTxt.getText();
+        String filterType = choiceBox.getValue();
+
+        filteredList.clear();
+        lblUserList.setText("");
+
+        if(filteredText.equals("")) {
+            lblUserList.setText("You didnt enter anything!");
+        }
+        else if(filterType.equals("Select a filter!")) {
+            lblUserList.setText("You didnt choose a filter!");
+        } else {
+            filteredList = Filter.filterUser(filterType, filteredText, userList1, filteredList);
+            lblUserList.setText(Filter.filterUserFeedback(filterType, filteredList));
+            tableView.setItems(filteredList);
+            tableView.refresh();
+        }
+    }
+
+    @FXML
+    void btnResetFilter() throws IOException, ClassNotFoundException {
+        filterTxt.setText("");
+        lblUserList.setText("TableView reset.");
+        tableView.setItems(userList1);
+        choiceBox.setValue("Select a filter!");
+    }
+
+    @FXML
+    void btnBack() {
+        try {
+            App.setRoot("SuperUser");
+            lblSecondaryUserList.setText("");
+        } catch (IOException e) {
+            lblUserList.setText("Program encountered an error. Please contact your developer.");
+        } catch (IllegalStateException e){
+            lblUserList.setText("There is an error in loading the next screen.");
+        }
+        executor.shutdownNow();
+    }
+
+    private void addChkBoxItems() {
+        choiceBoxOptions.removeAll();
+        String chBoxFilter = "Select a filter!";
+        String chBoxType = "Username";
+        String chBoxType2 = "Location";
+        String chBoxType3 = "Gender";
+        String chBoxType4 = "Secret Question";
+
+        choiceBoxOptions.addAll(chBoxFilter, chBoxType, chBoxType2, chBoxType3, chBoxType4);
+        choiceBox.getItems().addAll(choiceBoxOptions);
+        choiceBox.setValue(chBoxFilter);
+    }
+
+    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
+        userList.remove(user);
+        userBase.remove(user.getUsername(), user.getPassword());
+        Path path = Paths.get(user.getUsername() + "sCars.txt");
+        if(!path.toString().isEmpty()) {
+            File selectedFile = new File(String.valueOf(path));
+            selectedFile.delete();
+        }
+        lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
+        btnSaveChanges();
+        tv.refresh();
+    }
+
+    private void btnSaveChanges() {
+        List<User> newList = new ArrayList<>(userList1);
+        try {
+            FileSaverJobj.SaveUserList(newList);
+        } catch (IOException e) {
+            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
+        }
+
+        HashMap<String, String> newMap = new HashMap<>(userBase);
+        try {
+            FileSaverJobj.SaveUser(newMap);
+        } catch (IOException e) {
+            lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
+        }
+    }
+
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableView = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            lblUserList.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println(e.getMessage());
+        }
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
+
+    public ObservableList<String> genderList() {
+        ObservableList<String> secretQList = FXCollections.observableArrayList();
+
+        String gender = "Male";
+        String gender2 = "Female";
+        String gender3 = "Other";
+
+        secretQList.addAll(gender, gender2, gender3);
+        return secretQList;
+    }
+
+    public static void comboBoxList() throws IOException, ClassNotFoundException {
+        List<String> comboBoxList;
+        comboBoxList = FileOpenerJobj.openSecretQList();
+        FileSaverJobj.SaveSecretQList(comboBoxList);
     }
 }
