@@ -112,26 +112,6 @@ public class SuperUserCarView_Controller implements Initializable {
         resetFilterBtn.setVisible(false);
     }
 
-    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
-    public final Runnable setTableview = () -> {
-        while (!Thread.currentThread().isInterrupted()) {
-            tableView.getItems();
-        }
-    };
-
-    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            filterLbl.setText("Error in fetching the table!");
-        } catch (IllegalStateException e) {
-            System.err.println("An error has occurred, please contact the developer");
-        }
-        Thread t = new Thread(runnable);
-        t.setDaemon(true);
-        return t;
-    });
-
     @FXML
     void btnBack(ActionEvent event) {
         try {
@@ -195,4 +175,24 @@ public class SuperUserCarView_Controller implements Initializable {
         filterBox.setValue("Search Filters");
         tableView.refresh();
     }
+
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableview = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            filterLbl.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println("An error has occurred, please contact the developer");
+        }
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
 }
