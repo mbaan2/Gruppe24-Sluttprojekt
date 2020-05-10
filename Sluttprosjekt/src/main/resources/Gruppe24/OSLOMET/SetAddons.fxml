@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -16,7 +17,11 @@
       </Label>
       <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3aafa9;">
          <content>
-            <VBox fx:id="vboxAddOns" alignment="CENTER" prefHeight="198.0" prefWidth="557.0" />
+            <StackPane prefHeight="196.0" prefWidth="557.0">
+               <children>
+                  <VBox fx:id="vboxAddOns" alignment="CENTER" prefHeight="189.0" prefWidth="549.0" />
+               </children>
+            </StackPane>
          </content>
       </ScrollPane>
         <Button fx:id="btnToSummary" onAction="#btnToSummary" style="-fx-background-color: #17252a;" text="Next page" textFill="#def2f1" />
