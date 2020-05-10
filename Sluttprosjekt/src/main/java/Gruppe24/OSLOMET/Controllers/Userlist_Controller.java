@@ -366,14 +366,14 @@ public class Userlist_Controller implements Initializable {
         List<User> newList = new ArrayList<>(userList1);
         try {
             FileSaverJobj.SaveUserList(newList);
-        } catch (IOException e) {
+        } catch (SaveFileException e) {
             lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
 
         HashMap<String, String> newMap = new HashMap<>(userBase);
         try {
             FileSaverJobj.SaveUser(newMap);
-        } catch (IOException e) {
+        } catch (SaveFileException e) {
             lblUserList.setText("Could not save the file, something went wrong! Try restoring the initial file through the superuser homepage.");
         }
     }
