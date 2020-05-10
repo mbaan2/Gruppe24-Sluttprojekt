@@ -20,10 +20,10 @@
             <Label fx:id="summaryLbl" alignment="CENTER" prefHeight="227.0" prefWidth="400.0" textAlignment="CENTER" wrapText="true" />
          </children>
       </VBox>
-      <Button layoutX="525.0" layoutY="375.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
-      <Button layoutX="25.0" layoutY="373.0" onAction="#btnToWelcomeScreen" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
       <Button fx:id="btnSaveCarToText" layoutX="233.0" layoutY="374.0" onAction="#btnSaveCarToText" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: #17252a;" text="Save car to a txt file" textFill="#def2f1" />
       <Button contentDisplay="CENTER" graphicTextGap="0.0" layoutX="25.0" layoutY="324.0" onAction="#backBtn" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #17252a;" text="Back" textAlignment="CENTER" textFill="#def2f1" />
+      <Button layoutX="25.0" layoutY="373.0" onAction="#btnToWelcomeScreen" style="-fx-background-color: #17252a;" text="Home" textFill="#def2f1" />
+      <Button layoutX="525.0" layoutY="375.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
       <Label fx:id="lblErrorSummary" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="594.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>
