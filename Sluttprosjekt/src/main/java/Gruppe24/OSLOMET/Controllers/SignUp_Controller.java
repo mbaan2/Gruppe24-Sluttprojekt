@@ -63,102 +63,94 @@ public class SignUp_Controller implements Initializable {
 
     @FXML
     void signUp(ActionEvent event) {
-        passwordError.setText("");
-        usernameError.setText("");
-        locationError.setText("");
-        secretQError.setText("");
-        answerError.setText("");
-        genderError.setText("");
-
-        String username = "";
-        if(!signupUsername.getText().isEmpty()) {
-            try {
-               ValidName.usernameTest(signupUsername.getText());
-               username = signupUsername.getText();
-            } catch (InvalidNameException e) {
-                usernameError.setText(e.getMessage());
-            }
-        }
-
-        String password = signupPassword.getText();
-
-        String location = "";
-        if(!signupLocation.getText().isEmpty()) {
-            try {
-                ValidName.locationTest(signupLocation.getText());
-                location = signupLocation.getText();
-            } catch (InvalidNameException e) {
-                locationError.setText(e.getMessage());
-            }
-        }
-
-        String gender = "";
-        String answer = answerTxt.getText();
-        String secretQ = choiceBox.getValue();
-
-        if(checkFemale.isSelected()) {
-            gender = "Female";
-        } else if(checkMale.isSelected()) {
-            gender = "Male";
-        } else if(checkOther.isSelected()) {
-            gender = "Other";
-        }
-
-        if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
-            User newUser = new User(username, password, location, gender, secretQ, answer);
-            try {
-                userList = FileOpenerJobj.openUserList();
-            } catch (IOException | ClassNotFoundException e){
-                signupLblError.setText(e.getMessage());
-            }
-
+        try {
+            userList = FileOpenerJobj.openUserList();
             try {
                 userBase = FileOpenerJobj.openFileHashMap();
+                passwordError.setText("");
+                usernameError.setText("");
+                locationError.setText("");
+                secretQError.setText("");
+                answerError.setText("");
+                genderError.setText("");
+
+                String username = "";
+                if(!signupUsername.getText().isEmpty()) {
+                    try {
+                        ValidName.usernameTest(signupUsername.getText());
+                        username = signupUsername.getText();
+                    } catch (InvalidNameException e) {
+                        usernameError.setText(e.getMessage());
+                    }
+                }
+
+                String password = signupPassword.getText();
+
+                String location = "";
+                if(!signupLocation.getText().isEmpty()) {
+                    try {
+                        ValidName.locationTest(signupLocation.getText());
+                        location = signupLocation.getText();
+                    } catch (InvalidNameException e) {
+                        locationError.setText(e.getMessage());
+                    }
+                }
+
+                String gender = "";
+                String answer = answerTxt.getText();
+                String secretQ = choiceBox.getValue();
+
+                if(checkFemale.isSelected()) {
+                    gender = "Female";
+                } else if(checkMale.isSelected()) {
+                    gender = "Male";
+                } else if(checkOther.isSelected()) {
+                    gender = "Other";
+                }
+
+                if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
+                    User newUser = new User(username, password, location, gender, secretQ, answer);
+
+                    //Writing only the username and the password to a hashmap/userlist for logging in unless it already exists in the register.
+                    if(!userBase.containsKey(username) && userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
+                        try {
+                            userList.add(newUser);
+                            FileSaverJobj.SaveUserList(userList);
+                            userBase.put(newUser.getUsername(), newUser.getPassword());
+                            FileSaverJobj.SaveUser(userBase);
+                            signupLbl.setText("User created!");
+                        } catch (IOException e) {
+                            signupLblError.setText(e.getMessage());
+                        }
+                    } else {
+                        usernameError.setText("Username already exists!");
+                    }
+                } else {
+                    if(signupUsername.getText().isEmpty()) {
+                        usernameError.setText("Enter a username!");
+                    }
+                    if(signupPassword.getText().isEmpty()) {
+                        passwordError.setText("Enter a password!");
+                    }
+                    if(signupLocation.getText().isEmpty()) {
+                        locationError.setText("Enter a location!");
+                    }
+                    if(answer.isEmpty()) {
+                        answerError.setText("Enter an answer!");
+                    }
+                    if(gender.isEmpty()) {
+                        genderError.setText("Choose a gender!");
+                    }
+                    if(secretQ.equals("Select a question!")) {
+                        secretQError.setText("Choose a question!");
+                    }
+                }
+
             } catch (IOException | ClassNotFoundException e){
                 signupLbl.setText(e.getLocalizedMessage());
             }
-
-            //Writing only the username and the password to a hashmap for logging in unless it already exists in the register.
-            if(!userBase.containsKey(username)) {
-                try {
-                    userBase.put(newUser.getUsername(), newUser.getPassword());
-                    FileSaverJobj.SaveUser(userBase);
-                    signupLbl.setText("User created!");
-                } catch (IOException e) {
-                    signupLblError.setText(e.getMessage());
-                }
-            } else {
-                usernameError.setText("Username already exists!");
-            }
-
-            //Writing the list to a txt file for the user register unless it already exist in the register.
-            if (userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
-                try {
-                    userList.add(newUser);
-                    FileSaverJobj.SaveUserList(userList);
-                } catch (IOException e) {
-                    signupLblError.setText(e.getMessage());
-                }
-            }
-        } else {
-            if(signupUsername.getText().isEmpty()) {
-                usernameError.setText("Enter a username!");
-            }
-            if(signupPassword.getText().isEmpty()) {
-                passwordError.setText("Enter a password!");
-            }
-            if(signupLocation.getText().isEmpty()) {
-                locationError.setText("Enter a location!");
-            }
-            if(answer.isEmpty()) {
-                answerError.setText("Enter an answer!");
-            }
-            if(gender.isEmpty()) {
-                genderError.setText("Choose a gender!");
-            }
-            if(secretQ.equals("Select a question!")) {
-                secretQError.setText("Choose a question!");
-            }
+        } catch (IOException | ClassNotFoundException e){
+            signupLblError.setText(e.getMessage());
         }
     }
 
