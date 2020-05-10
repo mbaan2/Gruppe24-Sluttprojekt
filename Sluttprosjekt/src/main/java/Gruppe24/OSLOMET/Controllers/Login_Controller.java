@@ -99,7 +99,7 @@ public class Login_Controller implements Initializable {
                 }
                 if (passwordTxt.getText().isEmpty()){
                     passwordError.setText("Enter a password");
-                } else if (!userBase.containsValue(passwordTxt.getText())){
+                } else if (!userBase.get(usernameTxt.getText()).equals(passwordTxt.getText())){
                     passwordError.setText("Wrong password");
                 }
 
