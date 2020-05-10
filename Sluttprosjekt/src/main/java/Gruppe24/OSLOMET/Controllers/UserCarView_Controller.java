@@ -77,34 +77,6 @@ public class UserCarView_Controller implements Initializable {
                 filterBox.setVisible(false);
                 filterText.setVisible(false);
                 resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load add-ons.")){
-                tvLabel.setText("Cars loaded however addons all show up as deprecated. Contact the superUser to restore this.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load fuel.")) {
-                tvLabel.setText("Cars loaded however fuel options arent loaded. Contact the superUser to restore this.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load wheels.")) {
-                tvLabel.setText("Cars loaded however wheel options arent loaded. Contact the superUser to restore this.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load colors.")) {
-                tvLabel.setText("Cars loaded however colors arent loaded. Contact the superUser to restore this.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
             } else if(tvLabel.getText().equals("Could not load the carlist.")) {
                 tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
                 tableView.setVisible(false);
