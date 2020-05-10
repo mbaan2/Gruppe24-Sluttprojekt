@@ -167,7 +167,11 @@ public class Summary_Controller implements Initializable {
             } else if(result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, summaryLbl, username);
+                try{
+                    FileSaverTxt.overwrite(str, selectedFile, summaryLbl, username);
+                } catch (IOException e){
+                    lblErrorSummary.setText(e.getMessage());
+                }
             } else {
                 summaryLbl.setText("Process cancelled. File wasnt saved.");
             }
