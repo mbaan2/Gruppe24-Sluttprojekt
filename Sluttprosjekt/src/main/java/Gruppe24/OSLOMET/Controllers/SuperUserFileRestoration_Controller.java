@@ -54,33 +54,23 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
+
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreFuel = new CreateJobjFiles();
+                CreateJobjFiles restoreWheels = new CreateJobjFiles();
+                CreateJobjFiles restoreColor = new CreateJobjFiles();
+                CreateJobjFiles restoreAddon = new CreateJobjFiles();
+
                 try {
                     restoreFuel.createFuel();
-                } catch (SaveFileException e) {
-                    superUserLbl.setText(e.getMessage());
-                }
-                CreateJobjFiles restoreWheels = new CreateJobjFiles();
-                try {
                     restoreWheels.createWheels();
-                } catch (SaveFileException e) {
-                    superUserLbl.setText(e.getMessage());
-                }
-                CreateJobjFiles restoreColor = new CreateJobjFiles();
-                try {
                     restoreColor.createColors();
-                } catch (SaveFileException e) {
-                    superUserLbl.setText(e.getMessage());
-                }
-                CreateJobjFiles restoreAddon = new CreateJobjFiles();
-                try {
                     restoreAddon.createAddons();
+                    superUserLbl.setText("Carparts are restored!");
                 } catch (SaveFileException e) {
                     superUserLbl.setText(e.getMessage());
                 }
-                superUserLbl.setText("Carparts are restored!");
             } else {
                 superUserLbl.setText("Process cancelled, carparts were not restored.");
             }
@@ -97,6 +87,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
+
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreUser = new CreateJobjFiles();
@@ -122,6 +113,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
+
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreCars = new CreateJobjFiles();
@@ -147,6 +139,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
         Optional<ButtonType> result = alert.showAndWait();
+
         if(result.isPresent()) {
             if (result.get() == yesBtn) {
                 CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
