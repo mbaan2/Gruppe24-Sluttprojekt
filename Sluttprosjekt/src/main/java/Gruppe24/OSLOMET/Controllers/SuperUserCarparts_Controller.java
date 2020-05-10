@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SuperUserCarparts_Controller implements Initializable {
-
     List<Carparts> carCategory = new ArrayList<>();
     List<CheckBox> selectedCategoryButtons = new ArrayList<>();
 
