@@ -14,6 +14,7 @@ import javafx.fxml.LoadException;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -34,7 +35,8 @@ public class SetAddons_Controller implements Initializable {
         openFile();
         createButtons();
         deprecatedAddonsCheck();
-
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         Platform.runLater(() -> {
             try {
@@ -46,6 +48,9 @@ public class SetAddons_Controller implements Initializable {
             }
         });
     }
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private VBox vboxAddOns, addonsVbox;

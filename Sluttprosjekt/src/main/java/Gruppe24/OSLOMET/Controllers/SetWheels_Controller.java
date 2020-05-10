@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.*;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
@@ -19,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.LoadException;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -32,6 +32,8 @@ public class SetWheels_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         openFile();
         createButtons();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         Platform.runLater(() -> {
             try {
@@ -43,6 +45,9 @@ public class SetWheels_Controller implements Initializable {
             }
         });
     }
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private VBox vboxWheels, wheelsVbox;
