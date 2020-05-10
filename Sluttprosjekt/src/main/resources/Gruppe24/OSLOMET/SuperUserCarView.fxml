@@ -10,17 +10,17 @@
 
 <AnchorPane fx:id="superUserViewPane" prefHeight="454.0" prefWidth="1281.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="188.0" layoutY="19.0" prefHeight="418.0" prefWidth="1070.0">
-
-        </TableView>
-        <TextField fx:id="filterText" layoutX="28.0" layoutY="320.0" prefHeight="25.0" prefWidth="150.0" />
-        <Button fx:id="filterBtn" layoutX="28.0" layoutY="350.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
-        <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="290.0" prefWidth="150.0" />
         <Label fx:id="filterLbl" alignment="TOP_LEFT" layoutX="28.0" layoutY="19.0" prefHeight="266.0" prefWidth="150.0" textFill="#def2f1" wrapText="true">
             <font>
                 <Font size="16.0" />
             </font></Label>
+        <ChoiceBox fx:id="filterBox" layoutX="28.0" layoutY="290.0" prefWidth="150.0" />
+        <TextField fx:id="filterText" layoutX="28.0" layoutY="320.0" prefHeight="25.0" prefWidth="150.0" />
+        <Button fx:id="filterBtn" layoutX="28.0" layoutY="350.0" mnemonicParsing="false" onAction="#filterCars" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Filter table" textFill="#def2f1" />
         <Button fx:id="resetFilterBtn" layoutX="28.0" layoutY="380.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Reset filters" textFill="#def2f1" />
         <Button fx:id="backBtn" layoutX="28.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
+        <TableView fx:id="tableView" layoutX="188.0" layoutY="19.0" prefHeight="418.0" prefWidth="1070.0">
+
+        </TableView>
     </children>
 </AnchorPane>
