@@ -1,7 +1,6 @@
 //TODO
 /*
       1)      Double check the crashes and try/catches                    HIGH PRIORITY
-      2)      Adapting the regex so we show that we know how it works     MEDIUM PRIORITY
 
 
 
@@ -56,4 +55,5 @@
       2)      Creating our own exceptions classes                         done
       1.5)    Removing all the System.err.messages and replace them
               with feedback to the user                                   HIGH PRIORITY
+      2)      Adapting the regex so we show that we know how it works     MEDIUM PRIORITY
  */
