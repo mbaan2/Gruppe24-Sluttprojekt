@@ -4,6 +4,7 @@ import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
@@ -44,12 +45,8 @@ public class TableViewCreation {
         openCars(lbl);
         int maxNrAddons = 0;
 
-        try {
-            openFile(lbl);
-            maxNrAddons = addonSupUser.size();
-        } catch (IOException e) {
-            lbl.setText("Could not load add-ons.");
-        }
+        openFile(lbl);
+        maxNrAddons = addonSupUser.size();
 
         //Setting of all the colums
         TableColumn<NewCar, String> user = new TableColumn<>("User");
@@ -322,7 +319,7 @@ public class TableViewCreation {
         tv.setItems(carList);
     }
 
-    public void openFile(Label lbl) throws IOException{
+    public void openFile(Label lbl){
         Path path = Paths.get(StandardPaths.addonPath);
         try {
             addonSupUser = FileOpenerJobj.openFile(path);
@@ -336,8 +333,8 @@ public class TableViewCreation {
         newList.addAll(carList);
         try {
             FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
-        } catch (IOException e){
-            lbl.setText("Could not save changes to car.");
+        } catch (SaveFileException e){
+            lbl.setText(e.getMessage());
         }
     }
 

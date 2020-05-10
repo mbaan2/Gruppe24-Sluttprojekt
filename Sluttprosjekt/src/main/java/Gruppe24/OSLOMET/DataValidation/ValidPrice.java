@@ -3,14 +3,18 @@ package Gruppe24.OSLOMET.DataValidation;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidPriceException;
 
 public class ValidPrice{
-    public static boolean priceTest(int price) throws InvalidPriceException{
-        boolean valid;
+    public static void priceTest(int price) throws InvalidPriceException{
         if (price < 0){
-            valid = true;
             throw new InvalidPriceException("You have entered an invalid price");
-        } else {
-            valid = false;
         }
-        return valid;
+    }
+
+    public static boolean validPrice(int price) throws InvalidPriceException {
+        try {
+            priceTest(price);
+            return true;
+        } catch (InvalidPriceException e){
+            throw new InvalidPriceException(e.getMessage());
+        }
     }
 }

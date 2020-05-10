@@ -123,6 +123,150 @@ public class SuperUserCarparts_Controller implements Initializable {
         }
     }
 
+    @FXML
+    void btnEdit(ActionEvent event) {
+        lblCostError.setText("");
+        lblNameError.setText("");
+        superUserLbl.setText("Editing carpart...");
+        String name = "";
+        try {
+            ValidName.carpartNameTest(txtName.getText());
+            name = txtName.getText();
+        } catch (InvalidNameException e) {
+            lblNameError.setText(e.getMessage());
+            superUserLbl.setText("");
+        }
+
+        String costString = txtCost.getText();
+        int cost = -1;
+        try {
+            ValidPrice.priceTest(Integer.parseInt(costString));
+            cost = Integer.parseInt(costString);
+        } catch (NumberFormatException | InvalidPriceException e) {
+            lblCostError.setText(e.getMessage());
+            superUserLbl.setText("");
+        }
+        int amountSelected = 0;
+
+        if(!name.isEmpty() && cost != -1) {
+            for (CheckBox carpart : selectedCategoryButtons) {
+                if (carpart.isSelected()) {
+                    amountSelected++;
+                }
+            }
+            if (amountSelected > 1) {
+                superUserLbl.setText("You can only choose one carpart to edit!");
+            } else if (amountSelected < 1) {
+                superUserLbl.setText("Nothing is selected!");
+            } else {
+                EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
+                try {
+                    SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+                } catch (IOException e){
+                    superUserLbl.setText(e.getMessage());
+                }
+                loadCategory();
+            }
+        }
+
+        if(name.isEmpty()) {
+            lblNameError.setText("Enter a name!");
+            superUserLbl.setText("");
+        }
+        if(cost == -1) {
+            lblCostError.setText("Enter a cost!");
+            superUserLbl.setText("");
+        }
+    }
+
+    @FXML
+    void btnRemove(ActionEvent event) {
+        superUserLbl.setText("Removing carpart(s)...");
+        lblCostError.setText("");
+        lblNameError.setText("");
+        int removedItems = 0;
+
+        for(CheckBox carpart : selectedCategoryButtons){
+            if(carpart.isSelected()){
+                removedItems++;
+            }
+        }
+        if(removedItems < 1){
+            superUserLbl.setText("Nothing is selected");
+        } else{
+            RemoveCarpart.remove(carCategory, selectedCategoryButtons);
+            try{
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+            } catch (IOException e){
+                superUserLbl.setText(e.getMessage());
+            }
+            loadCategory();
+        }
+    }
+
+    @FXML
+    void btnAdd(ActionEvent event){
+        superUserLbl.setText("Adding carpart...");
+        String name = "";
+        try {
+            ValidName.carpartNameTest(txtName.getText());
+            name = txtName.getText();
+        } catch (InvalidNameException e) {
+            lblNameError.setText("Enter a valid carpart name!");
+            superUserLbl.setText("");
+        }
+
+        String costString = txtCost.getText();
+        int cost = -1;
+        try {
+            ValidPrice.priceTest(Integer.parseInt(costString));
+            cost = Integer.parseInt(costString);
+        } catch (NumberFormatException | InvalidPriceException e) {
+            lblCostError.setText("Enter a valid price!");
+            superUserLbl.setText("");
+        }
+
+        if(!name.isEmpty() && cost != -1) {
+            List<Carparts> specificCategory = new ArrayList<>();
+            try {
+                specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
+                Carparts newCarPart = new Carparts(name, cost);
+
+                if (containsName(specificCategory, name)) {
+                    carCategory.add(newCarPart);
+                    SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+                    loadCategory();
+                    txtName.setText("");
+                    txtCost.setText("");
+                } else {
+                    superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
+                }
+            } catch (ClassNotFoundException | IOException e){
+                superUserLbl.setText(e.getMessage());
+            }
+        } else {
+            if(name.isEmpty()) {
+                lblNameError.setText("Enter a valid name!");
+                superUserLbl.setText("");
+            }
+            if(cost == -1) {
+                lblCostError.setText("Enter a cost!");
+                superUserLbl.setText("");
+            }
+        }
+    }
+
+    @FXML
+    void btnBackToSuperuser() {
+        try {
+            App.setRoot("SuperUser");
+        } catch (IOException e){
+            superUserLbl.setText("An error has occurred. Please contact your developer.");
+        } catch (IllegalStateException e){
+            superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
+        }
+    }
+
     public void createButtonsThread(){
         task = new LoadingValuesThread(carCategory, selectedCategoryButtons);
         task.setOnSucceeded(this::threadDone);
@@ -164,138 +308,6 @@ public class SuperUserCarparts_Controller implements Initializable {
         editBtn.setDisable(false);
         backBtn.setDisable(false);
         loadBtn.setDisable(false);
-    }
-
-    @FXML
-    void btnEdit(ActionEvent event) {
-        lblCostError.setText("");
-        lblNameError.setText("");
-        superUserLbl.setText("Editing carpart...");
-        String name = "";
-        try {
-            ValidName.carpartNameTest(txtName.getText());
-            name = txtName.getText();
-        } catch (InvalidNameException e) {
-            lblNameError.setText(e.getMessage());
-            superUserLbl.setText("");
-        }
-
-        String costString = txtCost.getText();
-        int cost = -1;
-        try {
-            ValidPrice.priceTest(Integer.parseInt(costString));
-            cost = Integer.parseInt(costString);
-        } catch (NumberFormatException | InvalidPriceException e) {
-            lblCostError.setText(e.getMessage());
-            superUserLbl.setText("");
-        }
-        int amountSelected = 0;
-
-        if(!name.isEmpty() && cost != -1) {
-            for (CheckBox carpart : selectedCategoryButtons) {
-                if (carpart.isSelected()) {
-                    amountSelected++;
-                }
-            }
-            if (amountSelected > 1) {
-                superUserLbl.setText("You can only choose one carpart to edit!");
-            } else if (amountSelected < 1) {
-                superUserLbl.setText("Nothing is selected!");
-            } else {
-                EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
-                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
-                loadCategory();
-            }
-        }
-        if(name.isEmpty()) {
-            lblNameError.setText("Enter a name!");
-            superUserLbl.setText("");
-        }
-        if(cost == -1) {
-            lblCostError.setText("Enter a cost!");
-            superUserLbl.setText("");
-        }
-    }
-
-    @FXML
-    void btnRemove(ActionEvent event) {
-        superUserLbl.setText("Removing carpart(s)...");
-        lblCostError.setText("");
-        lblNameError.setText("");
-        int removedItems = 0;
-
-        for(CheckBox carpart : selectedCategoryButtons){
-            if(carpart.isSelected()){
-                removedItems++;
-            }
-        }
-        if(removedItems < 1){
-            superUserLbl.setText("Nothing is selected");
-        } else{
-            RemoveCarpart.remove(carCategory, selectedCategoryButtons);
-            SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
-            loadCategory();
-        }
-    }
-
-    @FXML
-    void btnAdd(ActionEvent event){
-        superUserLbl.setText("Adding carpart...");
-        String name = "";
-        try {
-            ValidName.carpartNameTest(txtName.getText());
-            name = txtName.getText();
-        } catch (InvalidNameException e) {
-            lblNameError.setText("Enter a valid carpart name!");
-            superUserLbl.setText("");
-        }
-
-        String costString = txtCost.getText();
-        int cost = -1;
-        try {
-            ValidPrice.priceTest(Integer.parseInt(costString));
-            cost = Integer.parseInt(costString);
-            } catch (NumberFormatException | InvalidPriceException e) {
-                lblCostError.setText("Enter a valid price!");
-                superUserLbl.setText("");
-            }
-
-        if(!name.isEmpty() && cost != -1) {
-            List<Carparts> specificCategory = new ArrayList<>();
-            try {
-                specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
-                Carparts newCarPart = new Carparts(name, cost);
-
-                if (containsName(specificCategory, name)) {
-                    carCategory.add(newCarPart);
-                    SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
-                    loadCategory();
-                    txtName.setText("");
-                    txtCost.setText("");
-                } else {
-                    superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
-                }
-            } catch (ClassNotFoundException | IOException e){
-                superUserLbl.setText(e.getMessage());
-            }
-        } else if(name.isEmpty()) {
-            lblNameError.setText("Enter a valid name!");
-            superUserLbl.setText("");
-        } else if(cost == -1) {
-            lblCostError.setText("Enter a cost!");
-            superUserLbl.setText("");
-        }
-    }
-
-    @FXML
-    void btnBackToSuperuser() {
-        try {
-            App.setRoot("SuperUser");
-        } catch (IOException e){
-            superUserLbl.setText("An error has occurred. Please contact your developer.");
-        } catch (IllegalStateException e){
-            superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
-        }
     }
 
 }
