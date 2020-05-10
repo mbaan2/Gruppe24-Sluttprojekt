@@ -60,13 +60,25 @@ public class TableViewCreation {
         name.setMinWidth(75);
         TableColumn<NewCar, String> fuel = new TableColumn<>("Fuel");
         tv.getColumns().add(fuel);
-        fuel.setMinWidth(75);
+        if(tableviewSuperUser) {
+            fuel.setMinWidth(150);
+        } else {
+            fuel.setMinWidth(75);
+        }
         TableColumn<NewCar, String> wheels = new TableColumn<>("Wheels");
         tv.getColumns().add(wheels);
-        wheels.setMinWidth(75);
+        if(tableviewSuperUser) {
+            wheels.setMinWidth(178);
+        } else {
+            wheels.setMinWidth(75);
+        }
         TableColumn<NewCar, String> color = new TableColumn<>("Color");
         tv.getColumns().add(color);
-        color.setMinWidth(75);
+        if(tableviewSuperUser) {
+            color.setMinWidth(130);
+        } else {
+            color.setMinWidth(75);
+        }
         TableColumn<NewCar, String> addon = new TableColumn<>("Add-ons");
         tv.getColumns().add(addon);
 
@@ -136,9 +148,7 @@ public class TableViewCreation {
                             lbl.setText("The car already has " + event.getNewValue() + " as fuel.");
                         } else {
                             lbl.setText("The fuel of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getFuel().getName() + " to " + event.getNewValue() + ".");
-                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getFuel().getCost());
                             event.getRowValue().setFuel(finalFuelOptions.get(j));
-                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getFuel().getCost());
                         }
                     }
                 }
@@ -166,9 +176,7 @@ public class TableViewCreation {
                             lbl.setText("The car already has " + event.getNewValue() + ".");
                         } else {
                             lbl.setText("The wheels of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getWheels().getName() + " to " + event.getNewValue() + ".");
-                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getWheels().getCost());
                             event.getRowValue().setWheels(finalWheelOptions.get(j));
-                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getWheels().getCost());
                         }
                     }
                 }
@@ -195,9 +203,9 @@ public class TableViewCreation {
                             lbl.setText("The car already has " + event.getNewValue() + " color.");
                         } else {
                             lbl.setText("The color of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getColor().getName() + " to " + event.getNewValue() + ".");
-                            event.getRowValue().setCost(event.getRowValue().getCost() - event.getRowValue().getColor().getCost());
+
                             event.getRowValue().setColor(finalColorOptions.get(j));
-                            event.getRowValue().setCost(event.getRowValue().getCost() + event.getRowValue().getColor().getCost());
+
                         }
                     }
                 }
@@ -227,14 +235,12 @@ public class TableViewCreation {
                                 if(addonSupUser.get(k).getName().toLowerCase().equals(tc.getText().toLowerCase())){
                                     lbl.setText(addonSupUser.get(k).getName() + " added to " + newcar.getName() + ".");
                                     newcar.getAddons().add(addonSupUser.get(k));
-                                    newcar.setCost(newcar.getCost() + addonSupUser.get(k).getCost());
                                 }
                             }
                         } else {
                             for(int k = 0; k < newcar.getAddons().size(); k++) {
                                 if(newcar.getAddons().getElement(k).getName().toLowerCase().equals(tc.getText().toLowerCase())) {
                                     lbl.setText(newcar.getAddons().getElement(k).getName() + " removed from " + newcar.getName() + ".");
-                                    newcar.setCost(newcar.getCost() - newcar.getAddons().getElement(k).getCost());
                                     newcar.getAddons().remove(k);
                                 }
                             }

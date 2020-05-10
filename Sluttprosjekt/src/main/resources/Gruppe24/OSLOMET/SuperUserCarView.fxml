@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="superUserViewPane" prefHeight="454.0" prefWidth="1190.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
+<AnchorPane fx:id="superUserViewPane" prefHeight="454.0" prefWidth="1281.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarView_Controller">
     <children>
-        <TableView fx:id="tableView" layoutX="188.0" layoutY="19.0" prefHeight="418.0" prefWidth="980.0">
+        <TableView fx:id="tableView" layoutX="188.0" layoutY="19.0" prefHeight="418.0" prefWidth="1070.0">
 
         </TableView>
         <TextField fx:id="filterText" layoutX="28.0" layoutY="320.0" prefHeight="25.0" prefWidth="150.0" />

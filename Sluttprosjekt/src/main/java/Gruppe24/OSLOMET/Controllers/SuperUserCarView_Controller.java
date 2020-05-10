@@ -41,7 +41,7 @@ public class SuperUserCarView_Controller implements Initializable {
         Platform.runLater(() -> {
             try {
                 Stage stage = (Stage) superUserViewPane.getScene().getWindow();
-                stage.setWidth(1210);
+                stage.setWidth(1290);
                 stage.setHeight(500);
             } catch (ExceptionInInitializerError e) {
                 filterLbl.setText("Error in setting the proper width and height, resize the window manually.");
@@ -88,7 +88,7 @@ public class SuperUserCarView_Controller implements Initializable {
                 filterBox.setVisible(false);
                 filterText.setVisible(false);
                 resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load the car list.")) {
+            } else if(filterLbl.getText().equals("Could not load the carlist.")) {
                 filterLbl.setText("Cars have not been loaded. There is an error with the cars.jobj file. Restore it to regain functionality.");
                 tableView.setVisible(false);
                 filterBtn.setVisible(false);

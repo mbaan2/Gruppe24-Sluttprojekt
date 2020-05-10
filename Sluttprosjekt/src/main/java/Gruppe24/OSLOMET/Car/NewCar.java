@@ -30,7 +30,7 @@ public class NewCar implements Serializable {
         this.name = name;
     }
     public int getCost() {
-        int cost = getFuel().getCost() + getWheels().getCost() + getColor().getCost();
+        cost = getFuel().getCost() + getWheels().getCost() + getColor().getCost();
         for(int i = 0; i < getAddons().size(); i++) {
             cost += getAddons().getElement(i).getCost();
         }
