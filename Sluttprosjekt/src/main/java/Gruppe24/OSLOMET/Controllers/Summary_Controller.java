@@ -190,7 +190,6 @@ public class Summary_Controller implements Initializable {
         }
     }
 
-    //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
     void btnToWelcomeScreen(ActionEvent event) {
         if(txtCarName.isDisable()){

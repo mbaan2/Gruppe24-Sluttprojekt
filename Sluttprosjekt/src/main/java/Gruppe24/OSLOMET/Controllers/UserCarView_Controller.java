@@ -69,7 +69,7 @@ public class UserCarView_Controller implements Initializable {
 
         /*Setting labels based on tabelview creation
           Some adoption are made here since it uses the same table as the superuser but
-           the user isnt allowed the same functionality */
+          the user isnt allowed the same functionality */
         if(tvLabel.getText().equals("Loading cars...")) {
             tvLabel.setText("Cars loaded!");
         } else if(tvLabel.getText().equals("Could not load user base.")) {

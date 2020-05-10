@@ -86,7 +86,6 @@ public class SetAddons_Controller implements Initializable {
                         selected = true;
                     }
                 }
-                /*If value doesnt exist anymore, the system gives this error*/
                 if (!selected) {
                     lblErrorAddons.setText("Your cars contains depricated addon(s), please contact your superUser");
                     btnToSummary.setDisable(true);

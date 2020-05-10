@@ -30,5 +30,4 @@ public class Carparts implements Car, Serializable {
     public void setCost(int cost) {
         this.cost = cost;
     }
-
 }
