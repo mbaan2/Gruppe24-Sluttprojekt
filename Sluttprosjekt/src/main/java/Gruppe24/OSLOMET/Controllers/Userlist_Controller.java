@@ -65,6 +65,7 @@ public class Userlist_Controller implements Initializable {
             lblUserList.setText("Could not find the user list file. Restore it through the button in the superuser homepage.");
         }
 
+        // Adding the columns for the tableview
         TableColumn<User, String> username = new TableColumn<>("Username");
         tableView.getColumns().add(username);
         username.setMinWidth(100);
@@ -84,20 +85,27 @@ public class Userlist_Controller implements Initializable {
         tableView.getColumns().add(secretQA);
         secretQA.setMinWidth(75);
 
+        // Setting the data for the tableview
+
+        //Setting the data for the username and how editing works for the column.
         username.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getUsername()));
         username.setCellFactory(TextFieldTableCell.forTableColumn());
         username.setOnEditCommit(user -> {
+            // If the username youre trying to change to is already in the list you cant update it.
             if(userBase.containsKey(user.getNewValue())) {
                 lblUserList.setText("That username is already in use.");
             } else {
                 String username1 = user.getRowValue().getUsername();
                 String password1 = user.getRowValue().getPassword();
                 try {
+                    // Testing to see if its a valid username.
                     ValidName.usernameTest(user.getNewValue());
                     lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
                     user.getRowValue().setUsername(user.getNewValue());
+                    // Adding the new values to the userbase while removing the previous values.
                     userBase.put(user.getNewValue(), user.getRowValue().getPassword());
                     userBase.remove(username1, password1);
+                    // Saving the new values to the userlist.jobj and to users.jobj.
                     btnSaveChanges();
                 } catch (InvalidNameException e) {
                     lblUserList.setText(e.getMessage());
@@ -105,9 +113,11 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
+        // Setting the data for the password and how editing works for the column.
         pw.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getPassword()));
         pw.setCellFactory(TextFieldTableCell.forTableColumn());
         pw.setOnEditCommit(user -> {
+            // If the user already has that password it will let you know that in the label.
             if(user.getRowValue().getPassword().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that password.");
             } else {
@@ -117,13 +127,16 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
+        //Setting the data for the location and how editing works for that column.
         location.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getLocation()));
         location.setCellFactory(TextFieldTableCell.forTableColumn());
         location.setOnEditCommit(user -> {
+            // If the user already has that location it will let you know that in the label.
             if(user.getRowValue().getLocation().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that location.");
             } else {
                 try {
+                    // Testing to see if its a valid location.
                     ValidName.locationTest(user.getNewValue());
                     lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
                     user.getRowValue().setLocation(user.getNewValue());
@@ -134,9 +147,12 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
+        // Setting the data for the gender and how editing works for that column.
         gender.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getGender()));
+        // Adding a combobox with the gender options from the signup page in the column.
         gender.setCellFactory(ComboBoxTableCell.forTableColumn(genderList()));
         gender.setOnEditCommit(user -> {
+            // If the user already has that gender it will let you know that in the label.
             if(user.getRowValue().getGender().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that gender.");
             } else {
@@ -146,10 +162,12 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
+        // Opening the list for the secret questions to be added to the combobox in the column.
         try {
             secretQList = FileOpenerJobj.openSecretQList();
             secretQ.setEditable(true);
         } catch (IOException e) {
+            // If the secretq.jobj isnt loaded because its either deleted or somehow broken you will get an alert with the ability to restore it.
             Alert notEditable = new Alert(Alert.AlertType.WARNING);
             notEditable.setTitle("Error loading secret questions");
             notEditable.setHeaderText("Could not load your secret questions file.");
@@ -182,9 +200,11 @@ public class Userlist_Controller implements Initializable {
             secretQ.setEditable(false);
         }
         secretQObsList.addAll(secretQList);
+        // Setting the data for the secret question and how editing works for that column.
         secretQ.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQ()));
         secretQ.setCellFactory(ComboBoxTableCell.forTableColumn(secretQObsList));
         secretQ.setOnEditCommit(user -> {
+            // If the user already has that secret question it will let you know that in the label.
             if(user.getRowValue().getSecretQ().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that secret question.");
             } else {
@@ -194,9 +214,11 @@ public class Userlist_Controller implements Initializable {
             }
             tableView.refresh();
         });
+        // Setting the data for the the secret questions answer and how editing works for that column.
         secretQA.setCellValueFactory(user -> new SimpleStringProperty(user.getValue().getSecretQAnswer()));
         secretQA.setCellFactory(TextFieldTableCell.forTableColumn());
         secretQA.setOnEditCommit(user -> {
+            // If the user already has that answer it will let you know that in the label.
             if(user.getRowValue().getSecretQAnswer().equals(user.getNewValue())) {
                 lblUserList.setText("The user already has that answer.");
             } else {
@@ -207,9 +229,11 @@ public class Userlist_Controller implements Initializable {
             tableView.refresh();
         });
 
+        // Adding the delete buttons column.
         TableColumn<User, Button> deleteBtn = new TableColumn<>();
         tableView.getColumns().add(deleteBtn);
 
+        // Setting the value of the delete button.
         deleteBtn.setCellValueFactory(user -> {
             Button delete = new Button();
             delete.setText("Delete");
@@ -228,6 +252,9 @@ public class Userlist_Controller implements Initializable {
 
         tableView.setItems(userList1);
 
+        // Height and width changes are happening in the runLater method.
+        // The tableviews functionality changes depending on the error messages from the exceptions that are being thrown.
+        // A thread solution also happening here which makes the changing of the label seem like the tableview is being loaded.
         Platform.runLater(() -> {
             try{
                 Stage stage = (Stage) userListPane.getScene().getWindow();
