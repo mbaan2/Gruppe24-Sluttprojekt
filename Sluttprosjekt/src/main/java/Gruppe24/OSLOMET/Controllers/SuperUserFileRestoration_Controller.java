@@ -26,7 +26,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
             try {
                 Stage stage = (Stage) fileRestorationPane.getScene().getWindow();
                 stage.setWidth(500);
-                stage.setHeight(470);
+                stage.setHeight(550);
             } catch (ExceptionInInitializerError e) {
                 superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
             }
@@ -47,7 +47,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
     @FXML
     void btnRestoreCarparts(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Restore Users");
+        alert.setTitle("Restore Carparts");
         alert.setHeaderText("");
         alert.setContentText("Do you want to restore the carparts?");
         ButtonType yesBtn = new ButtonType("Yes");
@@ -78,6 +78,110 @@ public class SuperUserFileRestoration_Controller implements Initializable {
     }
 
     @FXML
+    void btnRestoreAddons(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Addons");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore the addon options?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if(result.get() == yesBtn) {
+                CreateJobjFiles restoreAddon = new CreateJobjFiles();
+
+                try {
+                    restoreAddon.createAddons();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
+                }
+            } else {
+                superUserLbl.setText("Process cancelled, addons were not restored.");
+            }
+        }
+    }
+
+    @FXML
+    void btnRestoreFuel(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Fuel");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore the fuel options?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if(result.get() == yesBtn) {
+                CreateJobjFiles restoreFuel = new CreateJobjFiles();
+
+                try {
+                    restoreFuel.createFuel();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
+                }
+            } else {
+                superUserLbl.setText("Process cancelled, fuel was not restored.");
+            }
+        }
+    }
+
+    @FXML
+    void btnRestoreWheels(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Wheels");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore the wheel options?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if(result.get() == yesBtn) {
+                CreateJobjFiles restoreWheels = new CreateJobjFiles();
+
+                try {
+                    restoreWheels.createWheels();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
+                }
+            } else {
+                superUserLbl.setText("Process cancelled, wheels were not restored.");
+            }
+        }
+    }
+
+    @FXML
+    void btnRestoreColors(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Restore Colors");
+        alert.setHeaderText("");
+        alert.setContentText("Do you want to restore the color options?");
+        ButtonType yesBtn = new ButtonType("Yes");
+        ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesBtn, noBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent()) {
+            if(result.get() == yesBtn) {
+                CreateJobjFiles restoreColors = new CreateJobjFiles();
+
+                try {
+                    restoreColors.createColors();
+                } catch (SaveFileException e) {
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
+                }
+            } else {
+                superUserLbl.setText("Process cancelled, colors were not restored.");
+            }
+        }
+    }
+
+    @FXML
     void btnRestoreUsers(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Restore Users");
@@ -95,7 +199,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreUser.createUser();
                     superUserLbl.setText("Users are restored!");
                 } catch (SaveFileException e) {
-                 superUserLbl.setText(e.getMessage());
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
                 }
             } else {
                 superUserLbl.setText("Process cancelled, users were not restored.");
@@ -106,7 +210,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
     @FXML
     void btnRestoreCars(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Restore Users");
+        alert.setTitle("Restore Cars");
         alert.setHeaderText("");
         alert.setContentText("Do you want to restore the cars?");
         ButtonType yesBtn = new ButtonType("Yes");
@@ -121,7 +225,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreCars.createCars();
                     superUserLbl.setText("Cars are restored!");
                 } catch (SaveFileException e) {
-                    superUserLbl.setText(e.getMessage());
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
                 }
             } else {
                 superUserLbl.setText("Process cancelled, cars were not restored.");
@@ -147,7 +251,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreSecretQ.createSecretQ();
                     superUserLbl.setText("Secret questions are restored!");
                 } catch (SaveFileException e) {
-                    superUserLbl.setText(e.getMessage());
+                    superUserLbl.setText("Couldnt restore the file, something went wrong.");
                 }
             } else {
                 superUserLbl.setText("Process cancelled, secret questions were not restored.");
@@ -160,7 +264,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e){
-           superUserLbl.setText("An error has occured, please contact the developer.");
+            superUserLbl.setText("An error has occured, please contact the developer.");
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
