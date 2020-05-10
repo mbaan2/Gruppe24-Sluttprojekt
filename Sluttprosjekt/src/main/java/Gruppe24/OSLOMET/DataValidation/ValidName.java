@@ -22,7 +22,7 @@ public class ValidName {
         }
     }
 
-    public static boolean validLocation(String name) throws InvalidNameException {
+    public static boolean validLocation(String name) {
         try {
             locationTest(name);
             return true;
@@ -30,8 +30,6 @@ public class ValidName {
             return false;
         }
     }
-
-
 
     public static void usernameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
@@ -48,7 +46,7 @@ public class ValidName {
         }
     }
 
-    public static boolean validUsername(String name) throws InvalidNameException {
+    public static boolean validUsername(String name) {
         try {
             usernameTest(name);
             return true;
@@ -73,6 +71,15 @@ public class ValidName {
         }
     }
 
+    public static boolean carNameTest(String newCarName) {
+        try{
+            ValidName.carpartNameTest(newCarName);
+            return true;
+        } catch (InvalidNameException e){
+            return false;
+        }
+    }
+
     public static boolean uniqueCarNameTest(String newCarName, String user) throws IOException, ClassNotFoundException {
         boolean isUnique = true;
 
@@ -94,12 +101,4 @@ public class ValidName {
         return isUnique;
     }
 
-    public static boolean carNameTest(String newCarName) throws InvalidNameException{
-        try{
-            ValidName.carpartNameTest(newCarName);
-            return true;
-        } catch (InvalidNameException e){
-            return false;
-        }
-    }
 }
