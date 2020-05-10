@@ -132,7 +132,7 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (InterruptedException e) {
             filterLbl.setText("Error in fetching the table!");
         } catch (IllegalStateException e) {
-            System.err.println(e.getMessage());
+            System.err.println("An error has occurred, please contact the developer");
         }
         Thread t = new Thread(runnable);
         t.setDaemon(true);
