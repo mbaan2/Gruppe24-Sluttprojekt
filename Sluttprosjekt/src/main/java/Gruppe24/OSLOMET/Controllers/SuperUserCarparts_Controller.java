@@ -221,10 +221,10 @@ public class SuperUserCarparts_Controller implements Initializable {
         try {
             ValidPrice.priceTest(Integer.parseInt(costString));
             cost = Integer.parseInt(costString);
-            } catch (NumberFormatException | InvalidPriceException e) {
+        } catch (NumberFormatException | InvalidPriceException e) {
                 lblCostError.setText("Enter a valid price!");
                 superUserLbl.setText("");
-            }
+        }
 
         if(!name.isEmpty() && cost != -1) {
             List<Carparts> specificCategory = new ArrayList<>();
@@ -244,12 +244,16 @@ public class SuperUserCarparts_Controller implements Initializable {
             } catch (ClassNotFoundException | IOException e){
                 superUserLbl.setText(e.getMessage());
             }
-        } else if(name.isEmpty()) {
-            lblNameError.setText("Enter a valid name!");
-            superUserLbl.setText("");
-        } else if(cost == -1) {
-            lblCostError.setText("Enter a cost!");
-            superUserLbl.setText("");
+        } else {
+            if(name.isEmpty()) {
+                lblNameError.setText("Enter a valid name!");
+                superUserLbl.setText("");
+            }
+
+            if(cost == -1) {
+                lblCostError.setText("Enter a cost!");
+                superUserLbl.setText("");
+            }
         }
     }
 
