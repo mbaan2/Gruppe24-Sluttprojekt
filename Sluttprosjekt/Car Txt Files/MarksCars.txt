@@ -17,3 +17,10 @@ Addon:	Spoiler	4000
 Addon:	Subwoofer	7500
 Addon:	GPS	5000
 
+User:	Mark
+Name:	GreatCar
+Cost:		20000
+Fuel:	Gasoline	15000
+Wheels:	Big wheels	5000
+Color:	Black	0
+

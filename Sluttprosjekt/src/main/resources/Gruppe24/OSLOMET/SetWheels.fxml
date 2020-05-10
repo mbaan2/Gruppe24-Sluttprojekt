@@ -16,9 +16,9 @@
          </font></Label>
       <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3aafa9;">
          <content>
-            <StackPane prefHeight="197.0" prefWidth="557.0">
+            <StackPane prefHeight="190.0" prefWidth="557.0">
                <children>
-                  <VBox fx:id="vboxWheels" alignment="CENTER" prefHeight="198.0" prefWidth="558.0" />
+                  <VBox fx:id="vboxWheels" alignment="CENTER" prefHeight="195.0" prefWidth="558.0" />
                </children>
             </StackPane>
          </content>
