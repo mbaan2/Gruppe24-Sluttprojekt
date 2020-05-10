@@ -123,49 +123,6 @@ public class SuperUserCarparts_Controller implements Initializable {
         }
     }
 
-    public void createButtonsThread(){
-        task = new LoadingValuesThread(carCategory, selectedCategoryButtons);
-        task.setOnSucceeded(this::threadDone);
-        task.setOnFailed(this::threadFailed);
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        backBtn.setDisable(true);
-        loadBtn.setDisable(true);
-        setDisableBtn();
-        th.start();
-    }
-
-    private void threadFailed(WorkerStateEvent event) {
-        var e = event.getSource().getException();
-        superUserLbl.setText("An error has occurred. Please contact your developer.\n" + e);
-    }
-
-    private void threadDone(WorkerStateEvent event) {
-        vboxSelectedChoiceBox.getChildren().clear();
-        selectedCategoryButtons.clear();
-        selectedCategoryButtons = task.call();
-        LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
-        //Depending on which button is pressed the label will change value when the thread is done.
-        if(superUserLbl.getText().equals("Loading category...")) {
-            superUserLbl.setText("Category successfully loaded!");
-        }
-        if(superUserLbl.getText().equals("Editing carpart...")) {
-            superUserLbl.setText("Carpart has been edited!");
-        }
-        if(superUserLbl.getText().equals("Removing carpart(s)...")) {
-            superUserLbl.setText("Carpart(s) removed!");
-        }
-        if(superUserLbl.getText().equals("Adding carpart...")) {
-            superUserLbl.setText("Carpart has been added!");
-        }
-        //Enabling the buttons again when the thread is done.
-        addBtn.setDisable(false);
-        removeBtn.setDisable(false);
-        editBtn.setDisable(false);
-        backBtn.setDisable(false);
-        loadBtn.setDisable(false);
-    }
-
     @FXML
     void btnEdit(ActionEvent event) {
         lblCostError.setText("");
@@ -203,10 +160,15 @@ public class SuperUserCarparts_Controller implements Initializable {
                 superUserLbl.setText("Nothing is selected!");
             } else {
                 EditCarpart.editedList(carCategory, selectedCategoryButtons, cost, name);
-                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+                try {
+                    SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+                } catch (IOException e){
+                    superUserLbl.setText(e.getMessage());
+                }
                 loadCategory();
             }
         }
+
         if(name.isEmpty()) {
             lblNameError.setText("Enter a name!");
             superUserLbl.setText("");
@@ -233,7 +195,11 @@ public class SuperUserCarparts_Controller implements Initializable {
             superUserLbl.setText("Nothing is selected");
         } else{
             RemoveCarpart.remove(carCategory, selectedCategoryButtons);
-            SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+            try{
+                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+            } catch (IOException e){
+                superUserLbl.setText(e.getMessage());
+            }
             loadCategory();
         }
     }
@@ -296,6 +262,49 @@ public class SuperUserCarparts_Controller implements Initializable {
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
+    }
+
+    public void createButtonsThread(){
+        task = new LoadingValuesThread(carCategory, selectedCategoryButtons);
+        task.setOnSucceeded(this::threadDone);
+        task.setOnFailed(this::threadFailed);
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        backBtn.setDisable(true);
+        loadBtn.setDisable(true);
+        setDisableBtn();
+        th.start();
+    }
+
+    private void threadFailed(WorkerStateEvent event) {
+        var e = event.getSource().getException();
+        superUserLbl.setText("An error has occurred. Please contact your developer.\n" + e);
+    }
+
+    private void threadDone(WorkerStateEvent event) {
+        vboxSelectedChoiceBox.getChildren().clear();
+        selectedCategoryButtons.clear();
+        selectedCategoryButtons = task.call();
+        LoadingValuesOnScreen.returnVbox(selectedCategoryButtons, vboxSelectedChoiceBox);
+        //Depending on which button is pressed the label will change value when the thread is done.
+        if(superUserLbl.getText().equals("Loading category...")) {
+            superUserLbl.setText("Category successfully loaded!");
+        }
+        if(superUserLbl.getText().equals("Editing carpart...")) {
+            superUserLbl.setText("Carpart has been edited!");
+        }
+        if(superUserLbl.getText().equals("Removing carpart(s)...")) {
+            superUserLbl.setText("Carpart(s) removed!");
+        }
+        if(superUserLbl.getText().equals("Adding carpart...")) {
+            superUserLbl.setText("Carpart has been added!");
+        }
+        //Enabling the buttons again when the thread is done.
+        addBtn.setDisable(false);
+        removeBtn.setDisable(false);
+        editBtn.setDisable(false);
+        backBtn.setDisable(false);
+        loadBtn.setDisable(false);
     }
 
 }
