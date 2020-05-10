@@ -206,6 +206,8 @@ public class SuperUserCarparts_Controller implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event){
+        lblCostError.setText("");
+        lblNameError.setText("");
         superUserLbl.setText("Adding carpart...");
         String name = "";
         try {
