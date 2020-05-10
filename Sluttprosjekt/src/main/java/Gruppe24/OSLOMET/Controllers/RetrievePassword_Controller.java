@@ -23,6 +23,36 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class RetrievePassword_Controller implements Initializable {
+    EditUserRegisterTV newUserTable = new EditUserRegisterTV();
+    HashMap<String, String> userBase = new HashMap<>();
+    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
+    List<User> userList = new ArrayList<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e){
+            retrieveLbl.setText(e.getMessage());
+        }
+
+        addChkBoxItems();
+        setNotVisible();
+        newUserTable.attachTableView(tableView);
+        tableView.setVisible(false);
+
+
+        Platform.runLater(() -> {
+            try {
+                Stage stage = (Stage) registerPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                retrieveLbl.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
+        });
+    }
 
     @FXML
     private AnchorPane registerPane;
@@ -41,12 +71,6 @@ public class RetrievePassword_Controller implements Initializable {
 
     @FXML
     private TableView<User> tableView;
-
-    EditUserRegisterTV newUserTable = new EditUserRegisterTV();
-    HashMap<String, String> userBase = new HashMap<>();
-    ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-    List<User> userList = new ArrayList<>();
-
 
     @FXML
     void nextButton(ActionEvent event) {
@@ -162,31 +186,5 @@ public class RetrievePassword_Controller implements Initializable {
         passwordBtn.setVisible(false);
         answerTxt.setText("");
         usernameTxt.setText("");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            userBase = FileOpenerJobj.openFileHashMap();
-        } catch (IOException | ClassNotFoundException e){
-            retrieveLbl.setText("Encountered an IO Exception, something is wrong with the file.");
-        }
-
-        addChkBoxItems();
-        setNotVisible();
-        newUserTable.attachTableView(tableView);
-        tableView.setVisible(false);
-
-
-        Platform.runLater(() -> {
-            try {
-                Stage stage = (Stage) registerPane.getScene().getWindow();
-                stage.setWidth(600);
-                stage.setHeight(470);
-            } catch (ExceptionInInitializerError e) {
-                retrieveLbl.setText("Error in setting the proper width and height, resize the window manually.");
-            }
-
-        });
     }
 }
