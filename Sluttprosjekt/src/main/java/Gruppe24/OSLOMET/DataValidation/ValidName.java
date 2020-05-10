@@ -15,7 +15,7 @@ public class ValidName {
         Regex reg = new Regex("[A-ZØÅÆ][a-zøåæ]+([ ]([A-ZØÅÆ][a-zøåæ]+))*");
         if(name.matches(reg.getPattern())){
             if (name.matches(".{1,25}")){
-                /*name is correct*/
+                /*name is correct */
             } else {
                 throw new InvalidNameException("Your location name is too long!");
             }
