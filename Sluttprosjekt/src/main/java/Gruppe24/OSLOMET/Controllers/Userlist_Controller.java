@@ -243,13 +243,12 @@ public class Userlist_Controller implements Initializable {
                 String username1 = user.getRowValue().getUsername();
                 String password1 = user.getRowValue().getPassword();
                 try {
-                    if(ValidName.usernameTest(user.getNewValue())) {
+                    ValidName.usernameTest(user.getNewValue());
                         lblUserList.setText("Username changed from " + user.getRowValue().getUsername() + " to " + user.getNewValue() + ".");
                         user.getRowValue().setUsername(user.getNewValue());
                         userBase.put(user.getNewValue(), user.getRowValue().getPassword());
                         userBase.remove(username1, password1);
                         btnSaveChanges();
-                    }
                 } catch (InvalidNameException e) {
                     lblUserList.setText("Enter a valid username!");
                 }
@@ -275,11 +274,10 @@ public class Userlist_Controller implements Initializable {
                 lblUserList.setText("The user already has that location.");
             } else {
                 try {
-                    if(ValidName.locationTest(user.getNewValue())) {
-                        lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
-                        user.getRowValue().setLocation(user.getNewValue());
-                        btnSaveChanges();
-                    }
+                    ValidName.locationTest(user.getNewValue());
+                    lblUserList.setText("The location for user " + user.getRowValue().getUsername() + " changed from " + user.getRowValue().getLocation() + " to " + user.getNewValue() + ".");
+                    user.getRowValue().setLocation(user.getNewValue());
+                    btnSaveChanges();
                 } catch (InvalidNameException e) {
                     lblUserList.setText("You didnt enter a valid location!");
                 }

@@ -10,41 +10,42 @@ class ValidNameTest{
 
     @Test
     void locationTest() throws InvalidNameException {
-        assertTrue(ValidName.locationTest("Aaa"));
-        assertTrue(ValidName.locationTest("Aa Aa Aa"));
-        assertTrue(ValidName.locationTest("Åå Åå"));
-        assertTrue(ValidName.locationTest("Aa Aa Aa Aa Aa"));
+        assertTrue(ValidName.validLocation("Aaa"));
+        assertTrue(ValidName.validLocation("Aa Aa Aa"));
+        assertTrue(ValidName.validLocation("Åå Åå"));
+        assertTrue(ValidName.validLocation("Aa Aa Aa Aa Aa"));
 
-        assertFalse(ValidName.locationTest(" "));
-        assertFalse(ValidName.locationTest("A"));
-        assertFalse(ValidName.locationTest("AAA"));
-        assertFalse(ValidName.locationTest("aaa"));
-        assertFalse(ValidName.locationTest("Âa"));
-        assertFalse(ValidName.locationTest("A1a"));
-        assertFalse(ValidName.locationTest("Aa A"));
-        assertFalse(ValidName.locationTest("RuPaul"));
-        assertFalse(ValidName.locationTest("@a"));
-        assertFalse(ValidName.locationTest("Aa aa"));
+        assertFalse(ValidName.validLocation(" "));
+        assertFalse(ValidName.validLocation("A"));
+        assertFalse(ValidName.validLocation("AAA"));
+        assertFalse(ValidName.validLocation("aaa"));
+        assertFalse(ValidName.validLocation("Âa"));
+        assertFalse(ValidName.validLocation("A1a"));
+        assertFalse(ValidName.validLocation("Aa A"));
+        assertFalse(ValidName.validLocation("RuPaul"));
+        assertFalse(ValidName.validLocation("@a"));
+        assertFalse(ValidName.validLocation("Aa aa"));
 
     }
 
     @Test
     void usernameTest() throws InvalidNameException {
-        assertTrue(ValidName.usernameTest("Aaa"));
-        assertTrue(ValidName.usernameTest("aaa"));
-        assertTrue(ValidName.usernameTest("Åå_Åå"));
-        assertTrue(ValidName.usernameTest("aAa"));
-        assertTrue(ValidName.usernameTest("A1a"));
-        assertTrue(ValidName.usernameTest("RuPaul"));
-        assertTrue(ValidName.usernameTest("A"));
-        assertTrue(ValidName.usernameTest("123"));
+        assertTrue(ValidName.validUsername("Aaa"));
+        assertTrue(ValidName.validUsername("aaa"));
+        assertTrue(ValidName.validUsername("Åå_Åå"));
+        assertTrue(ValidName.validUsername("aAa"));
+        assertTrue(ValidName.validUsername("A1a"));
+        assertTrue(ValidName.validUsername("RuPaul"));
+        assertTrue(ValidName.validUsername("A"));
+        assertTrue(ValidName.validUsername("123"));
 
-        assertFalse(ValidName.usernameTest("A a"));
-        assertFalse(ValidName.usernameTest(" "));
-        assertFalse(ValidName.usernameTest("Âa"));
-        assertFalse(ValidName.usernameTest("Aa A"));
-        assertFalse(ValidName.usernameTest("@a"));
-        assertFalse(ValidName.usernameTest("Aa aa"));
+        assertFalse(ValidName.validUsername("admin"));
+        assertFalse(ValidName.validUsername("A a"));
+        assertFalse(ValidName.validUsername(" "));
+        assertFalse(ValidName.validUsername("Âa"));
+        assertFalse(ValidName.validUsername("Aa A"));
+        assertFalse(ValidName.validUsername("@a"));
+        assertFalse(ValidName.validUsername("Aa aa"));
     }
 
     @Test

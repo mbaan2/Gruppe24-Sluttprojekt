@@ -73,9 +73,8 @@ public class SignUp_Controller implements Initializable {
         String username = "";
         if(!signupUsername.getText().isEmpty()) {
             try {
-                if (ValidName.usernameTest(signupUsername.getText())) {
-                    username = signupUsername.getText();
-                }
+               ValidName.usernameTest(signupUsername.getText());
+               username = signupUsername.getText();
             } catch (InvalidNameException e) {
                 usernameError.setText(e.getMessage());
             }
