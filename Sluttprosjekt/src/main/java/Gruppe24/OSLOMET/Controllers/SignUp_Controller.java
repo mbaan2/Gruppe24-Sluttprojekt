@@ -111,9 +111,11 @@ public class SignUp_Controller implements Initializable {
                 if(!username.isEmpty() && !password.isEmpty() && !location.isEmpty() && !gender.isEmpty() &&!answer.isEmpty() && !secretQ.equals("Select a question!")) {
                     User newUser = new User(username, password, location, gender, secretQ, answer);
 
-                    //Writing only the username and the password to a hashmap for logging in unless it already exists in the register.
-                    if(!userBase.containsKey(username)) {
+                    //Writing only the username and the password to a hashmap/userlist for logging in unless it already exists in the register.
+                    if(!userBase.containsKey(username) && userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
                         try {
+                            userList.add(newUser);
+                            FileSaverJobj.SaveUserList(userList);
                             userBase.put(newUser.getUsername(), newUser.getPassword());
                             FileSaverJobj.SaveUser(userBase);
                             signupLbl.setText("User created!");
@@ -122,16 +124,6 @@ public class SignUp_Controller implements Initializable {
                         }
                     } else {
                         usernameError.setText("Username already exists!");
-                    }
-
-                    //Writing the list to a txt file for the user register unless it already exist in the register.
-                    if (userList.stream().noneMatch(user -> user.getUsername().equals(newUser.getUsername()))) {
-                        try {
-                            userList.add(newUser);
-                            FileSaverJobj.SaveUserList(userList);
-                        } catch (IOException e) {
-                            signupLblError.setText(e.getMessage());
-                        }
                     }
                 } else {
                     if(signupUsername.getText().isEmpty()) {
