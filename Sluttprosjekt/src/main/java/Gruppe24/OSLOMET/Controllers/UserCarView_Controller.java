@@ -29,6 +29,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -38,6 +39,8 @@ import java.util.stream.Collectors;
 public class UserCarView_Controller implements Initializable {
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
     TableViewCreation createView = new TableViewCreation();
+    ObservableList<NewCar> carList = FXCollections.observableArrayList();
+    List<NewCar> carList2 = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,6 +56,13 @@ public class UserCarView_Controller implements Initializable {
 
         tvLabel.setText("Loading cars...");
         createView.initializeTv(tableView, tvLabel, false);
+        try {
+            carList2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        } catch (IOException e) {
+            tvLabel.setText("Couldnt open carlist, contact a superuser to restore it!");
+        }
+
+        carList.addAll(carList2);
         addChoiceBoxItems();
 
         /*Setting labels based on tabelview creation
@@ -89,7 +99,7 @@ public class UserCarView_Controller implements Initializable {
 
         /*Filtering table for Users */
         usersCarList.removeAll();
-        usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
+        usersCarList = Filter.usernameFilter(App.car.getUser(), carList);
         tableView.setItems(usersCarList);
         
         /*Removing the delete column */
@@ -145,7 +155,6 @@ public class UserCarView_Controller implements Initializable {
         } else if (filterType.equals("Search Filters")) {
             tvLabel.setText("You didn't choose a filter.");
         } else {
-            tableView.getItems().clear();
             filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
             tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
@@ -164,9 +173,6 @@ public class UserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         tvLabel.setText("Tableview reset.");
-        usersCarList.clear();
-        createView.initializeTv(tableView, tvLabel, false);
-        usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
         tableView.setItems(usersCarList);
         filterBox.setValue("Search Filters");
         tableView.refresh();
