@@ -115,7 +115,11 @@ public class SuperUserCarparts_Controller implements Initializable {
     }
 
     public void loadCategory(){
-        carCategory = LoadCategory.loadCategory(chbCategory.getValue(), superUserLbl);
+        try {
+            carCategory = LoadCategory.loadCategory(chbCategory.getValue());
+        } catch (ClassNotFoundException | IOException e){
+            superUserLbl.setText(e.getMessage());
+        }
         createButtonsThread();
     }
 
@@ -257,17 +261,22 @@ public class SuperUserCarparts_Controller implements Initializable {
             }
 
         if(!name.isEmpty() && cost != -1) {
-            List<Carparts> specificCategory = LoadCategory.loadCategory(chbCategory.getValue(), superUserLbl);
-            Carparts newCarPart = new Carparts(name, cost);
+            List<Carparts> specificCategory = new ArrayList<>();
+            try {
+                specificCategory = LoadCategory.loadCategory(chbCategory.getValue());
+                Carparts newCarPart = new Carparts(name, cost);
 
-            if (containsName(specificCategory, name)) {
-                carCategory.add(newCarPart);
-                SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
-                loadCategory();
-                txtName.setText("");
-                txtCost.setText("");
-            } else {
-                superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
+                if (containsName(specificCategory, name)) {
+                    carCategory.add(newCarPart);
+                    SaveCarparts.saveChanges(carCategory, chbCategory.getValue(), superUserLbl);
+                    loadCategory();
+                    txtName.setText("");
+                    txtCost.setText("");
+                } else {
+                    superUserLbl.setText("A carpart with that name already exists, try editing it instead!");
+                }
+            } catch (ClassNotFoundException | IOException e){
+                superUserLbl.setText(e.getMessage());
             }
         } else if(name.isEmpty()) {
             lblNameError.setText("Enter a valid name!");
