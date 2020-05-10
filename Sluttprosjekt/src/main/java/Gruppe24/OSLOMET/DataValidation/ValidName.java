@@ -12,14 +12,13 @@ import java.util.ArrayList;
 public class ValidName {
     public static void locationTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆ][a-zøåæ]+([ ]([A-ZØÅÆ][a-zøåæ]+))*");
-        if(name.matches(reg.getPattern())){
-            if (name.matches(".{1,25}")){
-                /*name is correct */
-            } else {
+        if(!name.matches(reg.getPattern())){
+            if (!name.matches(".{1,25}")){
                 throw new InvalidNameException("Your location name is too long!");
             }
-        } else {
-            throw new InvalidNameException("Enter a valid location!");
+            else {
+                throw new InvalidNameException("Enter a valid location!");
+            }
         }
     }
 
