@@ -20,15 +20,6 @@ import java.util.ResourceBundle;
 
 public class SuperUserFileRestoration_Controller implements Initializable {
 
-    @FXML
-    private AnchorPane fileRestorationPane;
-
-    @FXML
-    private Label superUserLbl;
-
-    @FXML
-    private Tooltip superuserInfo;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
@@ -43,6 +34,15 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         superuserInfo.setShowDelay(Duration.millis(100.0));
         superuserInfo.setHideDelay(Duration.millis(200.0));
     }
+
+    @FXML
+    private AnchorPane fileRestorationPane;
+
+    @FXML
+    private Label superUserLbl;
+
+    @FXML
+    private Tooltip superuserInfo;
 
     @FXML
     void btnRestoreCarparts(ActionEvent event) {
@@ -60,25 +60,25 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                 try {
                     restoreFuel.createFuel();
                 } catch (SaveFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
                 CreateJobjFiles restoreWheels = new CreateJobjFiles();
                 try {
                     restoreWheels.createWheels();
                 } catch (SaveFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
                 CreateJobjFiles restoreColor = new CreateJobjFiles();
                 try {
                     restoreColor.createColors();
                 } catch (SaveFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
                 CreateJobjFiles restoreAddon = new CreateJobjFiles();
                 try {
                     restoreAddon.createAddons();
                 } catch (SaveFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
                 superUserLbl.setText("Carparts are restored!");
             } else {
@@ -104,7 +104,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreUser.createUser();
                     superUserLbl.setText("Users are restored!");
                 } catch (SaveFileException e) {
-                 superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                 superUserLbl.setText(e.getMessage());
                 }
             } else {
                 superUserLbl.setText("Process cancelled, users were not restored.");
@@ -129,9 +129,8 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreCars.createCars();
                     superUserLbl.setText("Cars are restored!");
                 } catch (OpenFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
-
             } else {
                 superUserLbl.setText("Process cancelled, cars were not restored.");
             }
@@ -155,7 +154,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                     restoreSecretQ.createSecretQ();
                     superUserLbl.setText("Secret questions are restored!");
                 } catch (SaveFileException e) {
-                    superUserLbl.setText("Encountered an IO Exception, something is wrong with the file.");
+                    superUserLbl.setText(e.getMessage());
                 }
             } else {
                 superUserLbl.setText("Process cancelled, secret questions were not restored.");
@@ -168,7 +167,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
         try {
             App.setRoot("SuperUser");
         } catch (IOException e){
-           superUserLbl.setText(e.getMessage());
+           superUserLbl.setText("An error has occured, please contact the developer.");
         } catch (IllegalStateException e){
             superUserLbl.setText("There is an error in loading the next screen, please contact your developer.");
         }
