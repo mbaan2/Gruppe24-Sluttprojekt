@@ -197,7 +197,6 @@ public class SuperUserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         filterLbl.setText("Tableview reset.");
-        tableView.getItems().clear();
         openCars();
         tableView.setItems(carList);
         filterBox.setValue("Search Filters");
