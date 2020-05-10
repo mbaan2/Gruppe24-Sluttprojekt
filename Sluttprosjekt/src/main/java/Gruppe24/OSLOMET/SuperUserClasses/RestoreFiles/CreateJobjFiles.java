@@ -158,27 +158,24 @@ public class CreateJobjFiles {
         User user1 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
         User user2 = new User("Idiot", "idiotproof", "Location", "Male", "Mothers maiden name?", "Idiota");
         User user3 = new User("Mark", "kapsalon", "Oslo", "Male", "Name of first pet?", "Dog");
-        User user4 = new User("admin", "admin", "adminland", "Other", "Mothers maiden name?", "admin");
-        User user5 = new User("Bruker", "passord", "Nowhere", "Female", "Name of first pet?", "Katt");
+        User user4 = new User("Bruker", "passord", "Nowhere", "Female", "Name of first pet?", "Katt");
 
         userList.add(user);
         userList.add(user1);
         userList.add(user2);
         userList.add(user3);
         userList.add(user4);
-        userList.add(user5);
         userBase.put(user.getUsername(), user.getPassword());
         userBase.put(user1.getUsername(), user1.getPassword());
         userBase.put(user2.getUsername(), user2.getPassword());
         userBase.put(user3.getUsername(), user3.getPassword());
         userBase.put(user4.getUsername(), user4.getPassword());
-        userBase.put(user5.getUsername(), user5.getPassword());
     }
 
     public void createUser() throws SaveFileException {
         setUser();
-            FileSaverJobj.SaveUser(userBase);
-            FileSaverJobj.SaveUserList(userList);
+        FileSaverJobj.SaveUser(userBase);
+        FileSaverJobj.SaveUserList(userList);
     }
 
     public void createSecretQ() throws SaveFileException {
