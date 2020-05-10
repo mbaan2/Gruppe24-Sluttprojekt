@@ -11,31 +11,43 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ValidName {
-    public static boolean locationTest(String name) throws InvalidNameException{
+    public static void locationTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-ZØÅÆ][a-zøåæ]+([ ]([A-ZØÅÆ][a-zøåæ]+))*");
-        boolean valid;
         if(name.matches(reg.getPattern())){
-            valid = true;
         } else {
-            valid = false;
             throw new InvalidNameException("Enter a valid location!");
         }
-        return valid;
     }
 
-    public static boolean usernameTest(String name) throws InvalidNameException{
+    public static boolean validLocation(String name) throws InvalidNameException {
+        try {
+            validLocation(name);
+            return true;
+        } catch (InvalidNameException e){
+            throw new InvalidNameException(e.getMessage());
+        }
+    }
+
+
+
+        public static void usernameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
-        boolean valid;
         if (name.matches("admin")){
-            valid = false;
             throw new InvalidNameException("Username admin is reserved.");
         } else if(name.matches(reg.getPattern())){
-            valid = true;
+            /*name is correct */
         } else {
-            valid = false;
             throw new InvalidNameException("Enter a valid username!");
         }
-        return valid;
+    }
+
+    public static boolean validUsername(String name) throws InvalidNameException {
+        try {
+            usernameTest(name);
+            return true;
+        } catch (InvalidNameException e){
+            throw new InvalidNameException(e.getMessage());
+        }
     }
 
     public static boolean carpartNameTest(String name) throws InvalidNameException{
