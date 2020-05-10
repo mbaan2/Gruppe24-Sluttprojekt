@@ -171,7 +171,7 @@ public class SignUp_Controller implements Initializable {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         } catch (IOException | ClassNotFoundException e) {
             choiceBox.setDisable(true);
-            signupLbl.setText(e.getMessage());
+            signupLbl.setText("Encountered an error. Contact your administrator for file restoration.");
         }
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);
