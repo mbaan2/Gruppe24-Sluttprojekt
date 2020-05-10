@@ -132,10 +132,14 @@ public class TableViewCreation {
                     // If the chosen option is the same as the previous value it will let the user know in the label.
                     lbl.setText("The car already has " + event.getNewValue() + " as a name");
                 } else {
-                    ValidName.carNameTest(event.getNewValue());
-                    // If the carname that is being entered is valid it will be updated.
-                    lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
-                    event.getRowValue().setName(event.getNewValue());
+                    try{
+                        ValidName.carpartNameTest(event.getNewValue());
+                        // If the carname that is being entered is valid it will be updated.
+                        lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
+                        event.getRowValue().setName(event.getNewValue());
+                    } catch (InvalidNameException e){
+                        lbl.setText(e.getMessage());
+                    }
                 }
                 btnSaveChanges(lbl);
             });
