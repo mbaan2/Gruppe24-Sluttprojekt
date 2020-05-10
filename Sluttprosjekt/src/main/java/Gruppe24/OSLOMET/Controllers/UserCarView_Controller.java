@@ -84,7 +84,18 @@ public class UserCarView_Controller implements Initializable {
                 filterBox.setVisible(false);
                 filterText.setVisible(false);
                 resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load add-ons.")){
+                tvLabel.setText("");
+            } else if(tvLabel.getText().equals("Could not load fuel.")) {
+                tvLabel.setText("");
+            } else if(tvLabel.getText().equals("Could not load wheels.")) {
+                tvLabel.setText("");
+            } else if(tvLabel.getText().equals("Could not load colors.")) {
+                tvLabel.setText("");
             }
+
+
+
 
             executor.submit(setTableview);
             tableView.refresh();
