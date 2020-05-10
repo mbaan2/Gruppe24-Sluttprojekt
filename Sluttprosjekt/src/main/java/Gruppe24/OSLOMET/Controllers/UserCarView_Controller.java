@@ -41,19 +41,6 @@ public class UserCarView_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tvLabel.setText("Loading cars...");
-        createView.initializeTv(tableView, tvLabel, false);
-        superuserInfo.setShowDelay(Duration.millis(50));
-        superuserInfo.setHideDelay(Duration.millis(1000));
-        backBtn.setDisable(true);
-        filterBtn.setDisable(true);
-        resetFilterBtn.setDisable(true);
-        saveTable.setDisable(true);
-        tableView.setVisible(false);
-        addChoiceBoxItems();
-
-
-
         Platform.runLater(() -> {
             try {
                 Stage stage = (Stage) userViewPane.getScene().getWindow();
@@ -62,51 +49,46 @@ public class UserCarView_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 tvLabel.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
-            filterBtn.setDisable(false);
-            backBtn.setDisable(false);
-            resetFilterBtn.setDisable(false);
-            saveTable.setDisable(false);
-            tableView.setVisible(true);
-            if(tvLabel.getText().equals("Loading cars...")) {
-                tvLabel.setText("Cars loaded!");
-            } else if(tvLabel.getText().equals("Could not load user base.")) {
-                tvLabel.setText("Cars loaded however the userbase isnt loaded. Contact the superUser to restore this.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load the carlist.")) {
-                tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
-                tableView.setVisible(false);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(tvLabel.getText().equals("Could not load add-ons.")){
-                tvLabel.setText("");
-            } else if(tvLabel.getText().equals("Could not load fuel.")) {
-                tvLabel.setText("");
-            } else if(tvLabel.getText().equals("Could not load wheels.")) {
-                tvLabel.setText("");
-            } else if(tvLabel.getText().equals("Could not load colors.")) {
-                tvLabel.setText("");
-            }
-
-
-
-
-            executor.submit(setTableview);
-            tableView.refresh();
-            tableView.setEditable(false);
-
-            /*Filtering table for Users */
-            usersCarList.removeAll();
-            usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
-            tableView.setItems(usersCarList);
-            tableView.getColumns().remove(tableView.getColumns().size()-1);
         });
+
+        tvLabel.setText("Loading cars...");
+        createView.initializeTv(tableView, tvLabel, false);
+        addChoiceBoxItems();
+
+        if(tvLabel.getText().equals("Loading cars...")) {
+            tvLabel.setText("Cars loaded!");
+        } else if(tvLabel.getText().equals("Could not load user base.")) {
+            tvLabel.setText("Cars loaded however the userbase isnt loaded. Contact the superUser to restore this.");
+            tableView.setDisable(true);
+            filterBtn.setVisible(false);
+            filterBox.setVisible(false);
+            filterText.setVisible(false);
+            resetFilterBtn.setVisible(false);
+        } else if(tvLabel.getText().equals("Could not load the carlist.")) {
+            tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
+            tableView.setVisible(false);
+            filterBtn.setVisible(false);
+            filterBox.setVisible(false);
+            filterText.setVisible(false);
+            resetFilterBtn.setVisible(false);
+        } else if(tvLabel.getText().equals("Could not load add-ons.")){
+            tvLabel.setText("");
+        } else if(tvLabel.getText().equals("Could not load fuel.")) {
+            tvLabel.setText("");
+        } else if(tvLabel.getText().equals("Could not load wheels.")) {
+            tvLabel.setText("");
+        } else if(tvLabel.getText().equals("Could not load colors.")) {
+            tvLabel.setText("");
+        }
+
+        tableView.refresh();
+        tableView.setEditable(false);
+
+        /*Filtering table for Users */
+        usersCarList.removeAll();
+        usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
+        tableView.setItems(usersCarList);
+        tableView.getColumns().remove(tableView.getColumns().size()-1);
     }
 
 
@@ -131,25 +113,6 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private Tooltip superuserInfo;
 
-    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
-    public final Runnable setTableview = () -> {
-        while (!Thread.currentThread().isInterrupted()) {
-            tableView.getItems();
-        }
-    };
-
-    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            tvLabel.setText("Error in fetching the table!");
-        } catch (IllegalStateException e) {
-            System.err.println(e.getMessage());
-        }
-        Thread t = new Thread(runnable);
-        t.setDaemon(true);
-        return t;
-    });
 
     @FXML
     void goBack() {
@@ -160,7 +123,6 @@ public class UserCarView_Controller implements Initializable {
         } catch (IllegalStateException e) {
             tvLabel.setText("There is an error in loading the next screen, please contact your developer.");
         }
-        executor.shutdownNow();
     }
 
     @FXML
