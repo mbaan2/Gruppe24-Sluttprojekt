@@ -34,6 +34,8 @@ public class RetrievePassword_Controller implements Initializable {
             userBase = FileOpenerJobj.openFileHashMap();
         } catch (IOException | ClassNotFoundException e){
             retrieveLbl.setText(e.getMessage());
+            nextBtn.setDisable(true);
+            usernameTxt.setDisable(true);
         }
         usernameTxt.getStyleClass().add("retrieve-usernameTxt");
         choiceBox.getStyleClass().add("retrieve-box");
