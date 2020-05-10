@@ -15,18 +15,18 @@
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
-        <Button fx:id="btnStartBuilding" onAction="#btnStartBuilding" style="-fx-background-color: #17252a;" text="Start building!" textAlignment="CENTER" textFill="#def2f1" />
+        <Button fx:id="btnStartBuilding" onAction="#btnStartBuilding" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #17252a;" text="Start building!" textAlignment="CENTER" textFill="#def2f1" />
         <HBox prefHeight="39.0" prefWidth="676.0" />
         <Label text="Or load your existing cars" textAlignment="CENTER" textFill="#def2f1">
             <font>
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
-      <ComboBox fx:id="comboAllCars" prefWidth="150.0" />
-      <Button fx:id="btnLoadCar" onAction="#btnLoadCar" prefHeight="26.0" prefWidth="153.0" style="-fx-background-color: #17252a;" text="Change this car" textFill="#def2f1" />
+      <ComboBox fx:id="comboAllCars" prefHeight="25.0" prefWidth="157.0" />
+      <Button fx:id="btnLoadCar" onAction="#btnLoadCar" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #17252a;" text="Change this car" textFill="#def2f1" />
       <Label fx:id="lblFeedbackChangeCar" />
-        <Button fx:id="btnToTableView" onAction="#btnToTableView" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: #17252a;" text="Load all your cars" textFill="#def2f1" />
-        <Button mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
+        <Button fx:id="btnToTableView" onAction="#btnToTableView" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #17252a;" text="Load all your cars" textFill="#def2f1" />
+        <Button mnemonicParsing="false" onAction="#logoutBtn" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #def2f1;" text="Logout" textFill="#17252a" />
       <Label fx:id="lblErrorWelcomeScreen" />
     </children>
     <padding>

@@ -1,5 +1,6 @@
 package Gruppe24.OSLOMET.SuperUserClasses.EditCarCategories;
 
+import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
@@ -15,50 +16,37 @@ public class SaveCarparts {
     final static String wheelsCHB = "Wheels";
     final static String colorCHB = "Color";
     final static String addOnsCHB = "Add-ons";
+    private static Object CarCategory;
 
-    public static void saveChanges(List<Carparts> carCategory, String value, Label lbl){
+    public static void saveChanges(List<Carparts> carList, String value, Label lbl) throws IOException {
         switch (value) {
             case fuelCHB: {
-                Path filsti = Paths.get(StandardPaths.fuelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    lbl.setText("Could not save fuel.");
-                    e.printStackTrace();
-                }
+                saving(carList, Paths.get(StandardPaths.fuelPath));
                 break;
             }
             case wheelsCHB: {
-                Path filsti = Paths.get(StandardPaths.wheelPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    lbl.setText("Could not save wheels.");
-                    e.printStackTrace();
-                }
+                saving(carList, Paths.get(StandardPaths.wheelPath));
                 break;
             }
             case colorCHB: {
-                Path filsti = Paths.get(StandardPaths.colorPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    lbl.setText("Could not save color.");
-                    e.printStackTrace();
-                }
+                saving(carList, Paths.get(StandardPaths.colorPath));
                 break;
             }
             case addOnsCHB: {
-                Path filsti = Paths.get(StandardPaths.addonPath);
-                try {
-                    FileSaverJobj.SaveCarCategory(filsti, carCategory);
-                } catch (IOException e) {
-                    lbl.setText("Could not save add-on.");
-                    e.printStackTrace();
-                }
+                saving(carList, Paths.get(StandardPaths.addonPath));
                 break;
             }
         }
     }
 
-}
+    public static void saving(List<Carparts> carCategory, Path filsti) throws IOException {
+        try {
+            FileSaverJobj.SaveCarCategory(filsti, carCategory);
+        } catch (IOException e){
+            throw new IOException(e.getMessage());
+        }
+
+    }
+
+
+    }

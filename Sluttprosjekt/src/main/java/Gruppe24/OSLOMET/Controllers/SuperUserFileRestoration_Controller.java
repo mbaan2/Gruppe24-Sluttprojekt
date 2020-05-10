@@ -120,7 +120,7 @@ public class SuperUserFileRestoration_Controller implements Initializable {
                 try {
                     restoreCars.createCars();
                     superUserLbl.setText("Cars are restored!");
-                } catch (OpenFileException e) {
+                } catch (SaveFileException e) {
                     superUserLbl.setText(e.getMessage());
                 }
             } else {
