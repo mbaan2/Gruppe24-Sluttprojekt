@@ -4,6 +4,8 @@ import Gruppe24.OSLOMET.Car.Car;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
+import Gruppe24.OSLOMET.DataValidation.ValidName;
+import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
@@ -120,8 +122,13 @@ public class TableViewCreation {
                 if(event.getRowValue().getName().equals(event.getNewValue())) {
                     lbl.setText("The car already has " + event.getNewValue() + " as a name");
                 } else {
-                    lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
-                    event.getRowValue().setName(event.getNewValue());
+                    try{
+                        ValidName.carNameTest(event.getNewValue());
+                        lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
+                        event.getRowValue().setName(event.getNewValue());
+                    } catch (InvalidNameException e){
+                        lbl.setText(e.getMessage());
+                    }
                 }
                 btnSaveChanges(lbl);
             });
