@@ -37,11 +37,12 @@ import java.util.stream.Collectors;
 
 public class UserCarView_Controller implements Initializable {
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
+    TableViewCreation createView = new TableViewCreation();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvLabel.setText("Loading cars...");
-        addChoiceBoxItems();
+        createView.initializeTv(tableView, tvLabel, false);
         superuserInfo.setShowDelay(Duration.millis(50));
         superuserInfo.setHideDelay(Duration.millis(1000));
         backBtn.setDisable(true);
@@ -49,7 +50,8 @@ public class UserCarView_Controller implements Initializable {
         resetFilterBtn.setDisable(true);
         saveTable.setDisable(true);
         tableView.setVisible(false);
-        createView.initializeTv(tableView, tvLabel, false);
+        addChoiceBoxItems();
+
 
 
         Platform.runLater(() -> {
@@ -66,10 +68,57 @@ public class UserCarView_Controller implements Initializable {
             resetFilterBtn.setDisable(false);
             saveTable.setDisable(false);
             tableView.setVisible(true);
-            tvLabel.setText("Cars loaded!");
+            if(tvLabel.getText().equals("Loading cars...")) {
+                tvLabel.setText("Cars loaded!");
+            } else if(tvLabel.getText().equals("Could not load user base.")) {
+                tvLabel.setText("Cars loaded however the userbase isnt loaded. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load add-ons.")){
+                tvLabel.setText("Cars loaded however addons all show up as deprecated. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load fuel.")) {
+                tvLabel.setText("Cars loaded however fuel options arent loaded. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load wheels.")) {
+                tvLabel.setText("Cars loaded however wheel options arent loaded. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load colors.")) {
+                tvLabel.setText("Cars loaded however colors arent loaded. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            } else if(tvLabel.getText().equals("Could not load the carlist.")) {
+                tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
+                tableView.setVisible(false);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+            }
+
             executor.submit(setTableview);
             tableView.refresh();
             tableView.setEditable(false);
+
+            /*Filtering table for Users */
             usersCarList.removeAll();
             usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
             tableView.setItems(usersCarList);
@@ -99,6 +148,26 @@ public class UserCarView_Controller implements Initializable {
     @FXML
     private Tooltip superuserInfo;
 
+    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
+    public final Runnable setTableview = () -> {
+        while (!Thread.currentThread().isInterrupted()) {
+            tableView.getItems();
+        }
+    };
+
+    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            tvLabel.setText("Error in fetching the table!");
+        } catch (IllegalStateException e) {
+            System.err.println(e.getMessage());
+        }
+        Thread t = new Thread(runnable);
+        t.setDaemon(true);
+        return t;
+    });
+
     @FXML
     void goBack() {
         try {
@@ -126,11 +195,19 @@ public class UserCarView_Controller implements Initializable {
         } else if (filterType.equals("Search Filters")) {
             tvLabel.setText("You didn't choose a filter.");
         } else {
+            tableView.getItems().clear();
             filteredList = Filter.filtering(filteredText, filterType, filteredList, usersCarList);
             tvLabel.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
             tableView.refresh();
         }
+    }
+
+    private void addChoiceBoxItems() {
+        ObservableList<String> choiceBoxList = Filter.choiceBoxList();
+        filterBox.getItems().addAll(choiceBoxList);
+        filterBox.getItems().remove(choiceBoxList.get(1));
+        filterBox.setValue(choiceBoxList.get(0));
     }
 
     @FXML
@@ -142,13 +219,7 @@ public class UserCarView_Controller implements Initializable {
         usersCarList.setAll(tableView.getItems().filtered(newcar -> newcar.getUser().equals(App.car.getUser())));
         tableView.setItems(usersCarList);
         filterBox.setValue("Search Filters");
-    }
-
-    private void addChoiceBoxItems() {
-        ObservableList<String> choiceBoxList = Filter.choiceBoxList();
-        filterBox.getItems().addAll(choiceBoxList);
-        filterBox.getItems().remove(choiceBoxList.get(1));
-        filterBox.setValue(choiceBoxList.get(0));
+        tableView.refresh();
     }
 
     @FXML
@@ -171,7 +242,11 @@ public class UserCarView_Controller implements Initializable {
             if (result.get() == overwrite) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
-                FileSaverTxt.overwrite(str, selectedFile, tvLabel, username);
+                try {
+                    FileSaverTxt.overwrite(str, selectedFile, tvLabel, username);
+                } catch (IOException e){
+                    tvLabel.setText(e.getMessage());
+                }
             } else if (result.get() == append) {
                 File selectedFile = new File(String.valueOf(path));
                 String str = FormatCar.formatCar(outputList);
@@ -181,27 +256,4 @@ public class UserCarView_Controller implements Initializable {
             }
         }
     }
-
-
-    // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
-    public final Runnable setTableview = () -> {
-        while (!Thread.currentThread().isInterrupted()) {
-            tableView.getItems();
-        }
-    };
-
-    private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            tvLabel.setText("Error in fetching the table!");
-        } catch (IllegalStateException e) {
-            System.err.println(e.getMessage());
-        }
-        Thread t = new Thread(runnable);
-        t.setDaemon(true);
-        return t;
-    });
-
-    TableViewCreation createView = new TableViewCreation();
 }

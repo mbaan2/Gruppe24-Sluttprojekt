@@ -119,55 +119,6 @@ public class SuperUserCarView_Controller implements Initializable {
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
 
-    @FXML
-    void btnBack(ActionEvent event) {
-        try {
-            App.setRoot("superUser");
-        } catch (IOException e){
-            filterLbl.setText(e.getMessage());
-        } catch (IllegalStateException e){
-            filterLbl.setText("There is an error in loading the next screen, please contact your developer.");
-        }
-        executor.shutdownNow();
-    }
-
-    void openCars() {
-        carList.clear();
-
-        ArrayList<NewCar> list2 = new ArrayList<>();
-        try{
-            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-        } catch (IOException e){
-            filterLbl.setText("Error in opening the list of cars, tableview will be empty.");
-        }
-        carList.addAll(list2);
-    }
-
-    @FXML
-    void filterCars() throws IOException {
-        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
-        openCars();
-
-        String filteredText = filterText.getText();
-        String filterType = filterBox.getValue();
-
-        filteredList.clear();
-        filterLbl.setText("");
-
-        if(filteredText.equals("")) {
-            filterLbl.setText("You didnt enter anything..");
-        }
-        else if (filterType.equals("Search Filters")) {
-            filterLbl.setText("You didnt choose a filter.");
-        } else{
-            tableView.getItems().clear();
-            filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
-            filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
-            tableView.setItems(filteredList);
-            tableView.refresh();
-        }
-    }
-
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
     public final Runnable setTableview = () -> {
         while (!Thread.currentThread().isInterrupted()) {
@@ -187,6 +138,54 @@ public class SuperUserCarView_Controller implements Initializable {
         t.setDaemon(true);
         return t;
     });
+
+    @FXML
+    void btnBack(ActionEvent event) {
+        try {
+            App.setRoot("superUser");
+        } catch (IOException e){
+            filterLbl.setText("An error has occurred please contact your developer.");
+        } catch (IllegalStateException e){
+            filterLbl.setText("There is an error in loading the next screen, please contact your developer.");
+        }
+        executor.shutdownNow();
+    }
+
+    void openCars() {
+        carList.clear();
+
+        ArrayList<NewCar> list2 = new ArrayList<>();
+        try{
+            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+        } catch (IOException e){
+            filterLbl.setText("Error in opening the list of cars, tableview will be empty.");
+        }
+        carList.addAll(list2);
+    }
+
+    @FXML
+    void filterCars() {
+        ObservableList<NewCar> filteredList = FXCollections.observableArrayList();
+        openCars();
+
+        String filteredText = filterText.getText();
+        String filterType = filterBox.getValue();
+
+        filteredList.clear();
+        filterLbl.setText("");
+
+        if(filteredText.equals("")) {
+            filterLbl.setText("You didnt enter anything..");
+        } else if (filterType.equals("Search Filters")) {
+            filterLbl.setText("You didnt choose a filter.");
+        } else {
+            tableView.getItems().clear();
+            filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
+            filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
+            tableView.setItems(filteredList);
+            tableView.refresh();
+        }
+    }
 
     private void addChoiceBoxItems() {
         ObservableList<String> choiceBoxList = Filter.choiceBoxList();
