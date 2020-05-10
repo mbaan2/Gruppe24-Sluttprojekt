@@ -414,6 +414,7 @@ public class Userlist_Controller implements Initializable {
         }
     };
 
+    // This is the thread delay that happens when loading the page.
     private final ExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
         try {
             Thread.sleep(1500);
