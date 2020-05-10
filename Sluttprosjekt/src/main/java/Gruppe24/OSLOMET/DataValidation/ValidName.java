@@ -33,19 +33,17 @@ public class ValidName {
 
 
 
-        public static void usernameTest(String name) throws InvalidNameException{
+    public static void usernameTest(String name) throws InvalidNameException{
         Regex reg = new Regex("[A-Za-zøåæØÅÆ0-9_]+");
         if (name.matches("admin")){
             throw new InvalidNameException("Username admin is reserved.");
-        } else if(name.matches(reg.getPattern())){
-            if (name.matches(".{1,20}")){
-                /*name is correct */
-            } else {
+        } else if(!name.matches(reg.getPattern())){
+            if (name.matches(".{1,20}")) {
                 throw new InvalidNameException("Your username is too long!");
+            } else {
+                throw new InvalidNameException("Enter a valid username!");
+                }
             }
-        } else {
-            throw new InvalidNameException("Enter a valid username!");
-        }
     }
 
     public static boolean validUsername(String name) throws InvalidNameException {
@@ -67,7 +65,7 @@ public class ValidName {
         if(name.matches(reg.getPattern())){
             if (name.matches(".{1,25}")){
                 valid = true;
-            }else{
+            } else{
                 throw new InvalidNameException("Name is too long");
             }
         } else {
