@@ -4,7 +4,6 @@ import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
-import javafx.scene.control.Alert;
 import kotlin.text.Regex;
 
 import java.io.IOException;
