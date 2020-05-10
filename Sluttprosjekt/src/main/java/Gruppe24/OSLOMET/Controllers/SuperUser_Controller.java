@@ -13,12 +13,6 @@ import java.util.ResourceBundle;
 
 public class SuperUser_Controller implements Initializable {
 
-    @FXML
-    private AnchorPane superUserPane;
-
-    @FXML
-    private Label superUserLbl;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> {
@@ -29,10 +23,14 @@ public class SuperUser_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 superUserLbl.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
-
     }
+
+    @FXML
+    private AnchorPane superUserPane;
+
+    @FXML
+    private Label superUserLbl;
 
     @FXML
     void switchToFileRestoration() {
