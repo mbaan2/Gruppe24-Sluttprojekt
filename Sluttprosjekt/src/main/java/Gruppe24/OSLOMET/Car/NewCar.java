@@ -58,19 +58,6 @@ public class NewCar implements Serializable {
         this.addons = addons;
     }
 
-
-    //ALL THE FUNCTIONS
-    public int totalCost(){
-        int totalcost = 0;
-        totalcost += App.car.getFuel().getCost();
-        totalcost += App.car.getWheels().getCost();
-        totalcost += App.car.getColor().getCost();
-        for(int i = 0; i< App.car.getAddons().size(); i++) {
-            totalcost += App.car.getAddons().getElement(i).getCost();
-        }
-        return totalcost;
-    }
-
     @Override
     public String toString(){
         String carBuild = "This car belongs to: \n";
