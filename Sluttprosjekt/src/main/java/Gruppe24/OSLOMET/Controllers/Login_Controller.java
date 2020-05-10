@@ -34,7 +34,6 @@ public class Login_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorLogin.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -95,16 +94,17 @@ public class Login_Controller implements Initializable {
                 //Feedback to the user
                 if (usernameTxt.getText().isEmpty()){
                     usernameError.setText("Enter a username");
-                }else if (!userBase.containsKey(usernameTxt.getText())){
+                } else if (!userBase.containsKey(usernameTxt.getText())){
                     usernameError.setText("Wrong username");
                 }
                 if (passwordTxt.getText().isEmpty()){
                     passwordError.setText("Enter a password");
-                }else if (!userBase.containsValue(passwordTxt.getText())){
+                } else if (!userBase.containsValue(passwordTxt.getText())){
                     passwordError.setText("Wrong password");
                 }
-            }catch (IOException | ClassNotFoundException e){
-                lblErrorLogin.setText("The user file couldn't be opened, please contact the administrator to restore the files");
+
+            } catch (IOException | ClassNotFoundException e){
+                lblErrorLogin.setText(e.getMessage());
             }
         }
     }
