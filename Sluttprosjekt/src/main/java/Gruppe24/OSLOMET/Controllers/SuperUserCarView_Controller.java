@@ -51,50 +51,35 @@ public class SuperUserCarView_Controller implements Initializable {
             backBtn.setDisable(false);
             resetFilterBtn.setDisable(false);
             tableView.setVisible(true);
-            if(filterLbl.getText().equals("Loading cars...")) {
-                filterLbl.setText("Cars loaded!");
-            } else if(filterLbl.getText().equals("Could not load user base.")) {
-                filterLbl.setText("Cars loaded, but there was an error with the userbase. Restore users file to regain full functionality.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load add-ons.")){
-                filterLbl.setText("Cars loaded, but there was a problem with the addons.jobj file. All add-ons are now displayed as out-of-sale. Restore add-ons file to regain full functionality.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load fuel.")) {
-                filterLbl.setText("Cars loaded, but there was an error with the the fuel.jobj file. Restore fuel file to regain full functionality.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load wheels.")) {
-                filterLbl.setText("Cars loaded, but there was an error with the wheels.jobj file. Restore wheels file to regain full functionality.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load colors.")) {
-                filterLbl.setText("Cars loaded, but there was an error with the color.jobj file. Restore color file to regain full functionality.");
-                tableView.setDisable(true);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
-            } else if(filterLbl.getText().equals("Could not load the carlist.")) {
-                filterLbl.setText("Cars have not been loaded. There is an error with the cars.jobj file. Restore it to regain functionality.");
-                tableView.setVisible(false);
-                filterBtn.setVisible(false);
-                filterBox.setVisible(false);
-                filterText.setVisible(false);
-                resetFilterBtn.setVisible(false);
+            switch (filterLbl.getText()) {
+                case "Loading cars...":
+                    filterLbl.setText("Cars loaded!");
+                    break;
+                case "Could not load user base.":
+                    filterLbl.setText("Cars loaded, but there was an error with the userbase. Restore users file to regain full functionality.");
+                    problemsLoading();
+                    break;
+                case "Could not load add-ons.":
+                    filterLbl.setText("Cars loaded, but there was a problem with the addons.jobj file. All add-ons are now displayed as out-of-sale. Restore add-ons file to regain full functionality.");
+                    problemsLoading();
+                    break;
+                case "Could not load fuel.":
+                    filterLbl.setText("Cars loaded, but there was an error with the the fuel.jobj file. Restore fuel file to regain full functionality.");
+                    problemsLoading();
+                    break;
+                case "Could not load wheels.":
+                    filterLbl.setText("Cars loaded, but there was an error with the wheels.jobj file. Restore wheels file to regain full functionality.");
+                    problemsLoading();
+                    break;
+                case "Could not load colors.":
+                    filterLbl.setText("Cars loaded, but there was an error with the color.jobj file. Restore color file to regain full functionality.");
+                    problemsLoading();
+                    break;
+                case "Could not load the carlist.":
+                    filterLbl.setText("Cars have not been loaded. There is an error with the cars.jobj file. Restore it to regain functionality.");
+                    problemsLoading();
+                    tableView.setVisible(false);
+                    break;
             }
             executor.submit(setTableview);
             tableView.refresh();
@@ -118,6 +103,14 @@ public class SuperUserCarView_Controller implements Initializable {
 
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
+
+    public void problemsLoading(){
+        tableView.setDisable(true);
+        filterBtn.setVisible(false);
+        filterBox.setVisible(false);
+        filterText.setVisible(false);
+        resetFilterBtn.setVisible(false);
+    }
 
     // Thread solution based on a comment from https://stackoverflow.com/questions/36593572/javafx-tableview-high-frequent-updates
     public final Runnable setTableview = () -> {
