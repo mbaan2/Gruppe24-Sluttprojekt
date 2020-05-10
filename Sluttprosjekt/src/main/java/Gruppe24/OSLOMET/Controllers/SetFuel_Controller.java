@@ -31,7 +31,6 @@ public class SetFuel_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        //createFile();
         openFile();
         createButtons();
 
@@ -43,7 +42,6 @@ public class SetFuel_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorFuel.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -68,6 +66,7 @@ public class SetFuel_Controller implements Initializable {
                     break;
                 }
             }
+            /*If value doesnt exist anymore, the system gives this error*/
             if(!selected) {
                 fuelButtons.get(0).setSelected(true);
                 lblErrorFuel.setText("Your previous selected fuel is not available, please contact the superUser or select a new fuel system.");

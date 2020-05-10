@@ -1,6 +1,7 @@
 //TODO
 /*
       1)      Double check the crashes and try/catches                    HIGH PRIORITY
+      2)      Adapting the regex so we show that we know how it works     MEDIUM PRIORITY
 
 
 

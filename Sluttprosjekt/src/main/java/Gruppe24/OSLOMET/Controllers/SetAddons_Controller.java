@@ -4,7 +4,6 @@ import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.Car.CarCategory;
 import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
 import Gruppe24.OSLOMET.FileTreatment.LoadingValuesOnScreen;
 import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import javafx.application.Platform;
@@ -32,12 +31,9 @@ public class SetAddons_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblErrorAddons.setText("");
-
-        //createFile();
         openFile();
         createButtons();
-        depricatedAddonsCheck();
+        deprecatedAddonsCheck();
 
 
         Platform.runLater(() -> {
@@ -48,7 +44,6 @@ public class SetAddons_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorAddons.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -77,7 +72,7 @@ public class SetAddons_Controller implements Initializable {
         }
     }
 
-    public void depricatedAddonsCheck(){
+    public void deprecatedAddonsCheck(){
         try {
             for (int i = 0; i < App.car.getAddons().size(); i++) {
                 boolean selected = false;
@@ -86,6 +81,7 @@ public class SetAddons_Controller implements Initializable {
                         selected = true;
                     }
                 }
+                /*If value doesnt exist anymore, the system gives this error*/
                 if (!selected) {
                     lblErrorAddons.setText("Your cars contains depricated addon(s), please contact your superUser");
                     btnToSummary.setDisable(true);
@@ -94,7 +90,9 @@ public class SetAddons_Controller implements Initializable {
             }
         }
         catch (Exception e){
-
+            /* If no deprecated addons are in the car it will throw an exception
+               Since there are not any addons the user doesnt need to be informed.
+            */
         }
 
     }
@@ -114,6 +112,7 @@ public class SetAddons_Controller implements Initializable {
         CarCategory addons = new CarCategory("addons");
         addons.clear();
 
+        /*If empty this for loop won't run so nothing will be added */
         for(int i = 0; i < addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
                 addons.add(addOnOptions.get(i));
@@ -137,6 +136,7 @@ public class SetAddons_Controller implements Initializable {
         CarCategory addons = new CarCategory("addons");
         addons.clear();
 
+        /*If empty this for loop won't run so nothing will be added */
         for(int i = 0; i < addOnOptions.size(); i++){
             if(addOnButtons.get(i).isSelected()){
                 addons.add(addOnOptions.get(i));

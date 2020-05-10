@@ -28,7 +28,6 @@ public class WelcomeScreen_Controller implements Initializable {
     ObservableList<String> comboBoxList = FXCollections.observableArrayList();
     List<NewCar> newList = new ArrayList<>();
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         loadCarNames();
@@ -41,7 +40,6 @@ public class WelcomeScreen_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorWelcomeScreen.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -81,7 +79,6 @@ public class WelcomeScreen_Controller implements Initializable {
             } catch (IllegalStateException e){
                 lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
             }
-
         } else {
             lblFeedbackChangeCar.setText("You havn't made a car yet.");
         }
@@ -131,15 +128,16 @@ public class WelcomeScreen_Controller implements Initializable {
             btnLoadCar.setDisable(true);
             btnToTableView.setDisable(true);
         }
+
         for(NewCar newCar : newList){
             if(newCar.getUser().equals(App.car.getUser())){
                comboBoxList.add(newCar.getName());
             }
         }
+
         if(!comboBoxList.isEmpty()){
             comboAllCars.getItems().addAll(comboBoxList);
             comboAllCars.setValue(comboBoxList.get(0));
         }
     }
-
 }

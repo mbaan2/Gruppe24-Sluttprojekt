@@ -17,6 +17,27 @@ import java.util.*;
 
 public class Login_Controller implements Initializable {
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginBtn.setDefaultButton(true);
+        superuserInfo.setShowDelay(Duration.millis(100.0));
+        superuserInfo.setHideDelay(Duration.millis(200.0));
+        App.startCarBuildingProcess();
+
+        //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
+        //Code based on a comment from https://stackoverflow.com/a/59880899
+        Platform.runLater(() -> {
+            try {
+                Stage stage = (Stage) loginPane.getScene().getWindow();
+                stage.setWidth(600);
+                stage.setHeight(470);
+            } catch (ExceptionInInitializerError e) {
+                lblErrorLogin.setText("Error in setting the proper width and height, resize the window manually.");
+            }
+
+        });
+    }
+
     @FXML
     private AnchorPane loginPane;
 
@@ -107,26 +128,5 @@ public class Login_Controller implements Initializable {
         } catch (IllegalStateException e){
             lblErrorLogin.setText("There is an error in loading the next screen, please contact your developer.");
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loginBtn.setDefaultButton(true);
-        superuserInfo.setShowDelay(Duration.millis(100.0));
-        superuserInfo.setHideDelay(Duration.millis(200.0));
-        App.startCarBuildingProcess();
-
-        //Using Platform's runLater() method to let the page load before changing the width so that we get no nullpointerexceptions.
-        //Code based on a comment from https://stackoverflow.com/a/59880899
-        Platform.runLater(() -> {
-            try {
-                Stage stage = (Stage) loginPane.getScene().getWindow();
-                stage.setWidth(600);
-                stage.setHeight(470);
-            } catch (ExceptionInInitializerError e) {
-                lblErrorLogin.setText("Error in setting the proper width and height, resize the window manually.");
-            }
-
-        });
     }
 }

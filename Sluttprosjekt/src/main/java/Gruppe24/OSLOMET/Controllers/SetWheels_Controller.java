@@ -30,7 +30,6 @@ public class SetWheels_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //createFile();
         openFile();
         createButtons();
 
@@ -42,7 +41,6 @@ public class SetWheels_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorWheels.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -67,6 +65,7 @@ public class SetWheels_Controller implements Initializable {
                     break;
                 }
             }
+            /*If value doesnt exist anymore, the system gives this error*/
             if(!selected) {
                 wheelButtons.get(0).setSelected(true);
                 lblErrorWheels.setText("Your previous selected wheels are not available, please contact the superUser or select a new set of wheels.");

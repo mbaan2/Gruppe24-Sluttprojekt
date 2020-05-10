@@ -58,12 +58,7 @@ public class Summary_Controller implements Initializable {
     void btnBuildCar(ActionEvent event) {
         try{
             btnNameCar(event);
-            String ut = App.car.toString();
-
-            int totalCost = App.car.totalCost();
-            App.car.setCost(totalCost);
-            summaryLbl.setText(ut + "Total cost of this car is: " + App.car.getCost() + "kr");
-
+            summaryLbl.setText(App.car.toString());
             btnSaveCarToText.setVisible(true);
         } catch (InvalidNameException | IOException e){
             lblErrorSummary.setText(e.getMessage());
@@ -73,12 +68,14 @@ public class Summary_Controller implements Initializable {
     void btnNameCar(ActionEvent event) throws InvalidNameException, IOException {
         /* Throws InvalidNameException*/
         ValidName.carNameTest(txtCarName.getText());
-        boolean unique = true;
+
+
+        boolean unique;
 
         try{
             unique = ValidName.uniqueCarNameTest(txtCarName.getText(), App.car.getUser());
         } catch (IOException | ClassNotFoundException e){
-            throw new IOException ("Couldnt load the car file to check if the carname is unique. Contact a superuser to reset files.");
+            throw new IOException ("Couldnt load the car file to check if the carname is unique. Contact the developer to reset files.");
         }
 
         if(!unique){
@@ -117,7 +114,10 @@ public class Summary_Controller implements Initializable {
     }
 
     public void overwriteCar(){
-        App.car.setName(txtCarName.getText());List<NewCar> list = new ArrayList<>();
+        App.car.setName(txtCarName.getText());
+        List<NewCar> list = new ArrayList<>();
+
+        /*Removing the old car */
         try{
             list = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
             for (int i=0; i<list.size(); i++){
@@ -131,6 +131,7 @@ public class Summary_Controller implements Initializable {
             lblErrorSummary.setText("An error occurred while opening the Car file. Please contact the superUser to restore the file.");
         }
 
+        /*Saving both the list and the new car, new car will be last in the list so it easier to find for the user*/
         try{
             //SAVES THE INITIAL LIST
             FileSaverJobj.SavingCarArray(StandardPaths.carsPath, list);

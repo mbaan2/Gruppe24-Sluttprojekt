@@ -31,7 +31,6 @@ public class SetColor_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //createFile();
         openFile();
         createButtons();
 
@@ -43,7 +42,6 @@ public class SetColor_Controller implements Initializable {
             } catch (ExceptionInInitializerError e) {
                 lblErrorColor.setText("Error in setting the proper width and height, resize the window manually.");
             }
-
         });
     }
 
@@ -69,6 +67,8 @@ public class SetColor_Controller implements Initializable {
                     break;
                 }
             }
+
+            /*If value doesnt exist anymore, the system gives this error*/
             if(!selected) {
                 colorButtons.get(0).setSelected(true);
                 lblErrorColor.setText("Your previous selected color is not available, please contact the superUser or select a new color.");
