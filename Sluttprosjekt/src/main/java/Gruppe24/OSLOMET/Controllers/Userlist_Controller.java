@@ -100,7 +100,7 @@ public class Userlist_Controller implements Initializable {
                     userBase.remove(username1, password1);
                     btnSaveChanges();
                 } catch (InvalidNameException e) {
-                    lblUserList.setText("Enter a valid username!");
+                    lblUserList.setText(e.getMessage());
                 }
             }
             tableView.refresh();
