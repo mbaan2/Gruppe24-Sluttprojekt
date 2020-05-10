@@ -1,0 +1,8 @@
+User:	Ana
+Name:	ChooChoo
+Cost:		32500
+Fuel:	Diesel	20000
+Wheels:	Medium wheels	2500
+Color:	Yellow	2500
+Addon:	Subwoofer	7500
+

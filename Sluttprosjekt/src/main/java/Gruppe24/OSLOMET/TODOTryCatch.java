@@ -100,5 +100,5 @@ Directory Controllers
  */
 
 /* UserLogin Directory
-Only WriteUser needs attention but it already looks good.
+Only WriteUser needs attention but it already looks good.   NO LONGER EXISTS
  */
