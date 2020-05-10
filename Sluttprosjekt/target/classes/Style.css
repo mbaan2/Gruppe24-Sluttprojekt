@@ -22,3 +22,15 @@
     -fx-text-fill: white;
     -fx-background-color: #B22222;
 }
+
+.retrieve-box:disabled {
+    -fx-opacity: 1;
+}
+
+.retrieve-box:disabled > .label {
+    -fx-opacity: 1;
+}
+
+.retrieve-usernameTxt:disabled {
+
+}

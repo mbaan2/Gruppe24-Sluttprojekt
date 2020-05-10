@@ -12,24 +12,13 @@
 
 <AnchorPane fx:id="carpartsPane" prefHeight="510.0" prefWidth="605.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserCarparts_Controller">
     <children>
-        <Label layoutX="224.0" layoutY="33.0" prefHeight="45.0" prefWidth="185" text="Carpart Editor" textFill="#def2f1">
+        <Label layoutX="210.0" layoutY="32.0" prefHeight="45.0" prefWidth="185" text="Carpart Editor" textAlignment="CENTER" textFill="#def2f1">
             <font>
                 <Font size="30.0" />
             </font>
         </Label>
         <ChoiceBox fx:id="chbCategory" layoutX="224.0" layoutY="87.0" prefHeight="26.0" prefWidth="162.0" />
         <Button fx:id="loadBtn" layoutX="224.0" layoutY="118.0" mnemonicParsing="false" onAction="#btnLoadCategory" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Load Category" textFill="#def2f1" />
-        <Button fx:id="removeBtn" layoutX="224.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
-        <Button fx:id="editBtn" layoutX="224.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Edit" textFill="#def2f1" />
-        <Label layoutX="185.0" layoutY="366.0" text="Name:" />
-        <TextField fx:id="txtName" layoutX="224.0" layoutY="361.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
-        <Label layoutX="191.0" layoutY="394.0" text="Cost:" />
-        <TextField fx:id="txtCost" layoutX="224.0" layoutY="389.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
-        <Button fx:id="backBtn" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
-        <Button fx:id="addBtn" layoutX="224.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
-        <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="415.0" layoutY="331.0" prefHeight="142.0" prefWidth="149.0" wrapText="true" />
-        <Label fx:id="lblNameError" layoutX="397.0" layoutY="366.0" prefHeight="17.0" prefWidth="184.0" />
-        <Label fx:id="lblCostError" layoutX="397.0" layoutY="394.0" prefHeight="17.0" prefWidth="184.0" />
       <ScrollPane fx:id="scrollPane" layoutX="21.0" layoutY="151.0" prefHeight="168.0" prefWidth="566.0" style="-fx-background-color: #3aafa9;">
          <content>
             <StackPane prefHeight="163.0" prefWidth="563.0">
@@ -39,5 +28,16 @@
             </StackPane>
          </content>
       </ScrollPane>
+        <Button fx:id="removeBtn" layoutX="224.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Remove" textFill="#def2f1" />
+        <Label layoutX="185.0" layoutY="366.0" text="Name:" />
+        <TextField fx:id="txtName" layoutX="224.0" layoutY="361.0" prefHeight="26.0" prefWidth="162.0" promptText="Name" />
+        <Label fx:id="lblNameError" layoutX="397.0" layoutY="366.0" prefHeight="17.0" prefWidth="184.0" />
+        <Label layoutX="191.0" layoutY="394.0" text="Cost:" />
+        <TextField fx:id="txtCost" layoutX="224.0" layoutY="389.0" prefHeight="26.0" prefWidth="162.0" promptText="Cost" />
+        <Label fx:id="lblCostError" layoutX="397.0" layoutY="394.0" prefHeight="17.0" prefWidth="184.0" />
+        <Button fx:id="addBtn" layoutX="224.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Add" textFill="#def2f1" />
+        <Button fx:id="editBtn" layoutX="224.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnEdit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #17252a;" text="Edit" textFill="#def2f1" />
+        <Label fx:id="superUserLbl" alignment="TOP_CENTER" layoutX="415.0" layoutY="331.0" prefHeight="142.0" prefWidth="149.0" wrapText="true" />
+        <Button fx:id="backBtn" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     </children>
 </AnchorPane>

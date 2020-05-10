@@ -7,11 +7,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="fileRestorationPane" minHeight="300.0" minWidth="100.0" prefHeight="470.0" prefWidth="500.0" style="-fx-background-color: #3aafa9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe24.OSLOMET.Controllers.SuperUserFileRestoration_Controller">
-    <Button layoutX="120.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnRestoreUsers" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Users" textFill="#def2f1" />
-    <Button layoutX="120.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnRestoreCars" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Cars" textFill="#def2f1" />
-    <Button layoutX="120.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreCarparts" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore All Carparts" textFill="#def2f1" />
-    <Button layoutX="120.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreSecretQ" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore SecretQ" textFill="#def2f1" />
-    <Button layoutX="187.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
     <Label fx:id="superUserLbl" alignment="CENTER" layoutX="44.0" layoutY="44.0" prefHeight="122.0" prefWidth="412.0" text="File Restoration" textAlignment="CENTER" textFill="#def2f1" wrapText="true">
       <font>
          <Font size="30.0" />
@@ -28,8 +23,13 @@
             </Tooltip>
         </tooltip>
     </Label>
+    <Button layoutX="120.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreSecretQ" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore SecretQ" textFill="#def2f1" />
+    <Button layoutX="120.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnRestoreUsers" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Users" textFill="#def2f1" />
+    <Button layoutX="120.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnRestoreCars" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Cars" textFill="#def2f1" />
+    <Button layoutX="120.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreCarparts" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore All Carparts" textFill="#def2f1" />
+   <Button layoutX="256.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreFuel" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Fuel" textFill="#def2f1" />
    <Button layoutX="256.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnRestoreWheels" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Wheels" textFill="#def2f1" />
    <Button layoutX="256.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnRestoreColors" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Colors" textFill="#def2f1" />
-   <Button layoutX="256.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreAddons" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Addons" textFill="#def2f1" />
-   <Button layoutX="256.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnRestoreFuel" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Fuel" textFill="#def2f1" />
+   <Button layoutX="256.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnRestoreAddons" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Restore Add-ons" textFill="#def2f1" />
+    <Button layoutX="187.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnBackToSuperuser" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #17252a;" text="Back" textFill="#def2f1" />
 </AnchorPane>

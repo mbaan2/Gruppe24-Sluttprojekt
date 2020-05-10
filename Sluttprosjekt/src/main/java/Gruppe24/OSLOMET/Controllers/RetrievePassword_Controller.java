@@ -35,7 +35,8 @@ public class RetrievePassword_Controller implements Initializable {
         } catch (IOException | ClassNotFoundException e){
             retrieveLbl.setText(e.getMessage());
         }
-
+        usernameTxt.getStyleClass().add("retrieve-usernameTxt");
+        choiceBox.getStyleClass().add("retrieve-box");
         addChkBoxItems();
         setNotVisible();
         newUserTable.attachTableView(tableView);
@@ -97,7 +98,8 @@ public class RetrievePassword_Controller implements Initializable {
                     usernameLbl.setLayoutY(139);
                     usernameError.setLayoutY(160);
                     usernameTxt.setLayoutY(156);
-                    choiceBox.getStyleClass().add("retrieve-box");
+                    usernameTxt.setDisable(true);
+                    nextBtn.setVisible(false);
                 }
                 if (usernameTxt.getText().equals("")) {
                     usernameError.setText("Enter a username!");
@@ -138,6 +140,8 @@ public class RetrievePassword_Controller implements Initializable {
                         usernameLbl.setLayoutY(221);
                         usernameError.setLayoutY(244);
                         setNotVisible();
+                        usernameTxt.setDisable(false);
+                        nextBtn.setVisible(true);
                         return;
                     }
                     if (answerTxt.getText().isEmpty()) {
