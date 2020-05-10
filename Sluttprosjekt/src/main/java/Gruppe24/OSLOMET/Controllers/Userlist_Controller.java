@@ -129,7 +129,7 @@ public class Userlist_Controller implements Initializable {
                     user.getRowValue().setLocation(user.getNewValue());
                     btnSaveChanges();
                 } catch (InvalidNameException e) {
-                    lblUserList.setText("You didnt enter a valid location!");
+                    lblUserList.setText(e.getMessage());
                 }
             }
             tableView.refresh();
