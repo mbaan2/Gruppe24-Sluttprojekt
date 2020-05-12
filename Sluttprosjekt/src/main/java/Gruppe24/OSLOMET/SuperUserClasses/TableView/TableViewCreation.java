@@ -116,11 +116,11 @@ public class TableViewCreation {
                     } else {
                         lbl.setText("User " + event.getRowValue().getUser() + " changed to " + event.getNewValue() + " for the car named " + event.getRowValue().getName() + ".");
                         event.getRowValue().setUser(event.getNewValue());
+                        btnSaveChanges(lbl, tv);
                     }
                 } else {
                     lbl.setText("No user exists with that name.");
                 }
-                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -137,11 +137,12 @@ public class TableViewCreation {
                         // If the carname that is being entered is valid it will be updated.
                         lbl.setText("Name of the car changed from " + event.getRowValue().getName() + " to " + event.getNewValue() + ".");
                         event.getRowValue().setName(event.getNewValue());
+                        btnSaveChanges(lbl, tv);
                     } catch (InvalidNameException e){
                         lbl.setText(e.getMessage());
                     }
                 }
-                btnSaveChanges(lbl);
+                tv.refresh();
             });
 
             // Loading the fuel from the fuel.jobj file.
@@ -168,10 +169,10 @@ public class TableViewCreation {
                         } else {
                             lbl.setText("The fuel of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getFuel().getName() + " to " + event.getNewValue() + ".");
                             event.getRowValue().setFuel(finalFuelOptions.get(j));
+                            btnSaveChanges(lbl, tv);
                         }
                     }
                 }
-                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -198,10 +199,10 @@ public class TableViewCreation {
                         } else {
                             lbl.setText("The wheels of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getWheels().getName() + " to " + event.getNewValue() + ".");
                             event.getRowValue().setWheels(finalWheelOptions.get(j));
+                            btnSaveChanges(lbl, tv);
                         }
                     }
                 }
-                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -227,13 +228,11 @@ public class TableViewCreation {
                             lbl.setText("The car already has " + event.getNewValue() + " color.");
                         } else {
                             lbl.setText("The color of " + event.getRowValue().getName() + " changed from " + event.getRowValue().getColor().getName() + " to " + event.getNewValue() + ".");
-
                             event.getRowValue().setColor(finalColorOptions.get(j));
-
+                            btnSaveChanges(lbl, tv);
                         }
                     }
                 }
-                btnSaveChanges(lbl);
                 tv.refresh();
             });
 
@@ -270,7 +269,7 @@ public class TableViewCreation {
                                 }
                             }
                         }
-                        btnSaveChanges(lbl);
+                        btnSaveChanges(lbl, tv);
                         tv.refresh();
                     });
                     return booleanProp;
@@ -363,13 +362,18 @@ public class TableViewCreation {
     }
 
     // The method to save changes to the cars.jobj file.
-    private void btnSaveChanges(Label lbl){
-        List<NewCar> newList = new ArrayList<>();
-        newList.addAll(carList);
-        try {
-            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
-        } catch (SaveFileException e){
-            lbl.setText(e.getMessage());
+    private void btnSaveChanges(Label lbl, TableView<NewCar> tv){
+        if(tv.getItems().equals(carList)) {
+            List<NewCar> newList = new ArrayList<>();
+            newList.addAll(carList);
+            try {
+                FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
+            } catch (SaveFileException e) {
+                lbl.setText(e.getMessage());
+            }
+        } else {
+            lbl.setText("The changes you make to the filtered list wont be saved.");
+            tv.refresh();
         }
     }
 
@@ -377,7 +381,7 @@ public class TableViewCreation {
     private void deleteDeprecatedAddon(ActionEvent actionEvent, Car addon, CarCategory addonlist, TableView<NewCar> tv, Label lbl){
         addonlist.remove(addon);
         lbl.setText("Deprecated addon named " + addon.getName() + " removed from the car.");
-        btnSaveChanges(lbl);
+        btnSaveChanges(lbl, tv);
         tv.refresh();
     }
 
@@ -397,7 +401,7 @@ public class TableViewCreation {
     void deleteCar(ObservableList<NewCar> carList, NewCar car, TableView<NewCar> tv, Label lbl){
         carList.remove(car);
         lbl.setText(car.getName() + " removed from the list.");
-        btnSaveChanges(lbl);
+        btnSaveChanges(lbl, tv);
         tv.refresh();
     }
 }

@@ -150,7 +150,6 @@ public class SuperUserCarView_Controller implements Initializable {
         } else if (filterType.equals("Search Filters")) {
             filterLbl.setText("You didnt choose a filter.");
         } else {
-            tableView.getItems().clear();
             filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
             filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);
