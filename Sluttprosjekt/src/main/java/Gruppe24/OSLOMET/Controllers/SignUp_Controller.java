@@ -41,6 +41,27 @@ public class SignUp_Controller implements Initializable {
         checkFemale.setToggleGroup(toggleGroup);
         checkMale.setToggleGroup(toggleGroup);
 
+        try {
+            userList = FileOpenerJobj.openUserList();
+            userBase = FileOpenerJobj.openFileHashMap();
+        } catch (IOException | ClassNotFoundException e) {
+            answerTxt.setDisable(true);
+            signupUsername.setDisable(true);
+            signupPassword.setDisable(true);
+            signupLocation.setDisable(true);
+            choiceBox.setDisable(true);
+            checkFemale.setDisable(true);
+            checkMale.setDisable(true);
+            checkOther.setDisable(true);
+            CreateJobjFiles restoreUsers = new CreateJobjFiles();
+            try {
+                restoreUsers.createUser();
+            } catch (SaveFileException ex) {
+                signupLblError.setText("Couldnt restore files, contact a superuser.");
+            }
+            signupLblError.setText("There was an error with user files. Reload the page to start signing up again.");
+        }
+
         Platform.runLater(() -> {
             try {
                 Stage stage = (Stage) signupPane.getScene().getWindow();
@@ -155,12 +176,10 @@ public class SignUp_Controller implements Initializable {
                 }
 
             } catch (IOException | ClassNotFoundException e){
-                signupLbl.setText(e.getLocalizedMessage());
+                signupLblError.setText(e.getLocalizedMessage());
             }
         } catch (IOException | ClassNotFoundException e){
-            CreateJobjFiles restoreUsers = new CreateJobjFiles();
-            restoreUsers.createUser();
-            signupLblError.setText("There was an error with user files. Reload the page to start signing up again.");
+            signupLblError.setText(e.getLocalizedMessage());
         }
     }
 
