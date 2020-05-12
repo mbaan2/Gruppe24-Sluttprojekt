@@ -382,14 +382,7 @@ public class Userlist_Controller implements Initializable {
         List<NewCar> carList = new ArrayList<>();
         try {
             carList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-            for (int i = 0; i < carList.size(); i++) {
-                if (carList.get(i).getUser().equals(user.getUsername())) {
-                    carList.remove(i);
-                    if(carList.get(i).getUser().equals(user.getUsername())) {
-                        carList.remove(i);
-                    }
-                }
-            }
+            carList.removeIf(car -> car.getUser().equals(user.getUsername()));
         } catch (OpenFileException e) {
             lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
         }
