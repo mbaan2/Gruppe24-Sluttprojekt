@@ -15,7 +15,6 @@ public class SaveCarparts {
     final static String wheelsCHB = "Wheels";
     final static String colorCHB = "Color";
     final static String addOnsCHB = "Add-ons";
-    private static Object CarCategory;
 
     public static void saveChanges(List<Carparts> carList, String value, Label lbl) throws IOException {
         switch (value) {
