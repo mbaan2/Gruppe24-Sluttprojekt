@@ -391,7 +391,13 @@ public class Userlist_Controller implements Initializable {
                 }
             }
         } catch (OpenFileException e) {
-            lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. Restore it through filerestoration.");
+            lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
+        }
+
+        try {
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
+        } catch (SaveFileException e) {
+            lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
         }
         userList.remove(user);
         userBase.remove(user.getUsername(), user.getPassword());
@@ -401,7 +407,7 @@ public class Userlist_Controller implements Initializable {
             selectedFile.delete();
         }
         lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
-        FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
+
         btnSaveChanges();
         tv.refresh();
     }
