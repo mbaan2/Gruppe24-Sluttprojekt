@@ -78,7 +78,7 @@ public class WelcomeScreen_Controller implements Initializable {
                 lblErrorWelcomeScreen.setText("There is an error in loading the next screen, please contact your developer.");
             }
         } else {
-            lblFeedbackChangeCar.setText("You havn't made a car yet.");
+            lblFeedbackChangeCar.setText("You haven't made a car yet.");
         }
     }
 

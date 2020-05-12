@@ -152,7 +152,8 @@ public class Summary_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save your car to a txt file!");
         alert.setHeaderText("");
-        alert.setContentText("Do you want to overwrite or append your current file?" + "\n\nEither option creates a new file in case you dont have one. Your new file will be named   "  + username + "sCars.txt and it will be placed in the folder called 'Car Txt Files'.");
+        alert.setContentText("Do you want to overwrite or append your current file?" + "\n\nEither option creates a new file in case you dont have one. Your new file will be named   "  + username + "sCars.txt and it will be placed in the folder called 'Car Txt Files'. Remember to close your txt file if you have it open!");
+        alert.setHeight(350);
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -190,7 +191,6 @@ public class Summary_Controller implements Initializable {
         }
     }
 
-    //EDIT SO THAT USER CAN GO THROUGH THE WHOLE PROCESS, BUT ALREADY WITH INPUT DATA THAT HAD PREVIOUSLY BEEN INSERTED
     @FXML
     void btnToWelcomeScreen(ActionEvent event) {
         if(txtCarName.isDisable()){

@@ -1,8 +1,6 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.Car.Car;
-import Gruppe24.OSLOMET.Car.Carparts;
 import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverTxt;
@@ -11,8 +9,6 @@ import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.TableViewCreation;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +18,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -32,9 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 public class UserCarView_Controller implements Initializable {
     ObservableList<NewCar> usersCarList = FXCollections.observableArrayList();
@@ -55,7 +47,6 @@ public class UserCarView_Controller implements Initializable {
                 tvLabel.setText("Error in setting the proper width and height, resize the window manually.");
             }
         });
-
         tvLabel.setText("Loading cars...");
         createView.initializeTv(tableView, tvLabel, false);
         try {
@@ -70,30 +61,38 @@ public class UserCarView_Controller implements Initializable {
         /*Setting labels based on tabelview creation
           Some adoption are made here since it uses the same table as the superuser but
            the user isnt allowed the same functionality */
-        if(tvLabel.getText().equals("Loading cars...")) {
-            tvLabel.setText("Cars loaded!");
-        } else if(tvLabel.getText().equals("Could not load user base.")) {
-            tvLabel.setText("Cars loaded however the userbase isnt loaded. Contact the superUser to restore this.");
-            tableView.setDisable(true);
-            filterBtn.setVisible(false);
-            filterBox.setVisible(false);
-            filterText.setVisible(false);
-            resetFilterBtn.setVisible(false);
-        } else if(tvLabel.getText().equals("Could not load the carlist.")) {
-            tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
-            tableView.setVisible(false);
-            filterBtn.setVisible(false);
-            filterBox.setVisible(false);
-            filterText.setVisible(false);
-            resetFilterBtn.setVisible(false);
-        } else if(tvLabel.getText().equals("Could not load add-ons.")){
-            tvLabel.setText("");
-        } else if(tvLabel.getText().equals("Could not load fuel.")) {
-            tvLabel.setText("");
-        } else if(tvLabel.getText().equals("Could not load wheels.")) {
-            tvLabel.setText("");
-        } else if(tvLabel.getText().equals("Could not load colors.")) {
-            tvLabel.setText("");
+        switch (tvLabel.getText()) {
+            case "Loading cars...":
+                if (!usersCarList.isEmpty()) {
+                    tvLabel.setText("Cars loaded!");
+                } else if (usersCarList.isEmpty()) {
+                    tvLabel.setText("You have no cars!");
+                    tableView.setVisible(false);
+                }
+
+                break;
+            case "Could not load user base.":
+                tvLabel.setText("Cars loaded however the userbase isnt loaded. Contact the superUser to restore this.");
+                tableView.setDisable(true);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+                break;
+            case "Could not load the carlist.":
+                tvLabel.setText("Cars arent loaded. Contact the superUser to restore this.");
+                tableView.setVisible(false);
+                filterBtn.setVisible(false);
+                filterBox.setVisible(false);
+                filterText.setVisible(false);
+                resetFilterBtn.setVisible(false);
+                break;
+            case "Could not load add-ons.":
+            case "Could not load fuel.":
+            case "Could not load wheels.":
+            case "Could not load colors.":
+                tvLabel.setText("");
+                break;
         }
 
         tableView.refresh();
@@ -190,7 +189,7 @@ public class UserCarView_Controller implements Initializable {
         alert.setTitle("Save your cars to a txt file!");
         alert.setHeaderText("Do you want to overwrite your list or append cars to it?");
         alert.setContentText("Your cars will be saved to " + username + "sCars.txt\nMake sure your file is closed before saving.\nEither option creates a new file, in case you do not have one.");
-        alert.setHeight(200);
+        alert.setHeight(300);
         ButtonType append = new ButtonType("Append");
         ButtonType overwrite = new ButtonType("Overwrite");
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);

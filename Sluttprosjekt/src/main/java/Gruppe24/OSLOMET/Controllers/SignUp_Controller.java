@@ -3,8 +3,10 @@ package Gruppe24.OSLOMET.Controllers;
 import Gruppe24.OSLOMET.App;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
+import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import Gruppe24.OSLOMET.UserLogin.User;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -30,7 +32,11 @@ public class SignUp_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBox.setDisable(false);
-        addChkBoxItems();
+        try {
+            addChkBoxItems();
+        } catch (SaveFileException e) {
+            signupLbl.setText("Secret questions werent loaded. Reload the page to continue signing up.");
+        }
         checkOther.setToggleGroup(toggleGroup);
         checkFemale.setToggleGroup(toggleGroup);
         checkMale.setToggleGroup(toggleGroup);
@@ -62,7 +68,7 @@ public class SignUp_Controller implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     @FXML
-    void signUp(ActionEvent event) {
+    void signUp(ActionEvent event) throws SaveFileException {
         try {
             userList = FileOpenerJobj.openUserList();
             try {
@@ -126,7 +132,9 @@ public class SignUp_Controller implements Initializable {
                         usernameError.setText("Username already exists!");
                     }
                 } else {
-                    if(signupUsername.getText().isEmpty()) {
+                    if(userBase.containsKey(username)) {
+                        usernameError.setText("Username already exists!");
+                    } else if(signupUsername.getText().isEmpty()) {
                         usernameError.setText("Enter a username!");
                     }
                     if(signupPassword.getText().isEmpty()) {
@@ -150,11 +158,13 @@ public class SignUp_Controller implements Initializable {
                 signupLbl.setText(e.getLocalizedMessage());
             }
         } catch (IOException | ClassNotFoundException e){
-            signupLblError.setText(e.getMessage());
+            CreateJobjFiles restoreUsers = new CreateJobjFiles();
+            restoreUsers.createUser();
+            signupLblError.setText("There was an error with user files. Reload the page to start signing up again.");
         }
     }
 
-    private void addChkBoxItems() {
+    private void addChkBoxItems() throws SaveFileException {
         checkBoxList.removeAll();
         String checkBoxQuestion = "Select a question!";
 
@@ -162,8 +172,17 @@ public class SignUp_Controller implements Initializable {
         try {
             checkBoxList.addAll(FileOpenerJobj.openSecretQList());
         } catch (IOException | ClassNotFoundException e) {
+            answerTxt.setDisable(true);
+            signupUsername.setDisable(true);
+            signupPassword.setDisable(true);
+            signupLocation.setDisable(true);
             choiceBox.setDisable(true);
-            signupLbl.setText("Encountered an error. Contact your administrator for file restoration.");
+            checkFemale.setDisable(true);
+            checkMale.setDisable(true);
+            checkOther.setDisable(true);
+            CreateJobjFiles restoreSecretQ = new CreateJobjFiles();
+            restoreSecretQ.createSecretQ();
+            signupLbl.setText("Secret questions werent loaded. Reload the page to continue signing up.");
         }
         choiceBox.getItems().addAll(checkBoxList);
         choiceBox.setValue(checkBoxQuestion);

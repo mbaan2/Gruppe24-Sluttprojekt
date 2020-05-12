@@ -1,7 +1,6 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import javafx.application.Platform;
