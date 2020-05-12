@@ -238,7 +238,7 @@ public class Userlist_Controller implements Initializable {
             delete.setAlignment(Pos.CENTER);
             delete.setOnAction(event -> {
                 try {
-                    deleteUser(userList1, user.getValue(), userBase, tableView);
+                    deleteUser(userList1, user.getValue(), userBase, tableView, filteredList);
                 } catch (IOException e) {
                     lblUserList.setText("Something went wrong with deleting. Try restoring files.");
                 }
@@ -319,10 +319,10 @@ public class Userlist_Controller implements Initializable {
     HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> secretQObsList = FXCollections.observableArrayList();
     List<String> secretQList = new ArrayList<>();
+    ObservableList<User> filteredList = FXCollections.observableArrayList();
 
     @FXML
     void btnFilter() {
-        ObservableList<User> filteredList = FXCollections.observableArrayList();
         String filteredText = filterTxt.getText();
         String filterType = choiceBox.getValue();
 
@@ -378,7 +378,7 @@ public class Userlist_Controller implements Initializable {
     }
 
     // The method for deleting the user - it will delete it from both the users.jobj and the userlist.jobj file.
-    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv) throws IOException {
+    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv, ObservableList<User> filteredList) throws IOException {
         List<NewCar> carList = new ArrayList<>();
         try {
             carList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
@@ -400,6 +400,7 @@ public class Userlist_Controller implements Initializable {
             lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
         }
         userList.remove(user);
+        filteredList.remove(user);
         userBase.remove(user.getUsername(), user.getPassword());
         Path path = Paths.get(user.getUsername() + "sCars.txt");
         if(!path.toString().isEmpty()) {
