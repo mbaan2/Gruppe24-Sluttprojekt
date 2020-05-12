@@ -308,10 +308,7 @@ public class Userlist_Controller implements Initializable {
     private TextField filterTxt;
 
     @FXML
-    private Label lblUserList;
-
-    @FXML
-    private Label lblSecondaryUserList;
+    private Label lblUserList, lblSecondaryUserList;
 
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
