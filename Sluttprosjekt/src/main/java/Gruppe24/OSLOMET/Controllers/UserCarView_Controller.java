@@ -58,9 +58,16 @@ public class UserCarView_Controller implements Initializable {
         carList.addAll(carList2);
         addChoiceBoxItems();
 
+        /*Filtering table for Users */
+        usersCarList.removeAll();
+        usersCarList = Filter.usernameFilter(App.car.getUser(), carList);
+        tableView.setItems(usersCarList);
+
         /*Setting labels based on tabelview creation
           Some adoption are made here since it uses the same table as the superuser but
            the user isnt allowed the same functionality */
+
+
         switch (tvLabel.getText()) {
             case "Loading cars...":
                 if (!usersCarList.isEmpty()) {
@@ -97,11 +104,6 @@ public class UserCarView_Controller implements Initializable {
 
         tableView.refresh();
         tableView.setEditable(false);
-
-        /*Filtering table for Users */
-        usersCarList.removeAll();
-        usersCarList = Filter.usernameFilter(App.car.getUser(), carList);
-        tableView.setItems(usersCarList);
         
         /*Removing the delete column */
         tableView.getColumns().remove(tableView.getColumns().size()-1);
