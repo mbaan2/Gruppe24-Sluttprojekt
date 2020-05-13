@@ -363,7 +363,7 @@ public class TableViewCreation {
 
     // The method to save changes to the cars.jobj file.
     private void btnSaveChanges(Label lbl, TableView<NewCar> tv){
-        if(tv.getItems().equals(carList)) {
+       // if(tv.getItems().equals(carList)) {
             List<NewCar> newList = new ArrayList<>();
             newList.addAll(carList);
             try {
@@ -371,10 +371,10 @@ public class TableViewCreation {
             } catch (SaveFileException e) {
                 lbl.setText(e.getMessage());
             }
-        } else {
+        /*} else {
             lbl.setText("The changes you make to the filtered list wont be saved.");
             tv.refresh();
-        }
+        }*/
     }
 
     // The method for deleting deprecated addons from a car when clicking the deprecated addons button.

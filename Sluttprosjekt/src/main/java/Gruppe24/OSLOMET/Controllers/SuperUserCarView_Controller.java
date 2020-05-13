@@ -123,7 +123,7 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     void openCars() {
-        carList.clear();
+        /*carList.clear();
 
         ArrayList<NewCar> list2 = new ArrayList<>();
         try{
@@ -131,7 +131,8 @@ public class SuperUserCarView_Controller implements Initializable {
         } catch (IOException e){
             filterLbl.setText("Error in opening the list of cars, tableview will be empty.");
         }
-        carList.addAll(list2);
+        carList.addAll(list2);*/
+        carList = createView.carList;
     }
 
     @FXML
@@ -167,8 +168,7 @@ public class SuperUserCarView_Controller implements Initializable {
     private void resetFilter() {
         filterText.setText("");
         filterLbl.setText("Tableview reset.");
-        openCars();
-        tableView.setItems(carList);
+        tableView.setItems(createView.carList);
         filterBox.setValue("Search Filters");
         tableView.refresh();
     }
