@@ -10,7 +10,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -18,7 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -152,7 +150,6 @@ public class SuperUserCarView_Controller implements Initializable {
         } else if (filterType.equals("Search Filters")) {
             filterLbl.setText("You didnt choose a filter.");
         } else {
-            tableView.getItems().clear();
             filteredList = Filter.filtering(filteredText, filterType, filteredList, carList);
             filterLbl.setText(Filter.filteringFeedback(filterType, filteredList));
             tableView.setItems(filteredList);

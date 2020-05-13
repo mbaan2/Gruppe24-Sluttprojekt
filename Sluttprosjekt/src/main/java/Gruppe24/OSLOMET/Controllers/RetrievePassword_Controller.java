@@ -1,10 +1,8 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
-import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
-import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
+
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
-import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.UserLogin.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

@@ -1,11 +1,14 @@
 package Gruppe24.OSLOMET.Controllers;
 
 import Gruppe24.OSLOMET.App;
+import Gruppe24.OSLOMET.Car.NewCar;
 import Gruppe24.OSLOMET.DataValidation.ValidName;
 import Gruppe24.OSLOMET.ExceptionClasses.InvalidNameException;
+import Gruppe24.OSLOMET.ExceptionClasses.OpenFileException;
 import Gruppe24.OSLOMET.ExceptionClasses.SaveFileException;
 import Gruppe24.OSLOMET.FileTreatment.FileOpenerJobj;
 import Gruppe24.OSLOMET.FileTreatment.FileSaverJobj;
+import Gruppe24.OSLOMET.FileTreatment.StandardPaths;
 import Gruppe24.OSLOMET.SuperUserClasses.RestoreFiles.CreateJobjFiles;
 import Gruppe24.OSLOMET.SuperUserClasses.TableView.Filter;
 import Gruppe24.OSLOMET.UserLogin.User;
@@ -41,11 +44,6 @@ public class Userlist_Controller implements Initializable {
         filterBtn.setDisable(true);
         backBtn.setDisable(true);
         resetFilterBtn.setDisable(true);
-        try {
-            comboBoxList();
-        } catch (IOException | ClassNotFoundException e) {
-            lblSecondaryUserList.setText("Question editing is disabled. Could not find secret questions file. Restore it through the button in the superuser homepage.");
-        }
         lblUserList.setText("Loading users...");
 
         tableView.setVisible(false);
@@ -172,7 +170,7 @@ public class Userlist_Controller implements Initializable {
             notEditable.setTitle("Error loading secret questions");
             notEditable.setHeaderText("Could not load your secret questions file.");
             notEditable.setHeight(300);
-            notEditable.setContentText("Press \"Restore\" to reset your questions file to factory settings. \nPress \"OK\" to continue. This will disable the editing of user questions.");
+            notEditable.setContentText("Press \"Restore\" to reset your questions file to factory settings. \nPress \"OK\" to continue. This will disable the editing of user questions. Reload the page for full functionality.");
             ButtonType ok = new ButtonType("OK");
             ButtonType restore = new ButtonType("Restore");
             notEditable.getButtonTypes().setAll(ok, restore);
@@ -238,7 +236,13 @@ public class Userlist_Controller implements Initializable {
             delete.setText("Delete");
             delete.getStyleClass().add("delete-button");
             delete.setAlignment(Pos.CENTER);
-            delete.setOnAction(event -> deleteUser(userList1, user.getValue(), userBase, tableView));
+            delete.setOnAction(event -> {
+                try {
+                    deleteUser(userList1, user.getValue(), userBase, tableView, filteredList);
+                } catch (IOException e) {
+                    lblUserList.setText("Something went wrong with deleting. Try restoring files.");
+                }
+            });
 
             ObservableValue<Button> btn = new ObservableValueBase<Button>() {
                 @Override
@@ -304,10 +308,7 @@ public class Userlist_Controller implements Initializable {
     private TextField filterTxt;
 
     @FXML
-    private Label lblUserList;
-
-    @FXML
-    private Label lblSecondaryUserList;
+    private Label lblUserList, lblSecondaryUserList;
 
     @FXML
     private Button filterBtn, backBtn, resetFilterBtn;
@@ -318,10 +319,10 @@ public class Userlist_Controller implements Initializable {
     HashMap<String, String> userBase = new HashMap<>();
     ObservableList<String> secretQObsList = FXCollections.observableArrayList();
     List<String> secretQList = new ArrayList<>();
+    ObservableList<User> filteredList = FXCollections.observableArrayList();
 
     @FXML
     void btnFilter() {
-        ObservableList<User> filteredList = FXCollections.observableArrayList();
         String filteredText = filterTxt.getText();
         String filterType = choiceBox.getValue();
 
@@ -377,8 +378,22 @@ public class Userlist_Controller implements Initializable {
     }
 
     // The method for deleting the user - it will delete it from both the users.jobj and the userlist.jobj file.
-    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv){
+    void deleteUser(ObservableList<User> userList, User user, HashMap<String, String> userBase, TableView<User> tv, ObservableList<User> filteredList) throws IOException {
+        List<NewCar> carList = new ArrayList<>();
+        try {
+            carList = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
+            carList.removeIf(car -> car.getUser().equals(user.getUsername()));
+        } catch (OpenFileException e) {
+            lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
+        }
+
+        try {
+            FileSaverJobj.SavingCarArray(StandardPaths.carsPath, carList);
+        } catch (SaveFileException e) {
+            lblUserList.setText("Couldnt delete the users cars because the cars file is corrupted. The user will not be deleted.");
+        }
         userList.remove(user);
+        filteredList.remove(user);
         userBase.remove(user.getUsername(), user.getPassword());
         Path path = Paths.get(user.getUsername() + "sCars.txt");
         if(!path.toString().isEmpty()) {
@@ -386,6 +401,7 @@ public class Userlist_Controller implements Initializable {
             selectedFile.delete();
         }
         lblUserList.setText(user.getUsername() + " deleted. Its associated files are also deleted.");
+
         btnSaveChanges();
         tv.refresh();
     }
@@ -438,12 +454,5 @@ public class Userlist_Controller implements Initializable {
 
         secretQList.addAll(gender, gender2, gender3);
         return secretQList;
-    }
-
-    // Making sure the secretq.jobj list will always be the same value.
-    public static void comboBoxList() throws IOException, ClassNotFoundException {
-        List<String> comboBoxList;
-        comboBoxList = FileOpenerJobj.openSecretQList();
-        FileSaverJobj.SaveSecretQList(comboBoxList);
     }
 }
