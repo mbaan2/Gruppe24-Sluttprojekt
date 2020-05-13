@@ -109,7 +109,9 @@ public class TableViewCreation {
             user.setCellFactory(TextFieldTableCell.forTableColumn());
             user.setOnEditCommit(event -> {
                 // The username will only be changed if the user exists (aka the userbase contains the key).
-                if(userBase.containsKey(event.getNewValue())) {
+                if(event.getNewValue().equals("admin")){
+                    lbl.setText("Username admin is reserved.");
+                } else if(userBase.containsKey(event.getNewValue())) {
                     // If the car that is being edited already has that username it will show up in the label.
                     if(event.getRowValue().getUser().equals(event.getNewValue())) {
                         lbl.setText("The car already has " + event.getNewValue() + " as a username.");
@@ -363,7 +365,6 @@ public class TableViewCreation {
 
     // The method to save changes to the cars.jobj file.
     private void btnSaveChanges(Label lbl, TableView<NewCar> tv){
-       // if(tv.getItems().equals(carList)) {
             List<NewCar> newList = new ArrayList<>();
             newList.addAll(carList);
             try {
@@ -371,10 +372,6 @@ public class TableViewCreation {
             } catch (SaveFileException e) {
                 lbl.setText(e.getMessage());
             }
-        /*} else {
-            lbl.setText("The changes you make to the filtered list wont be saved.");
-            tv.refresh();
-        }*/
     }
 
     // The method for deleting deprecated addons from a car when clicking the deprecated addons button.

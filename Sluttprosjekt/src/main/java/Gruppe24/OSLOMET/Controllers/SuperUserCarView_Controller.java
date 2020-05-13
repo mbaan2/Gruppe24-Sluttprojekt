@@ -51,7 +51,11 @@ public class SuperUserCarView_Controller implements Initializable {
             tableView.setVisible(true);
             switch (filterLbl.getText()) {
                 case "Loading cars...":
-                    filterLbl.setText("Cars loaded!");
+                    if(tableView.getItems().isEmpty()){
+                        filterLbl.setText("The tableview doesn't contain any cars at the moment.");
+                    } else {
+                        filterLbl.setText("Cars loaded!");
+                    }
                     break;
                 case "Could not load user base.":
                     filterLbl.setText("Cars loaded, but there was an error with the userbase. Restore users file to regain full functionality.");
@@ -123,15 +127,6 @@ public class SuperUserCarView_Controller implements Initializable {
     }
 
     void openCars() {
-        /*carList.clear();
-
-        ArrayList<NewCar> list2 = new ArrayList<>();
-        try{
-            list2 = FileOpenerJobj.openingCarArray(StandardPaths.carsPath);
-        } catch (IOException e){
-            filterLbl.setText("Error in opening the list of cars, tableview will be empty.");
-        }
-        carList.addAll(list2);*/
         carList = createView.carList;
     }
 
