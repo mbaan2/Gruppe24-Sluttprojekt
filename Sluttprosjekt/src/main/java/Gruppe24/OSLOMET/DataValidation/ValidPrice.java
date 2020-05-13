@@ -9,7 +9,7 @@ public class ValidPrice{
         }
     }
 
-    public static boolean validPrice(int price) throws InvalidPriceException {
+    public static boolean validPrice(int price) {
         try {
             priceTest(price);
             return true;

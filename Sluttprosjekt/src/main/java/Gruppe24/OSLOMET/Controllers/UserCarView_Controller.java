@@ -182,7 +182,7 @@ public class UserCarView_Controller implements Initializable {
     }
 
     @FXML
-    void saveYourTable(ActionEvent event) throws IOException {
+    void saveYourTable(ActionEvent event) {
         ObservableList<NewCar> outputList = tableView.getItems();
         String username = App.car.getUser();
         Path path = Paths.get("./Car Txt Files/" + username + "sCars.txt");

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ValidPriceTest{
     @Test
-    void priceTest() throws InvalidPriceException {
+    void priceTest() {
         assertTrue(ValidPrice.validPrice(1));
         assertTrue(ValidPrice.validPrice(100));
         assertTrue(ValidPrice.validPrice(100000));

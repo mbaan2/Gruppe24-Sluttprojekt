@@ -89,7 +89,7 @@ public class SignUp_Controller implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     @FXML
-    void signUp(ActionEvent event) throws SaveFileException {
+    void signUp(ActionEvent event){
         try {
             userList = FileOpenerJobj.openUserList();
             try {

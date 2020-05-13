@@ -24,22 +24,24 @@ public class FileSaverJobj {
     }
 
     public static void SavingCarArray(String path, List<NewCar> carList) throws SaveFileException {
-        try{
-            ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
-            os1.writeObject(carList.get(0));
-            os1.close();
+        if(!carList.isEmpty()){
+            try {
+                ObjectOutputStream os1 = new ObjectOutputStream(new FileOutputStream(path));
+                os1.writeObject(carList.get(0));
+                os1.close();
 
-            for (int i = 1; i < carList.size(); i++){
-                ObjectOutputStream os2 = new ObjectOutputStream(new FileOutputStream(path, true)){
-                    protected void writeStreamHeader() throws IOException{
-                        reset();
-                    }
-                };
-                os2.writeObject(carList.get(i));
-                os2.close();
+                for (int i = 1; i < carList.size(); i++) {
+                    ObjectOutputStream os2 = new ObjectOutputStream(new FileOutputStream(path, true)) {
+                        protected void writeStreamHeader() throws IOException {
+                            reset();
+                        }
+                    };
+                    os2.writeObject(carList.get(i));
+                    os2.close();
+                }
+            } catch (IOException e) {
+                throw new SaveFileException("Problems with loading file, please close the program and start over. If this happens again contact the developer.");
             }
-        } catch (IOException e){
-            throw new SaveFileException("Problems with loading file, please close the program and start over. If this happens again contact the developer.");
         }
     }
 
