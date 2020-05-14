@@ -154,7 +154,7 @@ public class CreateJobjFiles {
 
     public void setUser() {
         User user = new User("Karen", "karenpassord", "Oslo", "Other", "Whos your daddy?", "Someone");
-        User user1 = new User("Cutipie", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
+        User user1 = new User("Cutipie", "heipådeg", "Oslo", "Male", "Whos your daddy?", "Me");
         User user2 = new User("Bruker200", "bruker200", "Location", "Male", "Mothers maiden name?", "???");
         User user3 = new User("Philip", "Passord1", "Oslo", "Male", "Name of first pet?", "Dog");
         User user4 = new User("Bruker", "passord", "Nowhere", "Female", "Name of first pet?", "Katt");
