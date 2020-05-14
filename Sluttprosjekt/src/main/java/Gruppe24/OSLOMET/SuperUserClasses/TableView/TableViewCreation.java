@@ -365,8 +365,7 @@ public class TableViewCreation {
 
     // The method to save changes to the cars.jobj file.
     private void btnSaveChanges(Label lbl, TableView<NewCar> tv){
-            List<NewCar> newList = new ArrayList<>();
-            newList.addAll(carList);
+            List<NewCar> newList = new ArrayList<>(carList);
             try {
                 FileSaverJobj.SavingCarArray(StandardPaths.carsPath, newList);
             } catch (SaveFileException e) {
