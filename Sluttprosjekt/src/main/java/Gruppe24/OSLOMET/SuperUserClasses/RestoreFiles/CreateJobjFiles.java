@@ -34,7 +34,7 @@ public class CreateJobjFiles {
         NewCar car3 = new NewCar();
         NewCar car4 = new NewCar();
 
-        car1.setUser("Mark");
+        car1.setUser("Philip");
         car1.setName("GreatCar");
         car1.setFuel(new Carparts("Diesel", 20000));
         car1.setWheels(new Carparts("Medium wheels", 2500));
@@ -45,7 +45,7 @@ public class CreateJobjFiles {
         car1.setAddons(addons);
         car1.setCost(car1.getCost());
 
-        car2.setUser("Mark");
+        car2.setUser("Philip");
         car2.setName("BestCar");
         car2.setFuel(new Carparts("Gasoline", 15000));
         car2.setWheels(new Carparts("Big wheels", 5000));
@@ -57,7 +57,7 @@ public class CreateJobjFiles {
         car2.setAddons(addons2);
         car2.setCost(car2.getCost());
 
-        car3.setUser("Ana");
+        car3.setUser("Karen");
         car3.setName("ZoomZoom");
         car3.setFuel(new Carparts("Electric", 35000));
         car3.setWheels(new Carparts("Medium wheels", 2500));
@@ -68,7 +68,7 @@ public class CreateJobjFiles {
         car3.setAddons(addons3);
         car3.setCost(car3.getCost());
 
-        car4.setUser("Ana");
+        car4.setUser("Karen");
         car4.setName("ChooChoo");
         car4.setFuel(new Carparts("Electric", 35000));
         car4.setWheels(new Carparts("Small wheels", 2500));
@@ -153,10 +153,10 @@ public class CreateJobjFiles {
     }
 
     public void setUser() {
-        User user = new User("Ana", "feijoada", "Oslo", "Other", "Whos your daddy?", "Someone");
-        User user1 = new User("oyvind91", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
+        User user = new User("Karen", "feijoada", "Oslo", "Other", "Whos your daddy?", "Someone");
+        User user1 = new User("Cutipie", "oyvind1991", "Oslo", "Male", "Whos your daddy?", "Me");
         User user2 = new User("Idiot", "idiotproof", "Location", "Male", "Mothers maiden name?", "Idiota");
-        User user3 = new User("Mark", "kapsalon", "Oslo", "Male", "Name of first pet?", "Dog");
+        User user3 = new User("Philip", "kapsalon", "Oslo", "Male", "Name of first pet?", "Dog");
         User user4 = new User("Bruker", "passord", "Nowhere", "Female", "Name of first pet?", "Katt");
 
         userList.add(user);

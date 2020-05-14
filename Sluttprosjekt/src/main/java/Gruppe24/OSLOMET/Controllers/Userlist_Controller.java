@@ -270,13 +270,18 @@ public class Userlist_Controller implements Initializable {
             tableView.setVisible(true);
             lblSecondaryUserList.setVisible(true);
             if (lblUserList.getText().equals("Loading users...")){
-                lblUserList.setText("Users loaded!");
-                executor.submit(setTableView);
-                tableView.refresh();
-                filterBtn.setDisable(false);
-                resetFilterBtn.setDisable(false);
-                choiceBox.setDisable(false);
-                filterTxt.setDisable(false);
+                if(tableView.getItems().isEmpty()) {
+                    lblUserList.setText("No users have been created yet!");
+                } else {
+                    lblUserList.setText("Users loaded!");
+                    executor.submit(setTableView);
+                    tableView.refresh();
+                    filterBtn.setDisable(false);
+                    resetFilterBtn.setDisable(false);
+                    choiceBox.setDisable(false);
+                    filterTxt.setDisable(false);
+                }
+
             } else if (lblUserList.getText().equals("Error in setting the proper width and height, resize the window manually.")){
                 lblSecondaryUserList.setText("Users loaded!");
                 executor.submit(setTableView);
