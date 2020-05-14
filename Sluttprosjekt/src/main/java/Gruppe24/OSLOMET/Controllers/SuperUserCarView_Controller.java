@@ -52,7 +52,7 @@ public class SuperUserCarView_Controller implements Initializable {
             switch (filterLbl.getText()) {
                 case "Loading cars...":
                     if(tableView.getItems().isEmpty()){
-                        filterLbl.setText("The tableview doesn't contain any cars at the moment.");
+                        filterLbl.setText("The tableview doesn't contain any cars at this moment.");
                     } else {
                         filterLbl.setText("Cars loaded!");
                     }
