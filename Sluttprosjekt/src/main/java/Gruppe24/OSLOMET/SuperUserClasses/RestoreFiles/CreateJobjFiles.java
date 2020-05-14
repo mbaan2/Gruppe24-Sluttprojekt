@@ -71,7 +71,7 @@ public class CreateJobjFiles {
         car4.setUser("Karen");
         car4.setName("ChooChoo");
         car4.setFuel(new Carparts("Electric", 35000));
-        car4.setWheels(new Carparts("Small wheels", 2500));
+        car4.setWheels(new Carparts("Small wheels", 0));
         car4.setColor(new Carparts("Yellow", 2500));
         CarCategory addons4 = new CarCategory("Addons");
         addons4.add(new Carparts("Subwoofer", 7500));
